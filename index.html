@@ -27,45 +27,46 @@ html,body{
 
 button{
     -webkit-tap-highlight-color:transparent;
-    cursor:pointer;
 }
 
-/* ================= LOADING ================= */
+/* =========================
+   LOADING
+========================= */
 
 #loading{
     position:fixed;
     inset:0;
     z-index:100;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
 
+    color:white;
+
     background:
     radial-gradient(
         circle at center,
-        #343a42 0%,
-        #101319 48%,
-        #020304 100%
+        #343a42,
+        #101319 55%,
+        #020304
     );
-
-    color:white;
 }
 
 .logo{
-    font-size:43px;
+    font-size:42px;
     font-weight:1000;
-    letter-spacing:3px;
-    text-align:center;
+    letter-spacing:2px;
 
     text-shadow:
     0 0 12px red,
-    0 0 35px #900;
+    0 0 30px #800;
 }
 
 .loadingWolf{
     font-size:90px;
-    margin:15px 0;
+    margin:15px;
 }
 
 .loadingText{
@@ -82,8 +83,8 @@ button{
 .bar{
     width:280px;
     height:12px;
-    border-radius:20px;
     background:#222;
+    border-radius:20px;
     overflow:hidden;
 }
 
@@ -94,14 +95,14 @@ button{
     background:
     linear-gradient(
         90deg,
-        #720000,
-        #ff2929
+        #700000,
+        #ff2525
     );
-
-    box-shadow:0 0 15px red;
 }
 
-/* ================= MENU ================= */
+/* =========================
+   MENU
+========================= */
 
 #menu{
     display:none;
@@ -115,145 +116,123 @@ button{
     flex-direction:column;
     align-items:center;
 
-    padding:20px 15px 30px;
+    padding:18px;
+
+    color:white;
 
     background:
     radial-gradient(
-        circle at 50% 15%,
-        #343b43,
-        #0b0e13 60%,
+        circle at center,
+        #343a42,
+        #0b0e13 65%,
         #020304
     );
-
-    color:white;
 }
 
 .menuTitle{
-    font-size:43px;
+    font-size:42px;
     font-weight:1000;
-    letter-spacing:3px;
 
     text-shadow:
-    0 0 15px red,
-    0 0 35px #700;
-
-    text-align:center;
+    0 0 12px red,
+    0 0 30px #700;
 }
 
 .subtitle{
     color:#aaa;
-    margin:4px 0 12px;
-    text-align:center;
     font-size:13px;
+    margin:5px 0;
 }
 
 .creator{
-    color:#ff5252;
-    font-size:16px;
+    color:#ff4444;
     font-weight:bold;
-
-    margin-bottom:15px;
-
-    text-shadow:
-    0 0 8px #700;
+    margin:8px 0 15px;
 }
 
 .sectionTitle{
     width:100%;
-    max-width:520px;
+    max-width:500px;
 
     font-weight:bold;
-    margin:7px 0;
+    margin:8px 0;
 }
 
-.characterList,
-.mapList{
+.list{
     width:100%;
-    max-width:520px;
+    max-width:500px;
 
     display:flex;
     gap:10px;
 
     overflow-x:auto;
-
-    padding:4px 2px 10px;
 }
 
 .card{
     min-width:130px;
-    height:115px;
+    height:105px;
 
-    border:2px solid #454b52;
-    border-radius:16px;
+    border:2px solid #444;
+    border-radius:15px;
 
     background:
     linear-gradient(
         145deg,
-        #252a30,
-        #0e1115
+        #292e34,
+        #0c0f13
     );
+
+    color:white;
 
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-
-    color:white;
+    align-items:center;
 
     position:relative;
 }
 
 .card.selected{
-    border-color:#ff3030;
+    border-color:#ff3333;
 
     box-shadow:
-    0 0 18px #8d0000;
+    0 0 15px #700;
 }
 
 .card.locked{
-    opacity:.4;
+    opacity:.35;
     filter:grayscale(1);
 }
 
 .cardEmoji{
-    font-size:43px;
+    font-size:40px;
 }
 
 .cardName{
     font-size:12px;
     font-weight:bold;
     margin-top:5px;
-    text-align:center;
 }
 
 .lock{
     position:absolute;
-    top:6px;
+    top:5px;
     right:7px;
 }
 
-.mapCard{
-    min-width:145px;
-    height:90px;
-}
-
-.mapIcon{
-    font-size:29px;
-}
-
-.playButton{
+.play{
     width:270px;
+
     padding:16px;
 
-    margin-top:8px;
+    margin-top:18px;
 
-    border:2px solid #ff3636;
+    border:2px solid #ff3333;
     border-radius:13px;
 
     background:
     linear-gradient(
-        180deg,
-        #a60000,
+        #a00000,
         #420000
     );
 
@@ -261,10 +240,11 @@ button{
 
     font-size:18px;
     font-weight:bold;
-    letter-spacing:2px;
 }
 
-/* ================= GAME ================= */
+/* =========================
+   GAME
+========================= */
 
 #game{
     display:none;
@@ -290,40 +270,37 @@ canvas{
 
     display:flex;
     justify-content:space-between;
-    align-items:center;
 
     color:white;
 
     font-size:18px;
     font-weight:bold;
 
-    text-shadow:
-    2px 2px 5px #000;
+    text-shadow:2px 2px 5px #000;
 
     z-index:10;
 }
 
 #poop{
-    color:#dca56d;
+    color:#d79b63;
 }
 
-#homeButton{
+#home{
     position:absolute;
 
-    top:52px;
-    right:12px;
+    right:10px;
+    top:48px;
 
     z-index:15;
 
-    border:1px solid #aaa;
-    border-radius:9px;
+    padding:8px 11px;
 
-    background:rgba(0,0,0,.55);
+    border:1px solid #aaa;
+    border-radius:8px;
+
+    background:rgba(0,0,0,.6);
 
     color:white;
-
-    padding:9px 12px;
-
     font-weight:bold;
 }
 
@@ -343,21 +320,15 @@ canvas{
     text-align:center;
 
     text-shadow:
-    0 0 10px #000,
-    2px 2px 5px #000;
+    0 0 10px #000;
 
     z-index:20;
-
-    pointer-events:none;
 }
 
 #tapStart small{
     display:block;
-
-    margin-top:9px;
-
+    margin-top:8px;
     font-size:14px;
-    color:#ddd;
 }
 
 #gameOver{
@@ -368,30 +339,26 @@ canvas{
 
     z-index:40;
 
+    background:rgba(0,0,0,.86);
+
+    color:white;
+
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    background:rgba(0,0,0,.84);
-
-    color:white;
 
     text-align:center;
 }
 
 #gameOver h2{
-    color:#ff2525;
-
-    font-size:43px;
-
-    margin-bottom:15px;
+    color:#ff2222;
+    font-size:45px;
 }
 
-.restart,
-.menuButton{
+.overButton{
     margin-top:15px;
 
-    padding:13px 30px;
+    padding:13px 25px;
 
     border:0;
     border-radius:10px;
@@ -407,7 +374,7 @@ canvas{
 }
 
 .menuButton{
-    background:#30363c;
+    background:#333940;
 }
 
 </style>
@@ -416,9 +383,9 @@ canvas{
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      LOADING
-===================================================== -->
+========================= -->
 
 <div id="loading">
 
@@ -445,9 +412,9 @@ canvas{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      MENU
-===================================================== -->
+========================= -->
 
 <div id="menu">
 
@@ -465,21 +432,21 @@ canvas{
 
 
     <div class="sectionTitle">
-        🐺 PERSONAGEM
+        🐺 PERSONAGENS
     </div>
 
-    <div class="characterList">
+    <div class="list">
 
         <button
             class="card selected"
-            data-character="wolf">
+            data-char="wolf">
 
             <div class="cardEmoji">
                 🐺
             </div>
 
             <div class="cardName">
-                LOBO
+                LILO
             </div>
 
         </button>
@@ -487,11 +454,9 @@ canvas{
 
         <button
             class="card locked"
-            data-character="dog">
+            data-char="dog">
 
-            <span class="lock">
-                🔒
-            </span>
+            <span class="lock">🔒</span>
 
             <div class="cardEmoji">
                 🐕
@@ -506,11 +471,9 @@ canvas{
 
         <button
             class="card locked"
-            data-character="fox">
+            data-char="fox">
 
-            <span class="lock">
-                🔒
-            </span>
+            <span class="lock">🔒</span>
 
             <div class="cardEmoji">
                 🦊
@@ -529,13 +492,13 @@ canvas{
         🗺️ MAPAS
     </div>
 
-    <div class="mapList">
+    <div class="list">
 
         <button
-            class="card mapCard selected"
+            class="card selected"
             data-map="1">
 
-            <div class="mapIcon">
+            <div class="cardEmoji">
                 🌲
             </div>
 
@@ -548,14 +511,12 @@ canvas{
 
 
         <button
-            class="card mapCard locked"
+            class="card locked"
             data-map="2">
 
-            <span class="lock">
-                🔒
-            </span>
+            <span class="lock">🔒</span>
 
-            <div class="mapIcon">
+            <div class="cardEmoji">
                 🏜️
             </div>
 
@@ -568,14 +529,12 @@ canvas{
 
 
         <button
-            class="card mapCard locked"
+            class="card locked"
             data-map="3">
 
-            <span class="lock">
-                🔒
-            </span>
+            <span class="lock">🔒</span>
 
-            <div class="mapIcon">
+            <div class="cardEmoji">
                 🌋
             </div>
 
@@ -590,8 +549,8 @@ canvas{
 
 
     <button
-        class="playButton"
-        id="startButton">
+        class="play"
+        id="play">
 
         ▶ TOCAR PARA JOGAR
 
@@ -600,9 +559,9 @@ canvas{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      GAME
-===================================================== -->
+========================= -->
 
 <div id="game">
 
@@ -628,14 +587,14 @@ canvas{
     </div>
 
 
-    <button id="homeButton">
+    <button id="home">
         🏠 INÍCIO
     </button>
 
 
     <div id="tapStart">
 
-        TOQUE NA TELA PARA COMEÇAR
+        TOQUE PARA COMEÇAR
 
         <small>
             Toque para pular 🐺🔊
@@ -650,21 +609,19 @@ canvas{
             GAME OVER
         </h2>
 
-        <div>
-            Você chegou ao mapa
+        <p>
+            Mapa:
             <span id="finalLevel">1</span>
-        </div>
+        </p>
 
-        <div style="margin-top:8px">
-
-            Bostinhas:
+        <p style="margin-top:7px">
+            💩
             <span id="finalPoop">0</span>/10
-
-        </div>
+        </p>
 
 
         <button
-            class="restart"
+            class="overButton restart"
             id="restart">
 
             🔄 JOGAR NOVAMENTE
@@ -673,8 +630,8 @@ canvas{
 
 
         <button
-            class="menuButton"
-            id="overMenu">
+            class="overButton menuButton"
+            id="backMenu">
 
             🏠 VOLTAR AO INÍCIO
 
@@ -694,45 +651,47 @@ canvas{
 let unlockedMap =
 Number(
     localStorage.getItem(
-        "liliUnlockedMap"
+        "liloMap"
     ) || 1
 );
 
-let unlockedCharacters =
+let unlockedChar =
 Number(
     localStorage.getItem(
-        "liliUnlockedCharacters"
+        "liloChar"
     ) || 1
 );
 
 let selectedMap=1;
-
-let selectedCharacter="wolf";
 
 
 /* =====================================================
    LOADING
 ===================================================== */
 
-let load=0;
+let loadingValue=0;
 
-function loading(){
+function loadScreen(){
 
-    load++;
+    loadingValue++;
 
     document.getElementById(
         "percent"
-    ).textContent=load+"%";
+    ).textContent=
+    loadingValue+"%";
 
     document.getElementById(
         "barFill"
-    ).style.width=load+"%";
+    ).style.width=
+    loadingValue+"%";
 
 
-    if(load<100){
+    if(
+        loadingValue<100
+    ){
 
         setTimeout(
-            loading,
+            loadScreen,
             25
         );
 
@@ -756,7 +715,7 @@ function loading(){
 
 }
 
-loading();
+loadScreen();
 
 
 /* =====================================================
@@ -772,7 +731,10 @@ function updateMenu(){
         const map=
         Number(card.dataset.map);
 
-        if(map<=unlockedMap){
+
+        if(
+            map<=unlockedMap
+        ){
 
             card.classList.remove(
                 "locked"
@@ -790,22 +752,34 @@ function updateMenu(){
 
 
     document.querySelectorAll(
-        "[data-character]"
+        "[data-char]"
     ).forEach(card=>{
 
-        const c=
-        card.dataset.character;
+        const char=
+        card.dataset.char;
 
-        const available=
-            c==="wolf" ||
-            (
-                c==="dog" &&
-                unlockedCharacters>=2
-            ) ||
-            (
-                c==="fox" &&
-                unlockedCharacters>=3
-            );
+
+        let available=false;
+
+
+        if(
+            char==="wolf"
+        )
+            available=true;
+
+
+        if(
+            char==="dog" &&
+            unlockedChar>=2
+        )
+            available=true;
+
+
+        if(
+            char==="fox" &&
+            unlockedChar>=3
+        )
+            available=true;
 
 
         if(available){
@@ -827,7 +801,7 @@ function updateMenu(){
 }
 
 
-/* MAPAS */
+/* seleção mapa */
 
 document.querySelectorAll(
     "[data-map]"
@@ -840,10 +814,15 @@ document.querySelectorAll(
             const map=
             Number(card.dataset.map);
 
-            if(map>unlockedMap)
+
+            if(
+                map>unlockedMap
+            )
                 return;
 
+
             selectedMap=map;
+
 
             document.querySelectorAll(
                 "[data-map]"
@@ -853,43 +832,6 @@ document.querySelectorAll(
                 )
             );
 
-            card.classList.add(
-                "selected"
-            );
-
-        }
-    );
-
-});
-
-
-/* PERSONAGENS */
-
-document.querySelectorAll(
-    "[data-character]"
-).forEach(card=>{
-
-    card.addEventListener(
-        "click",
-        ()=>{
-
-            if(
-                card.classList.contains(
-                    "locked"
-                )
-            )
-                return;
-
-            selectedCharacter=
-            card.dataset.character;
-
-            document.querySelectorAll(
-                "[data-character]"
-            ).forEach(c=>
-                c.classList.remove(
-                    "selected"
-                )
-            );
 
             card.classList.add(
                 "selected"
@@ -913,7 +855,9 @@ document.getElementById(
 const ctx=
 canvas.getContext("2d");
 
-let W,H;
+
+let W=0;
+let H=0;
 
 
 function resize(){
@@ -940,152 +884,139 @@ window.addEventListener(
    ÁUDIO
 ===================================================== */
 
-let audioContext=null;
+let audio=null;
 
 
-function initAudio(){
+/*
+   O AudioContext é criado dentro
+   do toque do usuário.
 
-    if(!audioContext){
+   Isso é importante em navegadores
+   que bloqueiam áudio automático.
+*/
 
-        const AudioCtx=
+function prepareAudio(){
+
+    if(audio)
+        return;
+
+
+    const AudioContext=
         window.AudioContext ||
         window.webkitAudioContext;
 
-        if(AudioCtx){
 
-            audioContext=
-            new AudioCtx();
-
-        }
-
-    }
+    if(!AudioContext)
+        return;
 
 
-    if(
-        audioContext &&
-        audioContext.state==="suspended"
-    ){
-
-        audioContext.resume();
-
-    }
+    audio=
+    new AudioContext();
 
 }
 
 
-/*
-   Latido feito pelo próprio navegador.
-   Funciona sem precisar carregar arquivo externo.
-*/
+/* LATIDO */
 
 function bark(){
 
-    initAudio();
-
-    if(!audioContext)
+    if(!audio)
         return;
 
 
+    if(
+        audio.state==="suspended"
+    ){
+
+        audio.resume();
+
+    }
+
+
     const now=
-    audioContext.currentTime;
+    audio.currentTime;
 
 
-    /* primeiro som */
+    function barkSound(
+        start,
+        frequency,
+        duration
+    ){
 
-    const osc1=
-    audioContext.createOscillator();
+        const osc=
+        audio.createOscillator();
 
-    const gain1=
-    audioContext.createGain();
-
-    osc1.type="sawtooth";
-
-    osc1.frequency.setValueAtTime(
-        210,
-        now
-    );
-
-    osc1.frequency.exponentialRampToValueAtTime(
-        90,
-        now+0.13
-    );
+        const gain=
+        audio.createGain();
 
 
-    gain1.gain.setValueAtTime(
-        0.0001,
-        now
-    );
-
-    gain1.gain.exponentialRampToValueAtTime(
-        0.25,
-        now+0.015
-    );
-
-    gain1.gain.exponentialRampToValueAtTime(
-        0.0001,
-        now+0.14
-    );
+        osc.type="sawtooth";
 
 
-    osc1.connect(gain1);
-    gain1.connect(
-        audioContext.destination
-    );
-
-    osc1.start(now);
-    osc1.stop(now+0.15);
+        osc.frequency.setValueAtTime(
+            frequency,
+            start
+        );
 
 
-    /* segundo som */
-
-    const osc2=
-    audioContext.createOscillator();
-
-    const gain2=
-    audioContext.createGain();
-
-    osc2.type="square";
-
-    osc2.frequency.setValueAtTime(
-        145,
-        now+0.11
-    );
-
-    osc2.frequency.exponentialRampToValueAtTime(
-        65,
-        now+0.23
-    );
+        osc.frequency.exponentialRampToValueAtTime(
+            frequency*0.42,
+            start+duration
+        );
 
 
-    gain2.gain.setValueAtTime(
-        0.0001,
-        now+0.11
-    );
+        gain.gain.setValueAtTime(
+            0.0001,
+            start
+        );
 
-    gain2.gain.exponentialRampToValueAtTime(
-        0.20,
-        now+0.125
-    );
 
-    gain2.gain.exponentialRampToValueAtTime(
-        0.0001,
-        now+0.24
+        gain.gain.exponentialRampToValueAtTime(
+            0.28,
+            start+0.012
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            start+duration
+        );
+
+
+        osc.connect(gain);
+
+        gain.connect(
+            audio.destination
+        );
+
+
+        osc.start(start);
+
+        osc.stop(
+            start+duration+0.01
+        );
+
+    }
+
+
+    barkSound(
+        now,
+        220,
+        0.13
     );
 
 
-    osc2.connect(gain2);
-    gain2.connect(
-        audioContext.destination
+    barkSound(
+        now+0.10,
+        170,
+        0.14
     );
-
-    osc2.start(now+0.11);
-    osc2.stop(now+0.25);
 
 }
 
 
 /* =====================================================
-   VARIÁVEIS
+   VARIÁVEIS DO JOGO
 ===================================================== */
 
 let player;
@@ -1096,45 +1027,88 @@ let poops=[];
 let running=false;
 let started=false;
 
-let poopCount=0;
-let level=1;
 let lives=3;
+
+let poopCount=0;
+
+let level=1;
 
 
 /*
-   IMPORTANTE:
+   VELOCIDADE DA FASE.
 
-   speed NÃO é alterado quando perde vida.
+   NÃO É ALTERADA QUANDO PERDE VIDA.
 
-   Existe apenas UM requestAnimationFrame
-   no jogo inteiro.
+   Mapa 1 = 4.5
+   Mapa 2 = 5
+   Mapa 3 = 5.5
 */
 
-let speed=5;
+let speed=4.5;
+
 
 let obstacleTimer=0;
 let poopTimer=0;
 
-let legAnimation=0;
+let legTime=0;
 
-let hitCooldown=false;
+let invincible=false;
+
+
+/*
+   ID DO ÚNICO LOOP.
+*/
+
+let animationID=null;
+
+
+/*
+   Controle de tempo.
+
+   Assim a velocidade fica consistente
+   mesmo em telas com 60/90/120 Hz.
+*/
+
+let lastTime=0;
 
 
 /* =====================================================
    RESET
 ===================================================== */
 
-function reset(){
+function resetGame(){
+
+    level=selectedMap;
+
+    lives=3;
+
+    poopCount=0;
+
+
+    /*
+       Velocidade definida somente
+       conforme o mapa.
+    */
+
+    if(level===1)
+        speed=4.5;
+
+    if(level===2)
+        speed=5;
+
+    if(level===3)
+        speed=5.5;
+
 
     player={
 
-        x:65,
+        x:55,
 
-        y:H-130,
+        y:H-128,
 
-        w:58,
+        w:54,
 
-        h:58,
+        h:54,
 
         vy:0,
 
@@ -1146,39 +1120,24 @@ function reset(){
     obstacles=[];
     poops=[];
 
-    poopCount=0;
-
-    lives=3;
-
-    level=selectedMap;
-
-
-    /*
-       Velocidade definida UMA VEZ.
-    */
-
-    speed=
-        level===1
-        ? 5
-        : level===2
-        ? 5.5
-        : 6;
-
 
     obstacleTimer=90;
 
-    poopTimer=40;
+    poopTimer=50;
 
-    hitCooldown=false;
+
+    invincible=false;
 
 
     document.getElementById(
         "poop"
-    ).textContent=0;
+    ).textContent="0";
+
 
     document.getElementById(
         "level"
     ).textContent=level;
+
 
     updateLives();
 
@@ -1186,110 +1145,76 @@ function reset(){
 
 
 /* =====================================================
-   REINÍCIO APÓS BATER
+   VIDAS
 ===================================================== */
 
-function restartAfterHit(){
+function updateLives(){
 
-    /*
-       NÃO altera speed.
-    */
-
-    player.x=65;
-
-    player.y=H-130;
-
-    player.vy=0;
-
-    player.grounded=true;
+    let text="";
 
 
-    /*
-       Coloca o obstáculo que causou
-       a colisão longe do jogador.
-
-       Ele NÃO é apagado.
-    */
-
-    if(
-        obstacles.length
+    for(
+        let i=0;
+        i<3;
+        i++
     ){
 
-        obstacles.forEach(o=>{
-
-            if(
-                o.x <
-                player.x+
-                player.w+
-                100
-            ){
-
-                o.x=
-                player.x+
-                player.w+
-                180;
-
-            }
-
-        });
+        text+=
+        i<lives
+        ? "❤️"
+        : "🖤";
 
     }
 
 
-    obstacleTimer=70;
-
-    running=false;
-
-
-    setTimeout(()=>{
-
-        if(
-            lives>0 &&
-            document.getElementById(
-                "game"
-            ).style.display!=="none"
-        ){
-
-            running=true;
-
-        }
-
-    },350);
+    document.getElementById(
+        "lives"
+    ).textContent=text;
 
 }
 
 
 /* =====================================================
-   INICIAR
+   COMEÇAR
 ===================================================== */
 
 function startGame(){
 
-    initAudio();
+    prepareAudio();
+
 
     document.getElementById(
         "menu"
     ).style.display="none";
 
+
     document.getElementById(
         "game"
     ).style.display="block";
+
 
     document.getElementById(
         "gameOver"
     ).style.display="none";
 
 
-    reset();
+    resetGame();
 
-    running=false;
 
     started=false;
+
+    running=false;
 
 
     document.getElementById(
         "tapStart"
     ).style.display="block";
+
+
+    /*
+       Não inicia outro loop.
+       O loop principal já existe.
+    */
 
 }
 
@@ -1298,46 +1223,84 @@ function startGame(){
    VOLTAR AO MENU
 ===================================================== */
 
-function backToMenu(){
+function backMenu(){
 
     running=false;
 
     started=false;
 
+
     document.getElementById(
         "game"
     ).style.display="none";
+
 
     document.getElementById(
         "gameOver"
     ).style.display="none";
 
 
-    updateMenu();
-
-
     document.getElementById(
         "menu"
     ).style.display="flex";
+
+
+    updateMenu();
 
 }
 
 
 /* =====================================================
-   TOQUE
+   PULO
 ===================================================== */
 
-function touchGame(e){
+function jump(){
+
+    if(!running)
+        return;
+
 
     if(
-        e.target &&
-        e.target.closest &&
-        e.target.closest("button")
+        player.grounded
+    ){
+
+        player.vy=-12.8;
+
+        player.grounded=false;
+
+
+        /*
+           O LATIDO acontece
+           exatamente junto com o pulo.
+        */
+
+        bark();
+
+    }
+
+}
+
+
+/* =====================================================
+   TOQUE NO JOGO
+===================================================== */
+
+function gameTouch(event){
+
+    if(
+        event.target.closest(
+            "button"
+        )
     )
         return;
 
 
-    initAudio();
+    /*
+       Primeiro toque prepara
+       o áudio.
+    */
+
+    prepareAudio();
 
 
     if(!started){
@@ -1365,127 +1328,17 @@ function touchGame(e){
 
 
 /* =====================================================
-   PULO + LATIDO
-===================================================== */
-
-function jump(){
-
-    if(!running)
-        return;
-
-
-    if(player.grounded){
-
-        player.vy=-13;
-
-        player.grounded=false;
-
-
-        /*
-           🐺 LATIDO!
-        */
-
-        bark();
-
-    }
-
-}
-
-
-/* =====================================================
-   VIDAS
-===================================================== */
-
-function updateLives(){
-
-    let hearts="";
-
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
-
-        hearts+=
-        i<lives
-        ? "❤️"
-        : "🖤";
-
-    }
-
-
-    document.getElementById(
-        "lives"
-    ).textContent=hearts;
-
-}
-
-
-/* =====================================================
-   COLISÃO
-===================================================== */
-
-function hitObstacle(index){
-
-    if(hitCooldown)
-        return;
-
-
-    hitCooldown=true;
-
-
-    /*
-       O obstáculo NÃO desaparece.
-    */
-
-
-    lives--;
-
-    updateLives();
-
-
-    player.vy=-7;
-
-
-    if(lives<=0){
-
-        gameOver();
-
-        return;
-
-    }
-
-
-    /*
-       3 → 2 → 1
-
-       A velocidade permanece igual.
-    */
-
-    restartAfterHit();
-
-
-    setTimeout(()=>{
-
-        hitCooldown=false;
-
-    },550);
-
-}
-
-
-/* =====================================================
-   OBSTÁCULOS
+   OBSTÁCULO
 ===================================================== */
 
 function spawnObstacle(){
 
-    let types;
+    let type;
 
 
     if(level===1){
 
-        types=[
+        const types=[
             "spike",
             "spike",
             "rock",
@@ -1493,66 +1346,83 @@ function spawnObstacle(){
             "doubleSpike"
         ];
 
-    }else if(level===2){
 
-        types=[
-            "cactus",
-            "cactus",
-            "rock",
-            "doubleCactus",
-            "box"
+        type=
+        types[
+            Math.floor(
+                Math.random()*
+                types.length
+            )
         ];
 
-    }else{
+    }
 
-        types=[
-            "lavaRock",
+
+    if(level===2){
+
+        const types=[
+            "cactus",
+            "cactus",
+            "doubleCactus",
+            "rock"
+        ];
+
+
+        type=
+        types[
+            Math.floor(
+                Math.random()*
+                types.length
+            )
+        ];
+
+    }
+
+
+    if(level===3){
+
+        const types=[
+            "lava",
             "spike",
             "rock",
             "doubleSpike"
         ];
 
+
+        type=
+        types[
+            Math.floor(
+                Math.random()*
+                types.length
+            )
+        ];
+
     }
 
 
-    const type=
-    types[
-        Math.floor(
-            Math.random()*
-            types.length
-        )
-    ];
-
-
-    let w=50;
-    let h=50;
+    let w=48;
+    let h=48;
 
 
     if(type==="doubleSpike")
-        w=90;
+        w=88;
 
 
     if(type==="cactus"){
-
         w=42;
-        h=65;
-
+        h=62;
     }
 
 
     if(type==="doubleCactus"){
-
-        w=85;
-        h=65;
-
+        w=86;
+        h=62;
     }
 
 
-    if(type==="lavaRock"){
-
-        w=60;
-        h=55;
-
+    if(type==="lava"){
+        w=58;
+        h=52;
     }
 
 
@@ -1581,13 +1451,13 @@ function spawnPoop(){
 
     poops.push({
 
-        x:W+50,
+        x:W+40,
 
         y:
-        H-155-
-        Math.random()*120,
+        H-150-
+        Math.random()*125,
 
-        r:16
+        r:15
 
     });
 
@@ -1595,12 +1465,102 @@ function spawnPoop(){
 
 
 /* =====================================================
-   FUNDO
+   COLISÃO
 ===================================================== */
 
-function background(){
+function collision(a,b){
 
-    let sky=
+    return(
+        a.x+7 <
+        b.x+b.w &&
+
+        a.x+a.w-7 >
+        b.x &&
+
+        a.y+6 <
+        b.y+b.h &&
+
+        a.y+a.h-5 >
+        b.y
+    );
+
+}
+
+
+/* =====================================================
+   BATEU
+===================================================== */
+
+function playerHit(){
+
+    if(invincible)
+        return;
+
+
+    invincible=true;
+
+
+    lives--;
+
+    updateLives();
+
+
+    /*
+       IMPORTANTE:
+
+       NÃO mexemos em speed.
+       NÃO criamos outro loop.
+    */
+
+
+    if(
+        lives<=0
+    ){
+
+        gameOver();
+
+        return;
+
+    }
+
+
+    /*
+       Reinicia somente a posição
+       do personagem.
+
+       Os obstáculos continuam.
+    */
+
+    player.x=55;
+
+    player.y=H-128;
+
+    player.vy=0;
+
+    player.grounded=true;
+
+
+    /*
+       Pequeno período de proteção.
+    */
+
+    setTimeout(
+        ()=>{
+            invincible=false;
+        },
+        700
+    );
+
+}
+
+
+/* =====================================================
+   DESENHA FUNDO
+===================================================== */
+
+function drawBackground(){
+
+    let gradient=
     ctx.createLinearGradient(
         0,0,0,H
     );
@@ -1608,14 +1568,14 @@ function background(){
 
     if(level===1){
 
-        sky.addColorStop(
+        gradient.addColorStop(
             0,
-            "#4eacd4"
+            "#4aa8d0"
         );
 
-        sky.addColorStop(
+        gradient.addColorStop(
             1,
-            "#d7f2ff"
+            "#d9f4ff"
         );
 
     }
@@ -1623,14 +1583,14 @@ function background(){
 
     if(level===2){
 
-        sky.addColorStop(
+        gradient.addColorStop(
             0,
-            "#e8914e"
+            "#df8b45"
         );
 
-        sky.addColorStop(
+        gradient.addColorStop(
             1,
-            "#ffe0a1"
+            "#ffe2a8"
         );
 
     }
@@ -1638,20 +1598,20 @@ function background(){
 
     if(level===3){
 
-        sky.addColorStop(
+        gradient.addColorStop(
             0,
-            "#251015"
+            "#30151a"
         );
 
-        sky.addColorStop(
+        gradient.addColorStop(
             1,
-            "#d34b32"
+            "#c94b34"
         );
 
     }
 
 
-    ctx.fillStyle=sky;
+    ctx.fillStyle=gradient;
 
     ctx.fillRect(
         0,
@@ -1665,18 +1625,16 @@ function background(){
 
     ctx.fillStyle=
         level===3
-        ? "#ff5938"
-        : level===2
-        ? "#ffd36b"
-        : "#fff0a0";
+        ? "#ff5638"
+        : "#ffe78a";
 
 
     ctx.beginPath();
 
     ctx.arc(
         W-85,
-        82,
-        43,
+        80,
+        42,
         0,
         Math.PI*2
     );
@@ -1684,7 +1642,7 @@ function background(){
     ctx.fill();
 
 
-    /* FLORESTA */
+    /* árvores */
 
     if(level===1){
 
@@ -1694,33 +1652,31 @@ function background(){
             i++
         ){
 
-            const x=
-            i*160-
+            let x=
+            i*170-
             (
-                (
-                    performance.now()
-                    /35
-                    *speed
-                )%160
-            );
+                performance.now()*
+                speed/
+                55
+            )%170;
 
 
-            ctx.fillStyle="#345531";
+            ctx.fillStyle="#31512e";
 
             ctx.fillRect(
-                x-6,
-                H-135,
-                12,
-                70
+                x,
+                H-130,
+                9,
+                65
             );
 
 
             ctx.beginPath();
 
             ctx.arc(
-                x,
-                H-145,
-                40,
+                x+5,
+                H-140,
+                38,
                 0,
                 Math.PI*2
             );
@@ -1732,7 +1688,7 @@ function background(){
     }
 
 
-    /* DESERTO */
+    /* cactos de fundo */
 
     if(level===2){
 
@@ -1742,47 +1698,38 @@ function background(){
             i++
         ){
 
-            const x=
+            let x=
             i*210-
             (
-                (
-                    performance.now()
-                    /45
-                    *speed
-                )%210
-            );
+                performance.now()*
+                speed/
+                65
+            )%210;
 
 
-            ctx.fillStyle="#a66a38";
+            ctx.fillStyle="#4b713d";
 
             ctx.fillRect(
-                x-5,
-                H-135,
-                10,
-                70
-            );
-
-
-            ctx.fillStyle="#50743b";
-
-            ctx.beginPath();
-
-            ctx.arc(
                 x,
-                H-140,
-                25,
-                0,
-                Math.PI*2
+                H-125,
+                9,
+                60
             );
 
-            ctx.fill();
+
+            ctx.fillRect(
+                x-12,
+                H-110,
+                12,
+                8
+            );
 
         }
 
     }
 
 
-    /* VULCÃO */
+    /* vulcões */
 
     if(level===3){
 
@@ -1792,9 +1739,9 @@ function background(){
             i++
         ){
 
-            let x=i*270;
+            let x=i*280;
 
-            ctx.fillStyle="#431c20";
+            ctx.fillStyle="#431e20";
 
             ctx.beginPath();
 
@@ -1804,12 +1751,12 @@ function background(){
             );
 
             ctx.lineTo(
-                x+100,
-                H-220
+                x+110,
+                H-215
             );
 
             ctx.lineTo(
-                x+200,
+                x+220,
                 H-65
             );
 
@@ -1822,14 +1769,14 @@ function background(){
     }
 
 
-    /* CHÃO */
+    /* chão */
 
     ctx.fillStyle=
         level===1
-        ? "#456d37"
+        ? "#466c37"
         : level===2
-        ? "#c99751"
-        : "#352426";
+        ? "#c4934e"
+        : "#332326";
 
 
     ctx.fillRect(
@@ -1841,11 +1788,11 @@ function background(){
 
 
     ctx.fillStyle=
-        level===3
-        ? "#ff5b32"
-        : level===2
-        ? "#e0ac62"
-        : "#2e4b28";
+        level===2
+        ? "#e2b269"
+        : level===3
+        ? "#ff5735"
+        : "#2d4928";
 
 
     ctx.fillRect(
@@ -1868,27 +1815,45 @@ function drawPlayer(){
     const y=player.y;
 
 
-    legAnimation+=0.23;
+    legTime+=0.18;
 
 
-    const leg1=
+    let leg1=
     Math.sin(
-        legAnimation
-    )*6;
+        legTime
+    )*5;
 
 
-    const leg2=
+    let leg2=
     Math.sin(
-        legAnimation+
+        legTime+
         Math.PI
-    )*6;
+    )*5;
+
+
+    ctx.save();
+
+
+    if(invincible){
+
+        /*
+           Apenas efeito visual.
+        */
+
+        ctx.globalAlpha=
+        0.55+
+        Math.sin(
+            performance.now()/60
+        )*0.25;
+
+    }
 
 
     /* CAUDA */
 
-    ctx.strokeStyle="#20252a";
+    ctx.strokeStyle="#22272b";
 
-    ctx.lineWidth=10;
+    ctx.lineWidth=9;
 
     ctx.lineCap="round";
 
@@ -1896,12 +1861,12 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.moveTo(
-        x+9,
-        y+36
+        x+8,
+        y+34
     );
 
     ctx.quadraticCurveTo(
-        x-13,
+        x-12,
         y+20,
         x-5,
         y+2
@@ -1914,19 +1879,19 @@ function drawPlayer(){
 
     ctx.strokeStyle="#15191d";
 
-    ctx.lineWidth=9;
+    ctx.lineWidth=8;
 
 
     ctx.beginPath();
 
     ctx.moveTo(
-        x+17,
-        y+48
+        x+16,
+        y+43
     );
 
     ctx.lineTo(
-        x+14+leg1,
-        y+65
+        x+13+leg1,
+        y+62
     );
 
     ctx.stroke();
@@ -1937,13 +1902,13 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.moveTo(
-        x+43,
-        y+48
+        x+39,
+        y+43
     );
 
     ctx.lineTo(
-        x+43+leg2,
-        y+65
+        x+40+leg2,
+        y+62
     );
 
     ctx.stroke();
@@ -1955,24 +1920,24 @@ function drawPlayer(){
     ctx.createLinearGradient(
         x,
         y,
-        x+60,
-        y+55
+        x+55,
+        y+50
     );
 
 
     body.addColorStop(
         0,
-        "#737b81"
+        "#70787d"
     );
 
     body.addColorStop(
         .5,
-        "#3d444a"
+        "#41484d"
     );
 
     body.addColorStop(
         1,
-        "#15191d"
+        "#171b1f"
     );
 
 
@@ -1982,10 +1947,10 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.ellipse(
-        x+31,
-        y+37,
-        32,
-        21,
+        x+28,
+        y+34,
+        28,
+        18,
         0,
         0,
         Math.PI*2
@@ -1996,16 +1961,16 @@ function drawPlayer(){
 
     /* CABEÇA */
 
-    ctx.fillStyle="#555d63";
+    ctx.fillStyle="#596167";
 
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+46,
+        x+43,
         y+18,
-        25,
-        26,
+        23,
+        24,
         0,
         0,
         Math.PI*2
@@ -2014,9 +1979,9 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* ORELHA ESQUERDA */
+    /* ORELHA 1 */
 
-    ctx.fillStyle="#252b30";
+    ctx.fillStyle="#252a2f";
 
 
     ctx.beginPath();
@@ -2028,12 +1993,12 @@ function drawPlayer(){
 
     ctx.lineTo(
         x+29,
-        y-18
+        y-17
     );
 
     ctx.lineTo(
-        x+42,
-        y+5
+        x+41,
+        y+6
     );
 
     ctx.closePath();
@@ -2041,23 +2006,23 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* ORELHA DIREITA */
+    /* ORELHA 2 */
 
     ctx.beginPath();
 
     ctx.moveTo(
-        x+49,
-        y+4
+        x+47,
+        y+5
+    );
+
+    ctx.lineTo(
+        x+61,
+        y-17
     );
 
     ctx.lineTo(
         x+64,
-        y-18
-    );
-
-    ctx.lineTo(
-        x+67,
-        y+11
+        y+10
     );
 
     ctx.closePath();
@@ -2065,18 +2030,24 @@ function drawPlayer(){
     ctx.fill();
 
 
+    /*
+       SEM PESCOÇO BRANCO.
+       Apenas o rosto cinza.
+    */
+
+
     /* FOCINHO */
 
-    ctx.fillStyle="#777d81";
+    ctx.fillStyle="#697176";
 
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+53,
-        y+29,
-        17,
-        11,
+        x+50,
+        y+28,
+        15,
+        9,
         0,
         0,
         Math.PI*2
@@ -2093,10 +2064,10 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.ellipse(
-        x+61,
-        y+27,
-        7,
-        5,
+        x+57,
+        y+26,
+        6,
+        4,
         0,
         0,
         Math.PI*2
@@ -2105,7 +2076,7 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* OLHOS */
+    /* OLHO ESQUERDO */
 
     ctx.fillStyle="#ff1111";
 
@@ -2117,9 +2088,9 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.arc(
-        x+38,
-        y+16,
-        3.8,
+        x+35,
+        y+15,
+        3.5,
         0,
         Math.PI*2
     );
@@ -2127,12 +2098,14 @@ function drawPlayer(){
     ctx.fill();
 
 
+    /* OLHO DIREITO */
+
     ctx.beginPath();
 
     ctx.arc(
-        x+54,
-        y+16,
-        3.8,
+        x+50,
+        y+15,
+        3.5,
         0,
         Math.PI*2
     );
@@ -2142,23 +2115,26 @@ function drawPlayer(){
 
     ctx.shadowBlur=0;
 
+
+    ctx.restore();
+
 }
 
 
 /* =====================================================
-   OBSTÁCULOS
+   DESENHA OBSTÁCULO
 ===================================================== */
 
 function drawObstacle(o){
 
-    /* ESPINHOS */
+    /* ESPINHO */
 
     if(
         o.type==="spike" ||
         o.type==="doubleSpike"
     ){
 
-        const count=
+        const amount=
         o.type==="doubleSpike"
         ? 2
         : 1;
@@ -2166,31 +2142,31 @@ function drawObstacle(o){
 
         for(
             let i=0;
-            i<count;
+            i<amount;
             i++
         ){
 
-            const sx=
+            let x=
             o.x+i*44;
 
 
-            ctx.fillStyle="#191d20";
+            ctx.fillStyle="#171a1d";
 
 
             ctx.beginPath();
 
             ctx.moveTo(
-                sx,
+                x,
                 o.y+o.h
             );
 
             ctx.lineTo(
-                sx+22,
+                x+22,
                 o.y
             );
 
             ctx.lineTo(
-                sx+44,
+                x+44,
                 o.y+o.h
             );
 
@@ -2203,14 +2179,14 @@ function drawObstacle(o){
     }
 
 
-    /* CACTOS */
+    /* CACTO */
 
     else if(
         o.type==="cactus" ||
         o.type==="doubleCactus"
     ){
 
-        const count=
+        const amount=
         o.type==="doubleCactus"
         ? 2
         : 1;
@@ -2218,21 +2194,21 @@ function drawObstacle(o){
 
         for(
             let i=0;
-            i<count;
+            i<amount;
             i++
         ){
 
-            const cx=
+            let x=
             o.x+i*43;
 
 
-            ctx.fillStyle="#3f783c";
+            ctx.fillStyle="#39713b";
 
 
             ctx.beginPath();
 
             ctx.roundRect(
-                cx+13,
+                x+13,
                 o.y,
                 16,
                 o.h,
@@ -2243,32 +2219,34 @@ function drawObstacle(o){
 
 
             ctx.fillRect(
-                cx+3,
-                o.y+22,
-                13,
-                9
+                x+3,
+                o.y+20,
+                14,
+                8
             );
 
+
             ctx.fillRect(
-                cx+3,
-                o.y+13,
+                x+3,
+                o.y+11,
                 8,
-                18
+                17
             );
 
 
             ctx.fillRect(
-                cx+26,
-                o.y+32,
-                13,
-                9
+                x+26,
+                o.y+31,
+                14,
+                8
             );
 
+
             ctx.fillRect(
-                cx+31,
+                x+31,
                 o.y+20,
                 8,
-                20
+                19
             );
 
         }
@@ -2278,12 +2256,14 @@ function drawObstacle(o){
 
     /* PEDRA */
 
-    else if(o.type==="rock"){
+    else if(
+        o.type==="rock"
+    ){
 
-        const grad=
+        let g=
         ctx.createRadialGradient(
-            o.x+17,
-            o.y+13,
+            o.x+15,
+            o.y+12,
             2,
             o.x+25,
             o.y+28,
@@ -2291,26 +2271,26 @@ function drawObstacle(o){
         );
 
 
-        grad.addColorStop(
+        g.addColorStop(
             0,
-            "#858b8e"
+            "#8a9093"
         );
 
-        grad.addColorStop(
+        g.addColorStop(
             1,
             "#30353a"
         );
 
 
-        ctx.fillStyle=grad;
+        ctx.fillStyle=g;
 
 
         ctx.beginPath();
 
         ctx.arc(
             o.x+25,
-            o.y+28,
-            28,
+            o.y+25,
+            26,
             0,
             Math.PI*2
         );
@@ -2322,17 +2302,19 @@ function drawObstacle(o){
 
     /* LAVA */
 
-    else if(o.type==="lavaRock"){
+    else if(
+        o.type==="lava"
+    ){
 
-        ctx.fillStyle="#461d1d";
+        ctx.fillStyle="#421c1c";
 
 
         ctx.beginPath();
 
         ctx.arc(
-            o.x+30,
-            o.y+28,
-            29,
+            o.x+29,
+            o.y+26,
+            27,
             0,
             Math.PI*2
         );
@@ -2340,39 +2322,11 @@ function drawObstacle(o){
         ctx.fill();
 
 
-        ctx.strokeStyle="#ff552f";
+        ctx.strokeStyle="#ff4c2f";
 
         ctx.lineWidth=4;
 
         ctx.stroke();
-
-    }
-
-
-    /* CAIXA */
-
-    else{
-
-        ctx.fillStyle="#67422c";
-
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.w,
-            o.h
-        );
-
-
-        ctx.strokeStyle="#29170e";
-
-        ctx.lineWidth=3;
-
-        ctx.strokeRect(
-            o.x,
-            o.y,
-            o.w,
-            o.h
-        );
 
     }
 
@@ -2393,7 +2347,7 @@ function drawPoop(p){
     );
 
 
-    ctx.fillStyle="#75431f";
+    ctx.fillStyle="#75421f";
 
 
     ctx.beginPath();
@@ -2401,8 +2355,8 @@ function drawPoop(p){
     ctx.ellipse(
         0,
         8,
-        17,
-        9,
+        16,
+        8,
         0,
         0,
         Math.PI*2
@@ -2416,7 +2370,7 @@ function drawPoop(p){
     ctx.arc(
         0,
         0,
-        13,
+        12,
         Math.PI,
         0
     );
@@ -2427,7 +2381,7 @@ function drawPoop(p){
     ctx.beginPath();
 
     ctx.arc(
-        -5,
+        -4,
         -7,
         9,
         Math.PI,
@@ -2440,27 +2394,11 @@ function drawPoop(p){
     ctx.beginPath();
 
     ctx.arc(
-        5,
+        4,
         -14,
         7,
         Math.PI,
         0
-    );
-
-    ctx.fill();
-
-
-    ctx.fillStyle="#b97943";
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        -5,
-        -7,
-        3,
-        0,
-        Math.PI*2
     );
 
     ctx.fill();
@@ -2472,54 +2410,34 @@ function drawPoop(p){
 
 
 /* =====================================================
-   COLISÃO
-===================================================== */
-
-function collision(a,b){
-
-    const marginX=8;
-    const marginY=6;
-
-
-    return(
-        a.x+marginX <
-        b.x+b.w &&
-
-        a.x+a.w-marginX >
-        b.x &&
-
-        a.y+marginY <
-        b.y+b.h &&
-
-        a.y+a.h-marginY >
-        b.y
-    );
-
-}
-
-
-/* =====================================================
    PASSAR DE MAPA
 ===================================================== */
 
 function checkLevel(){
 
-    if(poopCount<10)
+    if(
+        poopCount<10
+    )
         return;
 
 
-    if(level<3){
+    if(
+        level<3
+    ){
 
         const next=
         level+1;
 
 
-        if(next>unlockedMap){
+        if(
+            next>unlockedMap
+        ){
 
             unlockedMap=next;
 
+
             localStorage.setItem(
-                "liliUnlockedMap",
+                "liloMap",
                 unlockedMap
             );
 
@@ -2528,14 +2446,15 @@ function checkLevel(){
 
         if(
             level===1 &&
-            unlockedCharacters<2
+            unlockedChar<2
         ){
 
-            unlockedCharacters=2;
+            unlockedChar=2;
+
 
             localStorage.setItem(
-                "liliUnlockedCharacters",
-                unlockedCharacters
+                "liloChar",
+                unlockedChar
             );
 
         }
@@ -2543,42 +2462,34 @@ function checkLevel(){
 
         if(
             level===2 &&
-            unlockedCharacters<3
+            unlockedChar<3
         ){
 
-            unlockedCharacters=3;
+            unlockedChar=3;
+
 
             localStorage.setItem(
-                "liliUnlockedCharacters",
-                unlockedCharacters
+                "liloChar",
+                unlockedChar
             );
 
         }
 
 
-        poopCount=0;
+        level=next;
 
-        level++;
+        poopCount=0;
 
 
         /*
-           Só aqui a velocidade muda.
+           Só agora a velocidade muda.
         */
 
-        speed=
-            level===2
-            ? 5.5
-            : 6;
+        if(level===2)
+            speed=5;
 
-
-        document.getElementById(
-            "poop"
-        ).textContent=0;
-
-
-        document.getElementById(
-            "level"
-        ).textContent=level;
+        if(level===3)
+            speed=5.5;
 
 
         obstacles=[];
@@ -2589,15 +2500,14 @@ function checkLevel(){
         poopTimer=50;
 
 
-    }else{
-
-        alert(
-            "🏆 PARABÉNS!\n\n"+
-            "VOCÊ ZEROU O LILO O CAGÃO!"
-        );
+        document.getElementById(
+            "poop"
+        ).textContent="0";
 
 
-        backToMenu();
+        document.getElementById(
+            "level"
+        ).textContent=level;
 
     }
 
@@ -2612,13 +2522,18 @@ function gameOver(){
 
     running=false;
 
+    started=false;
+
+
     document.getElementById(
         "finalLevel"
     ).textContent=level;
 
+
     document.getElementById(
         "finalPoop"
     ).textContent=poopCount;
+
 
     document.getElementById(
         "gameOver"
@@ -2628,10 +2543,64 @@ function gameOver(){
 
 
 /* =====================================================
-   LOOP ÚNICO
+   LOOP PRINCIPAL
 ===================================================== */
 
-function loop(){
+function gameLoop(timestamp){
+
+    /*
+       requestAnimationFrame é chamado
+       SOMENTE aqui.
+
+       Nunca é chamado dentro de
+       startGame, resetGame, restart
+       ou colisão.
+    */
+
+
+    if(
+        !lastTime
+    )
+        lastTime=timestamp;
+
+
+    let delta=
+    timestamp-lastTime;
+
+
+    lastTime=timestamp;
+
+
+    /*
+       Limita o delta.
+
+       Se o celular travar por um instante,
+       o personagem não dá um salto gigante.
+    */
+
+    delta=
+    Math.min(
+        delta,
+        32
+    );
+
+
+    /*
+       16.666ms = aproximadamente
+       um frame de 60 FPS.
+    */
+
+    const dt=
+    delta/16.6667;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        W,
+        H
+    );
+
 
     if(
         document.getElementById(
@@ -2639,15 +2608,7 @@ function loop(){
         ).style.display!=="none"
     ){
 
-        ctx.clearRect(
-            0,
-            0,
-            W,
-            H
-        );
-
-
-        background();
+        drawBackground();
 
 
         if(
@@ -2655,18 +2616,23 @@ function loop(){
             running
         ){
 
-            /* ================= FÍSICA ================= */
+            /* =================
+               FÍSICA
+            ================= */
 
-            player.vy+=0.65;
+            player.vy+=
+            0.65*dt;
 
-            player.y+=player.vy;
+
+            player.y+=
+            player.vy*dt;
 
 
             if(
-                player.y>=H-130
+                player.y>=H-128
             ){
 
-                player.y=H-130;
+                player.y=H-128;
 
                 player.vy=0;
 
@@ -2675,9 +2641,11 @@ function loop(){
             }
 
 
-            /* ================= OBSTÁCULOS ================= */
+            /* =================
+               OBSTÁCULOS
+            ================= */
 
-            obstacleTimer--;
+            obstacleTimer-=dt;
 
 
             if(
@@ -2688,10 +2656,8 @@ function loop(){
 
 
                 obstacleTimer=
-                Math.max(
-                    58,
-                    110-level*4
-                );
+                100+
+                Math.random()*35;
 
             }
 
@@ -2707,13 +2673,14 @@ function loop(){
 
 
                 /*
-                   UMA ÚNICA VELOCIDADE.
+                   A velocidade é FIXA.
+
+                   Ela NÃO usa vidas.
+                   Ela NÃO é multiplicada.
                 */
 
-                o.x-=speed;
-
-
-                drawObstacle(o);
+                o.x-=
+                speed*dt;
 
 
                 if(
@@ -2723,7 +2690,11 @@ function loop(){
                     )
                 ){
 
-                    hitObstacle(i);
+                    playerHit();
+
+                    /*
+                       Não remove o obstáculo.
+                    */
 
                     break;
 
@@ -2732,20 +2703,17 @@ function loop(){
             }
 
 
-            /*
-               Obstáculo só desaparece
-               quando realmente sai da tela.
-            */
-
             obstacles=
             obstacles.filter(
-                o=>o.x>-150
+                o=>o.x>-160
             );
 
 
-            /* ================= BOSTINHAS ================= */
+            /* =================
+               BOSTINHAS
+            ================= */
 
-            poopTimer--;
+            poopTimer-=dt;
 
 
             if(
@@ -2772,7 +2740,8 @@ function loop(){
                 poops[i];
 
 
-                p.x-=speed;
+                p.x-=
+                speed*dt;
 
 
                 drawPoop(p);
@@ -2822,7 +2791,7 @@ function loop(){
 
             poops=
             poops.filter(
-                p=>p.x>-60
+                p=>p.x>-70
             );
 
         }
@@ -2834,12 +2803,13 @@ function loop(){
 
 
     /*
-       ESTE É O ÚNICO LOOP.
-       Ele nunca é chamado novamente
-       por reset ou perda de vida.
+       UM ÚNICO próximo frame.
     */
 
-    requestAnimationFrame(loop);
+    animationID=
+    requestAnimationFrame(
+        gameLoop
+    );
 
 }
 
@@ -2849,7 +2819,7 @@ function loop(){
 ===================================================== */
 
 document.getElementById(
-    "startButton"
+    "play"
 ).addEventListener(
     "click",
     startGame
@@ -2860,15 +2830,23 @@ document.getElementById(
     "game"
 ).addEventListener(
     "pointerdown",
-    touchGame
+    gameTouch
 );
 
 
 document.getElementById(
-    "homeButton"
+    "home"
 ).addEventListener(
     "click",
-    backToMenu
+    backMenu
+);
+
+
+document.getElementById(
+    "backMenu"
+).addEventListener(
+    "click",
+    backMenu
 );
 
 
@@ -2883,7 +2861,7 @@ document.getElementById(
         ).style.display="none";
 
 
-        reset();
+        resetGame();
 
 
         started=false;
@@ -2899,29 +2877,22 @@ document.getElementById(
 );
 
 
-document.getElementById(
-    "overMenu"
-).addEventListener(
-    "click",
-    backToMenu
-);
-
-
 /* =====================================================
    TECLADO
 ===================================================== */
 
 document.addEventListener(
     "keydown",
-    e=>{
+    event=>{
 
         if(
-            e.code==="Space" ||
-            e.code==="ArrowUp"
+            event.code==="Space" ||
+            event.code==="ArrowUp"
         ){
 
-            e.preventDefault();
+            event.preventDefault();
 
+            prepareAudio();
 
             if(
                 document.getElementById(
@@ -2929,7 +2900,21 @@ document.addEventListener(
                 ).style.display!=="none"
             ){
 
-                touchGame(e);
+                if(!started){
+
+                    started=true;
+
+                    running=true;
+
+
+                    document.getElementById(
+                        "tapStart"
+                    ).style.display="none";
+
+                }
+
+
+                jump();
 
             }
 
@@ -2940,10 +2925,13 @@ document.addEventListener(
 
 
 /* =====================================================
-   INICIA O ÚNICO LOOP DO JOGO
+   COMEÇA O ÚNICO LOOP
 ===================================================== */
 
-requestAnimationFrame(loop);
+animationID=
+requestAnimationFrame(
+    gameLoop
+);
 
 </script>
 
