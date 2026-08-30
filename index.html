@@ -39,12 +39,8 @@ button{
     align-items:center;
     justify-content:center;
     color:white;
-
     background:
-    radial-gradient(circle at center,
-    #3b424a 0%,
-    #11151a 45%,
-    #020304 100%);
+    radial-gradient(circle at center,#424b54 0%,#11151a 45%,#020304 100%);
 }
 
 .logo{
@@ -93,12 +89,9 @@ button{
     position:fixed;
     inset:0;
     overflow-y:auto;
-
     color:white;
     text-align:center;
-
     padding:25px 12px 40px;
-
     background:
     radial-gradient(circle at 50% 18%,
     #59636d 0%,
@@ -107,34 +100,11 @@ button{
     #020304 100%);
 }
 
-#menu::before{
-    content:"";
-    position:absolute;
-    width:320px;
-    height:320px;
-    left:50%;
-    top:35%;
-    transform:translate(-50%,-50%);
-
-    background:radial-gradient(
-        circle,
-        rgba(255,0,0,.16),
-        transparent 70%
-    );
-
-    pointer-events:none;
-}
-
 .title{
-    position:relative;
-    z-index:2;
-
     font-size:45px;
     font-weight:900;
     letter-spacing:4px;
-
     margin-top:5px;
-
     text-shadow:
     0 0 8px #ff0000,
     0 0 22px #b00000,
@@ -142,9 +112,6 @@ button{
 }
 
 .sub{
-    position:relative;
-    z-index:2;
-
     color:#d0d0d0;
     font-size:12px;
     letter-spacing:3px;
@@ -152,64 +119,36 @@ button{
 }
 
 .creator{
-    position:relative;
-    z-index:2;
-
     display:inline-block;
-
     margin:15px auto 17px;
     padding:8px 18px;
-
     border:1px solid rgba(255,60,60,.65);
     border-radius:20px;
-
     font-size:15px;
     font-weight:900;
-
     color:#fff;
-
-    background:
-    linear-gradient(
+    background:linear-gradient(
         180deg,
         rgba(150,0,0,.45),
         rgba(40,0,0,.45)
     );
-
-    box-shadow:
-    0 0 15px rgba(255,0,0,.2);
-
-    text-shadow:
-    0 0 7px red;
+    box-shadow:0 0 15px rgba(255,0,0,.2);
+    text-shadow:0 0 7px red;
 }
 
 .sectionTitle{
-    position:relative;
-    z-index:2;
-
     margin:12px 0 9px;
-
     font-size:17px;
     font-weight:bold;
-
-    text-shadow:
-    0 2px 5px #000;
 }
 
 #characters{
-    position:relative;
-    z-index:2;
-
     display:flex;
     gap:10px;
-
     overflow-x:auto;
-
     max-width:700px;
-
     margin:auto;
-
     padding:4px 3px 13px;
-
     scrollbar-width:none;
 }
 
@@ -219,29 +158,17 @@ button{
 
 .char{
     flex:0 0 105px;
-    height:125px;
-
+    height:130px;
     border:2px solid #454c53;
     border-radius:15px;
-
     color:white;
-
-    background:
-    linear-gradient(
-        145deg,
-        #3b434a,
-        #0b0e11
-    );
-
+    background:linear-gradient(145deg,#3b434a,#0b0e11);
     position:relative;
-
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.45);
+    box-shadow:0 8px 20px rgba(0,0,0,.45);
 }
 
 .char.selected{
     border-color:#ff2222;
-
     box-shadow:
     0 0 10px rgba(255,0,0,.55),
     inset 0 0 15px rgba(255,0,0,.08);
@@ -269,44 +196,27 @@ button{
 }
 
 #maps{
-    position:relative;
-    z-index:2;
-
     width:100%;
     max-width:700px;
     margin:auto;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:8px;
 }
 
 .map{
-    min-height:75px;
-
+    min-height:78px;
     border:2px solid #41474c;
     border-radius:12px;
-
     color:white;
-
-    background:
-    linear-gradient(
-        145deg,
-        #30373d,
-        #090c0f
-    );
-
+    background:linear-gradient(145deg,#30373d,#090c0f);
     position:relative;
-
-    box-shadow:
-    0 6px 15px rgba(0,0,0,.4);
+    box-shadow:0 6px 15px rgba(0,0,0,.4);
 }
 
 .map.selected{
     border-color:#ff2222;
-
-    box-shadow:
-    0 0 12px rgba(255,0,0,.5);
+    box-shadow:0 0 12px rgba(255,0,0,.5);
 }
 
 .map.locked{
@@ -331,31 +241,16 @@ button{
 }
 
 #play{
-    position:relative;
-    z-index:2;
-
     margin-top:18px;
-
     width:285px;
     padding:16px;
-
     border-radius:13px;
-
     color:white;
-
-    background:
-    linear-gradient(
-        180deg,
-        #b40000,
-        #650000
-    );
-
+    background:linear-gradient(180deg,#b40000,#650000);
     border:2px solid #ff4545;
-
     font-size:18px;
     font-weight:bold;
     letter-spacing:2px;
-
     box-shadow:
     0 7px 25px rgba(0,0,0,.65),
     0 0 18px rgba(255,0,0,.22);
@@ -377,150 +272,405 @@ button{
     height:100%;
 }
 
-/* ================= LOBO ================= */
+/* ================= ANIMAL CORRIGIDO ================= */
 
 #wolf{
     position:absolute;
-    width:66px;
-    height:72px;
+    width:82px;
+    height:82px;
     z-index:20;
     pointer-events:none;
+    transform-origin:center bottom;
 }
 
-.body{
+.animalBody{
     position:absolute;
-    left:4px;
-    top:32px;
-    width:47px;
-    height:28px;
-    border-radius:60%;
-
-    background:
-    linear-gradient(145deg,
-    #92999d,
-    #42484d 60%,
-    #17191b);
+    left:9px;
+    top:35px;
+    width:54px;
+    height:31px;
+    border-radius:55% 50% 45% 45%;
+    z-index:3;
 }
 
-.head{
+.animalHead{
     position:absolute;
-    left:32px;
-    top:7px;
-    width:34px;
-    height:38px;
-    border-radius:50%;
-
-    background:
-    linear-gradient(145deg,
-    #9da3a6,
-    #4b5257 65%,
-    #24282b);
-}
-
-.ear{
-    position:absolute;
-    width:18px;
-    height:27px;
-    background:#24292d;
-
-    clip-path:
-    polygon(50% 0,100% 100%,0 100%);
-}
-
-.ear.one{
-    left:31px;
-    top:0;
-}
-
-.ear.two{
-    left:49px;
-    top:1px;
-}
-
-.eye{
-    position:absolute;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#ff1111;
-
-    box-shadow:
-    0 0 8px red;
-}
-
-.eye.one{
     left:39px;
-    top:20px;
+    top:8px;
+    width:38px;
+    height:39px;
+    border-radius:48% 48% 45% 45%;
+    z-index:5;
 }
 
-.eye.two{
-    left:53px;
-    top:20px;
-}
-
-.muzzle{
+.animalEar{
     position:absolute;
-    left:51px;
-    top:29px;
-    width:20px;
-    height:12px;
-    border-radius:50%;
-    background:#565d61;
+    width:19px;
+    height:25px;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+    z-index:2;
 }
 
-.nose{
+.animalEar.one{
+    left:40px;
+    top:0;
+    transform:rotate(-12deg);
+}
+
+.animalEar.two{
+    left:59px;
+    top:1px;
+    transform:rotate(12deg);
+}
+
+.animalEye{
     position:absolute;
-    left:67px;
-    top:32px;
     width:6px;
-    height:5px;
+    height:7px;
+    border-radius:50%;
+    background:#ff1717;
+    box-shadow:0 0 8px red;
+    z-index:8;
+}
+
+.animalEye.one{
+    left:49px;
+    top:21px;
+}
+
+.animalEye.two{
+    left:66px;
+    top:21px;
+}
+
+.animalMuzzle{
+    position:absolute;
+    left:53px;
+    top:30px;
+    width:25px;
+    height:14px;
+    border-radius:50%;
+    z-index:7;
+}
+
+.animalNose{
+    position:absolute;
+    left:71px;
+    top:33px;
+    width:8px;
+    height:7px;
     border-radius:50%;
     background:#050505;
+    z-index:9;
 }
 
-.tail{
+.animalTail{
     position:absolute;
     left:0;
-    top:24px;
-    width:26px;
-    height:21px;
-    border-top:7px solid #292e32;
+    top:25px;
+    width:31px;
+    height:25px;
+    border-top:9px solid;
     border-radius:50%;
     transform:rotate(-30deg);
+    z-index:1;
 }
 
 .leg{
     position:absolute;
-    top:53px;
-    width:7px;
-    height:20px;
-    border-radius:7px;
-    background:#16191b;
+    top:59px;
+    width:9px;
+    height:21px;
+    border-radius:8px;
+    transform-origin:top center;
+    z-index:2;
 }
 
-.leg1{left:7px}
-.leg2{left:19px}
-.leg3{left:34px}
-.leg4{left:47px}
+.leg1{left:10px}
+.leg2{left:23px}
+.leg3{left:39px}
+.leg4{left:53px}
 
 #wolf.running .leg1,
 #wolf.running .leg3{
-    animation:run1 .15s infinite alternate;
+    animation:run1 .16s infinite alternate;
 }
 
 #wolf.running .leg2,
 #wolf.running .leg4{
-    animation:run2 .15s infinite alternate;
+    animation:run2 .16s infinite alternate;
 }
 
 @keyframes run1{
-    from{transform:rotate(22deg)}
-    to{transform:rotate(-22deg)}
+    from{transform:rotate(20deg)}
+    to{transform:rotate(-20deg)}
 }
 
 @keyframes run2{
-    from{transform:rotate(-22deg)}
-    to{transform:rotate(22deg)}
+    from{transform:rotate(-20deg)}
+    to{transform:rotate(20deg)}
+}
+
+#wolf.running{
+    animation:animalRun .22s infinite alternate;
+}
+
+@keyframes animalRun{
+    from{
+        transform:translateY(0) rotate(-1deg);
+    }
+    to{
+        transform:translateY(-2px) rotate(1deg);
+    }
+}
+
+/* ================= LOBO ================= */
+
+#wolf.lobo .animalBody{
+    background:linear-gradient(145deg,#aeb5b9,#626a70 60%,#24282b);
+}
+
+#wolf.lobo .animalHead{
+    background:linear-gradient(145deg,#b8bec1,#687076 65%,#303438);
+}
+
+#wolf.lobo .animalEar{
+    background:#30363a;
+}
+
+#wolf.lobo .animalMuzzle{
+    background:#737a7e;
+}
+
+#wolf.lobo .animalTail{
+    border-color:#30363a;
+}
+
+#wolf.lobo .leg{
+    background:#202427;
+}
+
+/* ================= CACHORRO ================= */
+
+#wolf.cachorro .animalBody{
+    background:linear-gradient(145deg,#d99a58,#a76031,#633719);
+}
+
+#wolf.cachorro .animalHead{
+    background:linear-gradient(145deg,#e2a665,#a96235,#5d351d);
+}
+
+#wolf.cachorro .animalEar{
+    background:#66381f;
+    border-radius:5px 5px 12px 12px;
+}
+
+#wolf.cachorro .animalEar.one{
+    transform:rotate(-25deg);
+}
+
+#wolf.cachorro .animalEar.two{
+    transform:rotate(25deg);
+}
+
+#wolf.cachorro .animalMuzzle{
+    background:#c17b48;
+}
+
+#wolf.cachorro .animalTail{
+    border-color:#66381f;
+}
+
+#wolf.cachorro .leg{
+    background:#5b321b;
+}
+
+/* ================= GATO ================= */
+
+#wolf.gato .animalBody{
+    background:linear-gradient(145deg,#f0f0f0,#aeb4b8,#60666b);
+}
+
+#wolf.gato .animalHead{
+    background:linear-gradient(145deg,#fafafa,#b9bec2,#70767b);
+}
+
+#wolf.gato .animalEar{
+    background:#777e83;
+}
+
+#wolf.gato .animalEar::after{
+    content:"";
+    position:absolute;
+    left:5px;
+    top:7px;
+    width:9px;
+    height:12px;
+    background:#e89aa5;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+
+#wolf.gato .animalMuzzle{
+    background:#d8dadd;
+}
+
+#wolf.gato .animalNose{
+    background:#e28b9b;
+}
+
+#wolf.gato .animalEye{
+    background:#65e66c;
+    box-shadow:0 0 8px #65e66c;
+}
+
+#wolf.gato .animalTail{
+    border-color:#777d82;
+}
+
+#wolf.gato .leg{
+    background:#60666b;
+}
+
+/* ================= TIGRE ================= */
+
+#wolf.tigre .animalBody{
+    background:linear-gradient(145deg,#f4a82d,#c86d18,#71340e);
+}
+
+#wolf.tigre .animalHead{
+    background:linear-gradient(145deg,#ffba3e,#d27d20,#7d3c10);
+}
+
+#wolf.tigre .animalEar{
+    background:#71340e;
+}
+
+#wolf.tigre .animalMuzzle{
+    background:#e6a45b;
+}
+
+#wolf.tigre .animalTail{
+    border-color:#71340e;
+}
+
+#wolf.tigre .leg{
+    background:#71340e;
+}
+
+/* ================= LEÃO ================= */
+
+#wolf.leao .animalBody{
+    background:linear-gradient(145deg,#e1aa52,#ad7029,#704519);
+}
+
+#wolf.leao .animalHead{
+    background:linear-gradient(145deg,#e8b961,#c38130,#7d4b1b);
+}
+
+#wolf.leao .animalHead::before{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border-radius:50%;
+    background:#9a6123;
+    z-index:-1;
+}
+
+#wolf.leao .animalEar{
+    background:#704519;
+}
+
+#wolf.leao .animalMuzzle{
+    background:#dfa65c;
+}
+
+#wolf.leao .animalTail{
+    border-color:#704519;
+}
+
+#wolf.leao .leg{
+    background:#704519;
+}
+
+/* ================= URSO ================= */
+
+#wolf.urso .animalBody{
+    background:linear-gradient(145deg,#81502e,#4c2c1a,#24150d);
+}
+
+#wolf.urso .animalHead{
+    background:linear-gradient(145deg,#915a35,#58331e,#2c190f);
+}
+
+#wolf.urso .animalEar{
+    background:#3a2113;
+    border-radius:50%;
+    clip-path:none;
+}
+
+#wolf.urso .animalEar.one{
+    left:39px;
+    top:3px;
+}
+
+#wolf.urso .animalEar.two{
+    left:62px;
+    top:3px;
+}
+
+#wolf.urso .animalMuzzle{
+    background:#80502d;
+}
+
+#wolf.urso .animalTail{
+    border-color:#392014;
+}
+
+#wolf.urso .leg{
+    background:#2c190f;
+}
+
+/* ================= DRAGÃO ================= */
+
+#wolf.dragao .animalBody{
+    background:linear-gradient(145deg,#54d978,#218b4b,#073d21);
+}
+
+#wolf.dragao .animalHead{
+    background:linear-gradient(145deg,#69e989,#299b55,#0b4c29);
+}
+
+#wolf.dragao .animalEar{
+    background:#0b542d;
+}
+
+#wolf.dragao .animalMuzzle{
+    background:#39a961;
+}
+
+#wolf.dragao .animalNose{
+    background:#111;
+}
+
+#wolf.dragao .animalTail{
+    border-color:#0a4c29;
+}
+
+#wolf.dragao .leg{
+    background:#07371e;
+}
+
+#wolf.dragao .animalBody::after{
+    content:"";
+    position:absolute;
+    width:35px;
+    height:18px;
+    left:10px;
+    top:7px;
+    background:
+        radial-gradient(circle at 5px 5px,#9af0a7 0 3px,transparent 4px),
+        radial-gradient(circle at 15px 10px,#9af0a7 0 3px,transparent 4px),
+        radial-gradient(circle at 25px 5px,#9af0a7 0 3px,transparent 4px);
 }
 
 /* ================= HUD ================= */
@@ -531,16 +681,12 @@ button{
     left:10px;
     right:10px;
     z-index:50;
-
     display:flex;
     justify-content:space-between;
-
     color:white;
     font-size:18px;
     font-weight:bold;
-
-    text-shadow:
-    2px 2px 5px #000;
+    text-shadow:2px 2px 5px #000;
 }
 
 #poopCount{
@@ -551,16 +697,11 @@ button{
     position:absolute;
     top:43px;
     right:10px;
-
     z-index:60;
-
     padding:8px 11px;
-
     border-radius:8px;
-
     background:rgba(0,0,0,.6);
     color:white;
-
     border:1px solid white;
 }
 
@@ -568,21 +709,13 @@ button{
     position:absolute;
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     z-index:40;
-
     color:white;
-
     text-align:center;
-
     font-size:23px;
     font-weight:bold;
-
-    text-shadow:
-    2px 2px 7px black;
-
+    text-shadow:2px 2px 7px black;
     pointer-events:none;
 }
 
@@ -596,33 +729,27 @@ button{
 
 #gameOver{
     display:none;
-
     position:absolute;
     inset:0;
-
     z-index:100;
-
     flex-direction:column;
     align-items:center;
     justify-content:center;
-
     color:white;
-
-    background:rgba(0,0,0,.88);
+    background:rgba(0,0,0,.9);
 }
 
 #gameOver h2{
     color:#ff2222;
     font-size:45px;
     margin-bottom:10px;
+    text-shadow:0 0 15px red;
 }
 
 .overBtn{
     margin-top:13px;
     padding:14px 28px;
-
     border-radius:10px;
-
     color:white;
     font-size:16px;
     font-weight:bold;
@@ -641,31 +768,18 @@ button{
 <body>
 
 <div id="loading">
-
-    <div class="logo">
-        LILO O CAGÃO
-    </div>
-
+    <div class="logo">LILO O CAGÃO</div>
     <div class="loadWolf">🐺</div>
-
-    <div class="loadText">
-        CARREGANDO
-    </div>
-
+    <div class="loadText">CARREGANDO</div>
     <div id="percent">0%</div>
-
     <div class="loadBar">
         <div id="fill"></div>
     </div>
-
 </div>
-
 
 <div id="menu">
 
-    <div class="title">
-        LILO O CAGÃO
-    </div>
+    <div class="title">LILO O CAGÃO</div>
 
     <div class="sub">
         CORRA • PULE • PEGUE 💩
@@ -676,13 +790,13 @@ button{
     </div>
 
     <div class="sectionTitle">
-        🐺 SELEÇÃO DE PERSONAGEM
+        🐾 PERSONAGENS
     </div>
 
     <div id="characters"></div>
 
     <div class="sectionTitle">
-        🗺️ SELEÇÃO DE MAPA
+        🗺️ MAPAS
     </div>
 
     <div id="maps"></div>
@@ -693,25 +807,24 @@ button{
 
 </div>
 
-
 <div id="game">
 
     <canvas id="canvas"></canvas>
 
-    <div id="wolf">
+    <div id="wolf" class="lobo">
 
-        <div class="tail"></div>
-        <div class="body"></div>
-        <div class="head"></div>
+        <div class="animalTail"></div>
+        <div class="animalBody"></div>
+        <div class="animalHead"></div>
 
-        <div class="ear one"></div>
-        <div class="ear two"></div>
+        <div class="animalEar one"></div>
+        <div class="animalEar two"></div>
 
-        <div class="eye one"></div>
-        <div class="eye two"></div>
+        <div class="animalEye one"></div>
+        <div class="animalEye two"></div>
 
-        <div class="muzzle"></div>
-        <div class="nose"></div>
+        <div class="animalMuzzle"></div>
+        <div class="animalNose"></div>
 
         <div class="leg leg1"></div>
         <div class="leg leg2"></div>
@@ -722,9 +835,7 @@ button{
 
     <div id="hud">
 
-        <div id="lives">
-            ❤️❤️❤️
-        </div>
+        <div id="lives">❤️❤️❤️</div>
 
         <div>
             💩 <span id="poopCount">0</span>/10
@@ -741,13 +852,8 @@ button{
     </button>
 
     <div id="tap">
-
         TOQUE PARA COMEÇAR
-
-        <small>
-            Toque para pular
-        </small>
-
+        <small>Toque para pular</small>
     </div>
 
     <div id="gameOver">
@@ -764,15 +870,11 @@ button{
             <span id="finalPoop">0</span>/10
         </div>
 
-        <button
-            class="overBtn restart"
-            id="restart">
+        <button class="overBtn restart" id="restart">
             🔄 JOGAR NOVAMENTE
         </button>
 
-        <button
-            class="overBtn back"
-            id="back">
+        <button class="overBtn back" id="back">
             🏠 VOLTAR AO INÍCIO
         </button>
 
@@ -780,12 +882,9 @@ button{
 
 </div>
 
-
 <script>
 
-/* =====================================================
-   CARREGAMENTO
-===================================================== */
+/* ================= CARREGAMENTO ================= */
 
 let loadingValue=0;
 
@@ -793,11 +892,11 @@ function loading(){
 
     loadingValue++;
 
-    document.getElementById("percent")
-        .textContent=loadingValue+"%";
+    document.getElementById("percent").textContent=
+        loadingValue+"%";
 
-    document.getElementById("fill")
-        .style.width=loadingValue+"%";
+    document.getElementById("fill").style.width=
+        loadingValue+"%";
 
     if(loadingValue<100){
 
@@ -807,11 +906,8 @@ function loading(){
 
         setTimeout(()=>{
 
-            document.getElementById("loading")
-                .style.display="none";
-
-            document.getElementById("menu")
-                .style.display="block";
+            document.getElementById("loading").style.display="none";
+            document.getElementById("menu").style.display="block";
 
             buildCharacters();
             buildMaps();
@@ -819,25 +915,63 @@ function loading(){
         },350);
 
     }
-
 }
 
 loading();
 
 
-/* =====================================================
-   PERSONAGENS
-===================================================== */
+/* ================= PERSONAGENS ================= */
 
 const characters=[
 
-    {icon:"🐺",name:"LOBO",unlock:1},
-    {icon:"🐕",name:"CACHORRO",unlock:5},
-    {icon:"🦊",name:"RAPOSA",unlock:10},
-    {icon:"🐯",name:"TIGRE",unlock:15},
-    {icon:"🦁",name:"LEÃO",unlock:20},
-    {icon:"🐻",name:"URSO",unlock:25},
-    {icon:"🐲",name:"DRAGÃO",unlock:30}
+    {
+        icon:"🐺",
+        name:"LOBO",
+        unlock:1,
+        css:"lobo"
+    },
+
+    {
+        icon:"🐕",
+        name:"CACHORRO",
+        unlock:5,
+        css:"cachorro"
+    },
+
+    {
+        icon:"🐱",
+        name:"GATO",
+        unlock:10,
+        css:"gato"
+    },
+
+    {
+        icon:"🐯",
+        name:"TIGRE",
+        unlock:15,
+        css:"tigre"
+    },
+
+    {
+        icon:"🦁",
+        name:"LEÃO",
+        unlock:20,
+        css:"leao"
+    },
+
+    {
+        icon:"🐻",
+        name:"URSO",
+        unlock:25,
+        css:"urso"
+    },
+
+    {
+        icon:"🐲",
+        name:"DRAGÃO",
+        unlock:30,
+        css:"dragao"
+    }
 
 ];
 
@@ -853,8 +987,7 @@ let unlockedCharacters=
 
 function buildCharacters(){
 
-    const box=
-        document.getElementById("characters");
+    const box=document.getElementById("characters");
 
     box.innerHTML="";
 
@@ -864,21 +997,15 @@ function buildCharacters(){
             index===0 ||
             unlockedCharacters>=c.unlock;
 
-        const btn=
-            document.createElement("button");
+        const btn=document.createElement("button");
 
         btn.className="char";
 
-        if(
-            index===selectedCharacter &&
-            unlocked
-        ){
+        if(index===selectedCharacter && unlocked)
             btn.classList.add("selected");
-        }
 
-        if(!unlocked){
+        if(!unlocked)
             btn.classList.add("locked");
-        }
 
         btn.innerHTML=`
 
@@ -915,9 +1042,7 @@ function buildCharacters(){
 
             document
                 .querySelectorAll(".char")
-                .forEach(x=>
-                    x.classList.remove("selected")
-                );
+                .forEach(x=>x.classList.remove("selected"));
 
             btn.classList.add("selected");
 
@@ -930,9 +1055,7 @@ function buildCharacters(){
 }
 
 
-/* =====================================================
-   MAPAS
-===================================================== */
+/* ================= MAPAS ================= */
 
 const mapNames=[
 
@@ -941,7 +1064,7 @@ const mapNames=[
     ["🌲","FLORESTA"],
     ["⛰️","MONTANHA"],
     ["🏖️","PRAIA"],
-    ["❄️","NEVE"],
+    ["❄️","INVERNO"],
     ["🌋","VULCÃO"],
     ["🐊","PÂNTANO"],
     ["🪨","CAVERNA"],
@@ -950,55 +1073,45 @@ const mapNames=[
     ["🌉","PONTE"],
     ["🏚️","RUÍNAS"],
     ["🌳","FLORESTA ESCURA"],
-    ["🌆","CIDADE 2"],
-    ["🏜️","DESERTO 2"],
-    ["🧊","GELO"],
+    ["🌆","CIDADE NOTURNA"],
+    ["🏜️","DESERTO VERMELHO"],
+    ["🧊","GELEIRA"],
     ["🏝️","ILHA"],
     ["⛈️","TEMPESTADE"],
-    ["⛰️","MONTANHA 2"],
-    ["🌃","CIDADE NOTURNA"],
-    ["🌋","VULCÃO 2"],
-    ["🕳️","CAVERNA 2"],
-    ["🌲","FLORESTA 2"],
-    ["🏜️","DESERTO 3"],
-    ["🏖️","PRAIA 2"],
-    ["❄️","NEVE 2"],
-    ["🏚️","RUÍNAS 2"],
+    ["🏔️","MONTANHA GELADA"],
+    ["🌃","METRÓPOLE"],
+    ["🌋","VULCÃO ESCURO"],
+    ["🕳️","CAVERNA DE GELO"],
+    ["🌲","FLORESTA NEVADA"],
+    ["🏜️","DESERTO DOURADO"],
+    ["🏖️","PRAIA TROPICAL"],
+    ["❄️","CIDADE CONGELADA"],
+    ["🏚️","CASTELO EM RUÍNAS"],
     ["🏢","TORRES"],
     ["👑","MAPA FINAL"]
 
 ];
 
-
 function buildMaps(){
 
-    const box=
-        document.getElementById("maps");
+    const box=document.getElementById("maps");
 
     box.innerHTML="";
 
     mapNames.forEach((m,index)=>{
 
         const number=index+1;
+        const unlocked=number<=unlockedMap;
 
-        const unlocked=
-            number<=unlockedMap;
-
-        const btn=
-            document.createElement("button");
+        const btn=document.createElement("button");
 
         btn.className="map";
 
-        if(
-            number===selectedMap &&
-            unlocked
-        ){
+        if(number===selectedMap && unlocked)
             btn.classList.add("selected");
-        }
 
-        if(!unlocked){
+        if(!unlocked)
             btn.classList.add("locked");
-        }
 
         btn.innerHTML=`
 
@@ -1027,9 +1140,7 @@ function buildMaps(){
 
             document
                 .querySelectorAll(".map")
-                .forEach(x=>
-                    x.classList.remove("selected")
-                );
+                .forEach(x=>x.classList.remove("selected"));
 
             btn.classList.add("selected");
 
@@ -1042,42 +1153,27 @@ function buildMaps(){
 }
 
 
-/* =====================================================
-   CANVAS
-===================================================== */
+/* ================= CANVAS ================= */
 
-const canvas=
-    document.getElementById("canvas");
-
-const ctx=
-    canvas.getContext("2d");
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
 let W=0;
 let H=0;
 
 function resize(){
 
-    W=
-        canvas.width=
-        window.innerWidth;
-
-    H=
-        canvas.height=
-        window.innerHeight;
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
 
 }
 
 resize();
 
-window.addEventListener(
-    "resize",
-    resize
-);
+window.addEventListener("resize",resize);
 
 
-/* =====================================================
-   GAME VARIABLES
-===================================================== */
+/* ================= GAME ================= */
 
 let player;
 
@@ -1091,55 +1187,41 @@ let lives=3;
 let poop=0;
 let level=1;
 
-const GAME_SPEED=4.1;
-
-let obstacleTimer=75;
-let poopTimer=65;
+let obstacleTimer=100;
+let poopTimer=70;
 
 let invincible=false;
 
+const GAME_SPEED=3.6;
 
-/* =====================================================
-   RESET
-===================================================== */
+
+/* ================= RESET ================= */
 
 function resetGame(){
 
     lives=3;
-
     poop=0;
-
     level=selectedMap;
 
     obstacles=[];
     poops=[];
 
-    obstacleTimer=75;
-    poopTimer=65;
+    obstacleTimer=100;
+    poopTimer=70;
 
     invincible=false;
 
     player={
-
         x:35,
-
         y:H-130,
-
         width:58,
-
         height:62,
-
         vy:0,
-
         grounded:true
-
     };
 
-    document.getElementById("level")
-        .textContent=level;
-
-    document.getElementById("poopCount")
-        .textContent=0;
+    document.getElementById("level").textContent=level;
+    document.getElementById("poopCount").textContent=0;
 
     updateLives();
     updateWolf();
@@ -1147,40 +1229,40 @@ function resetGame(){
 }
 
 
-/* =====================================================
-   LOBO
-===================================================== */
+/* ================= ANIMAL ================= */
+
+function updateAnimal(){
+
+    const wolf=document.getElementById("wolf");
+
+    wolf.className="";
+
+    wolf.classList.add(
+        characters[selectedCharacter].css
+    );
+
+    if(started && running)
+        wolf.classList.add("running");
+
+}
+
 
 function updateWolf(){
 
     if(!player)
         return;
 
-    const wolf=
-        document.getElementById("wolf");
+    const wolf=document.getElementById("wolf");
 
-    wolf.style.left=
-        player.x+"px";
+    wolf.style.left=player.x+"px";
+    wolf.style.top=player.y+"px";
 
-    wolf.style.top=
-        player.y+"px";
-
-    if(started && running){
-
-        wolf.classList.add("running");
-
-    }else{
-
-        wolf.classList.remove("running");
-
-    }
+    updateAnimal();
 
 }
 
 
-/* =====================================================
-   PULO
-===================================================== */
+/* ================= PULO ================= */
 
 function jump(){
 
@@ -1190,8 +1272,7 @@ function jump(){
     if(!player.grounded)
         return;
 
-    player.vy=-10.8;
-
+    player.vy=-11.5;
     player.grounded=false;
 
     bark();
@@ -1199,9 +1280,7 @@ function jump(){
 }
 
 
-/* =====================================================
-   LATIDO
-===================================================== */
+/* ================= SOM ================= */
 
 let audioContext=null;
 
@@ -1219,40 +1298,27 @@ function bark(){
 
         }
 
-        if(
-            audioContext.state==="suspended"
-        ){
+        if(audioContext.state==="suspended")
             audioContext.resume();
-        }
 
-        const now=
-            audioContext.currentTime;
+        const now=audioContext.currentTime;
 
-        const osc=
-            audioContext.createOscillator();
-
-        const gain=
-            audioContext.createGain();
+        const osc=audioContext.createOscillator();
+        const gain=audioContext.createGain();
 
         osc.type="square";
 
-        osc.frequency.setValueAtTime(
-            450,
-            now
-        );
+        osc.frequency.setValueAtTime(430,now);
 
         osc.frequency.exponentialRampToValueAtTime(
             170,
             now+.13
         );
 
-        gain.gain.setValueAtTime(
-            .001,
-            now
-        );
+        gain.gain.setValueAtTime(.001,now);
 
         gain.gain.exponentialRampToValueAtTime(
-            .12,
+            .1,
             now+.015
         );
 
@@ -1272,55 +1338,152 @@ function bark(){
 }
 
 
-/* =====================================================
-   OBSTÁCULOS
-===================================================== */
+/* ================= MÚSICA GAME OVER ================= */
+
+let sadMusicTimer=null;
+
+function startSadMusic(){
+
+    try{
+
+        if(!audioContext){
+
+            audioContext=
+                new(
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+        if(audioContext.state==="suspended")
+            audioContext.resume();
+
+        stopSadMusic();
+
+        const notes=[
+            392,
+            349,
+            330,
+            294,
+            262,
+            220,
+            196
+        ];
+
+        let index=0;
+
+        function playNote(){
+
+            if(
+                document.getElementById("gameOver")
+                .style.display!=="flex"
+            ){
+                return;
+            }
+
+            const now=audioContext.currentTime;
+
+            const osc=audioContext.createOscillator();
+            const gain=audioContext.createGain();
+
+            osc.type="sine";
+
+            osc.frequency.setValueAtTime(
+                notes[index],
+                now
+            );
+
+            gain.gain.setValueAtTime(.001,now);
+
+            gain.gain.linearRampToValueAtTime(
+                .09,
+                now+.15
+            );
+
+            gain.gain.linearRampToValueAtTime(
+                .001,
+                now+.75
+            );
+
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+
+            osc.start(now);
+            osc.stop(now+.8);
+
+            index=(index+1)%notes.length;
+
+            sadMusicTimer=setTimeout(playNote,760);
+
+        }
+
+        playNote();
+
+    }catch(e){}
+
+}
+
+
+function stopSadMusic(){
+
+    if(sadMusicTimer){
+
+        clearTimeout(sadMusicTimer);
+        sadMusicTimer=null;
+
+    }
+
+}
+
+
+/* ================= OBSTÁCULOS ================= */
 
 function getObstacleTypes(){
 
-    if(level===1){
+    const themes={
 
-        return[
-            "building",
-            "spike",
-            "barrier"
-        ];
+        1:["car","cone","box"],
+        2:["rock","cactus","rock"],
+        3:["log","rock","bush"],
+        4:["rock","snowrock","log"],
+        5:["beachrock","box","shell"],
+        6:["snowman","snowrock","ice"],
+        7:["lavaRock","rock","fire"],
+        8:["water","log","frogrock"],
+        9:["rock","crystal","rock"],
+        10:["lamp","rock","box"],
+        11:["hay","fence","rock"],
+        12:["barrel","bridgeRock","box"],
+        13:["wall","rock","crate"],
+        14:["darktree","rock","log"],
+        15:["car","lamp","box"],
+        16:["redrock","cactus","rock"],
+        17:["ice","snowrock","crystal"],
+        18:["shell","palmrock","water"],
+        19:["rock","water","lightning"],
+        20:["snowman","ice","snowrock"],
+        21:["car","barrier","box"],
+        22:["lavaRock","fire","rock"],
+        23:["crystal","ice","rock"],
+        24:["snowtree","snowman","ice"],
+        25:["cactus","goldrock","rock"],
+        26:["shell","palmrock","log"],
+        27:["snowman","ice","snowrock"],
+        28:["wall","crate","rock"],
+        29:["barrier","box","rock"],
+        30:["goldrock","crystal","rock"]
 
-    }
+    };
 
-    if(level===2){
-
-        return[
-            "cactus",
-            "rock",
-            "spike"
-        ];
-
-    }
-
-    if(level===3){
-
-        return[
-            "rock",
-            "spike",
-            "tree"
-        ];
-
-    }
-
-    return[
-        "spike",
-        "rock",
-        "double"
-    ];
+    return themes[level] || ["rock","box","log"];
 
 }
 
 
 function spawnObstacle(){
 
-    const types=
-        getObstacleTypes();
+    const types=getObstacleTypes();
 
     const type=
         types[
@@ -1329,237 +1492,141 @@ function spawnObstacle(){
             )
         ];
 
-    let width=48;
-    let height=48;
+    let width=45;
+    let height=40;
 
-    /* ALTERAÇÃO SOMENTE DA FASE 1:
-       obstáculos menores */
-
-    if(level===1 && type==="spike"){
-
-        width=38;
-        height=34;
-
+    if(type==="snowman"){
+        width=46;
+        height=55;
     }
-
-    if(level===1 && type==="barrier"){
-
-        width=42;
-        height=38;
-
-    }
-
-    if(level===1 && type==="building"){
-
-        width=48;
-        height=48;
-
-    }
-
-    if(type==="double")
-        width=90;
 
     if(type==="cactus"){
-
-        width=40;
-        height=58;
-
+        width=38;
+        height=52;
     }
 
-    if(type==="building" && level!==1){
-
-        width=55;
+    if(
+        type==="tree" ||
+        type==="darktree" ||
+        type==="snowtree"
+    ){
+        width=45;
         height=60;
-
     }
 
-    if(type==="tree"){
+    if(type==="water"){
+        width=70;
+        height=28;
+    }
 
-        width=48;
-        height=65;
-
+    if(type==="barrier"){
+        width=52;
+        height=40;
     }
 
     obstacles.push({
 
         x:W+70,
-
         y:H-65-height,
-
-        width:width,
-
-        height:height,
-
-        type:type
+        width,
+        height,
+        type
 
     });
 
 }
 
 
-/* =====================================================
-   BOSTINHA
-===================================================== */
+/* ================= BOSTINHA ================= */
 
 function spawnPoop(){
 
     let p=null;
 
-    for(
-        let attempt=0;
-        attempt<50;
-        attempt++
-    ){
+    for(let attempt=0;attempt<50;attempt++){
 
         const candidate={
 
-            x:
-                W+100+
-                Math.random()*130,
-
-            y:
-                H-110-
-                Math.random()*45,
-
+            x:W+100+Math.random()*120,
+            y:H-110-Math.random()*50,
             width:28,
-
             height:28
 
         };
 
         const blocked=
-            obstacles.some(
-                o=>
-                    candidate.x+14 >
-                    o.x-5 &&
+            obstacles.some(o=>
 
-                    candidate.x-14 <
-                    o.x+o.width+5 &&
+                candidate.x+14>o.x-5 &&
+                candidate.x-14<o.x+o.width+5 &&
+                candidate.y+14>o.y-5 &&
+                candidate.y-14<o.y+o.height+5
 
-                    candidate.y+14 >
-                    o.y-5 &&
-
-                    candidate.y-14 <
-                    o.y+o.height+5
             );
 
         if(!blocked){
 
             p=candidate;
-
             break;
 
         }
 
     }
 
-    if(p){
-
+    if(p)
         poops.push(p);
-
-    }
 
 }
 
 
-/* =====================================================
-   COLISÃO
-===================================================== */
+/* ================= COLISÃO ================= */
 
 function collision(a,b){
 
-    /*
-       Na fase 1 a área de colisão é pequena.
-       O lobo precisa realmente encostar.
-    */
+    const playerBox={
 
-    if(level===1){
+        x:a.x+17,
+        y:a.y+18,
+        width:a.width-27,
+        height:a.height-20
 
-        const playerBox={
+    };
 
-            x:a.x+20,
-            y:a.y+22,
+    const obstacleBox={
 
-            width:a.width-34,
-            height:a.height-25
+        x:b.x+5,
+        y:b.y+5,
+        width:Math.max(1,b.width-10),
+        height:Math.max(1,b.height-5)
 
-        };
-
-        const obstacleBox={
-
-            x:b.x+8,
-            y:b.y+8,
-
-            width:Math.max(
-                1,
-                b.width-16
-            ),
-
-            height:Math.max(
-                1,
-                b.height-8
-            )
-
-        };
-
-        return(
-
-            playerBox.x <
-            obstacleBox.x+
-            obstacleBox.width &&
-
-            playerBox.x+
-            playerBox.width >
-            obstacleBox.x &&
-
-            playerBox.y <
-            obstacleBox.y+
-            obstacleBox.height &&
-
-            playerBox.y+
-            playerBox.height >
-            obstacleBox.y
-
-        );
-
-    }
-
-    /*
-       Colisão normal das outras fases.
-    */
+    };
 
     return(
 
-        a.x+10 <
-        b.x+b.width-5 &&
+        playerBox.x<
+        obstacleBox.x+obstacleBox.width &&
 
-        a.x+a.width-10 >
-        b.x+5 &&
+        playerBox.x+playerBox.width>
+        obstacleBox.x &&
 
-        a.y+10 <
-        b.y+b.height &&
+        playerBox.y<
+        obstacleBox.y+obstacleBox.height &&
 
-        a.y+a.height-5 >
-        b.y
+        playerBox.y+playerBox.height>
+        obstacleBox.y
 
     );
 
 }
 
 
-/* =====================================================
-   VIDAS
-===================================================== */
+/* ================= VIDAS ================= */
 
 function updateLives(){
 
     let text="";
 
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
+    for(let i=0;i<3;i++){
 
         text+=
             i<lives
@@ -1568,16 +1635,12 @@ function updateLives(){
 
     }
 
-    document.getElementById(
-        "lives"
-    ).textContent=text;
+    document.getElementById("lives").textContent=text;
 
 }
 
 
-/* =====================================================
-   CORREÇÃO DA VELOCIDADE AO PERDER VIDA
-===================================================== */
+/* ================= DANO ================= */
 
 function hitObstacle(){
 
@@ -1591,63 +1654,48 @@ function hitObstacle(){
     if(lives<=0){
 
         gameOver();
-
         return;
 
     }
 
     invincible=true;
 
-    setTimeout(
-        ()=>{
-            invincible=false;
-        },
-        900
-    );
+    setTimeout(()=>{
+
+        invincible=false;
+
+    },1000);
 
 }
 
 
-/* =====================================================
-   FUNDOS
-===================================================== */
+/* ================= FUNDOS ================= */
+
+function gradientBackground(top,bottom){
+
+    const sky=ctx.createLinearGradient(0,0,0,H);
+
+    sky.addColorStop(0,top);
+    sky.addColorStop(1,bottom);
+
+    ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
+
+}
+
+
+/* ================= CIDADE ================= */
 
 function drawCity(){
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
+    gradientBackground("#4d94c4","#d4e8ee");
 
-    sky.addColorStop(0,"#3d86b8");
-    sky.addColorStop(1,"#c9e6ef");
+    ctx.fillStyle="#303b43";
 
-    ctx.fillStyle=sky;
+    for(let i=0;i<12;i++){
 
-    ctx.fillRect(0,0,W,H);
-
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/45
-        )%100;
-
-    for(
-        let i=0;
-        i<12;
-        i++
-    ){
-
-        const x=i*95-move;
-
-        const h=
-            130+
-            (i%4)*35;
-
-        ctx.fillStyle=
-            i%2
-            ? "#454f58"
-            : "#303941";
+        const x=i*100-(performance.now()*.035%100);
+        const h=120+(i%4)*35;
 
         ctx.fillRect(
             x,
@@ -1656,96 +1704,58 @@ function drawCity(){
             h
         );
 
-        ctx.fillStyle="#ffd86b";
+    }
 
-        for(
-            let yy=H-50-h;
-            yy<H-80;
-            yy+=25
-        ){
+    ctx.fillStyle="#ffe06a";
 
-            ctx.fillRect(
-                x+10,
-                yy,
-                9,
-                12
-            );
+    for(let i=0;i<30;i++){
 
-            ctx.fillRect(
-                x+32,
-                yy,
-                9,
-                12
-            );
+        const x=(i%10)*100+12;
+        const y=H-120-Math.floor(i/10)*35;
 
-            ctx.fillRect(
-                x+54,
-                yy,
-                9,
-                12
-            );
-
-        }
+        ctx.fillRect(x,y,8,12);
 
     }
 
 }
 
 
+/* ================= DESERTO ================= */
+
 function drawDesert(){
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
+    gradientBackground("#e56c35","#ffd88f");
 
-    sky.addColorStop(0,"#df7135");
-    sky.addColorStop(1,"#ffd998");
-
-    ctx.fillStyle=sky;
-
-    ctx.fillRect(0,0,W,H);
-
-    ctx.fillStyle="#c6814b";
+    ctx.fillStyle="#bd7742";
 
     ctx.beginPath();
 
-    ctx.moveTo(0,H-100);
+    ctx.moveTo(0,H-120);
 
-    ctx.lineTo(W*.25,H-230);
+    ctx.quadraticCurveTo(
+        W*.25,H-240,
+        W*.5,H-120
+    );
 
-    ctx.lineTo(W*.5,H-100);
-
-    ctx.lineTo(W*.78,H-210);
-
-    ctx.lineTo(W,H-100);
+    ctx.quadraticCurveTo(
+        W*.75,H-250,
+        W,H-120
+    );
 
     ctx.lineTo(W,H);
-
     ctx.lineTo(0,H);
-
     ctx.fill();
 
-    ctx.fillStyle="#dfaa61";
+    ctx.fillStyle="#e0a45d";
 
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/50
-        )%200;
-
-    for(
-        let i=0;
-        i<7;
-        i++
-    ){
+    for(let i=0;i<7;i++){
 
         ctx.beginPath();
 
         ctx.arc(
-            i*190-move,
-            H-60,
-            95,
+            i*190-(performance.now()*.02%190),
+            H-55,
+            100,
             Math.PI,
             0
         );
@@ -1757,49 +1767,33 @@ function drawDesert(){
 }
 
 
+/* ================= FLORESTA ================= */
+
 function drawForest(){
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
+    gradientBackground("#67a3bc","#b6d795");
 
-    sky.addColorStop(0,"#5c9cbc");
-    sky.addColorStop(1,"#b8d69d");
+    for(let i=0;i<14;i++){
 
-    ctx.fillStyle=sky;
+        const x=i*120-(performance.now()*.03%120);
 
-    ctx.fillRect(0,0,W,H);
-
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/55
-        )%150;
-
-    for(
-        let i=0;
-        i<10;
-        i++
-    ){
-
-        const x=i*150-move;
-
-        ctx.fillStyle="#405d38";
+        ctx.fillStyle="#5a3924";
 
         ctx.fillRect(
             x,
-            H-150,
-            15,
-            85
+            H-145,
+            18,
+            82
         );
+
+        ctx.fillStyle="#276033";
 
         ctx.beginPath();
 
         ctx.arc(
-            x+7,
-            H-160,
-            52,
+            x+9,
+            H-155,
+            48,
             0,
             Math.PI*2
         );
@@ -1811,62 +1805,240 @@ function drawForest(){
 }
 
 
-function drawGeneric(){
+/* ================= MONTANHA ================= */
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
+function drawMountain(){
+
+    gradientBackground("#6f9fbe","#d7e4e8");
+
+    ctx.fillStyle="#657681";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,H-65);
+    ctx.lineTo(W*.22,H-300);
+    ctx.lineTo(W*.45,H-65);
+    ctx.lineTo(W*.67,H-270);
+    ctx.lineTo(W,H-65);
+    ctx.fill();
+
+    ctx.fillStyle="#eef5f7";
+
+    ctx.beginPath();
+
+    ctx.moveTo(W*.22,H-300);
+    ctx.lineTo(W*.16,H-220);
+    ctx.lineTo(W*.29,H-210);
+    ctx.fill();
+
+}
+
+
+/* ================= PRAIA ================= */
+
+function drawBeach(){
+
+    gradientBackground("#55b8df","#bdeaff");
+
+    ctx.fillStyle="#e4c477";
+
+    ctx.fillRect(0,H-150,W,85);
+
+    ctx.fillStyle="#42a5c5";
+
+    for(let i=0;i<5;i++){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            i*230,
+            H-90,
+            100,
+            Math.PI,
+            0
         );
 
-    const palettes=[
+        ctx.fill();
 
-        ["#718da0","#d9e5e8"],
-        ["#172c3b","#587080"],
-        ["#9fc8df","#f1ddba"],
-        ["#3d5668","#a7b5bc"],
-        ["#476149","#c7d5aa"]
+    }
 
-    ];
+    ctx.fillStyle="#2e8b57";
 
-    const p=
-        palettes[
-            (level-4)%palettes.length
-        ];
+    for(let i=0;i<5;i++){
 
-    sky.addColorStop(0,p[0]);
-    sky.addColorStop(1,p[1]);
+        const x=i*190+50;
 
-    ctx.fillStyle=sky;
+        ctx.fillRect(x,H-180,10,75);
 
-    ctx.fillRect(0,0,W,H);
+        ctx.beginPath();
 
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/55
-        )%170;
+        ctx.arc(
+            x+5,
+            H-190,
+            42,
+            0,
+            Math.PI*2
+        );
 
-    for(
-        let i=0;
-        i<9;
-        i++
-    ){
+        ctx.fill();
 
-        const x=i*170-move;
+    }
 
-        ctx.fillStyle="#36454d";
+}
+
+
+/* ================= INVERNO ================= */
+
+function drawWinter(){
+
+    gradientBackground("#b9d9ec","#f5fbff");
+
+    ctx.fillStyle="#ffffff";
+
+    ctx.fillRect(0,H-170,W,105);
+
+    ctx.fillStyle="rgba(255,255,255,.8)";
+
+    for(let i=0;i<45;i++){
+
+        const x=
+            (i*83+performance.now()*.03)%W;
+
+        const y=
+            (i*47+performance.now()*.02)%H;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            2.5,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* ================= VULCÃO ================= */
+
+function drawVolcano(){
+
+    gradientBackground("#391d2a","#e0602c");
+
+    ctx.fillStyle="#242329";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,H-65);
+    ctx.lineTo(W*.28,H-300);
+    ctx.lineTo(W*.52,H-65);
+    ctx.lineTo(W*.75,H-230);
+    ctx.lineTo(W,H-65);
+    ctx.fill();
+
+    ctx.fillStyle="#e44a20";
+
+    ctx.beginPath();
+
+    ctx.moveTo(W*.28,H-300);
+    ctx.lineTo(W*.38,H-200);
+    ctx.lineTo(W*.52,H-65);
+    ctx.lineTo(W*.45,H-210);
+    ctx.fill();
+
+}
+
+
+/* ================= PÂNTANO ================= */
+
+function drawSwamp(){
+
+    gradientBackground("#426b57","#9aa85e");
+
+    ctx.fillStyle="#365440";
+
+    ctx.fillRect(0,H-150,W,85);
+
+    ctx.fillStyle="#3c7168";
+
+    for(let i=0;i<8;i++){
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            i*180,
+            H-95,
+            85,
+            22,
+            0,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+    ctx.fillStyle="#36502d";
+
+    for(let i=0;i<8;i++){
+
+        const x=i*160+50;
 
         ctx.fillRect(
             x,
-            H-145,
-            85,
-            80
+            H-220,
+            9,
+            155
         );
 
     }
 
 }
 
+
+/* ================= CAVERNA ================= */
+
+function drawCave(){
+
+    gradientBackground("#090d16","#303943");
+
+    ctx.fillStyle="#1a2229";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,H-65);
+    ctx.lineTo(0,H-300);
+    ctx.lineTo(W*.2,H-390);
+    ctx.lineTo(W*.5,H-330);
+    ctx.lineTo(W*.8,H-390);
+    ctx.lineTo(W,H-280);
+    ctx.lineTo(W,H-65);
+    ctx.fill();
+
+    ctx.fillStyle="#56636c";
+
+    for(let i=0;i<9;i++){
+
+        ctx.beginPath();
+
+        ctx.moveTo(i*130,0);
+        ctx.lineTo(i*130+30,75);
+        ctx.lineTo(i*130+60,0);
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* ================= FUNDO POR MAPA ================= */
 
 function drawBackground(){
 
@@ -1879,13 +2051,439 @@ function drawBackground(){
     else if(level===3)
         drawForest();
 
-    else
-        drawGeneric();
+    else if(level===4)
+        drawMountain();
+
+    else if(level===5)
+        drawBeach();
+
+    else if(level===6)
+        drawWinter();
+
+    else if(level===7)
+        drawVolcano();
+
+    else if(level===8)
+        drawSwamp();
+
+    else if(level===9)
+        drawCave();
+
+    else if(level===10){
+
+        gradientBackground("#111a32","#53657c");
+
+        ctx.fillStyle="#222b38";
+
+        for(let i=0;i<15;i++){
+
+            ctx.fillRect(
+                i*100,
+                H-65-100-(i%3)*40,
+                65,
+                100+(i%3)*40
+            );
+
+        }
+
+    }
+
+    else if(level===11){
+
+        gradientBackground("#75ad62","#d4dd99");
+
+        ctx.fillStyle="#d7bd69";
+
+        ctx.fillRect(0,H-145,W,80);
+
+        ctx.fillStyle="#648743";
+
+        for(let i=0;i<8;i++){
+
+            ctx.fillRect(
+                i*140,
+                H-220,
+                12,
+                75
+            );
+
+        }
+
+    }
+
+    else if(level===12){
+
+        gradientBackground("#4f91bb","#d0e4eb");
+
+        ctx.fillStyle="#60442d";
+
+        ctx.fillRect(0,H-145,W,80);
+
+        for(let i=0;i<15;i++){
+
+            ctx.fillRect(
+                i*90,
+                H-155,
+                65,
+                15
+            );
+
+        }
+
+    }
+
+    else if(level===13){
+
+        gradientBackground("#6f6f78","#d1c6ad");
+
+        ctx.fillStyle="#6c5947";
+
+        for(let i=0;i<10;i++){
+
+            ctx.fillRect(
+                i*130,
+                H-180-(i%2)*35,
+                80,
+                115
+            );
+
+        }
+
+    }
+
+    else if(level===14){
+
+        gradientBackground("#15251d","#5b7957");
+
+        ctx.fillStyle="#152d1d";
+
+        for(let i=0;i<12;i++){
+
+            ctx.fillRect(
+                i*120,
+                H-230,
+                20,
+                165
+            );
+
+            ctx.beginPath();
+
+            ctx.arc(
+                i*120+10,
+                H-245,
+                65,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+
+    }
+
+    else if(level===15){
+
+        gradientBackground("#14263b","#5d7890");
+
+        ctx.fillStyle="#273640";
+
+        for(let i=0;i<12;i++){
+
+            ctx.fillRect(
+                i*100,
+                H-180-(i%4)*30,
+                70,
+                115+(i%4)*30
+            );
+
+        }
+
+    }
+
+    else if(level===16){
+
+        gradientBackground("#a43829","#f0ad5a");
+
+        ctx.fillStyle="#c27a3b";
+
+        ctx.fillRect(
+            0,H-160,W,95
+        );
+
+    }
+
+    else if(level===17){
+
+        gradientBackground("#80c6e5","#eefaff");
+
+        ctx.fillStyle="#cbeefa";
+
+        ctx.fillRect(
+            0,H-190,W,125
+        );
+
+        ctx.fillStyle="#8bc5df";
+
+        for(let i=0;i<8;i++){
+
+            ctx.beginPath();
+
+            ctx.arc(
+                i*160,
+                H-170,
+                70,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+
+    }
+
+    else if(level===18){
+
+        gradientBackground("#52b8d8","#c7f0bd");
+
+        ctx.fillStyle="#e4ca7d";
+
+        ctx.fillRect(
+            0,H-145,W,80
+        );
+
+        ctx.fillStyle="#278e52";
+
+        for(let i=0;i<7;i++){
+
+            ctx.fillRect(
+                i*170+50,
+                H-220,
+                10,
+                75
+            );
+
+        }
+
+    }
+
+    else if(level===19){
+
+        gradientBackground("#39475a","#8795a7");
+
+        ctx.fillStyle="#435261";
+
+        ctx.fillRect(
+            0,H-145,W,80
+        );
+
+        ctx.fillStyle="#cdd9e2";
+
+        for(let i=0;i<30;i++){
+
+            ctx.fillRect(
+                (i*83)%W,
+                (i*51)%H,
+                2,
+                15
+            );
+
+        }
+
+    }
+
+    else if(level===20){
+
+        drawWinter();
+
+    }
+
+    else if(level===21){
+
+        gradientBackground("#161c2d","#50627c");
+
+        ctx.fillStyle="#2f3947";
+
+        for(let i=0;i<13;i++){
+
+            ctx.fillRect(
+                i*110,
+                H-190-(i%3)*30,
+                78,
+                125+(i%3)*30
+            );
+
+        }
+
+    }
+
+    else if(level===22){
+
+        drawVolcano();
+
+    }
+
+    else if(level===23){
+
+        drawCave();
+
+    }
+
+    else if(level===24){
+
+        gradientBackground("#668ca3","#e8f5fa");
+
+        ctx.fillStyle="#f7fbff";
+
+        ctx.fillRect(
+            0,H-170,W,105
+        );
+
+        ctx.fillStyle="#42694a";
+
+        for(let i=0;i<10;i++){
+
+            ctx.fillRect(
+                i*140,
+                H-220,
+                15,
+                55
+            );
+
+        }
+
+    }
+
+    else if(level===25){
+
+        gradientBackground("#e5a84d","#fff0ae");
+
+        ctx.fillStyle="#d29a43";
+
+        ctx.fillRect(
+            0,H-150,W,85
+        );
+
+    }
+
+    else if(level===26){
+
+        drawBeach();
+
+    }
+
+    else if(level===27){
+
+        drawWinter();
+
+        ctx.fillStyle="#a8d4e9";
+
+        for(let i=0;i<9;i++){
+
+            ctx.fillRect(
+                i*130,
+                H-250,
+                90,
+                85
+            );
+
+        }
+
+    }
+
+    else if(level===28){
+
+        gradientBackground("#39383f","#aaa29a");
+
+        ctx.fillStyle="#55483b";
+
+        for(let i=0;i<10;i++){
+
+            ctx.fillRect(
+                i*140,
+                H-210-(i%2)*25,
+                90,
+                145
+            );
+
+        }
+
+    }
+
+    else if(level===29){
+
+        gradientBackground("#4b5968","#b5c8d2");
+
+        ctx.fillStyle="#4d4d51";
+
+        for(let i=0;i<11;i++){
+
+            ctx.fillRect(
+                i*115,
+                H-210,
+                75,
+                145
+            );
+
+        }
+
+    }
+
+    else{
+
+        gradientBackground("#130f21","#633c66");
+
+        ctx.fillStyle="#33243b";
+
+        for(let i=0;i<12;i++){
+
+            ctx.fillRect(
+                i*110,
+                H-230-(i%3)*30,
+                75,
+                165+(i%3)*30
+            );
+
+        }
+
+        ctx.fillStyle="#e6c75c";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            W*.8,
+            H*.2,
+            45,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    const groundColors={
+
+        2:"#b98a4e",
+        5:"#e4c477",
+        6:"#e9f7ff",
+        7:"#33251f",
+        8:"#365440",
+        9:"#242b31",
+        17:"#d3f2ff",
+        18:"#e4ca7d",
+        20:"#edfaff",
+        24:"#eaf7fb",
+        25:"#d4a04e",
+        26:"#e5c879",
+        27:"#eafaff"
+
+    };
 
     ctx.fillStyle=
-        level===2
-        ? "#b98a4e"
-        : "#405239";
+        groundColors[level] || "#405239";
 
     ctx.fillRect(
         0,
@@ -1895,9 +2493,13 @@ function drawBackground(){
     );
 
     ctx.fillStyle=
-        level===2
-        ? "#d2a45e"
-        : "#29382c";
+        level===8
+        ? "#3c7168"
+        : level===5 ||
+          level===18 ||
+          level===26
+        ? "#3c9fb9"
+        : "rgba(255,255,255,.18)";
 
     ctx.fillRect(
         0,
@@ -1909,158 +2511,188 @@ function drawBackground(){
 }
 
 
-/* =====================================================
-   DESENHAR OBSTÁCULOS
-===================================================== */
+/* ================= OBSTÁCULOS ================= */
 
 function drawObstacle(o){
 
+    const x=o.x;
+    const y=o.y;
+    const w=o.width;
+    const h=o.height;
+
+    if(o.type==="car"){
+
+        ctx.fillStyle="#bd2525";
+
+        ctx.fillRect(
+            x,
+            y+15,
+            w,
+            h-15
+        );
+
+        ctx.fillStyle="#65a4c5";
+
+        ctx.fillRect(
+            x+10,
+            y+5,
+            w-20,
+            18
+        );
+
+        ctx.fillStyle="#111";
+
+        ctx.beginPath();
+
+        ctx.arc(x+10,y+h,8,0,Math.PI*2);
+        ctx.arc(x+w-10,y+h,8,0,Math.PI*2);
+
+        ctx.fill();
+
+        return;
+
+    }
+
+    if(o.type==="cone"){
+
+        ctx.fillStyle="#f07824";
+
+        ctx.beginPath();
+
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x,y+h);
+
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle="#fff";
+
+        ctx.fillRect(
+            x+8,
+            y+h*.55,
+            w-16,
+            7
+        );
+
+        return;
+
+    }
+
     if(
-        o.type==="spike" ||
-        o.type==="double"
+        o.type==="rock" ||
+        o.type==="snowrock" ||
+        o.type==="beachrock" ||
+        o.type==="lavaRock" ||
+        o.type==="redrock" ||
+        o.type==="goldrock" ||
+        o.type==="bridgeRock" ||
+        o.type==="palmrock"
     ){
 
-        const count=
-            o.type==="double"
-            ? 2
-            : 1;
+        if(o.type==="snowrock")
+            ctx.fillStyle="#dff6ff";
 
-        for(
-            let i=0;
-            i<count;
-            i++
-        ){
+        else if(o.type==="lavaRock")
+            ctx.fillStyle="#592a20";
 
-            const x=o.x+i*45;
+        else if(o.type==="redrock")
+            ctx.fillStyle="#873e30";
 
-            ctx.fillStyle="#17191c";
+        else if(o.type==="goldrock")
+            ctx.fillStyle="#bd8b2f";
 
-            ctx.beginPath();
+        else if(o.type==="beachrock")
+            ctx.fillStyle="#8c7965";
 
-            ctx.moveTo(
-                x,
-                o.y+o.height
-            );
+        else
+            ctx.fillStyle="#666d72";
 
-            ctx.lineTo(
-                x+22,
-                o.y
-            );
+        ctx.beginPath();
 
-            ctx.lineTo(
-                x+44,
-                o.y+o.height
-            );
+        ctx.moveTo(x+5,y+h);
+        ctx.lineTo(x+12,y+10);
+        ctx.lineTo(x+w*.55,y);
+        ctx.lineTo(x+w-4,y+15);
+        ctx.lineTo(x+w-8,y+h);
 
-            ctx.closePath();
+        ctx.closePath();
+        ctx.fill();
 
-            ctx.fill();
-
-            ctx.strokeStyle="#555b60";
-            ctx.lineWidth=2;
-
-            ctx.stroke();
-
-        }
+        return;
 
     }
 
-    else if(o.type==="cactus"){
+    if(o.type==="cactus"){
 
-        ctx.fillStyle="#31833a";
+        ctx.fillStyle="#348b42";
 
-        ctx.fillRect(
-            o.x+12,
-            o.y,
-            16,
-            o.height
-        );
+        ctx.fillRect(x+12,y,15,h);
 
-        ctx.fillRect(
-            o.x,
-            o.y+20,
-            13,
-            9
-        );
+        ctx.fillRect(x,y+18,13,10);
 
-        ctx.fillRect(
-            o.x,
-            o.y+8,
-            8,
-            25
-        );
+        ctx.fillRect(x,y+8,8,25);
 
-        ctx.fillRect(
-            o.x+27,
-            o.y+32,
-            13,
-            9
-        );
+        ctx.fillRect(x+27,y+30,12,10);
 
-        ctx.fillRect(
-            o.x+33,
-            o.y+20,
-            7,
-            22
-        );
+        ctx.fillRect(x+31,y+18,8,24);
+
+        return;
 
     }
 
-    else if(o.type==="building"){
+    if(o.type==="log"){
 
-        ctx.fillStyle="#28333b";
+        ctx.fillStyle="#71452a";
 
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.width,
-            o.height
+        ctx.beginPath();
+
+        ctx.roundRect(
+            x,
+            y+12,
+            w,
+            25,
+            8
         );
 
-        ctx.fillStyle="#ffd45d";
+        ctx.fill();
 
-        for(
-            let yy=o.y+9;
-            yy<o.y+o.height-8;
-            yy+=19
-        ){
-
-            ctx.fillRect(
-                o.x+7,
-                yy,
-                9,
-                11
-            );
-
-            ctx.fillRect(
-                o.x+28,
-                yy,
-                9,
-                11
-            );
-
-        }
-
-    }
-
-    else if(o.type==="tree"){
-
-        ctx.fillStyle="#5b3821";
-
-        ctx.fillRect(
-            o.x+18,
-            o.y+24,
-            12,
-            40
-        );
-
-        ctx.fillStyle="#285d32";
+        ctx.fillStyle="#c08a55";
 
         ctx.beginPath();
 
         ctx.arc(
-            o.x+24,
-            o.y+23,
+            x+w-5,
+            y+25,
+            10,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        return;
+
+    }
+
+    if(
+        o.type==="bush" ||
+        o.type==="darktree" ||
+        o.type==="snowtree"
+    ){
+
+        ctx.fillStyle=
+            o.type==="snowtree"
+            ? "#d9eef5"
+            : o.type==="darktree"
+            ? "#193c28"
+            : "#2f6d38";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x+w/2,
+            y+25,
             28,
             0,
             Math.PI*2
@@ -2068,32 +2700,339 @@ function drawObstacle(o){
 
         ctx.fill();
 
+        ctx.fillStyle="#583b23";
+
+        ctx.fillRect(
+            x+w/2-5,
+            y+30,
+            10,
+            h-30
+        );
+
+        return;
+
     }
 
-    else{
+    if(o.type==="snowman"){
 
-        ctx.fillStyle="#686f74";
+        ctx.fillStyle="#fff";
 
         ctx.beginPath();
 
         ctx.arc(
-            o.x+24,
-            o.y+25,
-            25,
+            x+w/2,
+            y+h-12,
+            18,
+            0,
+            Math.PI*2
+        );
+
+        ctx.arc(
+            x+w/2,
+            y+h-34,
+            14,
+            0,
+            Math.PI*2
+        );
+
+        ctx.arc(
+            x+w/2,
+            y+h-51,
+            10,
             0,
             Math.PI*2
         );
 
         ctx.fill();
 
+        ctx.fillStyle="#111";
+
+        ctx.beginPath();
+
+        ctx.arc(x+17,y+14,2.5,0,Math.PI*2);
+        ctx.arc(x+29,y+14,2.5,0,Math.PI*2);
+
+        ctx.fill();
+
+        ctx.fillStyle="#ed7529";
+
+        ctx.beginPath();
+
+        ctx.moveTo(x+w/2,y+20);
+        ctx.lineTo(x+w/2+12,y+24);
+        ctx.lineTo(x+w/2,y+27);
+
+        ctx.fill();
+
+        return;
+
     }
+
+    if(
+        o.type==="ice" ||
+        o.type==="crystal"
+    ){
+
+        ctx.fillStyle=
+            o.type==="ice"
+            ? "#9be5ff"
+            : "#8bc7e8";
+
+        ctx.beginPath();
+
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x+w/2,y+h-10);
+        ctx.lineTo(x,y+h);
+
+        ctx.closePath();
+        ctx.fill();
+
+        return;
+
+    }
+
+    if(
+        o.type==="fire" ||
+        o.type==="lightning"
+    ){
+
+        ctx.fillStyle=
+            o.type==="fire"
+            ? "#ff641f"
+            : "#f4e84d";
+
+        ctx.beginPath();
+
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x+w*.55,y+h-10);
+        ctx.lineTo(x+w*.35,y+h);
+
+        ctx.closePath();
+        ctx.fill();
+
+        return;
+
+    }
+
+    if(o.type==="water"){
+
+        ctx.fillStyle="#2f8995";
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            x+w/2,
+            y+h/2,
+            w/2,
+            h/2,
+            0,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        ctx.strokeStyle="#7ed6d0";
+        ctx.stroke();
+
+        return;
+
+    }
+
+    if(o.type==="fence"){
+
+        ctx.fillStyle="#8b633d";
+
+        ctx.fillRect(x,y+10,w,8);
+        ctx.fillRect(x,y+30,w,8);
+
+        ctx.fillRect(x+5,y,7,h);
+        ctx.fillRect(x+w-12,y,w>35?7:6,h);
+
+        return;
+
+    }
+
+    if(o.type==="hay"){
+
+        ctx.fillStyle="#c7a348";
+
+        ctx.fillRect(x,y,w,h);
+
+        ctx.strokeStyle="#806729";
+
+        for(let i=0;i<4;i++){
+
+            ctx.beginPath();
+
+            ctx.moveTo(x+i*10,y);
+            ctx.lineTo(x+i*10,y+h);
+
+            ctx.stroke();
+
+        }
+
+        return;
+
+    }
+
+    if(o.type==="wall"){
+
+        ctx.fillStyle="#625e58";
+
+        ctx.fillRect(x,y,w,h);
+
+        ctx.strokeStyle="#373531";
+
+        ctx.strokeRect(x,y,w,h);
+
+        return;
+
+    }
+
+    if(
+        o.type==="box" ||
+        o.type==="crate"
+    ){
+
+        ctx.fillStyle="#875b31";
+
+        ctx.fillRect(x,y,w,h);
+
+        ctx.strokeStyle="#d29a54";
+        ctx.lineWidth=3;
+
+        ctx.strokeRect(
+            x+3,
+            y+3,
+            w-6,
+            h-6
+        );
+
+        ctx.beginPath();
+
+        ctx.moveTo(x,y);
+        ctx.lineTo(x+w,y+h);
+
+        ctx.moveTo(x+w,y);
+        ctx.lineTo(x,y+h);
+
+        ctx.stroke();
+
+        return;
+
+    }
+
+    if(o.type==="barrier"){
+
+        ctx.fillStyle="#edb52e";
+
+        ctx.fillRect(x,y+12,w,10);
+        ctx.fillRect(x,y+30,w,10);
+
+        ctx.fillStyle="#555";
+
+        ctx.fillRect(x+5,y+5,7,h);
+        ctx.fillRect(x+w-12,y+5,7,h);
+
+        return;
+
+    }
+
+    if(o.type==="lamp"){
+
+        ctx.fillStyle="#30343a";
+
+        ctx.fillRect(
+            x+w/2-4,
+            y+15,
+            8,
+            h
+        );
+
+        ctx.fillStyle="#f4df74";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x+w/2,
+            y+10,
+            12,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        return;
+
+    }
+
+    if(o.type==="barrel"){
+
+        ctx.fillStyle="#74452b";
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            x+w/2,
+            y+h/2,
+            w/2,
+            h/2,
+            0,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        ctx.strokeStyle="#3b2619";
+        ctx.stroke();
+
+        return;
+
+    }
+
+    if(o.type==="shell"){
+
+        ctx.fillStyle="#e5a06d";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x+w/2,
+            y+h,
+            w/2,
+            Math.PI,
+            0
+        );
+
+        ctx.fill();
+
+        return;
+
+    }
+
+    ctx.fillStyle="#666";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x+w/2,
+        y+h/2,
+        Math.min(w,h)/2,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
 
 }
 
 
-/* =====================================================
-   DESENHAR BOSTINHA
-===================================================== */
+/* ================= BOSTINHA ================= */
 
 function drawPoop(p){
 
@@ -2152,9 +3091,7 @@ function drawPoop(p){
 }
 
 
-/* =====================================================
-   PASSAR DE MAPA
-===================================================== */
+/* ================= PASSAR MAPA ================= */
 
 function completeMap(){
 
@@ -2203,13 +3140,14 @@ function completeMap(){
 
     selectedMap=level;
 
-    document.getElementById(
-        "level"
-    ).textContent=level;
+    document.getElementById("level")
+        .textContent=level;
 
-    document.getElementById(
-        "poopCount"
-    ).textContent=0;
+    document.getElementById("poopCount")
+        .textContent=0;
+
+    obstacleTimer=115;
+    poopTimer=70;
 
     buildMaps();
     buildCharacters();
@@ -2217,35 +3155,33 @@ function completeMap(){
 }
 
 
-/* =====================================================
-   GAME OVER
-===================================================== */
+/* ================= GAME OVER ================= */
 
 function gameOver(){
 
     running=false;
     started=false;
 
-    document.getElementById(
-        "finalLevel"
-    ).textContent=level;
+    document.getElementById("finalLevel")
+        .textContent=level;
 
-    document.getElementById(
-        "finalPoop"
-    ).textContent=poop;
+    document.getElementById("finalPoop")
+        .textContent=poop;
 
-    document.getElementById(
-        "gameOver"
-    ).style.display="flex";
+    document.getElementById("gameOver")
+        .style.display="flex";
 
     updateWolf();
+
+    setTimeout(
+        startSadMusic,
+        100
+    );
 
 }
 
 
-/* =====================================================
-   LOOP
-===================================================== */
+/* ================= LOOP ================= */
 
 let lastTime=0;
 
@@ -2266,27 +3202,19 @@ function loop(time){
         delta/16.6667;
 
     if(
-        document.getElementById(
-            "game"
-        ).style.display==="block"
+        document.getElementById("game")
+        .style.display==="block"
     ){
 
         drawBackground();
 
-        if(
-            started &&
-            running
-        ){
+        if(started && running){
 
-            player.vy+=
-                .58*dt;
+            player.vy+=.58*dt;
 
-            player.y+=
-                player.vy*dt;
+            player.y+=player.vy*dt;
 
-            if(
-                player.y>=H-130
-            ){
+            if(player.y>=H-130){
 
                 player.y=H-130;
 
@@ -2299,36 +3227,17 @@ function loop(time){
             updateWolf();
 
 
-            /* =================
-               OBSTÁCULOS
-            ================= */
+            /* OBSTÁCULOS */
 
             obstacleTimer-=dt;
 
-            if(
-                obstacleTimer<=0
-            ){
+            if(obstacleTimer<=0){
 
                 spawnObstacle();
 
-                /*
-                   FASE 1:
-                   mais tempo entre obstáculos.
-                */
-
-                if(level===1){
-
-                    obstacleTimer=
-                        125+
-                        Math.random()*55;
-
-                }else{
-
-                    obstacleTimer=
-                        90+
-                        Math.random()*45;
-
-                }
+                obstacleTimer=
+                    115+
+                    Math.random()*65;
 
             }
 
@@ -2338,20 +3247,13 @@ function loop(time){
                 i--
             ){
 
-                const o=
-                    obstacles[i];
+                const o=obstacles[i];
 
-                o.x-=
-                    GAME_SPEED*dt;
+                o.x-=GAME_SPEED*dt;
 
                 drawObstacle(o);
 
-                if(
-                    collision(
-                        player,
-                        o
-                    )
-                ){
+                if(collision(player,o)){
 
                     hitObstacle();
 
@@ -2361,25 +3263,20 @@ function loop(time){
 
             obstacles=
                 obstacles.filter(
-                    o=>
-                        o.x>-160
+                    o=>o.x>-180
                 );
 
 
-            /* =================
-               BOSTINHAS
-            ================= */
+            /* BOSTINHAS */
 
             poopTimer-=dt;
 
-            if(
-                poopTimer<=0
-            ){
+            if(poopTimer<=0){
 
                 spawnPoop();
 
                 poopTimer=
-                    80+
+                    85+
                     Math.random()*55;
 
             }
@@ -2390,11 +3287,9 @@ function loop(time){
                 i--
             ){
 
-                const p=
-                    poops[i];
+                const p=poops[i];
 
-                p.x-=
-                    GAME_SPEED*dt;
+                p.x-=GAME_SPEED*dt;
 
                 drawPoop(p);
 
@@ -2407,12 +3302,7 @@ function loop(time){
 
                 };
 
-                if(
-                    collision(
-                        player,
-                        box
-                    )
-                ){
+                if(collision(player,box)){
 
                     poops.splice(i,1);
 
@@ -2434,8 +3324,7 @@ function loop(time){
 
             poops=
                 poops.filter(
-                    p=>
-                        p.x>-60
+                    p=>p.x>-60
                 );
 
         }
@@ -2447,14 +3336,14 @@ function loop(time){
 }
 
 
-/* =====================================================
-   JOGAR
-===================================================== */
+/* ================= JOGAR ================= */
 
 document.getElementById("play")
 .addEventListener(
     "click",
     ()=>{
+
+        stopSadMusic();
 
         document.getElementById("menu")
             .style.display="none";
@@ -2479,9 +3368,7 @@ document.getElementById("play")
 );
 
 
-/* =====================================================
-   TOQUE
-===================================================== */
+/* ================= TOQUE ================= */
 
 document.getElementById("game")
 .addEventListener(
@@ -2492,9 +3379,7 @@ document.getElementById("game")
             e.target.closest &&
             e.target.closest("button")
         ){
-
             return;
-
         }
 
         if(!started){
@@ -2517,27 +3402,25 @@ document.getElementById("game")
 );
 
 
-/* =====================================================
-   REINICIAR
-===================================================== */
+/* ================= REINICIAR ================= */
 
 document.getElementById("restart")
 .addEventListener(
     "click",
     ()=>{
 
-        document.getElementById(
-            "gameOver"
-        ).style.display="none";
+        stopSadMusic();
+
+        document.getElementById("gameOver")
+            .style.display="none";
 
         resetGame();
 
         started=false;
         running=false;
 
-        document.getElementById(
-            "tap"
-        ).style.display="block";
+        document.getElementById("tap")
+            .style.display="block";
 
         updateWolf();
 
@@ -2545,11 +3428,11 @@ document.getElementById("restart")
 );
 
 
-/* =====================================================
-   VOLTAR AO MENU
-===================================================== */
+/* ================= MENU ================= */
 
 function backToMenu(){
+
+    stopSadMusic();
 
     running=false;
     started=false;
@@ -2575,7 +3458,6 @@ document.getElementById("home")
     backToMenu
 );
 
-
 document.getElementById("back")
 .addEventListener(
     "click",
@@ -2583,9 +3465,7 @@ document.getElementById("back")
 );
 
 
-/* =====================================================
-   TECLADO
-===================================================== */
+/* ================= TECLADO ================= */
 
 document.addEventListener(
     "keydown",
@@ -2599,9 +3479,8 @@ document.addEventListener(
             e.preventDefault();
 
             if(
-                document.getElementById(
-                    "game"
-                ).style.display==="block"
+                document.getElementById("game")
+                .style.display==="block"
             ){
 
                 if(!started){
@@ -2609,9 +3488,10 @@ document.addEventListener(
                     started=true;
                     running=true;
 
-                    document.getElementById(
-                        "tap"
-                    ).style.display="none";
+                    document.getElementById("tap")
+                        .style.display="none";
+
+                    updateWolf();
 
                 }else{
 
@@ -2627,7 +3507,7 @@ document.addEventListener(
 );
 
 
-/* LOOP */
+/* ================= LOOP ================= */
 
 requestAnimationFrame(loop);
 
