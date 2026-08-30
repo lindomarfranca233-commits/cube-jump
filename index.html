@@ -24,13 +24,10 @@ html,body{
 
 button{
     font-family:Arial,sans-serif;
-    cursor:pointer;
     touch-action:manipulation;
 }
 
-/* =========================
-   CARREGAMENTO
-========================= */
+/* ================= LOADING ================= */
 
 #loading{
     position:fixed;
@@ -38,19 +35,18 @@ button{
     z-index:9999;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     color:white;
-    background:
-        radial-gradient(circle,#343b43,#090b0f 65%,#020304);
+    background:radial-gradient(circle,#343b43,#090b0f 65%,#020304);
 }
 
 .loadingTitle{
-    font-size:40px;
+    font-size:38px;
     font-weight:900;
-    text-align:center;
     letter-spacing:3px;
-    text-shadow:0 0 12px red,0 0 30px #700;
+    text-shadow:0 0 15px red;
+    text-align:center;
 }
 
 .loadingWolf{
@@ -84,52 +80,95 @@ button{
     box-shadow:0 0 15px red;
 }
 
-/* =========================
-   MENU
-========================= */
+/* ================= MENU ================= */
 
 #menu{
     display:none;
     position:fixed;
     inset:0;
-    z-index:100;
     overflow-y:auto;
+    z-index:100;
     color:white;
     text-align:center;
-    padding:18px 12px 35px;
-
+    padding:15px 10px 30px;
     background:
-        radial-gradient(circle at 50% 20%,#394149,#080a0e 70%);
+        radial-gradient(circle at 50% 10%,#3c4650,#090c10 70%);
 }
 
 .menuTitle{
-    font-size:42px;
+    font-size:40px;
     font-weight:900;
-    letter-spacing:4px;
+    letter-spacing:3px;
     text-shadow:0 0 15px red,0 0 30px #700;
 }
 
 .subtitle{
-    margin-top:5px;
     color:#aaa;
-    font-size:14px;
+    font-size:13px;
+    margin-top:4px;
 }
 
 .creator{
-    margin:9px 0 15px;
-    color:#ff3434;
+    color:#ff3535;
     font-weight:bold;
+    margin:8px 0 13px;
 }
 
-.sectionTitle{
-    font-size:20px;
+.section{
+    font-size:19px;
     font-weight:bold;
     margin:10px 0;
 }
 
-/* =========================
-   30 MAPAS
-========================= */
+/* ================= PERSONAGENS ================= */
+
+#characters{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    max-width:650px;
+    margin:auto;
+    padding:5px 3px 12px;
+}
+
+.character{
+    min-width:105px;
+    height:125px;
+
+    border:2px solid #454b51;
+    border-radius:14px;
+
+    background:linear-gradient(145deg,#2b3035,#0d0f12);
+    color:white;
+
+    font-weight:bold;
+    font-size:12px;
+
+    position:relative;
+}
+
+.character.selected{
+    border-color:#ff2020;
+    box-shadow:0 0 15px rgba(255,0,0,.5);
+}
+
+.character.locked{
+    opacity:.35;
+}
+
+.charIcon{
+    display:block;
+    font-size:48px;
+    margin:7px;
+}
+
+.charLock{
+    position:absolute;
+    top:5px;
+    right:6px;
+}
+
+/* ================= MAPAS ================= */
 
 #maps{
     width:100%;
@@ -138,85 +177,60 @@ button{
 
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:9px;
-
-    padding-bottom:18px;
+    gap:8px;
 }
 
 .map{
-    min-height:82px;
-    border-radius:13px;
-    border:2px solid #444b52;
+    min-height:78px;
+    border:2px solid #444;
+    border-radius:12px;
 
+    background:linear-gradient(145deg,#292f34,#0c0f12);
     color:white;
 
-    background:
-        linear-gradient(145deg,#292e33,#0e1013);
+    font-size:11px;
+    font-weight:bold;
 
     position:relative;
-
-    font-weight:bold;
-    font-size:12px;
-
-    transition:.15s;
-}
-
-.map:active{
-    transform:scale(.95);
-}
-
-.map.unlocked{
-    border-color:#777;
 }
 
 .map.selected{
-    border-color:#ff2020;
-    box-shadow:
-        0 0 12px rgba(255,0,0,.65),
-        inset 0 0 10px rgba(255,0,0,.15);
+    border-color:#ff2222;
+    box-shadow:0 0 13px rgba(255,0,0,.55);
 }
 
 .map.locked{
-    opacity:.35;
-}
-
-.mapNumber{
-    font-size:16px;
-    display:block;
+    opacity:.3;
 }
 
 .mapIcon{
-    font-size:26px;
     display:block;
-    margin:2px;
+    font-size:25px;
+    margin:3px;
 }
 
 .lock{
     position:absolute;
-    top:5px;
-    right:6px;
-    font-size:15px;
+    right:5px;
+    top:4px;
 }
 
 #play{
     width:280px;
-    padding:16px;
+    padding:15px;
+    margin-top:18px;
 
     border:2px solid #ff3333;
     border-radius:12px;
 
-    background:#750000;
+    background:#760000;
     color:white;
 
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
-
-    margin-bottom:20px;
 }
 
-/* =========================
-   GAME
-========================= */
+/* ================= GAME ================= */
 
 #game{
     display:none;
@@ -232,184 +246,116 @@ button{
     height:100%;
 }
 
-/* =========================
-   LOBO
-========================= */
+/* ================= LOBO ================= */
 
 #wolf{
     position:absolute;
-
-    width:66px;
-    height:78px;
-
+    width:60px;
+    height:72px;
     z-index:30;
-
     pointer-events:none;
-
-    transform-origin:center bottom;
 }
-
-/* corpo */
 
 .wBody{
     position:absolute;
-
-    left:5px;
-    top:34px;
-
-    width:48px;
+    left:4px;
+    top:32px;
+    width:47px;
     height:27px;
-
     border-radius:55%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #8b9297,
-            #3b4146 65%,
-            #171a1d
-        );
+    background:linear-gradient(145deg,#92989b,#3c4246 65%,#17191c);
 }
-
-/* cabeça */
 
 .wHead{
     position:absolute;
-
-    left:32px;
-    top:8px;
-
-    width:36px;
-    height:39px;
-
+    left:30px;
+    top:7px;
+    width:35px;
+    height:38px;
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #91979a,
-            #454b50
-        );
+    background:linear-gradient(145deg,#969c9f,#464c51);
 }
-
-/* orelhas */
 
 .wEar{
     position:absolute;
-
     width:18px;
-    height:28px;
-
-    background:#282d31;
-
-    clip-path:
-        polygon(50% 0,100% 100%,0 100%);
+    height:27px;
+    background:#252a2e;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
 }
 
 .wEar.a{
-    left:32px;
+    left:30px;
     top:0;
 }
 
 .wEar.b{
-    left:51px;
+    left:49px;
     top:1px;
 }
 
-/* DOIS OLHOS */
-
 .wEye{
     position:absolute;
-
-    top:20px;
-
+    top:19px;
     width:6px;
     height:6px;
-
     border-radius:50%;
-
     background:#ff1111;
-
-    box-shadow:
-        0 0 7px red,
-        0 0 13px red;
+    box-shadow:0 0 8px red;
 }
 
 .wEye.a{
-    left:41px;
+    left:39px;
 }
 
 .wEye.b{
-    left:55px;
+    left:53px;
 }
-
-/* focinho */
 
 .wMuzzle{
     position:absolute;
-
-    left:53px;
-    top:29px;
-
-    width:19px;
+    left:50px;
+    top:28px;
+    width:20px;
     height:12px;
-
     border-radius:50%;
-
-    background:#555b60;
+    background:#5d6367;
 }
 
 .wNose{
     position:absolute;
-
-    left:68px;
-    top:32px;
-
+    left:66px;
+    top:31px;
     width:6px;
     height:5px;
-
     border-radius:50%;
-
     background:#000;
 }
 
-/* cauda */
-
 .wTail{
     position:absolute;
-
     left:0;
-    top:27px;
-
-    width:26px;
-    height:18px;
-
+    top:25px;
+    width:25px;
+    height:20px;
     border-top:7px solid #292e32;
-
     border-radius:50%;
-
     transform:rotate(-30deg);
 }
 
-/* pernas */
-
 .leg{
     position:absolute;
-
-    top:53px;
-
+    top:52px;
     width:7px;
-    height:23px;
-
+    height:21px;
     border-radius:8px;
-
-    background:#171a1d;
+    background:#17191c;
 }
 
-.l1{left:8px}
-.l2{left:20px}
-.l3{left:36px}
-.l4{left:48px}
+.l1{left:7px}
+.l2{left:19px}
+.l3{left:35px}
+.l4{left:47px}
 
 #wolf.running .l1,
 #wolf.running .l3{
@@ -422,24 +368,20 @@ button{
 }
 
 @keyframes legA{
-    from{transform:rotate(22deg)}
-    to{transform:rotate(-22deg)}
+    from{transform:rotate(20deg)}
+    to{transform:rotate(-20deg)}
 }
 
 @keyframes legB{
-    from{transform:rotate(-22deg)}
-    to{transform:rotate(22deg)}
+    from{transform:rotate(-20deg)}
+    to{transform:rotate(20deg)}
 }
 
-/* =========================
-   HUD
-========================= */
+/* ================= HUD ================= */
 
 #hud{
     position:absolute;
-
     z-index:50;
-
     top:10px;
     left:10px;
     right:10px;
@@ -448,7 +390,6 @@ button{
     justify-content:space-between;
 
     color:white;
-
     font-size:18px;
     font-weight:bold;
 
@@ -456,29 +397,25 @@ button{
 }
 
 #poop{
-    color:#d59a61;
+    color:#d39a60;
 }
 
 #home{
     position:absolute;
-
     z-index:60;
-
-    top:45px;
+    top:43px;
     right:10px;
 
     padding:8px 11px;
-
     border:1px solid white;
     border-radius:8px;
 
     color:white;
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.55);
 }
 
 #tapStart{
     position:absolute;
-
     z-index:55;
 
     left:50%;
@@ -487,14 +424,11 @@ button{
     transform:translate(-50%,-50%);
 
     color:white;
-
     font-size:23px;
     font-weight:bold;
-
     text-align:center;
 
-    text-shadow:2px 2px 8px black;
-
+    text-shadow:2px 2px 8px #000;
     pointer-events:none;
 }
 
@@ -504,21 +438,17 @@ button{
     font-size:14px;
 }
 
-/* =========================
-   GAME OVER
-========================= */
+/* ================= GAME OVER ================= */
 
 #gameOver{
     display:none;
-
     position:absolute;
     inset:0;
-
     z-index:100;
 
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     color:white;
     text-align:center;
@@ -528,19 +458,16 @@ button{
 
 #gameOver h2{
     color:#ff2222;
-    font-size:45px;
+    font-size:44px;
     margin-bottom:12px;
 }
 
 .overButton{
-    margin-top:15px;
+    margin-top:14px;
     padding:14px 28px;
-
     border:0;
     border-radius:10px;
-
     color:white;
-
     font-size:17px;
     font-weight:bold;
 }
@@ -557,40 +484,25 @@ button{
 
 <body>
 
-<!-- =========================
-     LOADING
-========================= -->
+<!-- LOADING -->
 
 <div id="loading">
-
-    <div class="loadingTitle">
-        LILO O CAGÃO
-    </div>
-
+    <div class="loadingTitle">LILO O CAGÃO</div>
     <div class="loadingWolf">🐺</div>
-
-    <div class="loadingText">
-        CARREGANDO
-    </div>
-
+    <div class="loadingText">CARREGANDO</div>
     <div id="percent">0%</div>
 
     <div class="loadingBar">
         <div id="barFill"></div>
     </div>
-
 </div>
 
 
-<!-- =========================
-     MENU
-========================= -->
+<!-- MENU -->
 
 <div id="menu">
 
-    <div class="menuTitle">
-        LILO O CAGÃO
-    </div>
+    <div class="menuTitle">LILO O CAGÃO</div>
 
     <div class="subtitle">
         CORRA • PULE • PEGUE AS BOSTINHAS 💩
@@ -600,29 +512,31 @@ button{
         👑 CRIADOR: LINDAO
     </div>
 
-    <div class="sectionTitle">
-        🗺️ SELECIONE O MAPA
+    <div class="section">
+        🐺 ESCOLHA SEU PERSONAGEM
     </div>
 
-    <!-- OS 30 MAPAS APARECEM AQUI -->
+    <div id="characters"></div>
+
+    <div class="section">
+        🗺️ ESCOLHA O MAPA
+    </div>
+
     <div id="maps"></div>
 
     <button id="play">
-        ▶ JOGAR MAPA SELECIONADO
+        ▶ JOGAR
     </button>
 
 </div>
 
 
-<!-- =========================
-     GAME
-========================= -->
+<!-- GAME -->
 
 <div id="game">
 
     <canvas id="canvas"></canvas>
 
-    <!-- LOBO -->
     <div id="wolf">
 
         <div class="wTail"></div>
@@ -645,12 +559,9 @@ button{
 
     </div>
 
-
     <div id="hud">
 
-        <div id="lives">
-            ❤️❤️❤️
-        </div>
+        <div id="lives">❤️❤️❤️</div>
 
         <div>
             💩 <span id="poop">0</span>/10
@@ -662,33 +573,24 @@ button{
 
     </div>
 
-
     <button id="home">
         🏠 INÍCIO
     </button>
 
-
     <div id="tapStart">
-
         TOQUE PARA COMEÇAR
-
-        <small>
-            Toque novamente para pular
-        </small>
-
+        <small>Toque novamente para pular</small>
     </div>
-
 
     <div id="gameOver">
 
         <h2>GAME OVER</h2>
 
         <div>
-            Você chegou ao mapa
-            <span id="finalLevel">1</span>
+            MAPA <span id="finalLevel">1</span>
         </div>
 
-        <div style="margin-top:8px">
+        <div style="margin-top:7px">
             💩 <span id="finalPoop">0</span>/10
         </div>
 
@@ -708,7 +610,7 @@ button{
 <script>
 
 /* =====================================================
-   LOADING 0 → 100
+   LOADING
 ===================================================== */
 
 let load=0;
@@ -717,11 +619,11 @@ function loading(){
 
     load++;
 
-    document.getElementById("percent")
-        .textContent=load+"%";
+    document.getElementById("percent").textContent=
+        load+"%";
 
-    document.getElementById("barFill")
-        .style.width=load+"%";
+    document.getElementById("barFill").style.width=
+        load+"%";
 
     if(load<100){
 
@@ -731,15 +633,16 @@ function loading(){
 
         setTimeout(()=>{
 
-            document.getElementById("loading")
-                .style.display="none";
+            document.getElementById("loading").style.display=
+                "none";
 
-            document.getElementById("menu")
-                .style.display="block";
+            document.getElementById("menu").style.display=
+                "block";
 
+            createCharacters();
             createMaps();
 
-        },350);
+        },300);
 
     }
 }
@@ -748,53 +651,180 @@ loading();
 
 
 /* =====================================================
+   PERSONAGENS
+===================================================== */
+
+const characters=[
+
+    ["🐺","LOBO","1"],
+    ["🐕","CACHORRO","5"],
+    ["🦊","RAPOSA","10"],
+    ["🐯","TIGRE","15"],
+    ["🦁","LEÃO","20"],
+    ["🐻","URSO","25"],
+    ["🐲","LOBO DRAGÃO","30"]
+
+];
+
+
+let selectedCharacter=0;
+
+
+let unlockedCharacters=
+    parseInt(
+        localStorage.getItem("LILO_CHARACTERS")
+    ) || 1;
+
+
+function createCharacters(){
+
+    const box=
+        document.getElementById("characters");
+
+    box.innerHTML="";
+
+
+    characters.forEach(
+        (char,index)=>{
+
+            const required=
+                Number(char[2]);
+
+
+            const unlocked=
+                index===0 ||
+                unlockedCharacters>=required;
+
+
+            const button=
+                document.createElement("button");
+
+
+            button.className="character";
+
+
+            if(
+                index===selectedCharacter
+                && unlocked
+            ){
+
+                button.classList.add("selected");
+
+            }
+
+
+            if(!unlocked){
+
+                button.classList.add("locked");
+
+            }
+
+
+            button.innerHTML=`
+
+                ${
+                    !unlocked
+                    ? '<span class="charLock">🔒</span>'
+                    : ''
+                }
+
+                <span class="charIcon">
+                    ${char[0]}
+                </span>
+
+                ${char[1]}
+
+                <br>
+
+                ${
+                    unlocked
+                    ? "DESBLOQUEADO"
+                    : "MAPA "+required
+                }
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                ()=>{
+
+                    if(!unlocked)
+                        return;
+
+
+                    selectedCharacter=index;
+
+
+                    document
+                    .querySelectorAll(".character")
+                    .forEach(
+                        c=>
+                            c.classList.remove(
+                                "selected"
+                            )
+                    );
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            box.appendChild(button);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
    MAPAS
 ===================================================== */
 
 const mapsData=[
-    ["🏙️","CIDADE"],
-    ["🏜️","DESERTO"],
-    ["🌲","FLORESTA"],
-    ["⛰️","MONTANHA"],
-    ["🏖️","PRAIA"],
-    ["❄️","NEVE"],
-    ["🌋","VULCÃO"],
-    ["🐊","PÂNTANO"],
-    ["🪨","CAVERNA"],
-    ["🌙","NOITE"],
-    ["🌾","FAZENDA"],
-    ["🌉","PONTE"],
-    ["🏚️","RUÍNAS"],
-    ["🌲","FLORESTA ESCURA"],
-    ["🏙️","CIDADE 2"],
-    ["🏜️","DESERTO 2"],
-    ["🧊","GELO"],
-    ["🏝️","ILHA"],
-    ["⛈️","TEMPESTADE"],
-    ["⛰️","MONTANHA 2"],
-    ["🌃","CIDADE NOTURNA"],
-    ["🌋","VULCÃO 2"],
-    ["🕳️","CAVERNA 2"],
-    ["🌲","FLORESTA 2"],
-    ["🏜️","DESERTO 3"],
-    ["🏖️","PRAIA 2"],
-    ["❄️","NEVE 2"],
-    ["🏚️","RUÍNAS 2"],
-    ["🏢","TORRES"],
-    ["👑","MAPA FINAL"]
+
+["🏙️","CIDADE"],
+["🏜️","DESERTO"],
+["🌲","FLORESTA"],
+["⛰️","MONTANHA"],
+["🏖️","PRAIA"],
+["❄️","NEVE"],
+["🌋","VULCÃO"],
+["🐊","PÂNTANO"],
+["🪨","CAVERNA"],
+["🌙","NOITE"],
+["🌾","FAZENDA"],
+["🌉","PONTE"],
+["🏚️","RUÍNAS"],
+["🌲","FLORESTA ESCURA"],
+["🏙️","CIDADE 2"],
+["🏜️","DESERTO 2"],
+["🧊","GELO"],
+["🏝️","ILHA"],
+["⛈️","TEMPESTADE"],
+["⛰️","MONTANHA 2"],
+["🌃","CIDADE NOTURNA"],
+["🌋","VULCÃO 2"],
+["🕳️","CAVERNA 2"],
+["🌲","FLORESTA 2"],
+["🏜️","DESERTO 3"],
+["🏖️","PRAIA 2"],
+["❄️","NEVE 2"],
+["🏚️","RUÍNAS 2"],
+["🏢","TORRES"],
+["👑","MAPA FINAL"]
+
 ];
 
 
-/*
-   Salva quantos mapas já foram
-   desbloqueados.
-*/
-
 let unlockedMap=
     parseInt(
-        localStorage.getItem(
-            "LILO_UNLOCKED_MAP"
-        )
+        localStorage.getItem("LILO_UNLOCKED_MAP")
     ) || 1;
 
 
@@ -810,16 +840,11 @@ let selectedMap=1;
 
 function createMaps(){
 
-    const container=
+    const box=
         document.getElementById("maps");
 
-    container.innerHTML="";
+    box.innerHTML="";
 
-
-    /*
-       IMPORTANTE:
-       FORÇA A CRIAÇÃO DOS 30 MAPAS.
-    */
 
     for(
         let i=0;
@@ -827,39 +852,32 @@ function createMaps(){
         i++
     ){
 
-        const mapNumber=i+1;
+        const number=i+1;
 
         const button=
             document.createElement("button");
+
+
+        const unlocked=
+            number<=unlockedMap;
 
 
         button.className="map";
 
 
         if(
-            mapNumber<=unlockedMap
+            number===selectedMap &&
+            unlocked
         ){
 
-            button.classList.add(
-                "unlocked"
-            );
-
-        }else{
-
-            button.classList.add(
-                "locked"
-            );
+            button.classList.add("selected");
 
         }
 
 
-        if(
-            mapNumber===selectedMap
-        ){
+        if(!unlocked){
 
-            button.classList.add(
-                "selected"
-            );
+            button.classList.add("locked");
 
         }
 
@@ -867,7 +885,7 @@ function createMaps(){
         button.innerHTML=`
 
             ${
-                mapNumber>unlockedMap
+                !unlocked
                 ? '<span class="lock">🔒</span>'
                 : ''
             }
@@ -876,10 +894,8 @@ function createMaps(){
                 ${mapsData[i][0]}
             </span>
 
-            <span class="mapNumber">
-                MAPA ${mapNumber}
-            </span>
-
+            MAPA ${number}
+            <br>
             ${mapsData[i][1]}
 
         `;
@@ -889,31 +905,21 @@ function createMaps(){
             "click",
             ()=>{
 
-                /*
-                   Mapa bloqueado não seleciona.
-                */
-
-                if(
-                    mapNumber>unlockedMap
-                ){
-
+                if(!unlocked)
                     return;
 
-                }
 
-
-                selectedMap=
-                    mapNumber;
+                selectedMap=number;
 
 
                 document
-                    .querySelectorAll(".map")
-                    .forEach(
-                        m=>
-                            m.classList.remove(
-                                "selected"
-                            )
-                    );
+                .querySelectorAll(".map")
+                .forEach(
+                    m=>
+                        m.classList.remove(
+                            "selected"
+                        )
+                );
 
 
                 button.classList.add(
@@ -924,9 +930,7 @@ function createMaps(){
         );
 
 
-        container.appendChild(
-            button
-        );
+        box.appendChild(button);
 
     }
 
@@ -966,7 +970,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   VARIÁVEIS
+   GAME VARIABLES
 ===================================================== */
 
 let player;
@@ -974,8 +978,8 @@ let player;
 let obstacles=[];
 let poops=[];
 
-let started=false;
 let running=false;
+let started=false;
 
 let lives=3;
 let poopCount=0;
@@ -984,14 +988,14 @@ let level=1;
 
 
 /*
-   VELOCIDADE NÃO MUDA
-   QUANDO PERDE VIDA.
+   VELOCIDADE FIXA.
+   NUNCA AUMENTA AO PERDER VIDA.
 */
 
-let speed=4.2;
+const SPEED=4.2;
 
 let obstacleTimer=80;
-let poopTimer=70;
+let poopTimer=60;
 
 let hitCooldown=false;
 
@@ -1005,18 +1009,25 @@ function resetGame(){
     level=selectedMap;
 
     lives=3;
+
     poopCount=0;
 
+    obstacles=[];
+    poops=[];
+
+    obstacleTimer=65;
+    poopTimer=55;
+
+    hitCooldown=false;
+
+
     /*
-       Velocidade fixa.
+       ALTURA DO LOBO.
     */
-
-    speed=4.2;
-
 
     player={
 
-        x:42,
+        x:38,
 
         y:H-130,
 
@@ -1031,19 +1042,11 @@ function resetGame(){
     };
 
 
-    obstacles=[];
-    poops=[];
-
-    obstacleTimer=70;
-    poopTimer=65;
-
-    hitCooldown=false;
-
-
     updateLives();
 
+
     document.getElementById("poop")
-        .textContent="0";
+        .textContent=0;
 
     document.getElementById("level")
         .textContent=level;
@@ -1055,7 +1058,7 @@ function resetGame(){
 
 
 /* =====================================================
-   POSIÇÃO DO LOBO
+   LOBO
 ===================================================== */
 
 function updateWolf(){
@@ -1072,48 +1075,17 @@ function updateWolf(){
 
 
     if(
-        started &&
-        running
+        running &&
+        started
     ){
 
-        wolf.classList.add(
-            "running"
-        );
+        wolf.classList.add("running");
 
     }else{
 
-        wolf.classList.remove(
-            "running"
-        );
+        wolf.classList.remove("running");
 
     }
-
-}
-
-
-/* =====================================================
-   VIDAS
-===================================================== */
-
-function updateLives(){
-
-    let result="";
-
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
-
-        result+=
-            i<lives
-            ? "❤️"
-            : "🖤";
-
-    }
-
-    document.getElementById("lives")
-        .textContent=result;
 
 }
 
@@ -1128,20 +1100,22 @@ function jump(){
         return;
 
 
-    if(
-        !player.grounded
-    )
+    if(!player.grounded)
         return;
 
 
     /*
-       PULO ALTO.
+       PULO CONTROLADO.
 
-       O lobo sobe porque
-       player.y também sobe.
+       Antes era -17.
+       Agora -13.
+
+       A bostinha nasce em uma altura
+       que o lobo consegue alcançar
+       sem subir exageradamente.
     */
 
-    player.velocityY=-17;
+    player.velocityY=-13;
 
 
     player.grounded=false;
@@ -1173,13 +1147,8 @@ function bark(){
         }
 
 
-        if(
-            audio.state==="suspended"
-        ){
-
+        if(audio.state==="suspended")
             audio.resume();
-
-        }
 
 
         const now=
@@ -1197,13 +1166,13 @@ function bark(){
 
 
         osc.frequency.setValueAtTime(
-            420,
+            430,
             now
         );
 
         osc.frequency.exponentialRampToValueAtTime(
-            130,
-            now+.16
+            150,
+            now+.15
         );
 
 
@@ -1213,7 +1182,7 @@ function bark(){
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            .18,
+            .16,
             now+.01
         );
 
@@ -1224,17 +1193,11 @@ function bark(){
 
 
         osc.connect(gain);
-
-        gain.connect(
-            audio.destination
-        );
+        gain.connect(audio.destination);
 
 
         osc.start(now);
-
-        osc.stop(
-            now+.19
-        );
+        osc.stop(now+.19);
 
     }catch(e){}
 
@@ -1262,31 +1225,8 @@ function obstacleTypes(){
 
         return[
             "cactus",
-            "cactus",
             "rock",
             "spike"
-        ];
-
-    }
-
-
-    if(level===3){
-
-        return[
-            "rock",
-            "spike",
-            "doubleSpike"
-        ];
-
-    }
-
-
-    if(level===4){
-
-        return[
-            "rock",
-            "spike",
-            "doubleSpike"
         ];
 
     }
@@ -1327,22 +1267,22 @@ function spawnObstacle(){
     if(type==="cactus"){
 
         width=42;
-        height=60;
+        height=58;
 
     }
 
 
     if(type==="building"){
 
-        width=55;
-        height=60;
+        width=52;
+        height=58;
 
     }
 
 
     obstacles.push({
 
-        x:W+50,
+        x:W+60,
 
         y:H-65-height,
 
@@ -1358,50 +1298,24 @@ function spawnObstacle(){
 
 
 /* =====================================================
-   BOSTINHAS
+   BOSTINHA
 ===================================================== */
 
 function spawnPoop(){
 
     /*
-       Nunca coloca uma bostinha
-       exatamente em cima de um obstáculo.
+       ALTURA MAIS BAIXA.
+
+       O objetivo agora é:
+       pular normalmente e alcançar.
     */
 
-    let y;
-
-    let attempts=0;
-
-
-    do{
-
-        y=
-            H-
-            (
-                105+
-                Math.random()*185
-            );
-
-        attempts++;
+    const y=
+        H-125-
+        Math.random()*65;
 
 
-    }while(
-
-        attempts<20 &&
-        obstacles.some(
-            o=>
-                Math.abs(
-                    o.x-(W+80)
-                )<90 &&
-                Math.abs(
-                    o.y-y
-                )<75
-        )
-
-    );
-
-
-    poops.push({
+    const candidate={
 
         x:W+80,
 
@@ -1411,7 +1325,62 @@ function spawnPoop(){
 
         height:30
 
-    });
+    };
+
+
+    /*
+       NÃO DEIXA BOSTA NASCER
+       DENTRO DE OBSTÁCULO.
+
+       Tenta até 30 vezes.
+    */
+
+    let valid=false;
+
+    for(
+        let attempt=0;
+        attempt<30;
+        attempt++
+    ){
+
+        candidate.x=
+            W+70+
+            Math.random()*80;
+
+        candidate.y=
+            H-120-
+            Math.random()*70;
+
+
+        const insideObstacle=
+            obstacles.some(
+                o=>
+                    candidate.x+15>
+                        o.x &&
+                    candidate.x-15<
+                        o.x+o.width &&
+                    candidate.y+15>
+                        o.y &&
+                    candidate.y-15<
+                        o.y+o.height
+            );
+
+
+        if(!insideObstacle){
+
+            valid=true;
+            break;
+
+        }
+
+    }
+
+
+    if(valid){
+
+        poops.push(candidate);
+
+    }
 
 }
 
@@ -1442,7 +1411,34 @@ function collision(a,b){
 
 
 /* =====================================================
-   ACERTOU OBSTÁCULO
+   VIDA
+===================================================== */
+
+function updateLives(){
+
+    let hearts="";
+
+    for(
+        let i=0;
+        i<3;
+        i++
+    ){
+
+        hearts+=
+            i<lives
+            ? "❤️"
+            : "🖤";
+
+    }
+
+    document.getElementById("lives")
+        .textContent=hearts;
+
+}
+
+
+/* =====================================================
+   ACERTO
 ===================================================== */
 
 function hitObstacle(){
@@ -1456,21 +1452,15 @@ function hitObstacle(){
 
     lives--;
 
-
     updateLives();
 
 
     /*
-       MUITO IMPORTANTE:
-       speed NÃO é alterada.
+       VELOCIDADE CONTINUA
+       EXATAMENTE IGUAL.
     */
 
-    player.velocityY=-6;
-
-
-    /*
-       O obstáculo continua na tela.
-    */
+    player.velocityY=-5;
 
 
     if(lives<=0){
@@ -1493,311 +1483,353 @@ function hitObstacle(){
 
 
 /* =====================================================
-   FUNDO
+   FUNDO - MAPA 1 CIDADE
 ===================================================== */
 
-function drawBackground(){
+function city(){
 
-    let gradient=
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(
+        0,
+        "#438bc0"
+    );
+
+    sky.addColorStop(
+        1,
+        "#d5ecf5"
+    );
+
+    ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
+
+
+    /*
+       prédios
+    */
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        let x=
+            i*95-
+            (
+                performance.now()
+                *SPEED/55
+            )%95;
+
+
+        let height=
+            120+
+            (i%5)*35;
+
+
+        ctx.fillStyle=
+            i%2
+            ? "#4b5660"
+            : "#303941";
+
+
+        ctx.fillRect(
+            x,
+            H-65-height,
+            75,
+            height
+        );
+
+
+        /*
+           janelas
+        */
+
+        ctx.fillStyle="#ffd76a";
+
+
+        for(
+            let yy=H-45-height;
+            yy<H-85;
+            yy+=27
+        ){
+
+            ctx.fillRect(
+                x+10,
+                yy,
+                9,
+                12
+            );
+
+            ctx.fillRect(
+                x+31,
+                yy,
+                9,
+                12
+            );
+
+            ctx.fillRect(
+                x+52,
+                yy,
+                9,
+                12
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   MAPA 2 DESERTO
+===================================================== */
+
+function desert(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(
+        0,
+        "#e17b3c"
+    );
+
+    sky.addColorStop(
+        1,
+        "#ffe2a2"
+    );
+
+    ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
+
+
+    /*
+       montanhas
+    */
+
+    ctx.fillStyle="#c57b48";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,H-100);
+    ctx.lineTo(150,H-230);
+    ctx.lineTo(300,H-100);
+    ctx.lineTo(470,H-220);
+    ctx.lineTo(W,H-90);
+    ctx.lineTo(W,H);
+    ctx.lineTo(0,H);
+
+    ctx.fill();
+
+
+    /*
+       dunas
+    */
+
+    ctx.fillStyle="#e1ad62";
+
+    for(
+        let i=0;
+        i<7;
+        i++
+    ){
+
+        let x=
+            i*190-
+            (
+                performance.now()
+                *SPEED/55
+            )%190;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            H-60,
+            85,
+            Math.PI,
+            0
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* =====================================================
+   FLORESTA
+===================================================== */
+
+function forest(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(
+        0,
+        "#67aaca"
+    );
+
+    sky.addColorStop(
+        1,
+        "#b9d99d"
+    );
+
+    ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
+
+
+    for(
+        let i=0;
+        i<10;
+        i++
+    ){
+
+        let x=
+            i*145-
+            (
+                performance.now()
+                *SPEED/48
+            )%145;
+
+
+        ctx.fillStyle="#315b35";
+
+        ctx.fillRect(
+            x,
+            H-155,
+            14,
+            90
+        );
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x+7,
+            H-165,
+            50,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* =====================================================
+   OUTROS MAPAS
+===================================================== */
+
+function otherMap(){
+
+    let sky=
         ctx.createLinearGradient(
             0,0,0,H
         );
 
 
-    /* =================
-       MAPA 1 - CIDADE
-    ================= */
+    const colors=[
+        ["#718ca0","#d5e0e5"],
+        ["#152b3b","#4c6475"],
+        ["#9fcae0","#f3e0bd"],
+        ["#293d50","#9baab4"],
+        ["#405d4a","#c5d4a8"]
+    ];
+
+
+    const c=
+        colors[
+            (level-4)%colors.length
+        ];
+
+
+    sky.addColorStop(0,c[0]);
+    sky.addColorStop(1,c[1]);
+
+
+    ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
+
+
+    for(
+        let i=0;
+        i<9;
+        i++
+    ){
+
+        let x=
+            i*165-
+            (
+                performance.now()
+                *SPEED/50
+            )%165;
+
+
+        ctx.fillStyle=
+            "#36464e";
+
+
+        ctx.fillRect(
+            x,
+            H-145,
+            85,
+            80
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FUNDO PRINCIPAL
+===================================================== */
+
+function drawBackground(){
 
     if(level===1){
 
-        gradient.addColorStop(
-            0,
-            "#4d91c7"
-        );
+        city();
 
-        gradient.addColorStop(
-            1,
-            "#d9edf7"
-        );
+    }else if(level===2){
 
-        ctx.fillStyle=gradient;
+        desert();
 
-        ctx.fillRect(
-            0,0,W,H
-        );
+    }else if(level===3){
 
+        forest();
 
-        /*
-           prédios passando
-        */
+    }else{
 
-        for(
-            let i=0;
-            i<12;
-            i++
-        ){
-
-            let x=
-                i*90-
-                (
-                    performance.now()
-                    *speed/55
-                )%90;
-
-
-            let bh=
-                120+
-                (i%4)*45;
-
-
-            ctx.fillStyle=
-                i%2
-                ? "#4d5963"
-                : "#303a43";
-
-
-            ctx.fillRect(
-                x,
-                H-65-bh,
-                72,
-                bh
-            );
-
-
-            ctx.fillStyle="#ffd86b";
-
-
-            for(
-                let yy=
-                    H-45-bh;
-                yy<
-                    H-85;
-                yy+=27
-            ){
-
-                ctx.fillRect(
-                    x+12,
-                    yy,
-                    8,
-                    11
-                );
-
-                ctx.fillRect(
-                    x+31,
-                    yy,
-                    8,
-                    11
-                );
-
-                ctx.fillRect(
-                    x+50,
-                    yy,
-                    8,
-                    11
-                );
-
-            }
-
-        }
+        otherMap();
 
     }
 
 
-    /* =================
-       MAPA 2 - DESERTO
-    ================= */
-
-    else if(level===2){
-
-        gradient.addColorStop(
-            0,
-            "#e78c45"
-        );
-
-        gradient.addColorStop(
-            1,
-            "#ffe0a1"
-        );
-
-        ctx.fillStyle=gradient;
-
-        ctx.fillRect(
-            0,0,W,H
-        );
-
-
-        /*
-           dunas
-        */
-
-        ctx.fillStyle="#d9a15d";
-
-
-        for(
-            let i=0;
-            i<7;
-            i++
-        ){
-
-            let x=
-                i*180-
-                (
-                    performance.now()
-                    *speed/55
-                )%180;
-
-
-            ctx.beginPath();
-
-            ctx.arc(
-                x,
-                H-70,
-                80,
-                Math.PI,
-                0
-            );
-
-            ctx.fill();
-
-        }
-
-    }
-
-
-    /* =================
-       MAPA 3 - FLORESTA
-    ================= */
-
-    else if(level===3){
-
-        gradient.addColorStop(
-            0,
-            "#65acd1"
-        );
-
-        gradient.addColorStop(
-            1,
-            "#bce1b6"
-        );
-
-        ctx.fillStyle=gradient;
-
-        ctx.fillRect(
-            0,0,W,H
-        );
-
-
-        for(
-            let i=0;
-            i<9;
-            i++
-        ){
-
-            let x=
-                i*150-
-                (
-                    performance.now()
-                    *speed/50
-                )%150;
-
-
-            ctx.fillStyle="#345c34";
-
-            ctx.fillRect(
-                x,
-                H-155,
-                13,
-                90
-            );
-
-
-            ctx.beginPath();
-
-            ctx.arc(
-                x+6,
-                H-165,
-                48,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
-        }
-
-    }
-
-
-    /* =================
-       MAPAS 4+
-    ================= */
-
-    else{
-
-        gradient.addColorStop(
-            0,
-            level%2
-            ? "#536f8a"
-            : "#273743"
-        );
-
-        gradient.addColorStop(
-            1,
-            level%2
-            ? "#b8d0d9"
-            : "#111820"
-        );
-
-        ctx.fillStyle=gradient;
-
-        ctx.fillRect(
-            0,0,W,H
-        );
-
-
-        /*
-           elementos diferentes
-           conforme o mapa
-        */
-
-        for(
-            let i=0;
-            i<8;
-            i++
-        ){
-
-            let x=
-                i*170-
-                (
-                    performance.now()
-                    *speed/45
-                )%170;
-
-
-            ctx.fillStyle=
-                level%3===0
-                ? "#293e2b"
-                : "#3d4c57";
-
-
-            ctx.fillRect(
-                x,
-                H-140,
-                80,
-                75
-            );
-
-        }
-
-    }
-
-
-    /* chão */
+    /*
+       chão
+    */
 
     ctx.fillStyle=
         level===2
-        ? "#bd914f"
-        : "#3e4938";
+        ? "#bd8c4b"
+        : "#3e4b38";
 
 
     ctx.fillRect(
@@ -1810,8 +1842,8 @@ function drawBackground(){
 
     ctx.fillStyle=
         level===2
-        ? "#d9aa61"
-        : "#283528";
+        ? "#d5a45e"
+        : "#29362b";
 
 
     ctx.fillRect(
@@ -1825,7 +1857,7 @@ function drawBackground(){
 
 
 /* =====================================================
-   DESENHAR OBSTÁCULO
+   OBSTÁCULOS
 ===================================================== */
 
 function drawObstacle(o){
@@ -1847,7 +1879,7 @@ function drawObstacle(o){
             i++
         ){
 
-            const x=
+            let x=
                 o.x+i*45;
 
 
@@ -1881,49 +1913,89 @@ function drawObstacle(o){
 
     else if(o.type==="cactus"){
 
-        ctx.fillStyle="#347e3b";
+        ctx.fillStyle="#2f8139";
 
         ctx.fillRect(
-            o.x+12,
+            o.x+13,
             o.y,
-            17,
+            16,
             o.height
         );
 
         ctx.fillRect(
             o.x,
-            o.y+25,
+            o.y+22,
             14,
             9
         );
 
         ctx.fillRect(
             o.x,
-            o.y+12,
+            o.y+10,
             8,
             25
         );
 
         ctx.fillRect(
             o.x+28,
-            o.y+35,
+            o.y+34,
             14,
             9
         );
 
         ctx.fillRect(
             o.x+34,
-            o.y+23,
+            o.y+22,
             8,
-            22
+            23
         );
+
+    }
+
+
+    else if(o.type==="building"){
+
+        ctx.fillStyle="#283139";
+
+        ctx.fillRect(
+            o.x,
+            o.y,
+            o.width,
+            o.height
+        );
+
+
+        ctx.fillStyle="#ffd65e";
+
+
+        for(
+            let yy=o.y+10;
+            yy<o.y+o.height-8;
+            yy+=20
+        ){
+
+            ctx.fillRect(
+                o.x+8,
+                yy,
+                9,
+                11
+            );
+
+            ctx.fillRect(
+                o.x+31,
+                yy,
+                9,
+                11
+            );
+
+        }
 
     }
 
 
     else if(o.type==="rock"){
 
-        ctx.fillStyle="#656b70";
+        ctx.fillStyle="#666d72";
 
         ctx.beginPath();
 
@@ -1940,53 +2012,9 @@ function drawObstacle(o){
     }
 
 
-    else if(o.type==="building"){
+    else{
 
-        ctx.fillStyle="#252d34";
-
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.width,
-            o.height
-        );
-
-        ctx.fillStyle="#ffd34f";
-
-        ctx.fillRect(
-            o.x+9,
-            o.y+12,
-            10,
-            12
-        );
-
-        ctx.fillRect(
-            o.x+34,
-            o.y+12,
-            10,
-            12
-        );
-
-        ctx.fillRect(
-            o.x+9,
-            o.y+35,
-            10,
-            12
-        );
-
-        ctx.fillRect(
-            o.x+34,
-            o.y+35,
-            10,
-            12
-        );
-
-    }
-
-
-    else if(o.type==="barrier"){
-
-        ctx.fillStyle="#d65b2d";
+        ctx.fillStyle="#cf5b2e";
 
         ctx.fillRect(
             o.x,
@@ -2010,12 +2038,12 @@ function drawObstacle(o){
 
 
 /* =====================================================
-   DESENHAR BOSTINHA
+   BOSTINHA
 ===================================================== */
 
 function drawPoop(p){
 
-    ctx.fillStyle="#70401f";
+    ctx.fillStyle="#71401e";
 
 
     ctx.beginPath();
@@ -2057,13 +2085,17 @@ function drawPoop(p){
     ctx.fill();
 
 
-    ctx.fillStyle="#3e2413";
+    /*
+       pequenos detalhes
+    */
+
+    ctx.fillStyle="#3d2414";
 
     ctx.beginPath();
 
     ctx.arc(
         p.x-4,
-        p.y-3,
+        p.y-2,
         2,
         0,
         Math.PI*2
@@ -2080,12 +2112,12 @@ function drawPoop(p){
 
 function nextMap(){
 
-    if(
-        level>=30
-    ){
+    if(level>=30){
+
+        running=false;
 
         alert(
-            "🏆 PARABÉNS! VOCÊ COMPLETOU OS 30 MAPAS!"
+            "🏆 PARABÉNS LINDAO! VOCÊ COMPLETOU OS 30 MAPAS!"
         );
 
         return;
@@ -2097,17 +2129,17 @@ function nextMap(){
 
     poopCount=0;
 
+    obstacles=[];
+    poops=[];
+
 
     /*
-       DESBLOQUEIA O PRÓXIMO.
+       desbloqueia mapa
     */
 
-    if(
-        level>unlockedMap
-    ){
+    if(level>unlockedMap){
 
         unlockedMap=level;
-
 
         localStorage.setItem(
             "LILO_UNLOCKED_MAP",
@@ -2117,21 +2149,36 @@ function nextMap(){
     }
 
 
+    /*
+       desbloqueia personagens
+       conforme os mapas.
+    */
+
+    unlockedCharacters=
+        Math.max(
+            unlockedCharacters,
+            level
+        );
+
+
+    localStorage.setItem(
+        "LILO_CHARACTERS",
+        unlockedCharacters
+    );
+
+
     selectedMap=level;
-
-
-    obstacles=[];
-    poops=[];
 
 
     document.getElementById("level")
         .textContent=level;
 
     document.getElementById("poop")
-        .textContent="0";
+        .textContent=0;
 
 
     createMaps();
+    createCharacters();
 
 }
 
@@ -2146,10 +2193,6 @@ function gameOver(){
     started=false;
 
 
-    document.getElementById("wolf")
-        .classList.remove("running");
-
-
     document.getElementById("finalLevel")
         .textContent=level;
 
@@ -2160,6 +2203,9 @@ function gameOver(){
 
     document.getElementById("gameOver")
         .style.display="flex";
+
+
+    updateWolf();
 
 }
 
@@ -2203,9 +2249,7 @@ function loop(time){
             running
         ){
 
-            /* =================
-               FÍSICA
-            ================= */
+            /* FÍSICA */
 
             player.velocityY+=
                 .58*dt;
@@ -2231,9 +2275,7 @@ function loop(time){
             updateWolf();
 
 
-            /* =================
-               OBSTÁCULOS
-            ================= */
+            /* OBSTÁCULOS */
 
             obstacleTimer-=dt;
 
@@ -2267,7 +2309,7 @@ function loop(time){
                 */
 
                 o.x-=
-                    speed*dt;
+                    SPEED*dt;
 
 
                 drawObstacle(o);
@@ -2293,9 +2335,7 @@ function loop(time){
                 );
 
 
-            /* =================
-               BOSTINHAS
-            ================= */
+            /* BOSTINHAS */
 
             poopTimer-=dt;
 
@@ -2325,7 +2365,7 @@ function loop(time){
 
 
                 p.x-=
-                    speed*dt;
+                    SPEED*dt;
 
 
                 drawPoop(p);
@@ -2360,9 +2400,8 @@ function loop(time){
                     poopCount++;
 
 
-                    document.getElementById(
-                        "poop"
-                    ).textContent=
+                    document.getElementById("poop")
+                        .textContent=
                         poopCount;
 
 
@@ -2395,7 +2434,7 @@ function loop(time){
 
 
 /* =====================================================
-   COMEÇAR JOGO
+   BOTÃO JOGAR
 ===================================================== */
 
 document.getElementById("play")
@@ -2431,17 +2470,13 @@ document.getElementById("play")
 
 
 /* =====================================================
-   TOQUE NA TELA
+   TOQUE
 ===================================================== */
 
 document.getElementById("game")
 .addEventListener(
     "pointerdown",
     e=>{
-
-        /*
-           Botões não fazem o lobo pular.
-        */
 
         if(
             e.target.closest &&
@@ -2455,8 +2490,10 @@ document.getElementById("game")
             started=true;
             running=true;
 
+
             document.getElementById("tapStart")
                 .style.display="none";
+
 
             updateWolf();
 
@@ -2472,7 +2509,7 @@ document.getElementById("game")
 
 
 /* =====================================================
-   REINICIAR
+   RESTART
 ===================================================== */
 
 document.getElementById("restart")
@@ -2524,6 +2561,7 @@ function backToMenu(){
 
 
     createMaps();
+    createCharacters();
 
 }
 
@@ -2568,9 +2606,9 @@ document.addEventListener(
                     started=true;
                     running=true;
 
-                    document.getElementById(
-                        "tapStart"
-                    ).style.display="none";
+
+                    document.getElementById("tapStart")
+                        .style.display="none";
 
                 }else{
 
@@ -2586,9 +2624,7 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   INICIA LOOP
-===================================================== */
+/* LOOP */
 
 requestAnimationFrame(loop);
 
