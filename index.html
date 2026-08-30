@@ -1,7 +1,92 @@
-<!-- SUBSTITUA SOMENTE O BLOCO #menu DO SEU CÓDIGO POR ESTE -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>LILO O CAGÃO</title>
 
 <style>
-/* ================= MENU NOVO — NÃO ALTERA O GAME ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:#050505;
+}
+
+button{
+    border:0;
+    font-family:Arial,sans-serif;
+    touch-action:manipulation;
+}
+
+/* ================= LOADING ================= */
+
+#loading{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:white;
+
+    background:
+    radial-gradient(circle at center,
+    #3b424a 0%,
+    #11151a 45%,
+    #020304 100%);
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:4px;
+    text-shadow:0 0 10px red,0 0 30px #800000;
+}
+
+.loadWolf{
+    font-size:90px;
+    margin:18px 0;
+}
+
+.loadText{
+    color:#aaa;
+    letter-spacing:4px;
+    font-size:13px;
+}
+
+#percent{
+    font-size:28px;
+    font-weight:bold;
+    margin:12px;
+}
+
+.loadBar{
+    width:280px;
+    height:13px;
+    background:#222;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+#fill{
+    width:0%;
+    height:100%;
+    background:#e00000;
+    box-shadow:0 0 15px red;
+}
+
+/* ================= MENU ================= */
 
 #menu{
     display:none;
@@ -15,14 +100,12 @@
     padding:25px 12px 40px;
 
     background:
-        radial-gradient(circle at 50% 18%,
-        #59636d 0%,
-        #20272e 35%,
-        #090c10 72%,
-        #020304 100%);
+    radial-gradient(circle at 50% 18%,
+    #59636d 0%,
+    #20272e 35%,
+    #090c10 72%,
+    #020304 100%);
 }
-
-/* brilho decorativo */
 
 #menu::before{
     content:"";
@@ -42,8 +125,6 @@
     pointer-events:none;
 }
 
-/* título */
-
 .title{
     position:relative;
     z-index:2;
@@ -55,12 +136,10 @@
     margin-top:5px;
 
     text-shadow:
-        0 0 8px #ff0000,
-        0 0 22px #b00000,
-        0 0 45px #650000;
+    0 0 8px #ff0000,
+    0 0 22px #b00000,
+    0 0 45px #650000;
 }
-
-/* subtítulo */
 
 .sub{
     position:relative;
@@ -69,11 +148,8 @@
     color:#d0d0d0;
     font-size:12px;
     letter-spacing:3px;
-
     margin-top:7px;
 }
-
-/* CRIADOR */
 
 .creator{
     position:relative;
@@ -93,20 +169,18 @@
     color:#fff;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(150,0,0,.45),
-            rgba(40,0,0,.45)
-        );
+    linear-gradient(
+        180deg,
+        rgba(150,0,0,.45),
+        rgba(40,0,0,.45)
+    );
 
     box-shadow:
-        0 0 15px rgba(255,0,0,.2);
+    0 0 15px rgba(255,0,0,.2);
 
     text-shadow:
-        0 0 7px red;
+    0 0 7px red;
 }
-
-/* títulos das seções */
 
 .sectionTitle{
     position:relative;
@@ -118,10 +192,8 @@
     font-weight:bold;
 
     text-shadow:
-        0 2px 5px #000;
+    0 2px 5px #000;
 }
-
-/* personagens */
 
 #characters{
     position:relative;
@@ -155,29 +227,46 @@
     color:white;
 
     background:
-        linear-gradient(
-            145deg,
-            #3b434a,
-            #0b0e11
-        );
+    linear-gradient(
+        145deg,
+        #3b434a,
+        #0b0e11
+    );
 
     position:relative;
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.45);
-
-    transition:.15s;
+    0 8px 20px rgba(0,0,0,.45);
 }
 
 .char.selected{
     border-color:#ff2222;
 
     box-shadow:
-        0 0 10px rgba(255,0,0,.55),
-        inset 0 0 15px rgba(255,0,0,.08);
+    0 0 10px rgba(255,0,0,.55),
+    inset 0 0 15px rgba(255,0,0,.08);
 }
 
-/* mapas */
+.char.locked{
+    opacity:.35;
+}
+
+.charIcon{
+    display:block;
+    font-size:48px;
+    margin:7px 0;
+}
+
+.charName{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.charLock{
+    position:absolute;
+    right:5px;
+    top:4px;
+}
 
 #maps{
     position:relative;
@@ -185,14 +274,10 @@
 
     width:100%;
     max-width:700px;
-
     margin:auto;
 
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:8px;
 }
 
@@ -205,26 +290,45 @@
     color:white;
 
     background:
-        linear-gradient(
-            145deg,
-            #30373d,
-            #090c0f
-        );
+    linear-gradient(
+        145deg,
+        #30373d,
+        #090c0f
+    );
 
     position:relative;
 
     box-shadow:
-        0 6px 15px rgba(0,0,0,.4);
+    0 6px 15px rgba(0,0,0,.4);
 }
 
 .map.selected{
     border-color:#ff2222;
 
     box-shadow:
-        0 0 12px rgba(255,0,0,.5);
+    0 0 12px rgba(255,0,0,.5);
 }
 
-/* botão */
+.map.locked{
+    opacity:.28;
+}
+
+.mapIcon{
+    display:block;
+    font-size:25px;
+    margin:4px;
+}
+
+.mapName{
+    font-size:10px;
+    font-weight:bold;
+}
+
+.mapLock{
+    position:absolute;
+    top:4px;
+    right:5px;
+}
 
 #play{
     position:relative;
@@ -240,11 +344,11 @@
     color:white;
 
     background:
-        linear-gradient(
-            180deg,
-            #b40000,
-            #650000
-        );
+    linear-gradient(
+        180deg,
+        #b40000,
+        #650000
+    );
 
     border:2px solid #ff4545;
 
@@ -253,14 +357,308 @@
     letter-spacing:2px;
 
     box-shadow:
-        0 7px 25px rgba(0,0,0,.65),
-        0 0 18px rgba(255,0,0,.22);
+    0 7px 25px rgba(0,0,0,.65),
+    0 0 18px rgba(255,0,0,.22);
 }
 
-#play:active{
-    transform:scale(.97);
+/* ================= GAME ================= */
+
+#game{
+    display:none;
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+}
+
+#canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+/* ================= LOBO ================= */
+
+#wolf{
+    position:absolute;
+    width:66px;
+    height:72px;
+    z-index:20;
+    pointer-events:none;
+}
+
+.body{
+    position:absolute;
+    left:4px;
+    top:32px;
+    width:47px;
+    height:28px;
+    border-radius:60%;
+
+    background:
+    linear-gradient(145deg,
+    #92999d,
+    #42484d 60%,
+    #17191b);
+}
+
+.head{
+    position:absolute;
+    left:32px;
+    top:7px;
+    width:34px;
+    height:38px;
+    border-radius:50%;
+
+    background:
+    linear-gradient(145deg,
+    #9da3a6,
+    #4b5257 65%,
+    #24282b);
+}
+
+.ear{
+    position:absolute;
+    width:18px;
+    height:27px;
+    background:#24292d;
+
+    clip-path:
+    polygon(50% 0,100% 100%,0 100%);
+}
+
+.ear.one{
+    left:31px;
+    top:0;
+}
+
+.ear.two{
+    left:49px;
+    top:1px;
+}
+
+.eye{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#ff1111;
+
+    box-shadow:
+    0 0 8px red;
+}
+
+.eye.one{
+    left:39px;
+    top:20px;
+}
+
+.eye.two{
+    left:53px;
+    top:20px;
+}
+
+.muzzle{
+    position:absolute;
+    left:51px;
+    top:29px;
+    width:20px;
+    height:12px;
+    border-radius:50%;
+    background:#565d61;
+}
+
+.nose{
+    position:absolute;
+    left:67px;
+    top:32px;
+    width:6px;
+    height:5px;
+    border-radius:50%;
+    background:#050505;
+}
+
+.tail{
+    position:absolute;
+    left:0;
+    top:24px;
+    width:26px;
+    height:21px;
+    border-top:7px solid #292e32;
+    border-radius:50%;
+    transform:rotate(-30deg);
+}
+
+.leg{
+    position:absolute;
+    top:53px;
+    width:7px;
+    height:20px;
+    border-radius:7px;
+    background:#16191b;
+}
+
+.leg1{left:7px}
+.leg2{left:19px}
+.leg3{left:34px}
+.leg4{left:47px}
+
+#wolf.running .leg1,
+#wolf.running .leg3{
+    animation:run1 .15s infinite alternate;
+}
+
+#wolf.running .leg2,
+#wolf.running .leg4{
+    animation:run2 .15s infinite alternate;
+}
+
+@keyframes run1{
+    from{transform:rotate(22deg)}
+    to{transform:rotate(-22deg)}
+}
+
+@keyframes run2{
+    from{transform:rotate(-22deg)}
+    to{transform:rotate(22deg)}
+}
+
+/* ================= HUD ================= */
+
+#hud{
+    position:absolute;
+    top:10px;
+    left:10px;
+    right:10px;
+    z-index:50;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+
+    text-shadow:
+    2px 2px 5px #000;
+}
+
+#poopCount{
+    color:#d49a61;
+}
+
+#home{
+    position:absolute;
+    top:43px;
+    right:10px;
+
+    z-index:60;
+
+    padding:8px 11px;
+
+    border-radius:8px;
+
+    background:rgba(0,0,0,.6);
+    color:white;
+
+    border:1px solid white;
+}
+
+#tap{
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:40;
+
+    color:white;
+
+    text-align:center;
+
+    font-size:23px;
+    font-weight:bold;
+
+    text-shadow:
+    2px 2px 7px black;
+
+    pointer-events:none;
+}
+
+#tap small{
+    display:block;
+    margin-top:8px;
+    font-size:14px;
+}
+
+/* ================= GAME OVER ================= */
+
+#gameOver{
+    display:none;
+
+    position:absolute;
+    inset:0;
+
+    z-index:100;
+
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    background:rgba(0,0,0,.88);
+}
+
+#gameOver h2{
+    color:#ff2222;
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.overBtn{
+    margin-top:13px;
+    padding:14px 28px;
+
+    border-radius:10px;
+
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.restart{
+    background:#7c0000;
+}
+
+.back{
+    background:#333;
 }
 </style>
+</head>
+
+<body>
+
+<div id="loading">
+
+    <div class="logo">
+        LILO O CAGÃO
+    </div>
+
+    <div class="loadWolf">🐺</div>
+
+    <div class="loadText">
+        CARREGANDO
+    </div>
+
+    <div id="percent">0%</div>
+
+    <div class="loadBar">
+        <div id="fill"></div>
+    </div>
+
+</div>
 
 
 <div id="menu">
@@ -273,7 +671,6 @@
         CORRA • PULE • PEGUE 💩
     </div>
 
-    <!-- NOME DO CRIADOR -->
     <div class="creator">
         👑 CRIADOR: LINDAO
     </div>
@@ -295,3 +692,1901 @@
     </button>
 
 </div>
+
+
+<div id="game">
+
+    <canvas id="canvas"></canvas>
+
+    <div id="wolf">
+
+        <div class="tail"></div>
+        <div class="body"></div>
+        <div class="head"></div>
+
+        <div class="ear one"></div>
+        <div class="ear two"></div>
+
+        <div class="eye one"></div>
+        <div class="eye two"></div>
+
+        <div class="muzzle"></div>
+        <div class="nose"></div>
+
+        <div class="leg leg1"></div>
+        <div class="leg leg2"></div>
+        <div class="leg leg3"></div>
+        <div class="leg leg4"></div>
+
+    </div>
+
+    <div id="hud">
+
+        <div id="lives">
+            ❤️❤️❤️
+        </div>
+
+        <div>
+            💩 <span id="poopCount">0</span>/10
+        </div>
+
+        <div>
+            MAPA <span id="level">1</span>
+        </div>
+
+    </div>
+
+    <button id="home">
+        🏠 INÍCIO
+    </button>
+
+    <div id="tap">
+
+        TOQUE PARA COMEÇAR
+
+        <small>
+            Toque para pular
+        </small>
+
+    </div>
+
+    <div id="gameOver">
+
+        <h2>GAME OVER</h2>
+
+        <div>
+            MAPA:
+            <span id="finalLevel">1</span>
+        </div>
+
+        <div style="margin-top:6px">
+            💩:
+            <span id="finalPoop">0</span>/10
+        </div>
+
+        <button
+            class="overBtn restart"
+            id="restart">
+            🔄 JOGAR NOVAMENTE
+        </button>
+
+        <button
+            class="overBtn back"
+            id="back">
+            🏠 VOLTAR AO INÍCIO
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CARREGAMENTO
+===================================================== */
+
+let loadingValue=0;
+
+function loading(){
+
+    loadingValue++;
+
+    document.getElementById("percent")
+        .textContent=loadingValue+"%";
+
+    document.getElementById("fill")
+        .style.width=loadingValue+"%";
+
+    if(loadingValue<100){
+
+        setTimeout(loading,18);
+
+    }else{
+
+        setTimeout(()=>{
+
+            document.getElementById("loading")
+                .style.display="none";
+
+            document.getElementById("menu")
+                .style.display="block";
+
+            buildCharacters();
+            buildMaps();
+
+        },350);
+
+    }
+
+}
+
+loading();
+
+
+/* =====================================================
+   PERSONAGENS
+===================================================== */
+
+const characters=[
+
+    {icon:"🐺",name:"LOBO",unlock:1},
+    {icon:"🐕",name:"CACHORRO",unlock:5},
+    {icon:"🦊",name:"RAPOSA",unlock:10},
+    {icon:"🐯",name:"TIGRE",unlock:15},
+    {icon:"🦁",name:"LEÃO",unlock:20},
+    {icon:"🐻",name:"URSO",unlock:25},
+    {icon:"🐲",name:"DRAGÃO",unlock:30}
+
+];
+
+let unlockedMap=
+    Number(localStorage.getItem("liloUnlockedMap")) || 1;
+
+let selectedMap=1;
+let selectedCharacter=0;
+
+let unlockedCharacters=
+    Number(localStorage.getItem("liloUnlockedCharacters")) || 1;
+
+
+function buildCharacters(){
+
+    const box=
+        document.getElementById("characters");
+
+    box.innerHTML="";
+
+    characters.forEach((c,index)=>{
+
+        const unlocked=
+            index===0 ||
+            unlockedCharacters>=c.unlock;
+
+        const btn=
+            document.createElement("button");
+
+        btn.className="char";
+
+        if(
+            index===selectedCharacter &&
+            unlocked
+        ){
+            btn.classList.add("selected");
+        }
+
+        if(!unlocked){
+            btn.classList.add("locked");
+        }
+
+        btn.innerHTML=`
+
+            ${
+                !unlocked
+                ? '<span class="charLock">🔒</span>'
+                : ''
+            }
+
+            <span class="charIcon">
+                ${c.icon}
+            </span>
+
+            <span class="charName">
+                ${c.name}
+            </span>
+
+            <br>
+
+            ${
+                unlocked
+                ? "DESBLOQUEADO"
+                : "MAPA "+c.unlock
+            }
+
+        `;
+
+        btn.onclick=()=>{
+
+            if(!unlocked)
+                return;
+
+            selectedCharacter=index;
+
+            document
+                .querySelectorAll(".char")
+                .forEach(x=>
+                    x.classList.remove("selected")
+                );
+
+            btn.classList.add("selected");
+
+        };
+
+        box.appendChild(btn);
+
+    });
+
+}
+
+
+/* =====================================================
+   MAPAS
+===================================================== */
+
+const mapNames=[
+
+    ["🏙️","CIDADE"],
+    ["🏜️","DESERTO"],
+    ["🌲","FLORESTA"],
+    ["⛰️","MONTANHA"],
+    ["🏖️","PRAIA"],
+    ["❄️","NEVE"],
+    ["🌋","VULCÃO"],
+    ["🐊","PÂNTANO"],
+    ["🪨","CAVERNA"],
+    ["🌙","NOITE"],
+    ["🌾","FAZENDA"],
+    ["🌉","PONTE"],
+    ["🏚️","RUÍNAS"],
+    ["🌳","FLORESTA ESCURA"],
+    ["🌆","CIDADE 2"],
+    ["🏜️","DESERTO 2"],
+    ["🧊","GELO"],
+    ["🏝️","ILHA"],
+    ["⛈️","TEMPESTADE"],
+    ["⛰️","MONTANHA 2"],
+    ["🌃","CIDADE NOTURNA"],
+    ["🌋","VULCÃO 2"],
+    ["🕳️","CAVERNA 2"],
+    ["🌲","FLORESTA 2"],
+    ["🏜️","DESERTO 3"],
+    ["🏖️","PRAIA 2"],
+    ["❄️","NEVE 2"],
+    ["🏚️","RUÍNAS 2"],
+    ["🏢","TORRES"],
+    ["👑","MAPA FINAL"]
+
+];
+
+
+function buildMaps(){
+
+    const box=
+        document.getElementById("maps");
+
+    box.innerHTML="";
+
+    mapNames.forEach((m,index)=>{
+
+        const number=index+1;
+
+        const unlocked=
+            number<=unlockedMap;
+
+        const btn=
+            document.createElement("button");
+
+        btn.className="map";
+
+        if(
+            number===selectedMap &&
+            unlocked
+        ){
+            btn.classList.add("selected");
+        }
+
+        if(!unlocked){
+            btn.classList.add("locked");
+        }
+
+        btn.innerHTML=`
+
+            ${
+                !unlocked
+                ? '<span class="mapLock">🔒</span>'
+                : ''
+            }
+
+            <span class="mapIcon">
+                ${m[0]}
+            </span>
+
+            <span class="mapName">
+                MAPA ${number}<br>${m[1]}
+            </span>
+
+        `;
+
+        btn.onclick=()=>{
+
+            if(!unlocked)
+                return;
+
+            selectedMap=number;
+
+            document
+                .querySelectorAll(".map")
+                .forEach(x=>
+                    x.classList.remove("selected")
+                );
+
+            btn.classList.add("selected");
+
+        };
+
+        box.appendChild(btn);
+
+    });
+
+}
+
+
+/* =====================================================
+   CANVAS
+===================================================== */
+
+const canvas=
+    document.getElementById("canvas");
+
+const ctx=
+    canvas.getContext("2d");
+
+let W=0;
+let H=0;
+
+function resize(){
+
+    W=
+        canvas.width=
+        window.innerWidth;
+
+    H=
+        canvas.height=
+        window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener(
+    "resize",
+    resize
+);
+
+
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
+
+let player;
+
+let obstacles=[];
+let poops=[];
+
+let started=false;
+let running=false;
+
+let lives=3;
+let poop=0;
+let level=1;
+
+
+/*
+   VELOCIDADE TOTALMENTE FIXA.
+
+   Ela NÃO aumenta:
+   - ao perder vida
+   - ao bater
+   - ao reiniciar
+   - durante o mapa
+
+   O deltaTime serve somente para manter
+   a velocidade igual em diferentes FPS.
+*/
+
+const GAME_SPEED=4.1;
+
+let obstacleTimer=75;
+let poopTimer=65;
+
+let invincible=false;
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetGame(){
+
+    lives=3;
+
+    poop=0;
+
+    level=selectedMap;
+
+    obstacles=[];
+    poops=[];
+
+    obstacleTimer=75;
+    poopTimer=65;
+
+    invincible=false;
+
+    player={
+
+        x:35,
+
+        y:H-130,
+
+        width:58,
+
+        height:62,
+
+        vy:0,
+
+        grounded:true
+
+    };
+
+    document.getElementById("level")
+        .textContent=level;
+
+    document.getElementById("poopCount")
+        .textContent=0;
+
+    updateLives();
+    updateWolf();
+
+}
+
+
+/* =====================================================
+   LOBO
+===================================================== */
+
+function updateWolf(){
+
+    if(!player)
+        return;
+
+    const wolf=
+        document.getElementById("wolf");
+
+    wolf.style.left=
+        player.x+"px";
+
+    wolf.style.top=
+        player.y+"px";
+
+    if(started && running){
+
+        wolf.classList.add("running");
+
+    }else{
+
+        wolf.classList.remove("running");
+
+    }
+
+}
+
+
+/* =====================================================
+   PULO
+===================================================== */
+
+function jump(){
+
+    if(!running)
+        return;
+
+    if(!player.grounded)
+        return;
+
+    player.vy=-10.8;
+
+    player.grounded=false;
+
+    bark();
+
+}
+
+
+/* =====================================================
+   LATIDO
+===================================================== */
+
+let audioContext=null;
+
+function bark(){
+
+    try{
+
+        if(!audioContext){
+
+            audioContext=
+                new(
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+        if(
+            audioContext.state==="suspended"
+        ){
+            audioContext.resume();
+        }
+
+        const now=
+            audioContext.currentTime;
+
+        const osc=
+            audioContext.createOscillator();
+
+        const gain=
+            audioContext.createGain();
+
+        osc.type="square";
+
+        osc.frequency.setValueAtTime(
+            450,
+            now
+        );
+
+        osc.frequency.exponentialRampToValueAtTime(
+            170,
+            now+.13
+        );
+
+        gain.gain.setValueAtTime(
+            .001,
+            now
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .12,
+            now+.015
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            now+.17
+        );
+
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+
+        osc.start(now);
+        osc.stop(now+.18);
+
+    }catch(e){}
+
+}
+
+
+/* =====================================================
+   OBSTÁCULOS
+===================================================== */
+
+function getObstacleTypes(){
+
+    if(level===1){
+
+        return[
+            "building",
+            "spike",
+            "barrier"
+        ];
+
+    }
+
+    if(level===2){
+
+        return[
+            "cactus",
+            "rock",
+            "spike"
+        ];
+
+    }
+
+    if(level===3){
+
+        return[
+            "rock",
+            "spike",
+            "tree"
+        ];
+
+    }
+
+    return[
+        "spike",
+        "rock",
+        "double"
+    ];
+
+}
+
+
+function spawnObstacle(){
+
+    const types=
+        getObstacleTypes();
+
+    const type=
+        types[
+            Math.floor(
+                Math.random()*types.length
+            )
+        ];
+
+    let width=48;
+    let height=48;
+
+    if(type==="double")
+        width=90;
+
+    if(type==="cactus"){
+
+        width=40;
+        height=58;
+
+    }
+
+    if(type==="building"){
+
+        width=55;
+        height=60;
+
+    }
+
+    if(type==="tree"){
+
+        width=48;
+        height=65;
+
+    }
+
+    obstacles.push({
+
+        x:W+70,
+
+        y:H-65-height,
+
+        width:width,
+
+        height:height,
+
+        type:type
+
+    });
+
+}
+
+
+/* =====================================================
+   BOSTINHA
+===================================================== */
+
+function spawnPoop(){
+
+    let p=null;
+
+    for(
+        let attempt=0;
+        attempt<50;
+        attempt++
+    ){
+
+        const candidate={
+
+            x:
+                W+100+
+                Math.random()*130,
+
+            y:
+                H-110-
+                Math.random()*45,
+
+            width:28,
+
+            height:28
+
+        };
+
+        const blocked=
+            obstacles.some(
+                o=>
+                    candidate.x+14 >
+                    o.x-5 &&
+
+                    candidate.x-14 <
+                    o.x+o.width+5 &&
+
+                    candidate.y+14 >
+                    o.y-5 &&
+
+                    candidate.y-14 <
+                    o.y+o.height+5
+            );
+
+        if(!blocked){
+
+            p=candidate;
+
+            break;
+
+        }
+
+    }
+
+    if(p){
+
+        poops.push(p);
+
+    }
+
+}
+
+
+/* =====================================================
+   COLISÃO
+===================================================== */
+
+function collision(a,b){
+
+    return(
+
+        a.x+8 <
+        b.x+b.width &&
+
+        a.x+a.width-8 >
+        b.x &&
+
+        a.y+8 <
+        b.y+b.height &&
+
+        a.y+a.height-5 >
+        b.y
+
+    );
+
+}
+
+
+/* =====================================================
+   VIDAS
+===================================================== */
+
+function updateLives(){
+
+    let text="";
+
+    for(
+        let i=0;
+        i<3;
+        i++
+    ){
+
+        text+=
+            i<lives
+            ? "❤️"
+            : "🖤";
+
+    }
+
+    document.getElementById(
+        "lives"
+    ).textContent=text;
+
+}
+
+
+/* =====================================================
+   CORREÇÃO DA VELOCIDADE AO PERDER VIDA
+===================================================== */
+
+function hitObstacle(){
+
+    /*
+       Se estiver protegido, não perde outra vida.
+    */
+
+    if(invincible)
+        return;
+
+
+    /*
+       PERDE UMA VIDA.
+
+       IMPORTANTE:
+       GAME_SPEED NÃO É ALTERADO AQUI.
+    */
+
+    lives--;
+
+    updateLives();
+
+
+    /*
+       NÃO existe:
+       speed++;
+       GAME_SPEED++;
+       GAME_SPEED+=...
+       speed*=...
+       
+       Portanto a velocidade continua
+       exatamente 4.1.
+    */
+
+    if(lives<=0){
+
+        gameOver();
+
+        return;
+
+    }
+
+
+    /*
+       Proteção contra perder várias vidas
+       no mesmo obstáculo.
+
+       Isso NÃO muda a velocidade.
+    */
+
+    invincible=true;
+
+    setTimeout(
+        ()=>{
+            invincible=false;
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   FUNDOS
+===================================================== */
+
+function drawCity(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(0,"#3d86b8");
+    sky.addColorStop(1,"#c9e6ef");
+
+    ctx.fillStyle=sky;
+
+    ctx.fillRect(0,0,W,H);
+
+    const move=
+        (
+            performance.now()
+            *GAME_SPEED/45
+        )%100;
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        const x=i*95-move;
+
+        const h=
+            130+
+            (i%4)*35;
+
+        ctx.fillStyle=
+            i%2
+            ? "#454f58"
+            : "#303941";
+
+        ctx.fillRect(
+            x,
+            H-65-h,
+            75,
+            h
+        );
+
+        ctx.fillStyle="#ffd86b";
+
+        for(
+            let yy=H-50-h;
+            yy<H-80;
+            yy+=25
+        ){
+
+            ctx.fillRect(
+                x+10,
+                yy,
+                9,
+                12
+            );
+
+            ctx.fillRect(
+                x+32,
+                yy,
+                9,
+                12
+            );
+
+            ctx.fillRect(
+                x+54,
+                yy,
+                9,
+                12
+            );
+
+        }
+
+    }
+
+}
+
+
+function drawDesert(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(0,"#df7135");
+    sky.addColorStop(1,"#ffd998");
+
+    ctx.fillStyle=sky;
+
+    ctx.fillRect(0,0,W,H);
+
+    ctx.fillStyle="#c6814b";
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,H-100);
+
+    ctx.lineTo(W*.25,H-230);
+
+    ctx.lineTo(W*.5,H-100);
+
+    ctx.lineTo(W*.78,H-210);
+
+    ctx.lineTo(W,H-100);
+
+    ctx.lineTo(W,H);
+
+    ctx.lineTo(0,H);
+
+    ctx.fill();
+
+    ctx.fillStyle="#dfaa61";
+
+    const move=
+        (
+            performance.now()
+            *GAME_SPEED/50
+        )%200;
+
+    for(
+        let i=0;
+        i<7;
+        i++
+    ){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            i*190-move,
+            H-60,
+            95,
+            Math.PI,
+            0
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+function drawForest(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    sky.addColorStop(0,"#5c9cbc");
+    sky.addColorStop(1,"#b8d69d");
+
+    ctx.fillStyle=sky;
+
+    ctx.fillRect(0,0,W,H);
+
+    const move=
+        (
+            performance.now()
+            *GAME_SPEED/55
+        )%150;
+
+    for(
+        let i=0;
+        i<10;
+        i++
+    ){
+
+        const x=i*150-move;
+
+        ctx.fillStyle="#405d38";
+
+        ctx.fillRect(
+            x,
+            H-150,
+            15,
+            85
+        );
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x+7,
+            H-160,
+            52,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+function drawGeneric(){
+
+    let sky=
+        ctx.createLinearGradient(
+            0,0,0,H
+        );
+
+    const palettes=[
+
+        ["#718da0","#d9e5e8"],
+        ["#172c3b","#587080"],
+        ["#9fc8df","#f1ddba"],
+        ["#3d5668","#a7b5bc"],
+        ["#476149","#c7d5aa"]
+
+    ];
+
+    const p=
+        palettes[
+            (level-4)%palettes.length
+        ];
+
+    sky.addColorStop(0,p[0]);
+    sky.addColorStop(1,p[1]);
+
+    ctx.fillStyle=sky;
+
+    ctx.fillRect(0,0,W,H);
+
+    const move=
+        (
+            performance.now()
+            *GAME_SPEED/55
+        )%170;
+
+    for(
+        let i=0;
+        i<9;
+        i++
+    ){
+
+        const x=i*170-move;
+
+        ctx.fillStyle="#36454d";
+
+        ctx.fillRect(
+            x,
+            H-145,
+            85,
+            80
+        );
+
+    }
+
+}
+
+
+function drawBackground(){
+
+    if(level===1)
+        drawCity();
+
+    else if(level===2)
+        drawDesert();
+
+    else if(level===3)
+        drawForest();
+
+    else
+        drawGeneric();
+
+    ctx.fillStyle=
+        level===2
+        ? "#b98a4e"
+        : "#405239";
+
+    ctx.fillRect(
+        0,
+        H-65,
+        W,
+        65
+    );
+
+    ctx.fillStyle=
+        level===2
+        ? "#d2a45e"
+        : "#29382c";
+
+    ctx.fillRect(
+        0,
+        H-65,
+        W,
+        7
+    );
+
+}
+
+
+/* =====================================================
+   DESENHAR OBSTÁCULOS
+===================================================== */
+
+function drawObstacle(o){
+
+    if(
+        o.type==="spike" ||
+        o.type==="double"
+    ){
+
+        const count=
+            o.type==="double"
+            ? 2
+            : 1;
+
+        for(
+            let i=0;
+            i<count;
+            i++
+        ){
+
+            const x=o.x+i*45;
+
+            ctx.fillStyle="#17191c";
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                x,
+                o.y+o.height
+            );
+
+            ctx.lineTo(
+                x+22,
+                o.y
+            );
+
+            ctx.lineTo(
+                x+44,
+                o.y+o.height
+            );
+
+            ctx.closePath();
+
+            ctx.fill();
+
+            ctx.strokeStyle="#555b60";
+            ctx.lineWidth=2;
+
+            ctx.stroke();
+
+        }
+
+    }
+
+    else if(o.type==="cactus"){
+
+        ctx.fillStyle="#31833a";
+
+        ctx.fillRect(
+            o.x+12,
+            o.y,
+            16,
+            o.height
+        );
+
+        ctx.fillRect(
+            o.x,
+            o.y+20,
+            13,
+            9
+        );
+
+        ctx.fillRect(
+            o.x,
+            o.y+8,
+            8,
+            25
+        );
+
+        ctx.fillRect(
+            o.x+27,
+            o.y+32,
+            13,
+            9
+        );
+
+        ctx.fillRect(
+            o.x+33,
+            o.y+20,
+            7,
+            22
+        );
+
+    }
+
+    else if(o.type==="building"){
+
+        ctx.fillStyle="#28333b";
+
+        ctx.fillRect(
+            o.x,
+            o.y,
+            o.width,
+            o.height
+        );
+
+        ctx.fillStyle="#ffd45d";
+
+        for(
+            let yy=o.y+9;
+            yy<o.y+o.height-8;
+            yy+=19
+        ){
+
+            ctx.fillRect(
+                o.x+7,
+                yy,
+                9,
+                11
+            );
+
+            ctx.fillRect(
+                o.x+28,
+                yy,
+                9,
+                11
+            );
+
+        }
+
+    }
+
+    else if(o.type==="tree"){
+
+        ctx.fillStyle="#5b3821";
+
+        ctx.fillRect(
+            o.x+18,
+            o.y+24,
+            12,
+            40
+        );
+
+        ctx.fillStyle="#285d32";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            o.x+24,
+            o.y+23,
+            28,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+    else{
+
+        ctx.fillStyle="#686f74";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            o.x+24,
+            o.y+25,
+            25,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+
+/* =====================================================
+   DESENHAR BOSTINHA
+===================================================== */
+
+function drawPoop(p){
+
+    ctx.fillStyle="#75431f";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        p.x,
+        p.y+8,
+        13,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+    ctx.beginPath();
+
+    ctx.arc(
+        p.x,
+        p.y,
+        10,
+        Math.PI,
+        0
+    );
+
+    ctx.fill();
+
+    ctx.beginPath();
+
+    ctx.arc(
+        p.x,
+        p.y-8,
+        7,
+        Math.PI,
+        0
+    );
+
+    ctx.fill();
+
+    ctx.fillStyle="#3d2415";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        p.x-4,
+        p.y-2,
+        2,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+}
+
+
+/* =====================================================
+   PASSAR DE MAPA
+===================================================== */
+
+function completeMap(){
+
+    if(level>=30){
+
+        running=false;
+
+        alert(
+            "🏆 PARABÉNS LINDAO!\n\nVOCÊ TERMINOU OS 30 MAPAS!"
+        );
+
+        backToMenu();
+
+        return;
+
+    }
+
+    level++;
+
+    poop=0;
+
+    obstacles=[];
+    poops=[];
+
+    if(level>unlockedMap){
+
+        unlockedMap=level;
+
+        localStorage.setItem(
+            "liloUnlockedMap",
+            unlockedMap
+        );
+
+    }
+
+    unlockedCharacters=
+        Math.max(
+            unlockedCharacters,
+            level
+        );
+
+    localStorage.setItem(
+        "liloUnlockedCharacters",
+        unlockedCharacters
+    );
+
+    selectedMap=level;
+
+    document.getElementById(
+        "level"
+    ).textContent=level;
+
+    document.getElementById(
+        "poopCount"
+    ).textContent=0;
+
+    buildMaps();
+    buildCharacters();
+
+}
+
+
+/* =====================================================
+   GAME OVER
+===================================================== */
+
+function gameOver(){
+
+    running=false;
+    started=false;
+
+    document.getElementById(
+        "finalLevel"
+    ).textContent=level;
+
+    document.getElementById(
+        "finalPoop"
+    ).textContent=poop;
+
+    document.getElementById(
+        "gameOver"
+    ).style.display="flex";
+
+    updateWolf();
+
+}
+
+
+/* =====================================================
+   LOOP
+===================================================== */
+
+let lastTime=0;
+
+function loop(time){
+
+    if(!lastTime)
+        lastTime=time;
+
+    const delta=
+        Math.min(
+            time-lastTime,
+            32
+        );
+
+    lastTime=time;
+
+    const dt=
+        delta/16.6667;
+
+    if(
+        document.getElementById(
+            "game"
+        ).style.display==="block"
+    ){
+
+        drawBackground();
+
+        if(
+            started &&
+            running
+        ){
+
+            player.vy+=
+                .58*dt;
+
+            player.y+=
+                player.vy*dt;
+
+            if(
+                player.y>=H-130
+            ){
+
+                player.y=H-130;
+
+                player.vy=0;
+
+                player.grounded=true;
+
+            }
+
+            updateWolf();
+
+
+            /* =================
+               OBSTÁCULOS
+            ================= */
+
+            obstacleTimer-=dt;
+
+            if(
+                obstacleTimer<=0
+            ){
+
+                spawnObstacle();
+
+                obstacleTimer=
+                    90+
+                    Math.random()*45;
+
+            }
+
+            for(
+                let i=obstacles.length-1;
+                i>=0;
+                i--
+            ){
+
+                const o=
+                    obstacles[i];
+
+                /*
+                   VELOCIDADE FIXA.
+
+                   Nunca usamos uma variável
+                   de velocidade que seja alterada
+                   ao perder vida.
+                */
+
+                o.x-=
+                    GAME_SPEED*dt;
+
+                drawObstacle(o);
+
+                if(
+                    collision(
+                        player,
+                        o
+                    )
+                ){
+
+                    hitObstacle();
+
+                }
+
+            }
+
+            obstacles=
+                obstacles.filter(
+                    o=>
+                        o.x>-160
+                );
+
+
+            /* =================
+               BOSTINHAS
+            ================= */
+
+            poopTimer-=dt;
+
+            if(
+                poopTimer<=0
+            ){
+
+                spawnPoop();
+
+                poopTimer=
+                    80+
+                    Math.random()*55;
+
+            }
+
+            for(
+                let i=poops.length-1;
+                i>=0;
+                i--
+            ){
+
+                const p=
+                    poops[i];
+
+                p.x-=
+                    GAME_SPEED*dt;
+
+                drawPoop(p);
+
+                const box={
+
+                    x:p.x-14,
+                    y:p.y-14,
+                    width:28,
+                    height:28
+
+                };
+
+                if(
+                    collision(
+                        player,
+                        box
+                    )
+                ){
+
+                    poops.splice(i,1);
+
+                    poop++;
+
+                    document.getElementById(
+                        "poopCount"
+                    ).textContent=poop;
+
+                    if(poop>=10){
+
+                        completeMap();
+
+                    }
+
+                }
+
+            }
+
+            poops=
+                poops.filter(
+                    p=>
+                        p.x>-60
+                );
+
+        }
+
+    }
+
+    requestAnimationFrame(loop);
+
+}
+
+
+/* =====================================================
+   JOGAR
+===================================================== */
+
+document.getElementById("play")
+.addEventListener(
+    "click",
+    ()=>{
+
+        document.getElementById("menu")
+            .style.display="none";
+
+        document.getElementById("game")
+            .style.display="block";
+
+        document.getElementById("gameOver")
+            .style.display="none";
+
+        resetGame();
+
+        started=false;
+        running=false;
+
+        document.getElementById("tap")
+            .style.display="block";
+
+        updateWolf();
+
+    }
+);
+
+
+/* =====================================================
+   TOQUE
+===================================================== */
+
+document.getElementById("game")
+.addEventListener(
+    "pointerdown",
+    e=>{
+
+        if(
+            e.target.closest &&
+            e.target.closest("button")
+        ){
+
+            return;
+
+        }
+
+        if(!started){
+
+            started=true;
+            running=true;
+
+            document.getElementById("tap")
+                .style.display="none";
+
+            updateWolf();
+
+            return;
+
+        }
+
+        jump();
+
+    }
+);
+
+
+/* =====================================================
+   REINICIAR
+===================================================== */
+
+document.getElementById("restart")
+.addEventListener(
+    "click",
+    ()=>{
+
+        document.getElementById(
+            "gameOver"
+        ).style.display="none";
+
+        resetGame();
+
+        started=false;
+        running=false;
+
+        document.getElementById(
+            "tap"
+        ).style.display="block";
+
+        updateWolf();
+
+    }
+);
+
+
+/* =====================================================
+   VOLTAR AO MENU
+===================================================== */
+
+function backToMenu(){
+
+    running=false;
+    started=false;
+
+    document.getElementById("game")
+        .style.display="none";
+
+    document.getElementById("gameOver")
+        .style.display="none";
+
+    document.getElementById("menu")
+        .style.display="block";
+
+    buildMaps();
+    buildCharacters();
+
+}
+
+
+document.getElementById("home")
+.addEventListener(
+    "click",
+    backToMenu
+);
+
+
+document.getElementById("back")
+.addEventListener(
+    "click",
+    backToMenu
+);
+
+
+/* =====================================================
+   TECLADO
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.code==="Space" ||
+            e.code==="ArrowUp"
+        ){
+
+            e.preventDefault();
+
+            if(
+                document.getElementById(
+                    "game"
+                ).style.display==="block"
+            ){
+
+                if(!started){
+
+                    started=true;
+                    running=true;
+
+                    document.getElementById(
+                        "tap"
+                    ).style.display="none";
+
+                }else{
+
+                    jump();
+
+                }
+
+            }
+
+        }
+
+    }
+);
+
+
+/* LOOP */
+
+requestAnimationFrame(loop);
+
+</script>
+
+</body>
+</html>
