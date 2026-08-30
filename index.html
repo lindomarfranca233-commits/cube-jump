@@ -1,1426 +1,297 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>LILO O CAGAO</title>
+<!-- SUBSTITUA SOMENTE O BLOCO #menu DO SEU CÓDIGO POR ESTE -->
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    user-select:none;
-    -webkit-user-select:none;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#05070a;
-    font-family:Arial,sans-serif;
-}
-
-/* =========================
-   CARREGAMENTO
-========================= */
-
-#loading{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:
-    radial-gradient(circle at center,#303842 0%,#090c11 55%,#020304 100%);
-    color:white;
-}
-
-.logo{
-    font-size:60px;
-    font-weight:900;
-    letter-spacing:8px;
-    color:white;
-    text-shadow:0 0 12px red,0 0 35px #900;
-}
-
-.loadingWolf{
-    font-size:100px;
-    margin:18px;
-}
-
-.loadingText{
-    color:#aaa;
-    letter-spacing:4px;
-}
-
-#percent{
-    font-size:28px;
-    font-weight:bold;
-    margin:12px;
-}
-
-.bar{
-    width:280px;
-    height:12px;
-    border-radius:20px;
-    background:#222;
-    overflow:hidden;
-}
-
-#barFill{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,#870000,#ff2020);
-    box-shadow:0 0 15px red;
-}
-
-/* =========================
-   TELA INICIAL NOVA
-========================= */
+/* ================= MENU NOVO — NÃO ALTERA O GAME ================= */
 
 #menu{
     display:none;
     position:fixed;
     inset:0;
-    z-index:50;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    overflow-y:auto;
+
     color:white;
-    overflow:hidden;
+    text-align:center;
+
+    padding:25px 12px 40px;
 
     background:
-    radial-gradient(circle at 50% 25%,#414b55 0%,#171d24 32%,#07090d 75%,#020304 100%);
+        radial-gradient(circle at 50% 18%,
+        #59636d 0%,
+        #20272e 35%,
+        #090c10 72%,
+        #020304 100%);
 }
 
-/* detalhes de fundo */
+/* brilho decorativo */
 
-#menu:before{
+#menu::before{
     content:"";
     position:absolute;
-    inset:0;
-    background:
-    linear-gradient(
-        120deg,
-        transparent 35%,
-        rgba(255,255,255,.035) 50%,
-        transparent 65%
+    width:320px;
+    height:320px;
+    left:50%;
+    top:35%;
+    transform:translate(-50%,-50%);
+
+    background:radial-gradient(
+        circle,
+        rgba(255,0,0,.16),
+        transparent 70%
     );
+
     pointer-events:none;
 }
 
-.menuTop{
+/* título */
+
+.title{
     position:relative;
     z-index:2;
-    text-align:center;
-}
 
-.menuTitle{
-    font-size:64px;
-    font-weight:1000;
-    letter-spacing:8px;
+    font-size:45px;
+    font-weight:900;
+    letter-spacing:4px;
+
+    margin-top:5px;
+
     text-shadow:
-    0 0 10px #ff0000,
-    0 0 30px #b00000,
-    0 5px 20px #000;
+        0 0 8px #ff0000,
+        0 0 22px #b00000,
+        0 0 45px #650000;
 }
 
-.menuName{
-    margin-top:-3px;
-    font-size:24px;
-    font-weight:900;
-    letter-spacing:2px;
-    color:#ff2929;
-    text-shadow:0 0 12px #900;
-}
+/* subtítulo */
 
-.subtitle{
-    margin-top:7px;
-    color:#bbb;
-    font-size:13px;
-    letter-spacing:3px;
-}
-
-/* cartão */
-
-.menuCard{
+.sub{
     position:relative;
     z-index:2;
-    width:min(330px,88vw);
-    padding:18px;
-    margin-top:18px;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:22px;
-    background:rgba(10,13,17,.72);
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.7),
-    inset 0 0 30px rgba(255,255,255,.025);
-    backdrop-filter:blur(8px);
+
+    color:#d0d0d0;
+    font-size:12px;
+    letter-spacing:3px;
+
+    margin-top:7px;
 }
 
-/* lobo */
-
-.wolfPhoto{
-    width:100%;
-    height:245px;
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    overflow:hidden;
-    border-radius:18px;
-
-    background:
-    radial-gradient(circle at 50% 25%,#65717a,#252c33 48%,#080a0d 100%);
-
-    box-shadow:
-    inset 0 0 35px rgba(0,0,0,.6);
-}
-
-.coverWolf{
-    position:relative;
-    width:165px;
-    height:225px;
-}
-
-/* corpo */
-
-.coverBody{
-    position:absolute;
-    width:125px;
-    height:115px;
-    left:20px;
-    bottom:0;
-    border-radius:50% 50% 22% 22%;
-    background:linear-gradient(145deg,#727a80,#353b40 55%,#111418);
-}
-
-/* cabeça */
-
-.coverHead{
-    position:absolute;
-    width:112px;
-    height:118px;
-    left:27px;
-    top:25px;
-    border-radius:48% 48% 45% 45%;
-    background:linear-gradient(145deg,#7b8389,#41484e 52%,#14181c);
-}
-
-/* orelhas */
-
-.coverEar{
-    position:absolute;
-    width:48px;
-    height:73px;
-    top:0;
-    background:linear-gradient(145deg,#596169,#15191e);
-    clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-
-.coverEar.left{
-    left:16px;
-    transform:rotate(-12deg);
-}
-
-.coverEar.right{
-    right:9px;
-    transform:rotate(12deg);
-}
-
-/* olhos */
-
-.coverEye{
-    position:absolute;
-    width:12px;
-    height:8px;
-    top:64px;
-    border-radius:50%;
-    background:#ff1717;
-    box-shadow:0 0 7px red,0 0 16px red;
-}
-
-.coverEye.left{
-    left:28px;
-}
-
-.coverEye.right{
-    right:28px;
-}
-
-/* focinho */
-
-.coverMuzzle{
-    position:absolute;
-    width:50px;
-    height:40px;
-    left:31px;
-    bottom:12px;
-    border-radius:50%;
-    background:linear-gradient(150deg,#777d80,#454a4d);
-}
-
-.coverNose{
-    position:absolute;
-    width:23px;
-    height:15px;
-    left:44px;
-    bottom:31px;
-    border-radius:50%;
-    background:#050505;
-}
-
-/* botão */
-
-.startButton{
-    width:100%;
-    margin-top:16px;
-    padding:16px;
-    border:1px solid #ff3030;
-    border-radius:13px;
-
-    background:
-    linear-gradient(180deg,#8e1010,#420505);
-
-    color:white;
-    font-size:18px;
-    font-weight:900;
-    letter-spacing:2px;
-
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.55),
-    0 0 18px rgba(255,0,0,.18);
-}
-
-/* criador */
+/* CRIADOR */
 
 .creator{
     position:relative;
     z-index:2;
-    margin-top:15px;
-    text-align:center;
-    font-size:13px;
-    color:#999;
-    letter-spacing:2px;
-}
 
-.creator strong{
-    display:block;
-    margin-top:4px;
-    color:white;
-    font-size:18px;
-    letter-spacing:3px;
-    text-shadow:0 0 10px rgba(255,255,255,.25);
-}
+    display:inline-block;
 
-/* =========================
-   JOGO
-========================= */
+    margin:15px auto 17px;
+    padding:8px 18px;
 
-#game{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#76c9ec;
-}
+    border:1px solid rgba(255,60,60,.65);
+    border-radius:20px;
 
-canvas{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-}
-
-#hud{
-    position:absolute;
-    top:15px;
-    left:15px;
-    right:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    color:white;
-    font-size:20px;
-    font-weight:bold;
-    text-shadow:2px 2px 5px #000;
-    z-index:10;
-}
-
-#lives{
-    letter-spacing:4px;
-}
-
-#coins{
-    color:#9cff55;
-}
-
-#tapStart{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    color:white;
-    font-size:25px;
-    font-weight:bold;
-    text-align:center;
-    text-shadow:0 0 10px #000,2px 2px 5px #000;
-    z-index:20;
-    pointer-events:none;
-}
-
-#tapStart small{
-    display:block;
-    margin-top:10px;
     font-size:15px;
-    color:#ddd;
+    font-weight:900;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(150,0,0,.45),
+            rgba(40,0,0,.45)
+        );
+
+    box-shadow:
+        0 0 15px rgba(255,0,0,.2);
+
+    text-shadow:
+        0 0 7px red;
 }
 
-#gameOver{
+/* títulos das seções */
+
+.sectionTitle{
+    position:relative;
+    z-index:2;
+
+    margin:12px 0 9px;
+
+    font-size:17px;
+    font-weight:bold;
+
+    text-shadow:
+        0 2px 5px #000;
+}
+
+/* personagens */
+
+#characters{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    gap:10px;
+
+    overflow-x:auto;
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:4px 3px 13px;
+
+    scrollbar-width:none;
+}
+
+#characters::-webkit-scrollbar{
     display:none;
-    position:absolute;
-    inset:0;
-    z-index:40;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.8);
-    color:white;
 }
 
-#gameOver h2{
-    color:#ff2222;
-    font-size:45px;
-    margin-bottom:15px;
+.char{
+    flex:0 0 105px;
+    height:125px;
+
+    border:2px solid #454c53;
+    border-radius:15px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3b434a,
+            #0b0e11
+        );
+
+    position:relative;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45);
+
+    transition:.15s;
 }
 
-.restart{
-    margin-top:20px;
-    padding:15px 40px;
-    border:0;
-    border-radius:10px;
-    background:#870000;
+.char.selected{
+    border-color:#ff2222;
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,.55),
+        inset 0 0 15px rgba(255,0,0,.08);
+}
+
+/* mapas */
+
+#maps{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:700px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+}
+
+.map{
+    min-height:75px;
+
+    border:2px solid #41474c;
+    border-radius:12px;
+
     color:white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #30373d,
+            #090c0f
+        );
+
+    position:relative;
+
+    box-shadow:
+        0 6px 15px rgba(0,0,0,.4);
+}
+
+.map.selected{
+    border-color:#ff2222;
+
+    box-shadow:
+        0 0 12px rgba(255,0,0,.5);
+}
+
+/* botão */
+
+#play{
+    position:relative;
+    z-index:2;
+
+    margin-top:18px;
+
+    width:285px;
+    padding:16px;
+
+    border-radius:13px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b40000,
+            #650000
+        );
+
+    border:2px solid #ff4545;
+
     font-size:18px;
     font-weight:bold;
+    letter-spacing:2px;
+
+    box-shadow:
+        0 7px 25px rgba(0,0,0,.65),
+        0 0 18px rgba(255,0,0,.22);
+}
+
+#play:active{
+    transform:scale(.97);
 }
 </style>
-</head>
 
-<body>
-
-<!-- =========================
-     CARREGAMENTO
-========================= -->
-
-<div id="loading">
-    <div class="logo">LILO</div>
-    <div class="loadingWolf">🐺</div>
-    <div class="loadingText">CARREGANDO</div>
-    <div id="percent">0%</div>
-
-    <div class="bar">
-        <div id="barFill"></div>
-    </div>
-</div>
-
-
-<!-- =========================
-     MENU
-========================= -->
 
 <div id="menu">
 
-    <div class="menuTop">
-        <div class="menuTitle">LILO</div>
-
-        <div class="menuName">
-            O CAGAO
-        </div>
-
-        <div class="subtitle">
-            CORRA • PULE • SOBREVIVA
-        </div>
+    <div class="title">
+        LILO O CAGÃO
     </div>
 
-    <div class="menuCard">
-
-        <div class="wolfPhoto">
-
-            <div class="coverWolf">
-
-                <div class="coverEar left"></div>
-                <div class="coverEar right"></div>
-
-                <div class="coverHead">
-
-                    <div class="coverEye left"></div>
-                    <div class="coverEye right"></div>
-
-                    <div class="coverMuzzle"></div>
-                    <div class="coverNose"></div>
-
-                </div>
-
-                <div class="coverBody"></div>
-
-            </div>
-
-        </div>
-
-        <button class="startButton" id="startButton">
-            TOQUE PARA JOGAR
-        </button>
-
+    <div class="sub">
+        CORRA • PULE • PEGUE 💩
     </div>
 
+    <!-- NOME DO CRIADOR -->
     <div class="creator">
-        GAME CRIADO POR
-        <strong>CRIADOR LINDAO</strong>
+        👑 CRIADOR: LINDAO
     </div>
+
+    <div class="sectionTitle">
+        🐺 SELEÇÃO DE PERSONAGEM
+    </div>
+
+    <div id="characters"></div>
+
+    <div class="sectionTitle">
+        🗺️ SELEÇÃO DE MAPA
+    </div>
+
+    <div id="maps"></div>
+
+    <button id="play">
+        ▶ JOGAR
+    </button>
 
 </div>
-
-
-<!-- =========================
-     GAME
-========================= -->
-
-<div id="game">
-
-    <canvas id="canvas"></canvas>
-
-    <div id="hud">
-
-        <div id="lives">
-            ❤️❤️❤️
-        </div>
-
-        <div>
-            💩 <span id="coins">0</span>
-        </div>
-
-        <div>
-            FASE <span id="level">1</span>
-        </div>
-
-    </div>
-
-    <div id="tapStart">
-        TOQUE NA TELA PARA COMEÇAR
-        <small>Toque para pular</small>
-    </div>
-
-    <div id="gameOver">
-
-        <h2>GAME OVER</h2>
-
-        <div>
-            Você chegou à fase
-            <span id="finalLevel">1</span>
-        </div>
-
-        <div>
-            Bostinhas:
-            <span id="finalCoins">0</span>
-        </div>
-
-        <button class="restart" id="restart">
-            JOGAR NOVAMENTE
-        </button>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================
-   CARREGAMENTO
-========================= */
-
-let load=0;
-
-function loading(){
-
-    load++;
-
-    if(load>100) load=100;
-
-    document.getElementById("percent").textContent=load+"%";
-    document.getElementById("barFill").style.width=load+"%";
-
-    if(load<100){
-
-        setTimeout(loading,35);
-
-    }else{
-
-        setTimeout(()=>{
-
-            document.getElementById("loading").style.display="none";
-            document.getElementById("menu").style.display="flex";
-
-        },500);
-
-    }
-}
-
-loading();
-
-
-/* =========================
-   CANVAS
-========================= */
-
-const canvas=document.getElementById("canvas");
-const ctx=canvas.getContext("2d");
-
-let W,H;
-
-function resize(){
-
-    W=canvas.width=window.innerWidth;
-    H=canvas.height=window.innerHeight;
-
-}
-
-resize();
-window.addEventListener("resize",resize);
-
-
-/* =========================
-   VARIÁVEIS
-========================= */
-
-let player;
-let obstacles=[];
-let coins=[];
-
-let running=false;
-let started=false;
-
-let coinCount=0;
-let level=1;
-let lives=3;
-
-let speed=5;
-
-let obstacleTimer=80;
-let coinTimer=40;
-
-let legAnimation=0;
-
-
-/* =========================
-   RESET
-========================= */
-
-function reset(){
-
-    player={
-        x:75,
-        y:H-145,
-        w:65,
-        h:65,
-        vy:0,
-        grounded:true
-    };
-
-    obstacles=[];
-    coins=[];
-
-    coinCount=0;
-    level=1;
-    lives=3;
-
-    speed=5;
-
-    obstacleTimer=80;
-    coinTimer=40;
-
-    document.getElementById("coins").textContent=0;
-    document.getElementById("level").textContent=1;
-
-    updateLives();
-}
-
-
-/* =========================
-   INICIAR
-========================= */
-
-function startGame(){
-
-    document.getElementById("menu").style.display="none";
-    document.getElementById("game").style.display="block";
-
-    reset();
-
-    running=false;
-    started=false;
-
-    document.getElementById("tapStart").style.display="block";
-
-    requestAnimationFrame(loop);
-}
-
-
-/* =========================
-   TOQUE
-========================= */
-
-function touchGame(){
-
-    if(!started){
-
-        started=true;
-        running=true;
-
-        document.getElementById("tapStart").style.display="none";
-
-        jump();
-
-        return;
-    }
-
-    jump();
-}
-
-
-/* =========================
-   PULO
-========================= */
-
-function jump(){
-
-    if(!running) return;
-
-    if(player.grounded){
-
-        player.vy=-11;
-        player.grounded=false;
-
-        /* latido/latição */
-
-        try{
-            const audioCtx=new(
-                window.AudioContext||
-                window.webkitAudioContext
-            )();
-
-            const osc=audioCtx.createOscillator();
-            const gain=audioCtx.createGain();
-
-            osc.type="square";
-            osc.frequency.value=180;
-
-            gain.gain.setValueAtTime(
-                0.12,
-                audioCtx.currentTime
-            );
-
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                audioCtx.currentTime+0.18
-            );
-
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.start();
-            osc.stop(audioCtx.currentTime+0.18);
-
-        }catch(e){}
-
-    }
-}
-
-
-/* =========================
-   VIDA
-========================= */
-
-function updateLives(){
-
-    let hearts="";
-
-    for(let i=0;i<3;i++){
-
-        hearts += i<lives ? "❤️" : "🖤";
-
-    }
-
-    document.getElementById("lives").textContent=hearts;
-}
-
-
-/* =========================
-   COLISÃO
-========================= */
-
-function collision(a,b){
-
-    return(
-        a.x < b.x+b.w &&
-        a.x+a.w > b.x &&
-        a.y < b.y+b.h &&
-        a.y+a.h > b.y
-    );
-}
-
-
-/* =========================
-   OBSTÁCULOS
-========================= */
-
-function spawnObstacle(){
-
-    const types=["spike","rock","box","doubleSpike"];
-
-    const type=
-        types[Math.floor(Math.random()*types.length)];
-
-    let w=50;
-    let h=50;
-
-    if(type==="doubleSpike"){
-        w=85;
-        h=50;
-    }
-
-    obstacles.push({
-        x:W+60,
-        y:H-95,
-        w:w,
-        h:h,
-        type:type
-    });
-}
-
-
-/* =========================
-   BOSTINHA
-========================= */
-
-function spawnCoin(){
-
-    coins.push({
-        x:W+40,
-        y:H-170-Math.random()*70,
-        r:15
-    });
-}
-
-
-/* =========================
-   FUNDO
-========================= */
-
-function background(){
-
-    let sky=ctx.createLinearGradient(0,0,0,H);
-
-    sky.addColorStop(
-        0,
-        level===1 ? "#315b86" :
-        level===2 ? "#e0a45e" :
-        "#62b7d9"
-    );
-
-    sky.addColorStop(
-        1,
-        level===1 ? "#9ac9e5" :
-        level===2 ? "#f4d09b" :
-        "#d6f2ff"
-    );
-
-    ctx.fillStyle=sky;
-    ctx.fillRect(0,0,W,H);
-
-    /* prédios no mapa 1 */
-
-    if(level===1){
-
-        for(let i=0;i<9;i++){
-
-            let x=
-                (i*130-
-                ((performance.now()/35*speed)%130));
-
-            let bh=100+(i%4)*35;
-
-            ctx.fillStyle="#27313b";
-
-            ctx.fillRect(
-                x,
-                H-65-bh,
-                95,
-                bh
-            );
-
-            ctx.fillStyle="#f6d36b";
-
-            for(let wy=0;wy<3;wy++){
-
-                for(let wx=0;wx<3;wx++){
-
-                    ctx.fillRect(
-                        x+15+wx*23,
-                        H-45-bh+wy*28,
-                        10,
-                        14
-                    );
-
-                }
-
-            }
-
-        }
-
-    }
-
-    /* deserto */
-
-    if(level===2){
-
-        ctx.fillStyle="#d8a45c";
-
-        for(let i=0;i<9;i++){
-
-            let x=
-                i*150-
-                ((performance.now()/45*speed)%150);
-
-            ctx.beginPath();
-
-            ctx.arc(
-                x,
-                H-65,
-                70,
-                Math.PI,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
-        }
-
-        /* cactos */
-
-        for(let i=0;i<6;i++){
-
-            let x=
-                i*190-
-                ((performance.now()/45*speed)%190);
-
-            ctx.strokeStyle="#2d6b38";
-            ctx.lineWidth=12;
-            ctx.lineCap="round";
-
-            ctx.beginPath();
-
-            ctx.moveTo(x,H-75);
-            ctx.lineTo(x,H-135);
-
-            ctx.moveTo(x,H-115);
-            ctx.lineTo(x-18,H-128);
-
-            ctx.moveTo(x,H-105);
-            ctx.lineTo(x+18,H-118);
-
-            ctx.stroke();
-
-        }
-
-    }
-
-    /* chão */
-
-    ctx.fillStyle=
-        level===2 ? "#a66b32" :
-        level===1 ? "#313b43" :
-        "#4d673d";
-
-    ctx.fillRect(0,H-65,W,65);
-
-    ctx.fillStyle=
-        level===2 ? "#70421e" :
-        "#263626";
-
-    ctx.fillRect(0,H-65,W,8);
-}
-
-
-/* =========================
-   LOBO
-========================= */
-
-function drawPlayer(){
-
-    const x=player.x;
-    const y=player.y;
-
-    legAnimation+=0.25;
-
-    let leg1=Math.sin(legAnimation)*5;
-    let leg2=Math.sin(legAnimation+Math.PI)*5;
-
-    /* pernas */
-
-    ctx.strokeStyle="#171a1d";
-    ctx.lineWidth=9;
-    ctx.lineCap="round";
-
-    ctx.beginPath();
-
-    ctx.moveTo(x+15,y+45);
-    ctx.lineTo(x+12+leg1,y+66);
-
-    ctx.stroke();
-
-    ctx.beginPath();
-
-    ctx.moveTo(x+42,y+45);
-    ctx.lineTo(x+42+leg2,y+66);
-
-    ctx.stroke();
-
-    /* corpo */
-
-    let body=ctx.createLinearGradient(x,y,x+60,y+60);
-
-    body.addColorStop(0,"#666d73");
-    body.addColorStop(.55,"#30353a");
-    body.addColorStop(1,"#111418");
-
-    ctx.fillStyle=body;
-
-    ctx.beginPath();
-
-    ctx.roundRect(
-        x,
-        y+18,
-        52,
-        38,
-        16
-    );
-
-    ctx.fill();
-
-    /* cauda */
-
-    ctx.strokeStyle="#252a2f";
-    ctx.lineWidth=11;
-
-    ctx.beginPath();
-
-    ctx.moveTo(x+8,y+28);
-
-    ctx.quadraticCurveTo(
-        x-15,y+5,
-        x-10,y-8
-    );
-
-    ctx.stroke();
-
-    /* cabeça */
-
-    ctx.fillStyle="#596168";
-
-    ctx.beginPath();
-
-    ctx.arc(x+43,y+18,23,0,Math.PI*2);
-
-    ctx.fill();
-
-    /* orelhas */
-
-    ctx.fillStyle="#252a2f";
-
-    ctx.beginPath();
-
-    ctx.moveTo(x+27,y+5);
-    ctx.lineTo(x+32,y-18);
-    ctx.lineTo(x+42,y+6);
-    ctx.fill();
-
-    ctx.beginPath();
-
-    ctx.moveTo(x+45,y+6);
-    ctx.lineTo(x+58,y-17);
-    ctx.lineTo(x+61,y+12);
-    ctx.fill();
-
-    /* nariz */
-
-    ctx.fillStyle="#050505";
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-        x+50,
-        y+25,
-        8,
-        5,
-        0,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-    /* olhos vermelhos */
-
-    ctx.fillStyle="#ff1616";
-    ctx.shadowColor="red";
-    ctx.shadowBlur=8;
-
-    ctx.beginPath();
-    ctx.arc(x+34,y+15,4,0,Math.PI*2);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(x+52,y+15,4,0,Math.PI*2);
-    ctx.fill();
-
-    ctx.shadowBlur=0;
-}
-
-
-/* =========================
-   OBSTÁCULO
-========================= */
-
-function drawObstacle(o){
-
-    if(o.type==="spike"){
-
-        ctx.fillStyle="#17191c";
-
-        ctx.beginPath();
-
-        ctx.moveTo(o.x,o.y+o.h);
-        ctx.lineTo(o.x+o.w/2,o.y);
-        ctx.lineTo(o.x+o.w,o.y+o.h);
-
-        ctx.closePath();
-        ctx.fill();
-
-    }
-
-    else if(o.type==="doubleSpike"){
-
-        ctx.fillStyle="#17191c";
-
-        for(let i=0;i<2;i++){
-
-            let sx=o.x+i*42;
-
-            ctx.beginPath();
-
-            ctx.moveTo(sx,o.y+o.h);
-            ctx.lineTo(sx+22,o.y);
-            ctx.lineTo(sx+44,o.y+o.h);
-
-            ctx.closePath();
-            ctx.fill();
-        }
-
-    }
-
-    else if(o.type==="rock"){
-
-        ctx.fillStyle="#555b60";
-
-        ctx.beginPath();
-
-        ctx.arc(
-            o.x+25,
-            o.y+28,
-            28,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
-
-    else{
-
-        ctx.fillStyle="#593522";
-
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.w,
-            o.h
-        );
-
-        ctx.strokeStyle="#2b160d";
-        ctx.lineWidth=3;
-
-        ctx.strokeRect(
-            o.x,
-            o.y,
-            o.w,
-            o.h
-        );
-
-    }
-}
-
-
-/* =========================
-   BOSTINHA
-========================= */
-
-function drawCoin(c){
-
-    ctx.font="28px Arial";
-    ctx.textAlign="center";
-    ctx.textBaseline="middle";
-
-    ctx.fillText("💩",c.x,c.y);
-}
-
-
-/* =========================
-   PERDER VIDA
-========================= */
-
-function hitObstacle(index){
-
-    /* obstáculo continua existindo */
-
-    lives--;
-
-    updateLives();
-
-    /* reinicia posição */
-
-    player.x=75;
-    player.y=H-130;
-    player.vy=0;
-    player.grounded=true;
-
-    obstacles=[];
-
-    if(lives<=0){
-
-        gameOver();
-
-    }
-}
-
-
-/* =========================
-   FASE
-========================= */
-
-function checkLevel(){
-
-    if(coinCount>=10){
-
-        coinCount=0;
-        level++;
-
-        /* velocidade NÃO aumenta ao perder vida */
-
-        document.getElementById("coins").textContent=0;
-        document.getElementById("level").textContent=level;
-
-        obstacles=[];
-        coins=[];
-
-    }
-}
-
-
-/* =========================
-   GAME OVER
-========================= */
-
-function gameOver(){
-
-    running=false;
-
-    document.getElementById("finalCoins").textContent=coinCount;
-    document.getElementById("finalLevel").textContent=level;
-    document.getElementById("gameOver").style.display="flex";
-}
-
-
-/* =========================
-   LOOP
-========================= */
-
-function loop(){
-
-    if(
-        document.getElementById("game").style.display==="none"
-    ){
-        return;
-    }
-
-    ctx.clearRect(0,0,W,H);
-
-    background();
-
-    if(started){
-
-        player.vy+=0.55;
-        player.y+=player.vy;
-
-        if(player.y>=H-130){
-
-            player.y=H-130;
-            player.vy=0;
-            player.grounded=true;
-
-        }
-
-        obstacleTimer--;
-
-        if(obstacleTimer<=0){
-
-            spawnObstacle();
-
-            obstacleTimer=Math.max(
-                55,
-                105-Math.min(level,20)*2
-            );
-
-        }
-
-        for(
-            let i=obstacles.length-1;
-            i>=0;
-            i--
-        ){
-
-            let o=obstacles[i];
-
-            o.x-=speed;
-
-            drawObstacle(o);
-
-            if(collision(player,o)){
-
-                hitObstacle(i);
-                break;
-
-            }
-        }
-
-        obstacles=obstacles.filter(
-            o=>o.x>-150
-        );
-
-
-        coinTimer--;
-
-        if(coinTimer<=0){
-
-            spawnCoin();
-
-            coinTimer=70+Math.random()*60;
-
-        }
-
-        for(
-            let i=coins.length-1;
-            i>=0;
-            i--
-        ){
-
-            let c=coins[i];
-
-            c.x-=speed;
-
-            drawCoin(c);
-
-            let box={
-                x:c.x-c.r,
-                y:c.y-c.r,
-                w:c.r*2,
-                h:c.r*2
-            };
-
-            if(collision(player,box)){
-
-                coins.splice(i,1);
-
-                coinCount++;
-
-                document.getElementById(
-                    "coins"
-                ).textContent=coinCount;
-
-                checkLevel();
-
-            }
-
-        }
-
-        coins=coins.filter(
-            c=>c.x>-50
-        );
-    }
-
-    drawPlayer();
-
-    requestAnimationFrame(loop);
-}
-
-
-/* =========================
-   CONTROLES
-========================= */
-
-document.getElementById(
-    "startButton"
-).addEventListener(
-    "click",
-    startGame
-);
-
-document.getElementById(
-    "game"
-).addEventListener(
-    "pointerdown",
-    touchGame
-);
-
-document.getElementById(
-    "restart"
-).addEventListener(
-    "click",
-    ()=>{
-
-        document.getElementById(
-            "gameOver"
-        ).style.display="none";
-
-        reset();
-
-        started=false;
-        running=false;
-
-        document.getElementById(
-            "tapStart"
-        ).style.display="block";
-
-        requestAnimationFrame(loop);
-
-    }
-);
-
-</script>
-
-</body>
-</html>
