@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>LILO O CAGÃO</title>
+<title>LILO O CAGAO</title>
 
 <style>
 *{
@@ -18,55 +18,43 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
+    background:#05070a;
     font-family:Arial,sans-serif;
-    background:#050505;
 }
 
-button{
-    border:0;
-    font-family:Arial,sans-serif;
-    touch-action:manipulation;
-}
-
-/* ================= LOADING ================= */
+/* =========================
+   CARREGAMENTO
+========================= */
 
 #loading{
     position:fixed;
     inset:0;
-    z-index:9999;
-
+    z-index:100;
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-
-    color:white;
-
+    align-items:center;
     background:
-    radial-gradient(circle at center,
-    #3b424a 0%,
-    #11151a 45%,
-    #020304 100%);
+    radial-gradient(circle at center,#303842 0%,#090c11 55%,#020304 100%);
+    color:white;
 }
 
 .logo{
-    font-size:42px;
+    font-size:60px;
     font-weight:900;
-    letter-spacing:4px;
-    text-shadow:
-        0 0 10px red,
-        0 0 30px #800000;
+    letter-spacing:8px;
+    color:white;
+    text-shadow:0 0 12px red,0 0 35px #900;
 }
 
-.loadWolf{
-    font-size:90px;
-    margin:18px 0;
+.loadingWolf{
+    font-size:100px;
+    margin:18px;
 }
 
-.loadText{
+.loadingText{
     color:#aaa;
     letter-spacing:4px;
-    font-size:13px;
 }
 
 #percent{
@@ -75,609 +63,434 @@ button{
     margin:12px;
 }
 
-.loadBar{
+.bar{
     width:280px;
-    height:13px;
-    background:#222;
+    height:12px;
     border-radius:20px;
+    background:#222;
     overflow:hidden;
 }
 
-#fill{
+#barFill{
     width:0%;
     height:100%;
-    background:#e00000;
+    background:linear-gradient(90deg,#870000,#ff2020);
     box-shadow:0 0 15px red;
 }
 
-/* ================= MENU ================= */
+/* =========================
+   TELA INICIAL NOVA
+========================= */
 
 #menu{
     display:none;
     position:fixed;
     inset:0;
-    overflow-y:auto;
-
+    z-index:50;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     color:white;
-    text-align:center;
-
-    padding:15px 10px 35px;
+    overflow:hidden;
 
     background:
-    radial-gradient(circle at 50% 0%,
-    #414b55,
-    #101419 55%,
-    #030405 100%);
+    radial-gradient(circle at 50% 25%,#414b55 0%,#171d24 32%,#07090d 75%,#020304 100%);
 }
 
-.title{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:3px;
+/* detalhes de fundo */
+
+#menu:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        120deg,
+        transparent 35%,
+        rgba(255,255,255,.035) 50%,
+        transparent 65%
+    );
+    pointer-events:none;
+}
+
+.menuTop{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.menuTitle{
+    font-size:64px;
+    font-weight:1000;
+    letter-spacing:8px;
     text-shadow:
-        0 0 12px red,
-        0 0 30px #700000;
+    0 0 10px #ff0000,
+    0 0 30px #b00000,
+    0 5px 20px #000;
 }
 
-.sub{
-    color:#aaa;
-    font-size:12px;
-    margin-top:4px;
-}
-
-.creator{
-    margin:9px 0 14px;
-    font-size:18px;
+.menuName{
+    margin-top:-3px;
+    font-size:24px;
     font-weight:900;
-    color:#ff3333;
-    text-shadow:0 0 8px #800000;
+    letter-spacing:2px;
+    color:#ff2929;
+    text-shadow:0 0 12px #900;
 }
 
-.sectionTitle{
-    margin:10px 0 8px;
-    font-size:18px;
-    font-weight:bold;
+.subtitle{
+    margin-top:7px;
+    color:#bbb;
+    font-size:13px;
+    letter-spacing:3px;
 }
 
-/* ================= PERSONAGENS ================= */
+/* cartão */
 
-#characters{
+.menuCard{
+    position:relative;
+    z-index:2;
+    width:min(330px,88vw);
+    padding:18px;
+    margin-top:18px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    background:rgba(10,13,17,.72);
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.7),
+    inset 0 0 30px rgba(255,255,255,.025);
+    backdrop-filter:blur(8px);
+}
+
+/* lobo */
+
+.wolfPhoto{
+    width:100%;
+    height:245px;
     display:flex;
-    gap:9px;
-    overflow-x:auto;
-    max-width:700px;
-    margin:auto;
-    padding:3px 2px 12px;
+    justify-content:center;
+    align-items:flex-end;
+    overflow:hidden;
+    border-radius:18px;
+
+    background:
+    radial-gradient(circle at 50% 25%,#65717a,#252c33 48%,#080a0d 100%);
+
+    box-shadow:
+    inset 0 0 35px rgba(0,0,0,.6);
 }
 
-.char{
-    flex:0 0 105px;
-    height:125px;
+.coverWolf{
+    position:relative;
+    width:165px;
+    height:225px;
+}
 
-    border:2px solid #3d444b;
+/* corpo */
+
+.coverBody{
+    position:absolute;
+    width:125px;
+    height:115px;
+    left:20px;
+    bottom:0;
+    border-radius:50% 50% 22% 22%;
+    background:linear-gradient(145deg,#727a80,#353b40 55%,#111418);
+}
+
+/* cabeça */
+
+.coverHead{
+    position:absolute;
+    width:112px;
+    height:118px;
+    left:27px;
+    top:25px;
+    border-radius:48% 48% 45% 45%;
+    background:linear-gradient(145deg,#7b8389,#41484e 52%,#14181c);
+}
+
+/* orelhas */
+
+.coverEar{
+    position:absolute;
+    width:48px;
+    height:73px;
+    top:0;
+    background:linear-gradient(145deg,#596169,#15191e);
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+
+.coverEar.left{
+    left:16px;
+    transform:rotate(-12deg);
+}
+
+.coverEar.right{
+    right:9px;
+    transform:rotate(12deg);
+}
+
+/* olhos */
+
+.coverEye{
+    position:absolute;
+    width:12px;
+    height:8px;
+    top:64px;
+    border-radius:50%;
+    background:#ff1717;
+    box-shadow:0 0 7px red,0 0 16px red;
+}
+
+.coverEye.left{
+    left:28px;
+}
+
+.coverEye.right{
+    right:28px;
+}
+
+/* focinho */
+
+.coverMuzzle{
+    position:absolute;
+    width:50px;
+    height:40px;
+    left:31px;
+    bottom:12px;
+    border-radius:50%;
+    background:linear-gradient(150deg,#777d80,#454a4d);
+}
+
+.coverNose{
+    position:absolute;
+    width:23px;
+    height:15px;
+    left:44px;
+    bottom:31px;
+    border-radius:50%;
+    background:#050505;
+}
+
+/* botão */
+
+.startButton{
+    width:100%;
+    margin-top:16px;
+    padding:16px;
+    border:1px solid #ff3030;
     border-radius:13px;
 
-    color:white;
-
     background:
-    linear-gradient(145deg,
-    #30363c,
-    #0d1013);
-
-    position:relative;
-}
-
-.char.selected{
-    border-color:#ff2222;
-    box-shadow:
-        0 0 12px rgba(255,0,0,.55);
-}
-
-.char.locked{
-    opacity:.35;
-}
-
-.charIcon{
-    display:block;
-    font-size:48px;
-    margin:7px 0;
-}
-
-.charName{
-    font-size:11px;
-    font-weight:bold;
-}
-
-.charLock{
-    position:absolute;
-    right:5px;
-    top:4px;
-}
-
-/* ================= MAPAS ================= */
-
-#maps{
-    width:100%;
-    max-width:700px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-}
-
-.map{
-    min-height:75px;
-
-    border:2px solid #41474c;
-    border-radius:11px;
+    linear-gradient(180deg,#8e1010,#420505);
 
     color:white;
-
-    background:
-    linear-gradient(145deg,
-    #292f34,
-    #0b0e11);
-
-    position:relative;
-}
-
-.map.selected{
-    border-color:#ff2222;
-    box-shadow:
-        0 0 12px rgba(255,0,0,.5);
-}
-
-.map.locked{
-    opacity:.28;
-}
-
-.mapIcon{
-    display:block;
-    font-size:25px;
-    margin:4px;
-}
-
-.mapName{
-    font-size:10px;
-    font-weight:bold;
-}
-
-.mapLock{
-    position:absolute;
-    top:4px;
-    right:5px;
-}
-
-#play{
-    margin-top:17px;
-
-    width:280px;
-    padding:15px;
-
-    border-radius:12px;
-
-    color:white;
-    background:
-    linear-gradient(#a00000,#620000);
-
-    border:2px solid #ff3b3b;
-
     font-size:18px;
-    font-weight:bold;
+    font-weight:900;
+    letter-spacing:2px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.55),
+    0 0 18px rgba(255,0,0,.18);
 }
 
-/* ================= GAME ================= */
+/* criador */
+
+.creator{
+    position:relative;
+    z-index:2;
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#999;
+    letter-spacing:2px;
+}
+
+.creator strong{
+    display:block;
+    margin-top:4px;
+    color:white;
+    font-size:18px;
+    letter-spacing:3px;
+    text-shadow:0 0 10px rgba(255,255,255,.25);
+}
+
+/* =========================
+   JOGO
+========================= */
 
 #game{
     display:none;
     position:fixed;
     inset:0;
-    overflow:hidden;
+    background:#76c9ec;
 }
 
-#canvas{
+canvas{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
 }
 
-/* ================= LOBO ================= */
-
-#wolf{
-    position:absolute;
-
-    width:66px;
-    height:72px;
-
-    z-index:20;
-
-    pointer-events:none;
-}
-
-/*
-   NÃO TEM SOMBRA.
-   O LOBO É PEQUENO.
-*/
-
-.body{
-    position:absolute;
-    left:4px;
-    top:32px;
-
-    width:47px;
-    height:28px;
-
-    border-radius:60%;
-
-    background:
-    linear-gradient(145deg,
-    #92999d,
-    #42484d 60%,
-    #17191b);
-}
-
-.head{
-    position:absolute;
-    left:32px;
-    top:7px;
-
-    width:34px;
-    height:38px;
-
-    border-radius:50%;
-
-    background:
-    linear-gradient(145deg,
-    #9da3a6,
-    #4b5257 65%,
-    #24282b);
-}
-
-.ear{
-    position:absolute;
-
-    width:18px;
-    height:27px;
-
-    background:#24292d;
-
-    clip-path:
-    polygon(50% 0,100% 100%,0 100%);
-}
-
-.ear.one{
-    left:31px;
-    top:0;
-}
-
-.ear.two{
-    left:49px;
-    top:1px;
-}
-
-.eye{
-    position:absolute;
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:#ff1111;
-
-    box-shadow:
-        0 0 8px red;
-}
-
-.eye.one{
-    left:39px;
-    top:20px;
-}
-
-.eye.two{
-    left:53px;
-    top:20px;
-}
-
-.muzzle{
-    position:absolute;
-
-    left:51px;
-    top:29px;
-
-    width:20px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:#565d61;
-}
-
-.nose{
-    position:absolute;
-
-    left:67px;
-    top:32px;
-
-    width:6px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:#050505;
-}
-
-.tail{
-    position:absolute;
-
-    left:0;
-    top:24px;
-
-    width:26px;
-    height:21px;
-
-    border-top:7px solid #292e32;
-
-    border-radius:50%;
-
-    transform:rotate(-30deg);
-}
-
-.leg{
-    position:absolute;
-
-    top:53px;
-
-    width:7px;
-    height:20px;
-
-    border-radius:7px;
-
-    background:#16191b;
-}
-
-.leg1{left:7px}
-.leg2{left:19px}
-.leg3{left:34px}
-.leg4{left:47px}
-
-#wolf.running .leg1,
-#wolf.running .leg3{
-    animation:run1 .15s infinite alternate;
-}
-
-#wolf.running .leg2,
-#wolf.running .leg4{
-    animation:run2 .15s infinite alternate;
-}
-
-@keyframes run1{
-    from{transform:rotate(22deg)}
-    to{transform:rotate(-22deg)}
-}
-
-@keyframes run2{
-    from{transform:rotate(-22deg)}
-    to{transform:rotate(22deg)}
-}
-
-/* ================= HUD ================= */
-
 #hud{
     position:absolute;
-
-    top:10px;
-    left:10px;
-    right:10px;
-
-    z-index:50;
-
+    top:15px;
+    left:15px;
+    right:15px;
     display:flex;
     justify-content:space-between;
-
+    align-items:center;
     color:white;
-
-    font-size:18px;
+    font-size:20px;
     font-weight:bold;
-
-    text-shadow:
-    2px 2px 5px #000;
+    text-shadow:2px 2px 5px #000;
+    z-index:10;
 }
 
-#poopCount{
-    color:#d49a61;
+#lives{
+    letter-spacing:4px;
 }
 
-#home{
+#coins{
+    color:#9cff55;
+}
+
+#tapStart{
     position:absolute;
-
-    top:43px;
-    right:10px;
-
-    z-index:60;
-
-    padding:8px 11px;
-
-    border-radius:8px;
-
-    background:rgba(0,0,0,.6);
-    color:white;
-
-    border:1px solid white;
-}
-
-#tap{
-    position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
-    z-index:40;
-
     color:white;
-
-    text-align:center;
-
-    font-size:23px;
+    font-size:25px;
     font-weight:bold;
-
-    text-shadow:
-    2px 2px 7px black;
-
+    text-align:center;
+    text-shadow:0 0 10px #000,2px 2px 5px #000;
+    z-index:20;
     pointer-events:none;
 }
 
-#tap small{
+#tapStart small{
     display:block;
-    margin-top:8px;
-    font-size:14px;
+    margin-top:10px;
+    font-size:15px;
+    color:#ddd;
 }
-
-/* ================= GAME OVER ================= */
 
 #gameOver{
     display:none;
-
     position:absolute;
     inset:0;
-
-    z-index:100;
-
+    z-index:40;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-
+    align-items:center;
+    background:rgba(0,0,0,.8);
     color:white;
-
-    background:rgba(0,0,0,.88);
 }
 
 #gameOver h2{
     color:#ff2222;
     font-size:45px;
-    margin-bottom:10px;
-}
-
-.overBtn{
-    margin-top:13px;
-    padding:14px 28px;
-
-    border-radius:10px;
-
-    color:white;
-    font-size:16px;
-    font-weight:bold;
+    margin-bottom:15px;
 }
 
 .restart{
-    background:#7c0000;
-}
-
-.back{
-    background:#333;
+    margin-top:20px;
+    padding:15px 40px;
+    border:0;
+    border-radius:10px;
+    background:#870000;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOADING ================= -->
+<!-- =========================
+     CARREGAMENTO
+========================= -->
 
 <div id="loading">
-
-    <div class="logo">
-        LILO O CAGÃO
-    </div>
-
-    <div class="loadWolf">🐺</div>
-
-    <div class="loadText">
-        CARREGANDO
-    </div>
-
+    <div class="logo">LILO</div>
+    <div class="loadingWolf">🐺</div>
+    <div class="loadingText">CARREGANDO</div>
     <div id="percent">0%</div>
 
-    <div class="loadBar">
-        <div id="fill"></div>
+    <div class="bar">
+        <div id="barFill"></div>
     </div>
-
 </div>
 
 
-<!-- ================= MENU ================= -->
+<!-- =========================
+     MENU
+========================= -->
 
 <div id="menu">
 
-    <div class="title">
-        LILO O CAGÃO
+    <div class="menuTop">
+        <div class="menuTitle">LILO</div>
+
+        <div class="menuName">
+            O CAGAO
+        </div>
+
+        <div class="subtitle">
+            CORRA • PULE • SOBREVIVA
+        </div>
     </div>
 
-    <div class="sub">
-        CORRA • PULE • PEGUE 💩
+    <div class="menuCard">
+
+        <div class="wolfPhoto">
+
+            <div class="coverWolf">
+
+                <div class="coverEar left"></div>
+                <div class="coverEar right"></div>
+
+                <div class="coverHead">
+
+                    <div class="coverEye left"></div>
+                    <div class="coverEye right"></div>
+
+                    <div class="coverMuzzle"></div>
+                    <div class="coverNose"></div>
+
+                </div>
+
+                <div class="coverBody"></div>
+
+            </div>
+
+        </div>
+
+        <button class="startButton" id="startButton">
+            TOQUE PARA JOGAR
+        </button>
+
     </div>
 
     <div class="creator">
-        👑 CRIADOR: LINDAO
+        GAME CRIADO POR
+        <strong>CRIADOR LINDAO</strong>
     </div>
-
-
-    <div class="sectionTitle">
-        🐺 SELEÇÃO DE PERSONAGEM
-    </div>
-
-    <div id="characters"></div>
-
-
-    <div class="sectionTitle">
-        🗺️ SELEÇÃO DE MAPA
-    </div>
-
-    <div id="maps"></div>
-
-
-    <button id="play">
-        ▶ JOGAR
-    </button>
 
 </div>
 
 
-<!-- ================= GAME ================= -->
+<!-- =========================
+     GAME
+========================= -->
 
 <div id="game">
 
     <canvas id="canvas"></canvas>
-
-
-    <div id="wolf">
-
-        <div class="tail"></div>
-
-        <div class="body"></div>
-
-        <div class="head"></div>
-
-        <div class="ear one"></div>
-        <div class="ear two"></div>
-
-        <div class="eye one"></div>
-        <div class="eye two"></div>
-
-        <div class="muzzle"></div>
-
-        <div class="nose"></div>
-
-        <div class="leg leg1"></div>
-        <div class="leg leg2"></div>
-        <div class="leg leg3"></div>
-        <div class="leg leg4"></div>
-
-    </div>
-
 
     <div id="hud">
 
@@ -686,56 +499,36 @@ button{
         </div>
 
         <div>
-            💩 <span id="poopCount">0</span>/10
+            💩 <span id="coins">0</span>
         </div>
 
         <div>
-            MAPA <span id="level">1</span>
+            FASE <span id="level">1</span>
         </div>
 
     </div>
 
-
-    <button id="home">
-        🏠 INÍCIO
-    </button>
-
-
-    <div id="tap">
-
-        TOQUE PARA COMEÇAR
-
-        <small>
-            Toque para pular
-        </small>
-
+    <div id="tapStart">
+        TOQUE NA TELA PARA COMEÇAR
+        <small>Toque para pular</small>
     </div>
-
 
     <div id="gameOver">
 
         <h2>GAME OVER</h2>
 
         <div>
-            MAPA:
+            Você chegou à fase
             <span id="finalLevel">1</span>
         </div>
 
-        <div style="margin-top:6px">
-            💩:
-            <span id="finalPoop">0</span>/10
+        <div>
+            Bostinhas:
+            <span id="finalCoins">0</span>
         </div>
 
-        <button
-            class="overBtn restart"
-            id="restart">
-            🔄 JOGAR NOVAMENTE
-        </button>
-
-        <button
-            class="overBtn back"
-            id="back">
-            🏠 VOLTAR AO INÍCIO
+        <button class="restart" id="restart">
+            JOGAR NOVAMENTE
         </button>
 
     </div>
@@ -745,1385 +538,399 @@ button{
 
 <script>
 
-/* =====================================================
-   CARREGAMENTO 0 → 100
-===================================================== */
+/* =========================
+   CARREGAMENTO
+========================= */
 
-let loadingValue=0;
+let load=0;
 
 function loading(){
 
-    loadingValue++;
+    load++;
 
-    document.getElementById("percent")
-        .textContent=
-        loadingValue+"%";
+    if(load>100) load=100;
 
-    document.getElementById("fill")
-        .style.width=
-        loadingValue+"%";
+    document.getElementById("percent").textContent=load+"%";
+    document.getElementById("barFill").style.width=load+"%";
 
+    if(load<100){
 
-    if(loadingValue<100){
-
-        setTimeout(
-            loading,
-            18
-        );
+        setTimeout(loading,35);
 
     }else{
 
-        setTimeout(
-            ()=>{
-                document.getElementById("loading")
-                    .style.display="none";
+        setTimeout(()=>{
 
-                document.getElementById("menu")
-                    .style.display="block";
+            document.getElementById("loading").style.display="none";
+            document.getElementById("menu").style.display="flex";
 
-                buildCharacters();
-                buildMaps();
-
-            },
-            350
-        );
+        },500);
 
     }
-
 }
 
 loading();
 
 
-/* =====================================================
-   PERSONAGENS
-===================================================== */
-
-const characters=[
-
-    {
-        icon:"🐺",
-        name:"LOBO",
-        unlock:1
-    },
-
-    {
-        icon:"🐕",
-        name:"CACHORRO",
-        unlock:5
-    },
-
-    {
-        icon:"🦊",
-        name:"RAPOSA",
-        unlock:10
-    },
-
-    {
-        icon:"🐯",
-        name:"TIGRE",
-        unlock:15
-    },
-
-    {
-        icon:"🦁",
-        name:"LEÃO",
-        unlock:20
-    },
-
-    {
-        icon:"🐻",
-        name:"URSO",
-        unlock:25
-    },
-
-    {
-        icon:"🐲",
-        name:"DRAGÃO",
-        unlock:30
-    }
-
-];
-
-
-let unlockedMap=
-    Number(
-        localStorage.getItem(
-            "liloUnlockedMap"
-        )
-    ) || 1;
-
-
-let selectedMap=1;
-
-let selectedCharacter=0;
-
-
-let unlockedCharacters=
-    Number(
-        localStorage.getItem(
-            "liloUnlockedCharacters"
-        )
-    ) || 1;
-
-
-function buildCharacters(){
-
-    const box=
-        document.getElementById(
-            "characters"
-        );
-
-    box.innerHTML="";
-
-
-    characters.forEach(
-        (c,index)=>{
-
-            const unlocked=
-                index===0 ||
-                unlockedCharacters>=c.unlock;
-
-
-            const btn=
-                document.createElement("button");
-
-
-            btn.className="char";
-
-
-            if(
-                index===selectedCharacter &&
-                unlocked
-            ){
-
-                btn.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            if(!unlocked){
-
-                btn.classList.add(
-                    "locked"
-                );
-
-            }
-
-
-            btn.innerHTML=`
-
-                ${
-                    !unlocked
-                    ? '<span class="charLock">🔒</span>'
-                    : ''
-                }
-
-                <span class="charIcon">
-                    ${c.icon}
-                </span>
-
-                <span class="charName">
-                    ${c.name}
-                </span>
-
-                <br>
-
-                ${
-                    unlocked
-                    ? "DESBLOQUEADO"
-                    : "MAPA "+c.unlock
-                }
-
-            `;
-
-
-            btn.onclick=()=>{
-
-                if(!unlocked)
-                    return;
-
-
-                selectedCharacter=index;
-
-
-                document
-                    .querySelectorAll(".char")
-                    .forEach(
-                        x=>
-                            x.classList.remove(
-                                "selected"
-                            )
-                    );
-
-
-                btn.classList.add(
-                    "selected"
-                );
-
-            };
-
-
-            box.appendChild(btn);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   30 MAPAS
-===================================================== */
-
-const mapNames=[
-
-    ["🏙️","CIDADE"],
-    ["🏜️","DESERTO"],
-    ["🌲","FLORESTA"],
-    ["⛰️","MONTANHA"],
-    ["🏖️","PRAIA"],
-    ["❄️","NEVE"],
-    ["🌋","VULCÃO"],
-    ["🐊","PÂNTANO"],
-    ["🪨","CAVERNA"],
-    ["🌙","NOITE"],
-    ["🌾","FAZENDA"],
-    ["🌉","PONTE"],
-    ["🏚️","RUÍNAS"],
-    ["🌳","FLORESTA ESCURA"],
-    ["🌆","CIDADE 2"],
-    ["🏜️","DESERTO 2"],
-    ["🧊","GELO"],
-    ["🏝️","ILHA"],
-    ["⛈️","TEMPESTADE"],
-    ["⛰️","MONTANHA 2"],
-    ["🌃","CIDADE NOTURNA"],
-    ["🌋","VULCÃO 2"],
-    ["🕳️","CAVERNA 2"],
-    ["🌲","FLORESTA 2"],
-    ["🏜️","DESERTO 3"],
-    ["🏖️","PRAIA 2"],
-    ["❄️","NEVE 2"],
-    ["🏚️","RUÍNAS 2"],
-    ["🏢","TORRES"],
-    ["👑","MAPA FINAL"]
-
-];
-
-
-function buildMaps(){
-
-    const box=
-        document.getElementById(
-            "maps"
-        );
-
-    box.innerHTML="";
-
-
-    mapNames.forEach(
-        (m,index)=>{
-
-            const number=index+1;
-
-            const unlocked=
-                number<=unlockedMap;
-
-
-            const btn=
-                document.createElement("button");
-
-
-            btn.className="map";
-
-
-            if(
-                number===selectedMap &&
-                unlocked
-            ){
-
-                btn.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            if(!unlocked){
-
-                btn.classList.add(
-                    "locked"
-                );
-
-            }
-
-
-            btn.innerHTML=`
-
-                ${
-                    !unlocked
-                    ? '<span class="mapLock">🔒</span>'
-                    : ''
-                }
-
-                <span class="mapIcon">
-                    ${m[0]}
-                </span>
-
-                <span class="mapName">
-                    MAPA ${number}<br>${m[1]}
-                </span>
-
-            `;
-
-
-            btn.onclick=()=>{
-
-                if(!unlocked)
-                    return;
-
-
-                selectedMap=number;
-
-
-                document
-                    .querySelectorAll(".map")
-                    .forEach(
-                        x=>
-                            x.classList.remove(
-                                "selected"
-                            )
-                    );
-
-
-                btn.classList.add(
-                    "selected"
-                );
-
-            };
-
-
-            box.appendChild(btn);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
+/* =========================
    CANVAS
-===================================================== */
+========================= */
 
-const canvas=
-    document.getElementById(
-        "canvas"
-    );
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
-const ctx=
-    canvas.getContext("2d");
-
-
-let W=0;
-let H=0;
-
+let W,H;
 
 function resize(){
 
-    W=
-        canvas.width=
-        window.innerWidth;
-
-    H=
-        canvas.height=
-        window.innerHeight;
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
 
 }
-
 
 resize();
+window.addEventListener("resize",resize);
 
 
-window.addEventListener(
-    "resize",
-    resize
-);
-
-
-/* =====================================================
-   GAME VARIABLES
-===================================================== */
+/* =========================
+   VARIÁVEIS
+========================= */
 
 let player;
-
 let obstacles=[];
-let poops=[];
+let coins=[];
 
-let started=false;
 let running=false;
+let started=false;
 
+let coinCount=0;
+let level=1;
 let lives=3;
 
-let poop=0;
-
-let level=1;
-
-
-/*
-   VELOCIDADE FIXA.
-
-   NÃO aumenta quando perde vida.
-*/
-
-const GAME_SPEED=4.1;
-
+let speed=5;
 
 let obstacleTimer=80;
-let poopTimer=80;
+let coinTimer=40;
 
-let invincible=false;
+let legAnimation=0;
 
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
-function resetGame(){
-
-    lives=3;
-
-    poop=0;
-
-    level=selectedMap;
-
-    obstacles=[];
-    poops=[];
-
-    obstacleTimer=75;
-    poopTimer=65;
-
-    invincible=false;
-
+function reset(){
 
     player={
-
-        x:35,
-
-        y:H-130,
-
-        width:58,
-
-        height:62,
-
+        x:75,
+        y:H-145,
+        w:65,
+        h:65,
         vy:0,
-
         grounded:true
-
     };
 
+    obstacles=[];
+    coins=[];
 
-    document.getElementById("level")
-        .textContent=level;
+    coinCount=0;
+    level=1;
+    lives=3;
 
-    document.getElementById("poopCount")
-        .textContent=0;
+    speed=5;
 
+    obstacleTimer=80;
+    coinTimer=40;
+
+    document.getElementById("coins").textContent=0;
+    document.getElementById("level").textContent=1;
 
     updateLives();
-    updateWolf();
-
 }
 
 
-/* =====================================================
-   LOBO NA TELA
-===================================================== */
+/* =========================
+   INICIAR
+========================= */
 
-function updateWolf(){
+function startGame(){
 
-    if(!player)
+    document.getElementById("menu").style.display="none";
+    document.getElementById("game").style.display="block";
+
+    reset();
+
+    running=false;
+    started=false;
+
+    document.getElementById("tapStart").style.display="block";
+
+    requestAnimationFrame(loop);
+}
+
+
+/* =========================
+   TOQUE
+========================= */
+
+function touchGame(){
+
+    if(!started){
+
+        started=true;
+        running=true;
+
+        document.getElementById("tapStart").style.display="none";
+
+        jump();
+
         return;
-
-
-    const wolf=
-        document.getElementById(
-            "wolf"
-        );
-
-
-    wolf.style.left=
-        player.x+"px";
-
-
-    wolf.style.top=
-        player.y+"px";
-
-
-    if(
-        started &&
-        running
-    ){
-
-        wolf.classList.add(
-            "running"
-        );
-
-    }else{
-
-        wolf.classList.remove(
-            "running"
-        );
-
     }
 
+    jump();
 }
 
 
-/* =====================================================
+/* =========================
    PULO
-===================================================== */
+========================= */
 
 function jump(){
 
-    if(!running)
-        return;
+    if(!running) return;
 
+    if(player.grounded){
 
-    if(!player.grounded)
-        return;
+        player.vy=-11;
+        player.grounded=false;
 
+        /* latido/latição */
 
-    /*
-       PULO MAIS BAIXO.
+        try{
+            const audioCtx=new(
+                window.AudioContext||
+                window.webkitAudioContext
+            )();
 
-       A altura das bostinhas
-       também foi reduzida.
-    */
+            const osc=audioCtx.createOscillator();
+            const gain=audioCtx.createGain();
 
-    player.vy=-10.8;
+            osc.type="square";
+            osc.frequency.value=180;
 
-    player.grounded=false;
-
-
-    bark();
-
-}
-
-
-/* =====================================================
-   LATIDO
-===================================================== */
-
-let audioContext=null;
-
-
-function bark(){
-
-    try{
-
-        if(!audioContext){
-
-            audioContext=
-                new(
-                    window.AudioContext ||
-                    window.webkitAudioContext
-                )();
-
-        }
-
-
-        if(
-            audioContext.state==="suspended"
-        ){
-
-            audioContext.resume();
-
-        }
-
-
-        const now=
-            audioContext.currentTime;
-
-
-        const osc=
-            audioContext.createOscillator();
-
-        const gain=
-            audioContext.createGain();
-
-
-        osc.type="square";
-
-
-        osc.frequency.setValueAtTime(
-            450,
-            now
-        );
-
-        osc.frequency.exponentialRampToValueAtTime(
-            170,
-            now+.13
-        );
-
-
-        gain.gain.setValueAtTime(
-            .001,
-            now
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .12,
-            now+.015
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            now+.17
-        );
-
-
-        osc.connect(gain);
-
-        gain.connect(
-            audioContext.destination
-        );
-
-
-        osc.start(now);
-
-        osc.stop(
-            now+.18
-        );
-
-    }catch(e){}
-
-}
-
-
-/* =====================================================
-   OBSTÁCULOS
-===================================================== */
-
-function getObstacleTypes(){
-
-    if(level===1){
-
-        return[
-            "building",
-            "spike",
-            "barrier"
-        ];
-
-    }
-
-
-    if(level===2){
-
-        return[
-            "cactus",
-            "rock",
-            "spike"
-        ];
-
-    }
-
-
-    if(level===3){
-
-        return[
-            "rock",
-            "spike",
-            "tree"
-        ];
-
-    }
-
-
-    return[
-        "spike",
-        "rock",
-        "double"
-    ];
-
-}
-
-
-function spawnObstacle(){
-
-    const types=
-        getObstacleTypes();
-
-
-    const type=
-        types[
-            Math.floor(
-                Math.random()*types.length
-            )
-        ];
-
-
-    let width=48;
-    let height=48;
-
-
-    if(type==="double")
-        width=90;
-
-
-    if(type==="cactus"){
-
-        width=40;
-        height=58;
-
-    }
-
-
-    if(type==="building"){
-
-        width=55;
-        height=60;
-
-    }
-
-
-    if(type==="tree"){
-
-        width=48;
-        height=65;
-
-    }
-
-
-    obstacles.push({
-
-        x:W+70,
-
-        y:H-65-height,
-
-        width:width,
-
-        height:height,
-
-        type:type
-
-    });
-
-}
-
-
-/* =====================================================
-   BOSTINHA
-===================================================== */
-
-function spawnPoop(){
-
-    /*
-       Bostinha em altura alcançável.
-
-       Nunca colocamos diretamente
-       sobre o chão ou dentro de obstáculo.
-    */
-
-    let p=null;
-
-
-    for(
-        let attempt=0;
-        attempt<50;
-        attempt++
-    ){
-
-        const candidate={
-
-            x:
-                W+100+
-                Math.random()*130,
-
-            y:
-                H-110-
-                Math.random()*45,
-
-            width:28,
-
-            height:28
-
-        };
-
-
-        const blocked=
-            obstacles.some(
-                o=>
-                    candidate.x+14 >
-                    o.x-5 &&
-
-                    candidate.x-14 <
-                    o.x+o.width+5 &&
-
-                    candidate.y+14 >
-                    o.y-5 &&
-
-                    candidate.y-14 <
-                    o.y+o.height+5
+            gain.gain.setValueAtTime(
+                0.12,
+                audioCtx.currentTime
             );
 
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                audioCtx.currentTime+0.18
+            );
 
-        if(!blocked){
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
 
-            p=candidate;
+            osc.start();
+            osc.stop(audioCtx.currentTime+0.18);
 
-            break;
-
-        }
-
-    }
-
-
-    if(p){
-
-        poops.push(p);
+        }catch(e){}
 
     }
-
 }
 
 
-/* =====================================================
+/* =========================
+   VIDA
+========================= */
+
+function updateLives(){
+
+    let hearts="";
+
+    for(let i=0;i<3;i++){
+
+        hearts += i<lives ? "❤️" : "🖤";
+
+    }
+
+    document.getElementById("lives").textContent=hearts;
+}
+
+
+/* =========================
    COLISÃO
-===================================================== */
+========================= */
 
 function collision(a,b){
 
     return(
-
-        a.x+8 <
-        b.x+b.width &&
-
-        a.x+a.width-8 >
-        b.x &&
-
-        a.y+8 <
-        b.y+b.height &&
-
-        a.y+a.height-5 >
-        b.y
-
+        a.x < b.x+b.w &&
+        a.x+a.w > b.x &&
+        a.y < b.y+b.h &&
+        a.y+a.h > b.y
     );
-
 }
 
 
-/* =====================================================
-   VIDAS
-===================================================== */
+/* =========================
+   OBSTÁCULOS
+========================= */
 
-function updateLives(){
+function spawnObstacle(){
 
-    let text="";
+    const types=["spike","rock","box","doubleSpike"];
 
+    const type=
+        types[Math.floor(Math.random()*types.length)];
 
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
+    let w=50;
+    let h=50;
 
-        text+=
-            i<lives
-            ? "❤️"
-            : "🖤";
-
+    if(type==="doubleSpike"){
+        w=85;
+        h=50;
     }
 
-
-    document.getElementById(
-        "lives"
-    ).textContent=text;
-
+    obstacles.push({
+        x:W+60,
+        y:H-95,
+        w:w,
+        h:h,
+        type:type
+    });
 }
 
 
-/* =====================================================
-   BATER NO OBSTÁCULO
-===================================================== */
+/* =========================
+   BOSTINHA
+========================= */
 
-function hitObstacle(){
+function spawnCoin(){
 
-    if(invincible)
-        return;
-
-
-    lives--;
-
-    updateLives();
-
-
-    /*
-       IMPORTANTE:
-
-       GAME_SPEED nunca muda.
-    */
-
-
-    if(lives<=0){
-
-        gameOver();
-
-        return;
-
-    }
-
-
-    /*
-       Pequeno período de proteção
-       para não perder várias vidas
-       no mesmo obstáculo.
-    */
-
-    invincible=true;
-
-
-    setTimeout(
-        ()=>{
-            invincible=false;
-        },
-        900
-    );
-
+    coins.push({
+        x:W+40,
+        y:H-170-Math.random()*70,
+        r:15
+    });
 }
 
 
-/* =====================================================
-   FUNDOS
-===================================================== */
+/* =========================
+   FUNDO
+========================= */
 
-function drawCity(){
+function background(){
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
+    let sky=ctx.createLinearGradient(0,0,0,H);
 
     sky.addColorStop(
         0,
-        "#3d86b8"
+        level===1 ? "#315b86" :
+        level===2 ? "#e0a45e" :
+        "#62b7d9"
     );
 
     sky.addColorStop(
         1,
-        "#c9e6ef"
+        level===1 ? "#9ac9e5" :
+        level===2 ? "#f4d09b" :
+        "#d6f2ff"
     );
 
     ctx.fillStyle=sky;
+    ctx.fillRect(0,0,W,H);
 
-    ctx.fillRect(
-        0,0,W,H
-    );
+    /* prédios no mapa 1 */
 
+    if(level===1){
 
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/45
-        )%100;
+        for(let i=0;i<9;i++){
 
+            let x=
+                (i*130-
+                ((performance.now()/35*speed)%130));
 
-    for(
-        let i=0;
-        i<12;
-        i++
-    ){
+            let bh=100+(i%4)*35;
 
-        const x=
-            i*95-move;
-
-
-        const h=
-            130+
-            (i%4)*35;
-
-
-        ctx.fillStyle=
-            i%2
-            ? "#454f58"
-            : "#303941";
-
-
-        ctx.fillRect(
-            x,
-            H-65-h,
-            75,
-            h
-        );
-
-
-        ctx.fillStyle="#ffd86b";
-
-
-        for(
-            let yy=H-50-h;
-            yy<H-80;
-            yy+=25
-        ){
+            ctx.fillStyle="#27313b";
 
             ctx.fillRect(
-                x+10,
-                yy,
-                9,
-                12
+                x,
+                H-65-bh,
+                95,
+                bh
             );
 
-            ctx.fillRect(
-                x+32,
-                yy,
-                9,
-                12
-            );
+            ctx.fillStyle="#f6d36b";
 
-            ctx.fillRect(
-                x+54,
-                yy,
-                9,
-                12
-            );
+            for(let wy=0;wy<3;wy++){
+
+                for(let wx=0;wx<3;wx++){
+
+                    ctx.fillRect(
+                        x+15+wx*23,
+                        H-45-bh+wy*28,
+                        10,
+                        14
+                    );
+
+                }
+
+            }
 
         }
 
     }
 
-}
+    /* deserto */
 
+    if(level===2){
 
-function drawDesert(){
+        ctx.fillStyle="#d8a45c";
 
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
+        for(let i=0;i<9;i++){
 
-    sky.addColorStop(
-        0,
-        "#df7135"
-    );
-
-    sky.addColorStop(
-        1,
-        "#ffd998"
-    );
-
-    ctx.fillStyle=sky;
-
-    ctx.fillRect(
-        0,0,W,H
-    );
-
-
-    ctx.fillStyle="#c6814b";
-
-    ctx.beginPath();
-
-    ctx.moveTo(0,H-100);
-
-    ctx.lineTo(
-        W*.25,
-        H-230
-    );
-
-    ctx.lineTo(
-        W*.5,
-        H-100
-    );
-
-    ctx.lineTo(
-        W*.78,
-        H-210
-    );
-
-    ctx.lineTo(
-        W,
-        H-100
-    );
-
-    ctx.lineTo(
-        W,
-        H
-    );
-
-    ctx.lineTo(
-        0,
-        H
-    );
-
-    ctx.fill();
-
-
-    ctx.fillStyle="#dfaa61";
-
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/50
-        )%200;
-
-
-    for(
-        let i=0;
-        i<7;
-        i++
-    ){
-
-        ctx.beginPath();
-
-        ctx.arc(
-            i*190-move,
-            H-60,
-            95,
-            Math.PI,
-            0
-        );
-
-        ctx.fill();
-
-    }
-
-}
-
-
-function drawForest(){
-
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
-
-    sky.addColorStop(
-        0,
-        "#5c9cbc"
-    );
-
-    sky.addColorStop(
-        1,
-        "#b8d69d"
-    );
-
-    ctx.fillStyle=sky;
-
-    ctx.fillRect(
-        0,0,W,H
-    );
-
-
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/55
-        )%150;
-
-
-    for(
-        let i=0;
-        i<10;
-        i++
-    ){
-
-        const x=
-            i*150-move;
-
-
-        ctx.fillStyle="#405d38";
-
-        ctx.fillRect(
-            x,
-            H-150,
-            15,
-            85
-        );
-
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x+7,
-            H-160,
-            52,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
-
-}
-
-
-function drawGeneric(){
-
-    let sky=
-        ctx.createLinearGradient(
-            0,0,0,H
-        );
-
-
-    const palettes=[
-
-        ["#718da0","#d9e5e8"],
-        ["#172c3b","#587080"],
-        ["#9fc8df","#f1ddba"],
-        ["#3d5668","#a7b5bc"],
-        ["#476149","#c7d5aa"]
-
-    ];
-
-
-    const p=
-        palettes[
-            (level-4)%palettes.length
-        ];
-
-
-    sky.addColorStop(0,p[0]);
-    sky.addColorStop(1,p[1]);
-
-
-    ctx.fillStyle=sky;
-
-    ctx.fillRect(
-        0,0,W,H
-    );
-
-
-    const move=
-        (
-            performance.now()
-            *GAME_SPEED/55
-        )%170;
-
-
-    for(
-        let i=0;
-        i<9;
-        i++
-    ){
-
-        const x=
-            i*170-move;
-
-
-        ctx.fillStyle="#36454d";
-
-        ctx.fillRect(
-            x,
-            H-145,
-            85,
-            80
-        );
-
-    }
-
-}
-
-
-function drawBackground(){
-
-    if(level===1)
-        drawCity();
-
-    else if(level===2)
-        drawDesert();
-
-    else if(level===3)
-        drawForest();
-
-    else
-        drawGeneric();
-
-
-    ctx.fillStyle=
-        level===2
-        ? "#b98a4e"
-        : "#405239";
-
-
-    ctx.fillRect(
-        0,
-        H-65,
-        W,
-        65
-    );
-
-
-    ctx.fillStyle=
-        level===2
-        ? "#d2a45e"
-        : "#29382c";
-
-
-    ctx.fillRect(
-        0,
-        H-65,
-        W,
-        7
-    );
-
-}
-
-
-/* =====================================================
-   DESENHAR OBSTÁCULOS
-===================================================== */
-
-function drawObstacle(o){
-
-    if(
-        o.type==="spike" ||
-        o.type==="double"
-    ){
-
-        const count=
-            o.type==="double"
-            ? 2
-            : 1;
-
-
-        for(
-            let i=0;
-            i<count;
-            i++
-        ){
-
-            const x=
-                o.x+i*45;
-
-
-            ctx.fillStyle="#17191c";
+            let x=
+                i*150-
+                ((performance.now()/45*speed)%150);
 
             ctx.beginPath();
 
-            ctx.moveTo(
+            ctx.arc(
                 x,
-                o.y+o.height
+                H-65,
+                70,
+                Math.PI,
+                Math.PI*2
             );
-
-            ctx.lineTo(
-                x+22,
-                o.y
-            );
-
-            ctx.lineTo(
-                x+44,
-                o.y+o.height
-            );
-
-            ctx.closePath();
 
             ctx.fill();
 
+        }
 
-            ctx.strokeStyle="#555b60";
-            ctx.lineWidth=2;
+        /* cactos */
+
+        for(let i=0;i<6;i++){
+
+            let x=
+                i*190-
+                ((performance.now()/45*speed)%190);
+
+            ctx.strokeStyle="#2d6b38";
+            ctx.lineWidth=12;
+            ctx.lineCap="round";
+
+            ctx.beginPath();
+
+            ctx.moveTo(x,H-75);
+            ctx.lineTo(x,H-135);
+
+            ctx.moveTo(x,H-115);
+            ctx.lineTo(x-18,H-128);
+
+            ctx.moveTo(x,H-105);
+            ctx.lineTo(x+18,H-118);
 
             ctx.stroke();
 
@@ -2131,112 +938,209 @@ function drawObstacle(o){
 
     }
 
+    /* chão */
 
-    else if(o.type==="cactus"){
+    ctx.fillStyle=
+        level===2 ? "#a66b32" :
+        level===1 ? "#313b43" :
+        "#4d673d";
 
-        ctx.fillStyle="#31833a";
+    ctx.fillRect(0,H-65,W,65);
 
-        ctx.fillRect(
-            o.x+12,
-            o.y,
-            16,
-            o.height
-        );
+    ctx.fillStyle=
+        level===2 ? "#70421e" :
+        "#263626";
 
-
-        ctx.fillRect(
-            o.x,
-            o.y+20,
-            13,
-            9
-        );
+    ctx.fillRect(0,H-65,W,8);
+}
 
 
-        ctx.fillRect(
-            o.x,
-            o.y+8,
-            8,
-            25
-        );
+/* =========================
+   LOBO
+========================= */
+
+function drawPlayer(){
+
+    const x=player.x;
+    const y=player.y;
+
+    legAnimation+=0.25;
+
+    let leg1=Math.sin(legAnimation)*5;
+    let leg2=Math.sin(legAnimation+Math.PI)*5;
+
+    /* pernas */
+
+    ctx.strokeStyle="#171a1d";
+    ctx.lineWidth=9;
+    ctx.lineCap="round";
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+15,y+45);
+    ctx.lineTo(x+12+leg1,y+66);
+
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+42,y+45);
+    ctx.lineTo(x+42+leg2,y+66);
+
+    ctx.stroke();
+
+    /* corpo */
+
+    let body=ctx.createLinearGradient(x,y,x+60,y+60);
+
+    body.addColorStop(0,"#666d73");
+    body.addColorStop(.55,"#30353a");
+    body.addColorStop(1,"#111418");
+
+    ctx.fillStyle=body;
+
+    ctx.beginPath();
+
+    ctx.roundRect(
+        x,
+        y+18,
+        52,
+        38,
+        16
+    );
+
+    ctx.fill();
+
+    /* cauda */
+
+    ctx.strokeStyle="#252a2f";
+    ctx.lineWidth=11;
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+8,y+28);
+
+    ctx.quadraticCurveTo(
+        x-15,y+5,
+        x-10,y-8
+    );
+
+    ctx.stroke();
+
+    /* cabeça */
+
+    ctx.fillStyle="#596168";
+
+    ctx.beginPath();
+
+    ctx.arc(x+43,y+18,23,0,Math.PI*2);
+
+    ctx.fill();
+
+    /* orelhas */
+
+    ctx.fillStyle="#252a2f";
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+27,y+5);
+    ctx.lineTo(x+32,y-18);
+    ctx.lineTo(x+42,y+6);
+    ctx.fill();
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+45,y+6);
+    ctx.lineTo(x+58,y-17);
+    ctx.lineTo(x+61,y+12);
+    ctx.fill();
+
+    /* nariz */
+
+    ctx.fillStyle="#050505";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        x+50,
+        y+25,
+        8,
+        5,
+        0,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+    /* olhos vermelhos */
+
+    ctx.fillStyle="#ff1616";
+    ctx.shadowColor="red";
+    ctx.shadowBlur=8;
+
+    ctx.beginPath();
+    ctx.arc(x+34,y+15,4,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x+52,y+15,4,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+}
 
 
-        ctx.fillRect(
-            o.x+27,
-            o.y+32,
-            13,
-            9
-        );
+/* =========================
+   OBSTÁCULO
+========================= */
 
+function drawObstacle(o){
 
-        ctx.fillRect(
-            o.x+33,
-            o.y+20,
-            7,
-            22
-        );
+    if(o.type==="spike"){
+
+        ctx.fillStyle="#17191c";
+
+        ctx.beginPath();
+
+        ctx.moveTo(o.x,o.y+o.h);
+        ctx.lineTo(o.x+o.w/2,o.y);
+        ctx.lineTo(o.x+o.w,o.y+o.h);
+
+        ctx.closePath();
+        ctx.fill();
 
     }
 
+    else if(o.type==="doubleSpike"){
 
-    else if(o.type==="building"){
+        ctx.fillStyle="#17191c";
 
-        ctx.fillStyle="#28333b";
+        for(let i=0;i<2;i++){
 
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.width,
-            o.height
-        );
+            let sx=o.x+i*42;
 
+            ctx.beginPath();
 
-        ctx.fillStyle="#ffd45d";
+            ctx.moveTo(sx,o.y+o.h);
+            ctx.lineTo(sx+22,o.y);
+            ctx.lineTo(sx+44,o.y+o.h);
 
-
-        for(
-            let yy=o.y+9;
-            yy<o.y+o.height-8;
-            yy+=19
-        ){
-
-            ctx.fillRect(
-                o.x+7,
-                yy,
-                9,
-                11
-            );
-
-            ctx.fillRect(
-                o.x+28,
-                yy,
-                9,
-                11
-            );
-
+            ctx.closePath();
+            ctx.fill();
         }
 
     }
 
+    else if(o.type==="rock"){
 
-    else if(o.type==="tree"){
-
-        ctx.fillStyle="#5b3821";
-
-        ctx.fillRect(
-            o.x+18,
-            o.y+24,
-            12,
-            40
-        );
-
-
-        ctx.fillStyle="#285d32";
+        ctx.fillStyle="#555b60";
 
         ctx.beginPath();
 
         ctx.arc(
-            o.x+24,
-            o.y+23,
+            o.x+25,
+            o.y+28,
             28,
             0,
             Math.PI*2
@@ -2246,529 +1150,255 @@ function drawObstacle(o){
 
     }
 
-
     else{
 
-        ctx.fillStyle="#686f74";
+        ctx.fillStyle="#593522";
 
-        ctx.beginPath();
-
-        ctx.arc(
-            o.x+24,
-            o.y+25,
-            25,
-            0,
-            Math.PI*2
+        ctx.fillRect(
+            o.x,
+            o.y,
+            o.w,
+            o.h
         );
 
-        ctx.fill();
+        ctx.strokeStyle="#2b160d";
+        ctx.lineWidth=3;
+
+        ctx.strokeRect(
+            o.x,
+            o.y,
+            o.w,
+            o.h
+        );
 
     }
-
 }
 
 
-/* =====================================================
-   DESENHAR BOSTINHA
-===================================================== */
+/* =========================
+   BOSTINHA
+========================= */
 
-function drawPoop(p){
+function drawCoin(c){
 
-    ctx.fillStyle="#75431f";
+    ctx.font="28px Arial";
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
 
-
-    ctx.beginPath();
-
-    ctx.arc(
-        p.x,
-        p.y+8,
-        13,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        p.x,
-        p.y,
-        10,
-        Math.PI,
-        0
-    );
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        p.x,
-        p.y-8,
-        7,
-        Math.PI,
-        0
-    );
-
-    ctx.fill();
-
-
-    ctx.fillStyle="#3d2415";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        p.x-4,
-        p.y-2,
-        2,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
+    ctx.fillText("💩",c.x,c.y);
 }
 
 
-/* =====================================================
-   PASSAR DE MAPA
-===================================================== */
+/* =========================
+   PERDER VIDA
+========================= */
 
-function completeMap(){
+function hitObstacle(index){
 
-    if(level>=30){
+    /* obstáculo continua existindo */
 
-        running=false;
+    lives--;
 
-        alert(
-            "🏆 PARABÉNS LINDAO!\n\nVOCÊ TERMINOU OS 30 MAPAS!"
-        );
+    updateLives();
 
-        backToMenu();
+    /* reinicia posição */
 
-        return;
-
-    }
-
-
-    level++;
-
-    poop=0;
+    player.x=75;
+    player.y=H-130;
+    player.vy=0;
+    player.grounded=true;
 
     obstacles=[];
-    poops=[];
 
-    /*
-       Desbloqueia exatamente o próximo mapa.
-    */
+    if(lives<=0){
 
-    if(level>unlockedMap){
-
-        unlockedMap=level;
-
-
-        localStorage.setItem(
-            "liloUnlockedMap",
-            unlockedMap
-        );
+        gameOver();
 
     }
-
-
-    /*
-       Personagens:
-
-       cada personagem libera
-       no mapa indicado.
-    */
-
-    unlockedCharacters=
-        Math.max(
-            unlockedCharacters,
-            level
-        );
-
-
-    localStorage.setItem(
-        "liloUnlockedCharacters",
-        unlockedCharacters
-    );
-
-
-    selectedMap=level;
-
-
-    document.getElementById(
-        "level"
-    ).textContent=level;
-
-
-    document.getElementById(
-        "poopCount"
-    ).textContent=0;
-
-
-    buildMaps();
-    buildCharacters();
-
 }
 
 
-/* =====================================================
+/* =========================
+   FASE
+========================= */
+
+function checkLevel(){
+
+    if(coinCount>=10){
+
+        coinCount=0;
+        level++;
+
+        /* velocidade NÃO aumenta ao perder vida */
+
+        document.getElementById("coins").textContent=0;
+        document.getElementById("level").textContent=level;
+
+        obstacles=[];
+        coins=[];
+
+    }
+}
+
+
+/* =========================
    GAME OVER
-===================================================== */
+========================= */
 
 function gameOver(){
 
     running=false;
-    started=false;
 
-
-    document.getElementById(
-        "finalLevel"
-    ).textContent=level;
-
-
-    document.getElementById(
-        "finalPoop"
-    ).textContent=poop;
-
-
-    document.getElementById(
-        "gameOver"
-    ).style.display="flex";
-
-
-    updateWolf();
-
+    document.getElementById("finalCoins").textContent=coinCount;
+    document.getElementById("finalLevel").textContent=level;
+    document.getElementById("gameOver").style.display="flex";
 }
 
 
-/* =====================================================
+/* =========================
    LOOP
-===================================================== */
+========================= */
 
-let lastTime=0;
+function loop(){
 
+    if(
+        document.getElementById("game").style.display==="none"
+    ){
+        return;
+    }
 
-function loop(time){
+    ctx.clearRect(0,0,W,H);
 
-    if(!lastTime)
-        lastTime=time;
+    background();
 
+    if(started){
 
-    const delta=
-        Math.min(
-            time-lastTime,
-            32
+        player.vy+=0.55;
+        player.y+=player.vy;
+
+        if(player.y>=H-130){
+
+            player.y=H-130;
+            player.vy=0;
+            player.grounded=true;
+
+        }
+
+        obstacleTimer--;
+
+        if(obstacleTimer<=0){
+
+            spawnObstacle();
+
+            obstacleTimer=Math.max(
+                55,
+                105-Math.min(level,20)*2
+            );
+
+        }
+
+        for(
+            let i=obstacles.length-1;
+            i>=0;
+            i--
+        ){
+
+            let o=obstacles[i];
+
+            o.x-=speed;
+
+            drawObstacle(o);
+
+            if(collision(player,o)){
+
+                hitObstacle(i);
+                break;
+
+            }
+        }
+
+        obstacles=obstacles.filter(
+            o=>o.x>-150
         );
 
 
-    lastTime=time;
+        coinTimer--;
 
+        if(coinTimer<=0){
 
-    const dt=
-        delta/16.6667;
+            spawnCoin();
 
-
-    if(
-        document.getElementById(
-            "game"
-        ).style.display==="block"
-    ){
-
-        drawBackground();
-
-
-        if(
-            started &&
-            running
-        ){
-
-            /* =================
-               FÍSICA
-            ================= */
-
-
-            player.vy+=
-                .58*dt;
-
-
-            player.y+=
-                player.vy*dt;
-
-
-            if(
-                player.y>=H-130
-            ){
-
-                player.y=H-130;
-
-                player.vy=0;
-
-                player.grounded=true;
-
-            }
-
-
-            updateWolf();
-
-
-            /* =================
-               OBSTÁCULOS
-            ================= */
-
-
-            obstacleTimer-=dt;
-
-
-            if(
-                obstacleTimer<=0
-            ){
-
-                spawnObstacle();
-
-
-                obstacleTimer=
-                    90+
-                    Math.random()*45;
-
-            }
-
-
-            for(
-                let i=
-                    obstacles.length-1;
-                i>=0;
-                i--
-            ){
-
-                const o=
-                    obstacles[i];
-
-
-                /*
-                   VELOCIDADE FIXA.
-                */
-
-                o.x-=
-                    GAME_SPEED*dt;
-
-
-                drawObstacle(o);
-
-
-                if(
-                    collision(
-                        player,
-                        o
-                    )
-                ){
-
-                    hitObstacle();
-
-                }
-
-            }
-
-
-            obstacles=
-                obstacles.filter(
-                    o=>
-                        o.x>-160
-                );
-
-
-            /* =================
-               BOSTINHAS
-            ================= */
-
-
-            poopTimer-=dt;
-
-
-            if(
-                poopTimer<=0
-            ){
-
-                spawnPoop();
-
-
-                poopTimer=
-                    80+
-                    Math.random()*55;
-
-            }
-
-
-            for(
-                let i=
-                    poops.length-1;
-                i>=0;
-                i--
-            ){
-
-                const p=
-                    poops[i];
-
-
-                p.x-=
-                    GAME_SPEED*dt;
-
-
-                drawPoop(p);
-
-
-                const box={
-
-                    x:p.x-14,
-
-                    y:p.y-14,
-
-                    width:28,
-
-                    height:28
-
-                };
-
-
-                if(
-                    collision(
-                        player,
-                        box
-                    )
-                ){
-
-                    poops.splice(
-                        i,
-                        1
-                    );
-
-
-                    poop++;
-
-
-                    document.getElementById(
-                        "poopCount"
-                    ).textContent=poop;
-
-
-                    if(poop>=10){
-
-                        completeMap();
-
-                    }
-
-                }
-
-            }
-
-
-            poops=
-                poops.filter(
-                    p=>
-                        p.x>-60
-                );
+            coinTimer=70+Math.random()*60;
 
         }
 
+        for(
+            let i=coins.length-1;
+            i>=0;
+            i--
+        ){
+
+            let c=coins[i];
+
+            c.x-=speed;
+
+            drawCoin(c);
+
+            let box={
+                x:c.x-c.r,
+                y:c.y-c.r,
+                w:c.r*2,
+                h:c.r*2
+            };
+
+            if(collision(player,box)){
+
+                coins.splice(i,1);
+
+                coinCount++;
+
+                document.getElementById(
+                    "coins"
+                ).textContent=coinCount;
+
+                checkLevel();
+
+            }
+
+        }
+
+        coins=coins.filter(
+            c=>c.x>-50
+        );
     }
 
+    drawPlayer();
 
-    requestAnimationFrame(
-        loop
-    );
-
+    requestAnimationFrame(loop);
 }
 
 
-/* =====================================================
-   JOGAR
-===================================================== */
+/* =========================
+   CONTROLES
+========================= */
 
-document.getElementById("play")
-.addEventListener(
+document.getElementById(
+    "startButton"
+).addEventListener(
     "click",
-    ()=>{
-
-        document.getElementById("menu")
-            .style.display="none";
-
-        document.getElementById("game")
-            .style.display="block";
-
-        document.getElementById("gameOver")
-            .style.display="none";
-
-
-        resetGame();
-
-
-        started=false;
-        running=false;
-
-
-        document.getElementById("tap")
-            .style.display="block";
-
-
-        updateWolf();
-
-    }
+    startGame
 );
 
-
-/* =====================================================
-   TOQUE
-===================================================== */
-
-document.getElementById("game")
-.addEventListener(
+document.getElementById(
+    "game"
+).addEventListener(
     "pointerdown",
-    e=>{
-
-        if(
-            e.target.closest &&
-            e.target.closest("button")
-        ){
-
-            return;
-
-        }
-
-
-        if(!started){
-
-            started=true;
-            running=true;
-
-
-            document.getElementById("tap")
-                .style.display="none";
-
-
-            updateWolf();
-
-            return;
-
-        }
-
-
-        jump();
-
-    }
+    touchGame
 );
 
-
-/* =====================================================
-   REINICIAR
-===================================================== */
-
-document.getElementById("restart")
-.addEventListener(
+document.getElementById(
+    "restart"
+).addEventListener(
     "click",
     ()=>{
 
@@ -2776,117 +1406,18 @@ document.getElementById("restart")
             "gameOver"
         ).style.display="none";
 
-
-        resetGame();
-
+        reset();
 
         started=false;
         running=false;
 
-
         document.getElementById(
-            "tap"
+            "tapStart"
         ).style.display="block";
 
-
-        updateWolf();
-
-    }
-);
-
-
-/* =====================================================
-   VOLTAR AO MENU
-===================================================== */
-
-function backToMenu(){
-
-    running=false;
-    started=false;
-
-
-    document.getElementById("game")
-        .style.display="none";
-
-
-    document.getElementById("gameOver")
-        .style.display="none";
-
-
-    document.getElementById("menu")
-        .style.display="block";
-
-
-    buildMaps();
-    buildCharacters();
-
-}
-
-
-document.getElementById("home")
-.addEventListener(
-    "click",
-    backToMenu
-);
-
-
-document.getElementById("back")
-.addEventListener(
-    "click",
-    backToMenu
-);
-
-
-/* =====================================================
-   TECLADO
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    e=>{
-
-        if(
-            e.code==="Space" ||
-            e.code==="ArrowUp"
-        ){
-
-            e.preventDefault();
-
-
-            if(
-                document.getElementById(
-                    "game"
-                ).style.display==="block"
-            ){
-
-                if(!started){
-
-                    started=true;
-                    running=true;
-
-
-                    document.getElementById(
-                        "tap"
-                    ).style.display="none";
-
-                }else{
-
-                    jump();
-
-                }
-
-            }
-
-        }
+        requestAnimationFrame(loop);
 
     }
-);
-
-
-/* LOOP */
-
-requestAnimationFrame(
-    loop
 );
 
 </script>
