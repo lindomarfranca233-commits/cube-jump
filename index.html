@@ -92,7 +92,6 @@ button{
     color:white;
     text-align:center;
     padding:25px 12px 40px;
-
     background:
     radial-gradient(circle at 50% 18%,
     #59636d 0%,
@@ -119,9 +118,36 @@ button{
     margin-top:7px;
 }
 
+.userBox{
+    margin:14px auto;
+    max-width:330px;
+}
+
+#username{
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:2px solid #555;
+    outline:none;
+    text-align:center;
+    font-size:16px;
+    background:#111;
+    color:white;
+}
+
+#saveUser{
+    width:100%;
+    margin-top:7px;
+    padding:12px;
+    border-radius:10px;
+    background:#333;
+    color:white;
+    font-weight:bold;
+}
+
 .creator{
     display:inline-block;
-    margin:15px auto 17px;
+    margin:8px auto 17px;
     padding:8px 18px;
     border:1px solid rgba(255,60,60,.65);
     border-radius:20px;
@@ -134,7 +160,6 @@ button{
         rgba(40,0,0,.45)
     );
     box-shadow:0 0 15px rgba(255,0,0,.2);
-    text-shadow:0 0 7px red;
 }
 
 .sectionTitle{
@@ -165,14 +190,11 @@ button{
     color:white;
     background:linear-gradient(145deg,#3b434a,#0b0e11);
     position:relative;
-    box-shadow:0 8px 20px rgba(0,0,0,.45);
 }
 
 .char.selected{
     border-color:#ff2222;
-    box-shadow:
-    0 0 10px rgba(255,0,0,.55),
-    inset 0 0 15px rgba(255,0,0,.08);
+    box-shadow:0 0 10px rgba(255,0,0,.55);
 }
 
 .char.locked{
@@ -212,7 +234,6 @@ button{
     color:white;
     background:linear-gradient(145deg,#30373d,#090c0f);
     position:relative;
-    box-shadow:0 6px 15px rgba(0,0,0,.4);
 }
 
 .map.selected{
@@ -252,9 +273,6 @@ button{
     font-size:18px;
     font-weight:bold;
     letter-spacing:2px;
-    box-shadow:
-    0 7px 25px rgba(0,0,0,.65),
-    0 0 18px rgba(255,0,0,.22);
 }
 
 /* ================= GAME ================= */
@@ -264,7 +282,6 @@ button{
     position:fixed;
     inset:0;
     overflow:hidden;
-    touch-action:none;
 }
 
 #canvas{
@@ -272,35 +289,33 @@ button{
     inset:0;
     width:100%;
     height:100%;
-    touch-action:none;
 }
 
 /* ================= ANIMAL ================= */
 
 #wolf{
     position:absolute;
-    width:78px;
-    height:78px;
+    width:82px;
+    height:82px;
     z-index:20;
     pointer-events:none;
-    transition:filter .1s;
 }
 
 .animalBody{
     position:absolute;
-    left:5px;
-    top:34px;
-    width:51px;
-    height:29px;
+    left:7px;
+    top:36px;
+    width:52px;
+    height:30px;
     border-radius:60%;
 }
 
 .animalHead{
     position:absolute;
-    left:35px;
-    top:7px;
-    width:38px;
-    height:40px;
+    left:38px;
+    top:8px;
+    width:39px;
+    height:41px;
     border-radius:50%;
 }
 
@@ -312,15 +327,13 @@ button{
 }
 
 .animalEar.one{
-    left:36px;
+    left:39px;
     top:0;
-    transform:rotate(-12deg);
 }
 
 .animalEar.two{
-    left:56px;
+    left:59px;
     top:1px;
-    transform:rotate(12deg);
 }
 
 .animalEye{
@@ -330,44 +343,42 @@ button{
     border-radius:50%;
     background:#ff1717;
     box-shadow:0 0 8px red;
-    z-index:3;
 }
 
 .animalEye.one{
     left:51px;
-    top:20px;
+    top:23px;
 }
 
 .animalEye.two{
-    left:65px;
-    top:20px;
+    left:68px;
+    top:23px;
 }
 
 .animalMuzzle{
     position:absolute;
-    left:54px;
-    top:30px;
-    width:22px;
-    height:13px;
+    left:57px;
+    top:32px;
+    width:23px;
+    height:14px;
     border-radius:50%;
 }
 
 .animalNose{
     position:absolute;
-    left:70px;
-    top:33px;
+    left:73px;
+    top:35px;
     width:7px;
     height:6px;
     border-radius:50%;
     background:#050505;
-    z-index:4;
 }
 
 .animalTail{
     position:absolute;
     left:0;
-    top:24px;
-    width:29px;
+    top:25px;
+    width:30px;
     height:23px;
     border-top:8px solid;
     border-radius:50%;
@@ -376,16 +387,16 @@ button{
 
 .leg{
     position:absolute;
-    top:56px;
+    top:59px;
     width:8px;
     height:21px;
     border-radius:8px;
 }
 
-.leg1{left:8px}
-.leg2{left:21px}
-.leg3{left:37px}
-.leg4{left:51px}
+.leg1{left:9px}
+.leg2{left:22px}
+.leg3{left:38px}
+.leg4{left:52px}
 
 #wolf.running .leg1,
 #wolf.running .leg3{
@@ -407,70 +418,40 @@ button{
     to{transform:rotate(22deg)}
 }
 
-/* CORES */
+/* ANIMAIS */
 
 #wolf.lobo .animalBody{
-    background:linear-gradient(145deg,#9ba1a5,#444b50 60%,#17191b);
+    background:linear-gradient(145deg,#b8bec2,#555d63,#17191b);
 }
 #wolf.lobo .animalHead{
-    background:linear-gradient(145deg,#a6acaf,#50575c 65%,#25292c);
+    background:linear-gradient(145deg,#c2c7ca,#60686d,#25292c);
 }
-#wolf.lobo .animalEar{
-    background:#292e32;
-}
-#wolf.lobo .animalMuzzle{
-    background:#5c6265;
-}
-#wolf.lobo .animalTail{
-    border-color:#292e32;
-}
-#wolf.lobo .leg{
-    background:#181b1d;
-}
-
-/* CACHORRO */
+#wolf.lobo .animalEar{background:#292e32}
+#wolf.lobo .animalMuzzle{background:#666d72}
+#wolf.lobo .animalTail{border-color:#292e32}
+#wolf.lobo .leg{background:#181b1d}
 
 #wolf.cachorro .animalBody{
-    background:linear-gradient(145deg,#c98a4b,#8a4d24,#4c2918);
+    background:linear-gradient(145deg,#d99b5c,#95572d,#4c2918);
 }
 #wolf.cachorro .animalHead{
-    background:linear-gradient(145deg,#d69a59,#95572d,#55301c);
+    background:linear-gradient(145deg,#e1a76a,#95572d,#55301c);
 }
-#wolf.cachorro .animalEar{
-    background:#63381f;
-}
-#wolf.cachorro .animalMuzzle{
-    background:#b87543;
-}
-#wolf.cachorro .animalTail{
-    border-color:#63381f;
-}
-#wolf.cachorro .leg{
-    background:#4c2918;
-}
-
-/* GATO */
+#wolf.cachorro .animalEar{background:#63381f}
+#wolf.cachorro .animalMuzzle{background:#c47d49}
+#wolf.cachorro .animalTail{border-color:#63381f}
+#wolf.cachorro .leg{background:#4c2918}
 
 #wolf.gato .animalBody{
-    background:linear-gradient(145deg,#eeeeee,#9da3a8,#555a60);
+    background:linear-gradient(145deg,#f4f4f4,#a5abb0,#555a60);
 }
 #wolf.gato .animalHead{
-    background:linear-gradient(145deg,#f2f2f2,#a9afb4,#62676c);
+    background:linear-gradient(145deg,#fff,#a9afb4,#62676c);
 }
-#wolf.gato .animalEar{
-    background:#6c7378;
-}
-#wolf.gato .animalMuzzle{
-    background:#d1d3d4;
-}
-#wolf.gato .animalTail{
-    border-color:#777d82;
-}
-#wolf.gato .leg{
-    background:#5b6064;
-}
-
-/* TIGRE */
+#wolf.gato .animalEar{background:#6c7378}
+#wolf.gato .animalMuzzle{background:#ddd}
+#wolf.gato .animalTail{border-color:#777d82}
+#wolf.gato .leg{background:#5b6064}
 
 #wolf.tigre .animalBody{
     background:linear-gradient(145deg,#f2a52b,#bd6716,#74350e);
@@ -478,41 +459,21 @@ button{
 #wolf.tigre .animalHead{
     background:linear-gradient(145deg,#ffb637,#c8791d,#7a3b10);
 }
-#wolf.tigre .animalEar{
-    background:#63300e;
-}
-#wolf.tigre .animalMuzzle{
-    background:#e5a257;
-}
-#wolf.tigre .animalTail{
-    border-color:#79380f;
-}
-#wolf.tigre .leg{
-    background:#69320e;
-}
-
-/* LEÃO */
+#wolf.tigre .animalEar{background:#63300e}
+#wolf.tigre .animalMuzzle{background:#e5a257}
+#wolf.tigre .animalTail{border-color:#79380f}
+#wolf.tigre .leg{background:#69320e}
 
 #wolf.leao .animalBody{
-    background:linear-gradient(145deg,#dba34b,#a66c27,#6b4019);
+    background:linear-gradient(145deg,#e4ad55,#a66c27,#6b4019);
 }
 #wolf.leao .animalHead{
-    background:linear-gradient(145deg,#e5b65e,#bd7d2d,#7a4919);
+    background:linear-gradient(145deg,#edc36b,#bd7d2d,#7a4919);
 }
-#wolf.leao .animalEar{
-    background:#70451c;
-}
-#wolf.leao .animalMuzzle{
-    background:#d9a45c;
-}
-#wolf.leao .animalTail{
-    border-color:#70451c;
-}
-#wolf.leao .leg{
-    background:#70451c;
-}
-
-/* URSO */
+#wolf.leao .animalEar{background:#70451c}
+#wolf.leao .animalMuzzle{background:#d9a45c}
+#wolf.leao .animalTail{border-color:#70451c}
+#wolf.leao .leg{background:#70451c}
 
 #wolf.urso .animalBody{
     background:linear-gradient(145deg,#744426,#422617,#20130d);
@@ -520,20 +481,10 @@ button{
 #wolf.urso .animalHead{
     background:linear-gradient(145deg,#87532e,#4b2b1a,#25150e);
 }
-#wolf.urso .animalEar{
-    background:#321b10;
-}
-#wolf.urso .animalMuzzle{
-    background:#80502d;
-}
-#wolf.urso .animalTail{
-    border-color:#392014;
-}
-#wolf.urso .leg{
-    background:#29170e;
-}
-
-/* DRAGÃO */
+#wolf.urso .animalEar{background:#321b10}
+#wolf.urso .animalMuzzle{background:#80502d}
+#wolf.urso .animalTail{border-color:#392014}
+#wolf.urso .leg{background:#29170e}
 
 #wolf.dragao .animalBody{
     background:linear-gradient(145deg,#49bd67,#18723a,#073b20);
@@ -541,18 +492,10 @@ button{
 #wolf.dragao .animalHead{
     background:linear-gradient(145deg,#5bd97a,#218649,#0b4727);
 }
-#wolf.dragao .animalEar{
-    background:#0b542d;
-}
-#wolf.dragao .animalMuzzle{
-    background:#319957;
-}
-#wolf.dragao .animalTail{
-    border-color:#0a4c29;
-}
-#wolf.dragao .leg{
-    background:#07371e;
-}
+#wolf.dragao .animalEar{background:#0b542d}
+#wolf.dragao .animalMuzzle{background:#319957}
+#wolf.dragao .animalTail{border-color:#0a4c29}
+#wolf.dragao .leg{background:#07371e}
 
 /* ================= HUD ================= */
 
@@ -636,13 +579,8 @@ button{
     font-weight:bold;
 }
 
-.restart{
-    background:#7c0000;
-}
-
-.back{
-    background:#333;
-}
+.restart{background:#7c0000}
+.back{background:#333}
 </style>
 </head>
 
@@ -653,7 +591,6 @@ button{
     <div class="loadWolf">🐺</div>
     <div class="loadText">CARREGANDO</div>
     <div id="percent">0%</div>
-
     <div class="loadBar">
         <div id="fill"></div>
     </div>
@@ -665,6 +602,18 @@ button{
 
     <div class="sub">
         CORRA • PULE • PEGUE 💩
+    </div>
+
+    <div class="userBox">
+        <input
+            id="username"
+            maxlength="15"
+            placeholder="Digite seu nome"
+            autocomplete="off"
+        >
+        <button id="saveUser">
+            👤 SALVAR USUÁRIO
+        </button>
     </div>
 
     <div class="creator">
@@ -691,80 +640,149 @@ button{
 
 <div id="game">
 
-    <canvas id="canvas"></canvas>
+<canvas id="canvas"></canvas>
 
-    <div id="wolf" class="lobo">
+<div id="wolf" class="lobo">
 
-        <div class="animalTail"></div>
-        <div class="animalBody"></div>
-        <div class="animalHead"></div>
+    <div class="animalTail"></div>
+    <div class="animalBody"></div>
+    <div class="animalHead"></div>
 
-        <div class="animalEar one"></div>
-        <div class="animalEar two"></div>
+    <div class="animalEar one"></div>
+    <div class="animalEar two"></div>
 
-        <div class="animalEye one"></div>
-        <div class="animalEye two"></div>
+    <div class="animalEye one"></div>
+    <div class="animalEye two"></div>
 
-        <div class="animalMuzzle"></div>
-        <div class="animalNose"></div>
+    <div class="animalMuzzle"></div>
+    <div class="animalNose"></div>
 
-        <div class="leg leg1"></div>
-        <div class="leg leg2"></div>
-        <div class="leg leg3"></div>
-        <div class="leg leg4"></div>
+    <div class="leg leg1"></div>
+    <div class="leg leg2"></div>
+    <div class="leg leg3"></div>
+    <div class="leg leg4"></div>
 
+</div>
+
+<div id="hud">
+
+    <div id="lives">❤️❤️❤️</div>
+
+    <div>
+        💩 <span id="poopCount">0</span>/10
     </div>
 
-    <div id="hud">
-
-        <div id="lives">❤️❤️❤️</div>
-
-        <div>
-            💩 <span id="poopCount">0</span>/10
-        </div>
-
-        <div>
-            MAPA <span id="level">1</span>
-        </div>
-
-    </div>
-
-    <button id="home">
-        🏠 INÍCIO
-    </button>
-
-    <div id="tap">
-        TOQUE PARA COMEÇAR
-        <small>Toque para pular</small>
-    </div>
-
-    <div id="gameOver">
-
-        <h2>GAME OVER</h2>
-
-        <div>
-            MAPA:
-            <span id="finalLevel">1</span>
-        </div>
-
-        <div style="margin-top:6px">
-            💩:
-            <span id="finalPoop">0</span>/10
-        </div>
-
-        <button class="overBtn restart" id="restart">
-            🔄 JOGAR NOVAMENTE
-        </button>
-
-        <button class="overBtn back" id="back">
-            🏠 VOLTAR AO INÍCIO
-        </button>
-
+    <div>
+        MAPA <span id="level">1</span>
     </div>
 
 </div>
 
+<button id="home">🏠 INÍCIO</button>
+
+<div id="tap">
+    TOQUE PARA COMEÇAR
+    <small>Toque para pular</small>
+</div>
+
+<div id="gameOver">
+
+    <h2>GAME OVER</h2>
+
+    <div>
+        MAPA:
+        <span id="finalLevel">1</span>
+    </div>
+
+    <div style="margin-top:6px">
+        💩:
+        <span id="finalPoop">0</span>/10
+    </div>
+
+    <button class="overBtn restart" id="restart">
+        🔄 JOGAR NOVAMENTE
+    </button>
+
+    <button class="overBtn back" id="back">
+        🏠 VOLTAR AO INÍCIO
+    </button>
+
+</div>
+
+</div>
+
 <script>
+
+/* =====================================================
+   USUÁRIO
+===================================================== */
+
+let currentUser =
+    localStorage.getItem("liloCurrentUser") || "";
+
+function userKey(){
+    return "liloUser_" +
+        (currentUser || "convidado")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g,"_");
+}
+
+function loadUser(){
+
+    if(!currentUser)
+        return;
+
+    const data=
+        JSON.parse(
+            localStorage.getItem(userKey()) || "{}"
+        );
+
+    unlockedMap=
+        data.unlockedMap || 1;
+
+    unlockedCharacters=
+        data.unlockedCharacters || 1;
+
+}
+
+function saveUser(){
+
+    const input=
+        document.getElementById("username");
+
+    let name=
+        input.value.trim();
+
+    if(!name)
+        name="Jogador";
+
+    currentUser=name;
+
+    localStorage.setItem(
+        "liloCurrentUser",
+        currentUser
+    );
+
+    loadUser();
+
+    buildCharacters();
+    buildMaps();
+
+    alert(
+        "👤 Usuário salvo: "+currentUser
+    );
+
+}
+
+document.getElementById("saveUser")
+.addEventListener(
+    "click",
+    saveUser
+);
+
+document.getElementById("username").value=
+    currentUser;
+
 
 /* =====================================================
    CARREGAMENTO
@@ -784,7 +802,7 @@ function loading(){
 
     if(loadingValue<100){
 
-        setTimeout(loading,18);
+        setTimeout(loading,12);
 
     }else{
 
@@ -796,12 +814,15 @@ function loading(){
             document.getElementById("menu")
                 .style.display="block";
 
+            loadUser();
+
             buildCharacters();
             buildMaps();
 
-        },350);
+        },250);
 
     }
+
 }
 
 loading();
@@ -864,16 +885,42 @@ const characters=[
 
 ];
 
-let unlockedMap=
-    Number(localStorage.getItem("liloUnlockedMap")) || 1;
-
+let unlockedMap=1;
 let selectedMap=1;
-
 let selectedCharacter=0;
+let unlockedCharacters=1;
 
-let unlockedCharacters=
-    Number(localStorage.getItem("liloUnlockedCharacters")) || 1;
 
+/* =====================================================
+   SALVAR PROGRESSO
+===================================================== */
+
+function saveProgress(){
+
+    if(!currentUser)
+        return;
+
+    const data={
+
+        unlockedMap:
+            unlockedMap,
+
+        unlockedCharacters:
+            unlockedCharacters
+
+    };
+
+    localStorage.setItem(
+        userKey(),
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =====================================================
+   PERSONAGENS MENU
+===================================================== */
 
 function buildCharacters(){
 
@@ -940,13 +987,6 @@ function buildCharacters(){
 
             btn.classList.add("selected");
 
-            /*
-               Atualiza imediatamente o animal
-               quando o personagem é escolhido.
-            */
-
-            updateAnimal();
-
         };
 
         box.appendChild(btn);
@@ -995,7 +1035,6 @@ const mapNames=[
 
 ];
 
-
 function buildMaps(){
 
     const box=
@@ -1029,9 +1068,7 @@ function buildMaps(){
                 : ''
             }
 
-            <span class="mapIcon">
-                ${m[0]}
-            </span>
+            <span class="mapIcon">${m[0]}</span>
 
             <span class="mapName">
                 MAPA ${number}<br>${m[1]}
@@ -1078,26 +1115,35 @@ let H=0;
 
 function resize(){
 
-    W=canvas.width=window.innerWidth;
-    H=canvas.height=window.innerHeight;
+    W=
+        canvas.width=
+        window.innerWidth;
 
-    if(player && !started){
-
-        player.y=H-130;
-
-        updateWolf();
-
-    }
+    H=
+        canvas.height=
+        window.innerHeight;
 
 }
 
 resize();
 
-window.addEventListener("resize",resize);
+window.addEventListener(
+    "resize",
+    ()=>{
+        resize();
+
+        if(player){
+            player.y=Math.min(
+                player.y,
+                H-130
+            );
+        }
+    }
+);
 
 
 /* =====================================================
-   GAME
+   GAME VARIABLES
 ===================================================== */
 
 let player;
@@ -1134,8 +1180,8 @@ function resetGame(){
     obstacles=[];
     poops=[];
 
-    obstacleTimer=120;
-    poopTimer=80;
+    obstacleTimer=110;
+    poopTimer=70;
 
     invincible=false;
 
@@ -1152,14 +1198,11 @@ function resetGame(){
 
     };
 
-    started=false;
-    running=false;
-
     document.getElementById("level")
         .textContent=level;
 
     document.getElementById("poopCount")
-        .textContent=0;
+        .textContent="0";
 
     updateLives();
     updateWolf();
@@ -1168,7 +1211,7 @@ function resetGame(){
 
 
 /* =====================================================
-   TROCAR ANIMAL
+   ANIMAL
 ===================================================== */
 
 function updateAnimal(){
@@ -1176,32 +1219,18 @@ function updateAnimal(){
     const wolf=
         document.getElementById("wolf");
 
-    const character=
-        characters[selectedCharacter];
+    wolf.className=
+        characters[selectedCharacter].css;
 
-    /*
-       Remove todas as classes antigas
-       antes de colocar a nova.
-    */
-
-    wolf.className="";
-
-    wolf.classList.add(
-        character.css
-    );
-
-    if(started && running){
-
+    if(started && running)
         wolf.classList.add("running");
 
-    }
+    if(invincible)
+        wolf.style.opacity=".45";
+    else
+        wolf.style.opacity="1";
 
 }
-
-
-/* =====================================================
-   ANIMAL
-===================================================== */
 
 function updateWolf(){
 
@@ -1228,30 +1257,13 @@ function updateWolf(){
 
 function jump(){
 
-    /*
-       Correção principal:
-       só pula quando o jogo realmente está rodando.
-    */
-
-    if(!started)
-        return;
-
     if(!running)
-        return;
-
-    if(!player)
         return;
 
     if(!player.grounded)
         return;
 
-    /*
-       Pulo alto o suficiente para
-       passar pelos obstáculos sem
-       deixar o jogo impossível.
-    */
-
-    player.vy=-12;
+    player.vy=-11.5;
 
     player.grounded=false;
 
@@ -1261,7 +1273,7 @@ function jump(){
 
 
 /* =====================================================
-   SOM DO PULO
+   SOM
 ===================================================== */
 
 let audioContext=null;
@@ -1294,20 +1306,14 @@ function bark(){
 
         osc.type="square";
 
-        osc.frequency.setValueAtTime(
-            430,
-            now
-        );
+        osc.frequency.setValueAtTime(430,now);
 
         osc.frequency.exponentialRampToValueAtTime(
             170,
             now+.13
         );
 
-        gain.gain.setValueAtTime(
-            .001,
-            now
-        );
+        gain.gain.setValueAtTime(.001,now);
 
         gain.gain.exponentialRampToValueAtTime(
             .1,
@@ -1356,13 +1362,7 @@ function startSadMusic(){
         stopSadMusic();
 
         const notes=[
-            392,
-            349,
-            330,
-            294,
-            262,
-            220,
-            196
+            392,349,330,294,262,220,196
         ];
 
         let index=0;
@@ -1372,11 +1372,8 @@ function startSadMusic(){
             if(
                 document.getElementById("gameOver")
                 .style.display!=="flex"
-            ){
-
+            )
                 return;
-
-            }
 
             const now=
                 audioContext.currentTime;
@@ -1389,18 +1386,13 @@ function startSadMusic(){
 
             osc.type="sine";
 
-            osc.frequency.setValueAtTime(
-                notes[index],
-                now
-            );
+            osc.frequency.value=
+                notes[index];
 
-            gain.gain.setValueAtTime(
-                .001,
-                now
-            );
+            gain.gain.setValueAtTime(.001,now);
 
             gain.gain.linearRampToValueAtTime(
-                .09,
+                .08,
                 now+.15
             );
 
@@ -1419,10 +1411,7 @@ function startSadMusic(){
                 (index+1)%notes.length;
 
             sadMusicTimer=
-                setTimeout(
-                    playNote,
-                    760
-                );
+                setTimeout(playNote,760);
 
         }
 
@@ -1431,7 +1420,6 @@ function startSadMusic(){
     }catch(e){}
 
 }
-
 
 function stopSadMusic(){
 
@@ -1447,7 +1435,7 @@ function stopSadMusic(){
 
 
 /* =====================================================
-   OBSTÁCULOS POR MAPA
+   OBSTÁCULOS
 ===================================================== */
 
 function getObstacleTypes(){
@@ -1455,78 +1443,45 @@ function getObstacleTypes(){
     const themes={
 
         1:["car","cone","box"],
-
         2:["rock","cactus","rock"],
-
         3:["log","rock","bush"],
-
         4:["rock","snowrock","log"],
-
         5:["beachrock","box","shell"],
-
         6:["snowman","snowrock","ice"],
-
         7:["lavaRock","rock","fire"],
-
         8:["water","log","frogrock"],
-
         9:["rock","crystal","rock"],
-
         10:["lamp","rock","box"],
-
         11:["hay","fence","rock"],
-
         12:["barrel","bridgeRock","box"],
-
         13:["wall","rock","crate"],
-
         14:["darktree","rock","log"],
-
         15:["car","lamp","box"],
-
         16:["redrock","cactus","rock"],
-
         17:["ice","snowrock","crystal"],
-
         18:["shell","palmrock","water"],
-
         19:["rock","water","lightning"],
-
         20:["snowman","ice","snowrock"],
-
         21:["car","barrier","box"],
-
         22:["lavaRock","fire","rock"],
-
         23:["crystal","ice","rock"],
-
         24:["snowtree","snowman","ice"],
-
         25:["cactus","goldrock","rock"],
-
         26:["shell","palmrock","log"],
-
         27:["snowman","ice","snowrock"],
-
         28:["wall","crate","rock"],
-
         29:["barrier","box","rock"],
-
         30:["goldrock","crystal","rock"]
 
     };
 
-    return themes[level] || [
-        "rock",
-        "box",
-        "log"
-    ];
+    return themes[level] || ["rock","box","log"];
 
 }
 
 
 /* =====================================================
-   CRIAR OBSTÁCULO
+   SPAWN OBSTÁCULO
 ===================================================== */
 
 function spawnObstacle(){
@@ -1545,42 +1500,26 @@ function spawnObstacle(){
     let height=40;
 
     if(type==="snowman"){
-
         width=46;
         height=55;
-
     }
 
     if(type==="cactus"){
-
         width=38;
         height=52;
-
     }
 
     if(
-        type==="tree" ||
         type==="darktree" ||
         type==="snowtree"
     ){
-
         width=45;
         height=60;
-
     }
 
     if(type==="water"){
-
         width=70;
         height=28;
-
-    }
-
-    if(type==="barrier"){
-
-        width=52;
-        height=40;
-
     }
 
     obstacles.push({
@@ -1589,11 +1528,10 @@ function spawnObstacle(){
 
         y:H-65-height,
 
-        width:width,
+        width,
+        height,
 
-        height:height,
-
-        type:type
+        type
 
     });
 
@@ -1601,18 +1539,14 @@ function spawnObstacle(){
 
 
 /* =====================================================
-   BOSTINHA
+   POOP
 ===================================================== */
 
 function spawnPoop(){
 
     let p=null;
 
-    for(
-        let attempt=0;
-        attempt<50;
-        attempt++
-    ){
+    for(let attempt=0;attempt<50;attempt++){
 
         const candidate={
 
@@ -1630,24 +1564,16 @@ function spawnPoop(){
         const blocked=
             obstacles.some(o=>
 
-                candidate.x+14 >
-                o.x-5 &&
-
-                candidate.x-14 <
-                o.x+o.width+5 &&
-
-                candidate.y+14 >
-                o.y-5 &&
-
-                candidate.y-14 <
-                o.y+o.height+5
+                candidate.x+14>o.x-5 &&
+                candidate.x-14<o.x+o.width+5 &&
+                candidate.y+14>o.y-5 &&
+                candidate.y-14<o.y+o.height+5
 
             );
 
         if(!blocked){
 
             p=candidate;
-
             break;
 
         }
@@ -1681,34 +1607,28 @@ function collision(a,b){
         x:b.x+5,
         y:b.y+5,
 
-        width:Math.max(
-            1,
-            b.width-10
-        ),
+        width:Math.max(1,b.width-10),
 
-        height:Math.max(
-            1,
-            b.height-5
-        )
+        height:Math.max(1,b.height-5)
 
     };
 
     return(
 
-        playerBox.x <
+        playerBox.x<
         obstacleBox.x+
         obstacleBox.width &&
 
         playerBox.x+
-        playerBox.width >
+        playerBox.width>
         obstacleBox.x &&
 
-        playerBox.y <
+        playerBox.y<
         obstacleBox.y+
         obstacleBox.height &&
 
         playerBox.y+
-        playerBox.height >
+        playerBox.height>
         obstacleBox.y
 
     );
@@ -1728,8 +1648,8 @@ function updateLives(){
 
         text+=
             i<lives
-            ? "❤️"
-            : "🖤";
+            ?"❤️"
+            :"🖤";
 
     }
 
@@ -1740,7 +1660,7 @@ function updateLives(){
 
 
 /* =====================================================
-   BATEU
+   HIT
 ===================================================== */
 
 function hitObstacle(){
@@ -1760,23 +1680,11 @@ function hitObstacle(){
 
     }
 
-    /*
-       Proteção após bater.
-       Não reduz nem aumenta velocidade.
-    */
-
     invincible=true;
-
-    const wolf=
-        document.getElementById("wolf");
-
-    wolf.style.opacity=".45";
 
     setTimeout(()=>{
 
         invincible=false;
-
-        wolf.style.opacity="1";
 
     },1000);
 
@@ -1789,30 +1697,19 @@ function hitObstacle(){
 
 function gradientBackground(top,bottom){
 
-    const sky=
+    const g=
         ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            H
+            0,0,0,H
         );
 
-    sky.addColorStop(0,top);
-    sky.addColorStop(1,bottom);
+    g.addColorStop(0,top);
+    g.addColorStop(1,bottom);
 
-    ctx.fillStyle=sky;
+    ctx.fillStyle=g;
 
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
+    ctx.fillRect(0,0,W,H);
 
 }
-
-
-/* ================= CIDADE ================= */
 
 function drawCity(){
 
@@ -1830,8 +1727,7 @@ function drawCity(){
             (performance.now()*.035%100);
 
         const h=
-            120+
-            (i%4)*35;
+            120+(i%4)*35;
 
         ctx.fillRect(
             x,
@@ -1842,30 +1738,7 @@ function drawCity(){
 
     }
 
-    ctx.fillStyle="#ffe06a";
-
-    for(let i=0;i<30;i++){
-
-        const x=
-            (i%10)*100+12;
-
-        const y=
-            H-120-
-            Math.floor(i/10)*35;
-
-        ctx.fillRect(
-            x,
-            y,
-            8,
-            12
-        );
-
-    }
-
 }
-
-
-/* ================= DESERTO ================= */
 
 function drawDesert(){
 
@@ -1881,47 +1754,22 @@ function drawDesert(){
     ctx.moveTo(0,H-120);
 
     ctx.quadraticCurveTo(
-        W*.25,
-        H-240,
-        W*.5,
-        H-120
+        W*.25,H-240,
+        W*.5,H-120
     );
 
     ctx.quadraticCurveTo(
-        W*.75,
-        H-250,
-        W,
-        H-120
+        W*.75,H-250,
+        W,H-120
     );
 
     ctx.lineTo(W,H);
+
     ctx.lineTo(0,H);
 
     ctx.fill();
 
-    ctx.fillStyle="#e0a45d";
-
-    for(let i=0;i<7;i++){
-
-        ctx.beginPath();
-
-        ctx.arc(
-            i*190-
-            (performance.now()*.02%190),
-            H-55,
-            100,
-            Math.PI,
-            0
-        );
-
-        ctx.fill();
-
-    }
-
 }
-
-
-/* ================= FLORESTA ================= */
 
 function drawForest(){
 
@@ -1939,10 +1787,7 @@ function drawForest(){
         ctx.fillStyle="#5a3924";
 
         ctx.fillRect(
-            x,
-            H-145,
-            18,
-            82
+            x,H-145,18,82
         );
 
         ctx.fillStyle="#276033";
@@ -1963,9 +1808,6 @@ function drawForest(){
 
 }
 
-
-/* ================= MONTANHA ================= */
-
 function drawMountain(){
 
     gradientBackground(
@@ -1985,20 +1827,7 @@ function drawMountain(){
 
     ctx.fill();
 
-    ctx.fillStyle="#eef5f7";
-
-    ctx.beginPath();
-
-    ctx.moveTo(W*.22,H-300);
-    ctx.lineTo(W*.16,H-220);
-    ctx.lineTo(W*.29,H-210);
-
-    ctx.fill();
-
 }
-
-
-/* ================= PRAIA ================= */
 
 function drawBeach(){
 
@@ -2010,10 +1839,7 @@ function drawBeach(){
     ctx.fillStyle="#e4c477";
 
     ctx.fillRect(
-        0,
-        H-150,
-        W,
-        85
+        0,H-150,W,85
     );
 
     ctx.fillStyle="#42a5c5";
@@ -2034,38 +1860,7 @@ function drawBeach(){
 
     }
 
-    ctx.fillStyle="#2e8b57";
-
-    for(let i=0;i<5;i++){
-
-        const x=
-            i*190+50;
-
-        ctx.fillRect(
-            x,
-            H-180,
-            10,
-            75
-        );
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x+5,
-            H-190,
-            42,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
-
 }
-
-
-/* ================= INVERNO ================= */
 
 function drawWinter(){
 
@@ -2074,18 +1869,15 @@ function drawWinter(){
         "#f5fbff"
     );
 
-    ctx.fillStyle="#ffffff";
+    ctx.fillStyle="#fff";
 
     ctx.fillRect(
-        0,
-        H-170,
-        W,
-        105
+        0,H-170,W,105
     );
 
-    ctx.fillStyle="rgba(255,255,255,.8)";
+    ctx.fillStyle="rgba(255,255,255,.85)";
 
-    for(let i=0;i<45;i++){
+    for(let i=0;i<55;i++){
 
         const x=
             (i*83+
@@ -2098,11 +1890,8 @@ function drawWinter(){
         ctx.beginPath();
 
         ctx.arc(
-            x,
-            y,
-            2.5,
-            0,
-            Math.PI*2
+            x,y,2.5,
+            0,Math.PI*2
         );
 
         ctx.fill();
@@ -2110,9 +1899,6 @@ function drawWinter(){
     }
 
 }
-
-
-/* ================= VULCÃO ================= */
 
 function drawVolcano(){
 
@@ -2133,21 +1919,7 @@ function drawVolcano(){
 
     ctx.fill();
 
-    ctx.fillStyle="#e44a20";
-
-    ctx.beginPath();
-
-    ctx.moveTo(W*.28,H-300);
-    ctx.lineTo(W*.38,H-200);
-    ctx.lineTo(W*.52,H-65);
-    ctx.lineTo(W*.45,H-210);
-
-    ctx.fill();
-
 }
-
-
-/* ================= PÂNTANO ================= */
 
 function drawSwamp(){
 
@@ -2159,10 +1931,7 @@ function drawSwamp(){
     ctx.fillStyle="#365440";
 
     ctx.fillRect(
-        0,
-        H-150,
-        W,
-        85
+        0,H-150,W,85
     );
 
     ctx.fillStyle="#3c7168";
@@ -2176,9 +1945,7 @@ function drawSwamp(){
             H-95,
             85,
             22,
-            0,
-            0,
-            Math.PI*2
+            0,0,Math.PI*2
         );
 
         ctx.fill();
@@ -2189,22 +1956,15 @@ function drawSwamp(){
 
     for(let i=0;i<8;i++){
 
-        const x=
-            i*160+50;
+        const x=i*160+50;
 
         ctx.fillRect(
-            x,
-            H-220,
-            9,
-            155
+            x,H-220,9,155
         );
 
     }
 
 }
-
-
-/* ================= CAVERNA ================= */
 
 function drawCave(){
 
@@ -2227,66 +1987,24 @@ function drawCave(){
 
     ctx.fill();
 
-    ctx.fillStyle="#56636c";
-
-    for(let i=0;i<9;i++){
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            i*130,
-            0
-        );
-
-        ctx.lineTo(
-            i*130+30,
-            75
-        );
-
-        ctx.lineTo(
-            i*130+60,
-            0
-        );
-
-        ctx.fill();
-
-    }
-
 }
 
 
 /* =====================================================
-   FUNDO POR MAPA
+   FUNDO DOS 30 MAPAS
 ===================================================== */
 
 function drawBackground(){
 
-    if(level===1)
-        drawCity();
-
-    else if(level===2)
-        drawDesert();
-
-    else if(level===3)
-        drawForest();
-
-    else if(level===4)
-        drawMountain();
-
-    else if(level===5)
-        drawBeach();
-
-    else if(level===6)
-        drawWinter();
-
-    else if(level===7)
-        drawVolcano();
-
-    else if(level===8)
-        drawSwamp();
-
-    else if(level===9)
-        drawCave();
+    if(level===1)drawCity();
+    else if(level===2)drawDesert();
+    else if(level===3)drawForest();
+    else if(level===4)drawMountain();
+    else if(level===5)drawBeach();
+    else if(level===6)drawWinter();
+    else if(level===7)drawVolcano();
+    else if(level===8)drawSwamp();
+    else if(level===9)drawCave();
 
     else if(level===10){
 
@@ -2301,7 +2019,7 @@ function drawBackground(){
 
             ctx.fillRect(
                 i*100,
-                H-65-100-(i%3)*40,
+                H-165-(i%3)*40,
                 65,
                 100+(i%3)*40
             );
@@ -2320,24 +2038,8 @@ function drawBackground(){
         ctx.fillStyle="#d7bd69";
 
         ctx.fillRect(
-            0,
-            H-145,
-            W,
-            80
+            0,H-145,W,80
         );
-
-        ctx.fillStyle="#648743";
-
-        for(let i=0;i<8;i++){
-
-            ctx.fillRect(
-                i*140,
-                H-220,
-                12,
-                75
-            );
-
-        }
 
     }
 
@@ -2351,22 +2053,8 @@ function drawBackground(){
         ctx.fillStyle="#60442d";
 
         ctx.fillRect(
-            0,
-            H-145,
-            W,
-            80
+            0,H-145,W,80
         );
-
-        for(let i=0;i<15;i++){
-
-            ctx.fillRect(
-                i*90,
-                H-155,
-                65,
-                15
-            );
-
-        }
 
     }
 
@@ -2410,18 +2098,6 @@ function drawBackground(){
                 165
             );
 
-            ctx.beginPath();
-
-            ctx.arc(
-                i*120+10,
-                H-245,
-                65,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
         }
 
     }
@@ -2458,10 +2134,7 @@ function drawBackground(){
         ctx.fillStyle="#c27a3b";
 
         ctx.fillRect(
-            0,
-            H-160,
-            W,
-            95
+            0,H-160,W,95
         );
 
     }
@@ -2476,60 +2149,14 @@ function drawBackground(){
         ctx.fillStyle="#cbeefa";
 
         ctx.fillRect(
-            0,
-            H-190,
-            W,
-            125
+            0,H-190,W,125
         );
-
-        ctx.fillStyle="#8bc5df";
-
-        for(let i=0;i<8;i++){
-
-            ctx.beginPath();
-
-            ctx.arc(
-                i*160,
-                H-170,
-                70,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
-        }
 
     }
 
     else if(level===18){
 
-        gradientBackground(
-            "#52b8d8",
-            "#c7f0bd"
-        );
-
-        ctx.fillStyle="#e4ca7d";
-
-        ctx.fillRect(
-            0,
-            H-145,
-            W,
-            80
-        );
-
-        ctx.fillStyle="#278e52";
-
-        for(let i=0;i<7;i++){
-
-            ctx.fillRect(
-                i*170+50,
-                H-220,
-                10,
-                75
-            );
-
-        }
+        drawBeach();
 
     }
 
@@ -2543,24 +2170,8 @@ function drawBackground(){
         ctx.fillStyle="#435261";
 
         ctx.fillRect(
-            0,
-            H-145,
-            W,
-            80
+            0,H-145,W,80
         );
-
-        ctx.fillStyle="#cdd9e2";
-
-        for(let i=0;i<30;i++){
-
-            ctx.fillRect(
-                (i*83)%W,
-                (i*51)%H,
-                2,
-                15
-            );
-
-        }
 
     }
 
@@ -2606,50 +2217,13 @@ function drawBackground(){
 
     else if(level===24){
 
-        gradientBackground(
-            "#668ca3",
-            "#e8f5fa"
-        );
-
-        ctx.fillStyle="#f7fbff";
-
-        ctx.fillRect(
-            0,
-            H-170,
-            W,
-            105
-        );
-
-        ctx.fillStyle="#42694a";
-
-        for(let i=0;i<10;i++){
-
-            ctx.fillRect(
-                i*140,
-                H-220,
-                15,
-                55
-            );
-
-        }
+        drawWinter();
 
     }
 
     else if(level===25){
 
-        gradientBackground(
-            "#e5a84d",
-            "#fff0ae"
-        );
-
-        ctx.fillStyle="#d29a43";
-
-        ctx.fillRect(
-            0,
-            H-150,
-            W,
-            85
-        );
+        drawDesert();
 
     }
 
@@ -2662,19 +2236,6 @@ function drawBackground(){
     else if(level===27){
 
         drawWinter();
-
-        ctx.fillStyle="#a8d4e9";
-
-        for(let i=0;i<9;i++){
-
-            ctx.fillRect(
-                i*130,
-                H-250,
-                90,
-                85
-            );
-
-        }
 
     }
 
@@ -2780,14 +2341,10 @@ function drawBackground(){
     };
 
     ctx.fillStyle=
-        groundColors[level] ||
-        "#405239";
+        groundColors[level] || "#405239";
 
     ctx.fillRect(
-        0,
-        H-65,
-        W,
-        65
+        0,H-65,W,65
     );
 
     ctx.fillStyle=
@@ -2800,10 +2357,7 @@ function drawBackground(){
         : "rgba(255,255,255,.18)";
 
     ctx.fillRect(
-        0,
-        H-65,
-        W,
-        7
+        0,H-65,W,7
     );
 
 }
@@ -2820,27 +2374,18 @@ function drawObstacle(o){
     const w=o.width;
     const h=o.height;
 
-
-    /* CARRO */
-
     if(o.type==="car"){
 
         ctx.fillStyle="#bd2525";
 
         ctx.fillRect(
-            x,
-            y+15,
-            w,
-            h-15
+            x,y+15,w,h-15
         );
 
         ctx.fillStyle="#65a4c5";
 
         ctx.fillRect(
-            x+10,
-            y+5,
-            w-20,
-            18
+            x+10,y+5,w-20,18
         );
 
         ctx.fillStyle="#111";
@@ -2848,28 +2393,17 @@ function drawObstacle(o){
         ctx.beginPath();
 
         ctx.arc(
-            x+10,
-            y+h,
-            8,
-            0,
-            Math.PI*2
+            x+10,y+h,8,0,Math.PI*2
         );
 
         ctx.arc(
-            x+w-10,
-            y+h,
-            8,
-            0,
-            Math.PI*2
+            x+w-10,y+h,8,0,Math.PI*2
         );
 
         ctx.fill();
 
         return;
     }
-
-
-    /* CONE */
 
     if(o.type==="cone"){
 
@@ -2877,161 +2411,93 @@ function drawObstacle(o){
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            x+w/2,
-            y
-        );
-
-        ctx.lineTo(
-            x+w,
-            y+h
-        );
-
-        ctx.lineTo(
-            x,
-            y+h
-        );
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x,y+h);
 
         ctx.closePath();
-
         ctx.fill();
 
         ctx.fillStyle="#fff";
 
         ctx.fillRect(
-            x+8,
-            y+h*.55,
-            w-16,
-            7
+            x+8,y+h*.55,w-16,7
         );
 
         return;
     }
 
-
-    /* PEDRA */
-
     if(
-        o.type==="rock" ||
-        o.type==="snowrock" ||
-        o.type==="beachrock" ||
-        o.type==="lavaRock" ||
-        o.type==="redrock" ||
-        o.type==="goldrock" ||
-        o.type==="bridgeRock" ||
-        o.type==="palmrock"
+        [
+            "rock",
+            "snowrock",
+            "beachrock",
+            "lavaRock",
+            "redrock",
+            "goldrock",
+            "bridgeRock",
+            "palmrock"
+        ].includes(o.type)
     ){
 
-        if(
-            o.type==="snowrock" ||
-            o.type==="ice"
-        ){
-
+        if(o.type==="snowrock")
             ctx.fillStyle="#dff6ff";
 
-        }else if(o.type==="lavaRock"){
-
+        else if(o.type==="lavaRock")
             ctx.fillStyle="#592a20";
 
-        }else if(o.type==="redrock"){
-
+        else if(o.type==="redrock")
             ctx.fillStyle="#873e30";
 
-        }else if(o.type==="goldrock"){
-
+        else if(o.type==="goldrock")
             ctx.fillStyle="#bd8b2f";
 
-        }else if(o.type==="beachrock"){
-
+        else if(o.type==="beachrock")
             ctx.fillStyle="#8c7965";
 
-        }else{
-
+        else
             ctx.fillStyle="#666d72";
-
-        }
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            x+5,
-            y+h
-        );
-
-        ctx.lineTo(
-            x+12,
-            y+10
-        );
-
-        ctx.lineTo(
-            x+w*.55,
-            y
-        );
-
-        ctx.lineTo(
-            x+w-4,
-            y+15
-        );
-
-        ctx.lineTo(
-            x+w-8,
-            y+h
-        );
+        ctx.moveTo(x+5,y+h);
+        ctx.lineTo(x+12,y+10);
+        ctx.lineTo(x+w*.55,y);
+        ctx.lineTo(x+w-4,y+15);
+        ctx.lineTo(x+w-8,y+h);
 
         ctx.closePath();
-
         ctx.fill();
 
         return;
     }
-
-
-    /* CACTO */
 
     if(o.type==="cactus"){
 
         ctx.fillStyle="#348b42";
 
         ctx.fillRect(
-            x+12,
-            y,
-            15,
-            h
+            x+12,y,15,h
         );
 
         ctx.fillRect(
-            x,
-            y+18,
-            13,
-            10
+            x,y+18,13,10
         );
 
         ctx.fillRect(
-            x,
-            y+8,
-            8,
-            25
+            x,y+8,8,25
         );
 
         ctx.fillRect(
-            x+27,
-            y+30,
-            12,
-            10
+            x+27,y+30,12,10
         );
 
         ctx.fillRect(
-            x+31,
-            y+18,
-            8,
-            24
+            x+31,y+18,8,24
         );
 
         return;
     }
-
-
-    /* TRONCO */
 
     if(o.type==="log"){
 
@@ -3040,34 +2506,13 @@ function drawObstacle(o){
         ctx.beginPath();
 
         ctx.roundRect(
-            x,
-            y+12,
-            w,
-            25,
-            8
-        );
-
-        ctx.fill();
-
-        ctx.fillStyle="#c08a55";
-
-        ctx.beginPath();
-
-        ctx.arc(
-            x+w-5,
-            y+25,
-            10,
-            0,
-            Math.PI*2
+            x,y+12,w,25,8
         );
 
         ctx.fill();
 
         return;
     }
-
-
-    /* ARBUSTO / ÁRVORE */
 
     if(
         o.type==="bush" ||
@@ -3106,9 +2551,6 @@ function drawObstacle(o){
         return;
     }
 
-
-    /* BONECO DE NEVE */
-
     if(o.type==="snowman"){
 
         ctx.fillStyle="#fff";
@@ -3119,24 +2561,21 @@ function drawObstacle(o){
             x+w/2,
             y+h-12,
             18,
-            0,
-            Math.PI*2
+            0,Math.PI*2
         );
 
         ctx.arc(
             x+w/2,
             y+h-34,
             14,
-            0,
-            Math.PI*2
+            0,Math.PI*2
         );
 
         ctx.arc(
             x+w/2,
             y+h-51,
             10,
-            0,
-            Math.PI*2
+            0,Math.PI*2
         );
 
         ctx.fill();
@@ -3146,49 +2585,19 @@ function drawObstacle(o){
         ctx.beginPath();
 
         ctx.arc(
-            x+17,
-            y+14,
-            2.5,
-            0,
-            Math.PI*2
+            x+17,y+14,2.5,
+            0,Math.PI*2
         );
 
         ctx.arc(
-            x+29,
-            y+14,
-            2.5,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-        ctx.fillStyle="#ed7529";
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x+w/2,
-            y+20
-        );
-
-        ctx.lineTo(
-            x+w/2+12,
-            y+24
-        );
-
-        ctx.lineTo(
-            x+w/2,
-            y+27
+            x+29,y+14,2.5,
+            0,Math.PI*2
         );
 
         ctx.fill();
 
         return;
     }
-
-
-    /* GELO / CRISTAL */
 
     if(
         o.type==="ice" ||
@@ -3202,25 +2611,10 @@ function drawObstacle(o){
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            x+w/2,
-            y
-        );
-
-        ctx.lineTo(
-            x+w,
-            y+h
-        );
-
-        ctx.lineTo(
-            x+w/2,
-            y+h-10
-        );
-
-        ctx.lineTo(
-            x,
-            y+h
-        );
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x+w/2,y+h-10);
+        ctx.lineTo(x,y+h);
 
         ctx.closePath();
 
@@ -3228,9 +2622,6 @@ function drawObstacle(o){
 
         return;
     }
-
-
-    /* FOGO / RAIO */
 
     if(
         o.type==="fire" ||
@@ -3244,25 +2635,10 @@ function drawObstacle(o){
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            x+w/2,
-            y
-        );
-
-        ctx.lineTo(
-            x+w,
-            y+h
-        );
-
-        ctx.lineTo(
-            x+w*.55,
-            y+h-10
-        );
-
-        ctx.lineTo(
-            x+w*.35,
-            y+h
-        );
+        ctx.moveTo(x+w/2,y);
+        ctx.lineTo(x+w,y+h);
+        ctx.lineTo(x+w*.55,y+h-10);
+        ctx.lineTo(x+w*.35,y+h);
 
         ctx.closePath();
 
@@ -3270,9 +2646,6 @@ function drawObstacle(o){
 
         return;
     }
-
-
-    /* ÁGUA */
 
     if(o.type==="water"){
 
@@ -3285,218 +2658,84 @@ function drawObstacle(o){
             y+h/2,
             w/2,
             h/2,
-            0,
-            0,
-            Math.PI*2
+            0,0,Math.PI*2
         );
 
         ctx.fill();
 
-        ctx.strokeStyle="#7ed6d0";
-
-        ctx.stroke();
-
         return;
     }
-
-
-    /* CERCA */
 
     if(o.type==="fence"){
 
         ctx.fillStyle="#8b633d";
 
-        ctx.fillRect(
-            x,
-            y+10,
-            w,
-            8
-        );
+        ctx.fillRect(x,y+10,w,8);
+        ctx.fillRect(x,y+30,w,8);
 
-        ctx.fillRect(
-            x,
-            y+30,
-            w,
-            8
-        );
-
-        ctx.fillRect(
-            x+5,
-            y,
-            7,
-            h
-        );
-
-        ctx.fillRect(
-            x+w-12,
-            y,
-            7,
-            h
-        );
+        ctx.fillRect(x+5,y,7,h);
+        ctx.fillRect(x+w-12,y,7,h);
 
         return;
     }
-
-
-    /* FENO */
 
     if(o.type==="hay"){
 
         ctx.fillStyle="#c7a348";
 
         ctx.fillRect(
-            x,
-            y,
-            w,
-            h
-        );
-
-        ctx.strokeStyle="#806729";
-
-        for(let i=0;i<4;i++){
-
-            ctx.beginPath();
-
-            ctx.moveTo(
-                x+i*10,
-                y
-            );
-
-            ctx.lineTo(
-                x+i*10,
-                y+h
-            );
-
-            ctx.stroke();
-
-        }
-
-        return;
-    }
-
-
-    /* PAREDE */
-
-    if(o.type==="wall"){
-
-        ctx.fillStyle="#625e58";
-
-        ctx.fillRect(
-            x,
-            y,
-            w,
-            h
-        );
-
-        ctx.strokeStyle="#373531";
-
-        ctx.strokeRect(
-            x,
-            y,
-            w,
-            h
+            x,y,w,h
         );
 
         return;
     }
-
-
-    /* CAIXA */
 
     if(
-        o.type==="box" ||
+        o.type==="wall" ||
         o.type==="crate"
     ){
 
-        ctx.fillStyle="#875b31";
+        ctx.fillStyle=
+            o.type==="wall"
+            ? "#625e58"
+            : "#875b31";
 
         ctx.fillRect(
-            x,
-            y,
-            w,
-            h
+            x,y,w,h
         );
 
         ctx.strokeStyle="#d29a54";
-
-        ctx.lineWidth=3;
-
         ctx.strokeRect(
-            x+3,
-            y+3,
-            w-6,
-            h-6
+            x+3,y+3,w-6,h-6
         );
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            x,
-            y
-        );
-
-        ctx.lineTo(
-            x+w,
-            y+h
-        );
-
-        ctx.moveTo(
-            x+w,
-            y
-        );
-
-        ctx.lineTo(
-            x,
-            y+h
-        );
-
-        ctx.stroke();
 
         return;
     }
-
-
-    /* BARREIRA */
 
     if(o.type==="barrier"){
 
         ctx.fillStyle="#edb52e";
 
         ctx.fillRect(
-            x,
-            y+12,
-            w,
-            10
+            x,y+12,w,10
         );
 
         ctx.fillRect(
-            x,
-            y+30,
-            w,
-            10
+            x,y+30,w,10
         );
 
         ctx.fillStyle="#555";
 
         ctx.fillRect(
-            x+5,
-            y+5,
-            7,
-            h
+            x+5,y+5,7,h
         );
 
         ctx.fillRect(
-            x+w-12,
-            y+5,
-            7,
-            h
+            x+w-12,y+5,7,h
         );
 
         return;
     }
-
-
-    /* FAROL */
 
     if(o.type==="lamp"){
 
@@ -3526,9 +2765,6 @@ function drawObstacle(o){
         return;
     }
 
-
-    /* BARRIL */
-
     if(o.type==="barrel"){
 
         ctx.fillStyle="#74452b";
@@ -3540,22 +2776,13 @@ function drawObstacle(o){
             y+h/2,
             w/2,
             h/2,
-            0,
-            0,
-            Math.PI*2
+            0,0,Math.PI*2
         );
 
         ctx.fill();
 
-        ctx.strokeStyle="#3b2619";
-
-        ctx.stroke();
-
         return;
     }
-
-
-    /* CASCA */
 
     if(o.type==="shell"){
 
@@ -3576,28 +2803,17 @@ function drawObstacle(o){
         return;
     }
 
-
-    /* PADRÃO */
-
     ctx.fillStyle="#666";
 
-    ctx.beginPath();
-
-    ctx.arc(
-        x+w/2,
-        y+h/2,
-        Math.min(w,h)/2,
-        0,
-        Math.PI*2
+    ctx.fillRect(
+        x,y,w,h
     );
-
-    ctx.fill();
 
 }
 
 
 /* =====================================================
-   BOSTINHA
+   POOP
 ===================================================== */
 
 function drawPoop(p){
@@ -3640,25 +2856,11 @@ function drawPoop(p){
 
     ctx.fill();
 
-    ctx.fillStyle="#3d2415";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        p.x-4,
-        p.y-2,
-        2,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
 }
 
 
 /* =====================================================
-   PASSAR MAPA
+   COMPLETAR MAPA
 ===================================================== */
 
 function completeMap(){
@@ -3668,7 +2870,9 @@ function completeMap(){
         running=false;
 
         alert(
-            "🏆 PARABÉNS LINDAO!\n\nVOCÊ TERMINOU OS 30 MAPAS!"
+            "🏆 PARABÉNS "+
+            (currentUser || "JOGADOR")+
+            "!\n\nVOCÊ TERMINOU OS 30 MAPAS!"
         );
 
         backToMenu();
@@ -3684,16 +2888,8 @@ function completeMap(){
     obstacles=[];
     poops=[];
 
-    if(level>unlockedMap){
-
+    if(level>unlockedMap)
         unlockedMap=level;
-
-        localStorage.setItem(
-            "liloUnlockedMap",
-            unlockedMap
-        );
-
-    }
 
     unlockedCharacters=
         Math.max(
@@ -3701,21 +2897,18 @@ function completeMap(){
             level
         );
 
-    localStorage.setItem(
-        "liloUnlockedCharacters",
-        unlockedCharacters
-    );
-
     selectedMap=level;
+
+    saveProgress();
 
     document.getElementById("level")
         .textContent=level;
 
     document.getElementById("poopCount")
-        .textContent=0;
+        .textContent="0";
 
     obstacleTimer=120;
-    poopTimer=80;
+    poopTimer=75;
 
     buildMaps();
     buildCharacters();
@@ -3782,10 +2975,7 @@ function loop(time){
 
         if(started && running){
 
-            /* GRAVIDADE */
-
-            player.vy+=
-                .58*dt;
+            player.vy+=.58*dt;
 
             player.y+=
                 player.vy*dt;
@@ -3801,7 +2991,6 @@ function loop(time){
             }
 
             updateWolf();
-
 
             /* OBSTÁCULOS */
 
@@ -3831,23 +3020,8 @@ function loop(time){
 
                 drawObstacle(o);
 
-                /*
-                   IMPORTANTE:
-                   depois de perder uma vida,
-                   o mesmo obstáculo não causa
-                   várias perdas seguidas.
-                */
-
-                if(
-                    collision(
-                        player,
-                        o
-                    )
-                ){
-
+                if(collision(player,o))
                     hitObstacle();
-
-                }
 
             }
 
@@ -3857,7 +3031,7 @@ function loop(time){
                 );
 
 
-            /* BOSTINHAS */
+            /* POOP */
 
             poopTimer-=dt;
 
@@ -3894,12 +3068,7 @@ function loop(time){
 
                 };
 
-                if(
-                    collision(
-                        player,
-                        box
-                    )
-                ){
+                if(collision(player,box)){
 
                     poops.splice(i,1);
 
@@ -3912,6 +3081,8 @@ function loop(time){
                     if(poop>=10){
 
                         completeMap();
+
+                        break;
 
                     }
 
@@ -3934,13 +3105,16 @@ function loop(time){
 
 
 /* =====================================================
-   JOGAR
+   BOTÃO JOGAR — CORRIGIDO
 ===================================================== */
 
 document.getElementById("play")
 .addEventListener(
-    "click",
-    ()=>{
+    "pointerup",
+    function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
 
         stopSadMusic();
 
@@ -3961,7 +3135,6 @@ document.getElementById("play")
         document.getElementById("tap")
             .style.display="block";
 
-        updateAnimal();
         updateWolf();
 
     }
@@ -3969,7 +3142,7 @@ document.getElementById("play")
 
 
 /* =====================================================
-   CONTROLE DE TOQUE CORRIGIDO
+   TOQUE PARA JOGAR / PULAR
 ===================================================== */
 
 document.getElementById("game")
@@ -3977,31 +3150,10 @@ document.getElementById("game")
     "pointerdown",
     function(e){
 
-        /*
-           Impede o toque de virar scroll
-           ou comportamento padrão do celular.
-        */
-
-        e.preventDefault();
-
-        /*
-           Não faz nada se apertar um botão.
-        */
-
         if(
-            e.target.closest &&
             e.target.closest("button")
-        ){
-
+        )
             return;
-
-        }
-
-
-        /*
-           PRIMEIRO TOQUE:
-           começa o jogo.
-        */
 
         if(!started){
 
@@ -4011,33 +3163,14 @@ document.getElementById("game")
             document.getElementById("tap")
                 .style.display="none";
 
-            if(
-                audioContext &&
-                audioContext.state==="suspended"
-            ){
-
-                audioContext.resume();
-
-            }
-
-            updateAnimal();
             updateWolf();
 
             return;
 
         }
 
-
-        /*
-           TOQUES SEGUINTES:
-           fazem o animal pular.
-        */
-
         jump();
 
-    },
-    {
-        passive:false
     }
 );
 
@@ -4048,7 +3181,7 @@ document.getElementById("game")
 
 document.getElementById("restart")
 .addEventListener(
-    "click",
+    "pointerup",
     function(e){
 
         e.preventDefault();
@@ -4067,7 +3200,6 @@ document.getElementById("restart")
         document.getElementById("tap")
             .style.display="block";
 
-        updateAnimal();
         updateWolf();
 
     }
@@ -4075,7 +3207,7 @@ document.getElementById("restart")
 
 
 /* =====================================================
-   MENU
+   VOLTAR MENU
 ===================================================== */
 
 function backToMenu(){
@@ -4099,10 +3231,9 @@ function backToMenu(){
 
 }
 
-
 document.getElementById("home")
 .addEventListener(
-    "click",
+    "pointerup",
     function(e){
 
         e.preventDefault();
@@ -4113,10 +3244,9 @@ document.getElementById("home")
     }
 );
 
-
 document.getElementById("back")
 .addEventListener(
-    "click",
+    "pointerup",
     function(e){
 
         e.preventDefault();
@@ -4134,7 +3264,7 @@ document.getElementById("back")
 
 document.addEventListener(
     "keydown",
-    function(e){
+    e=>{
 
         if(
             e.code==="Space" ||
@@ -4155,9 +3285,6 @@ document.addEventListener(
 
                     document.getElementById("tap")
                         .style.display="none";
-
-                    updateAnimal();
-                    updateWolf();
 
                 }else{
 
