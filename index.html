@@ -18,15 +18,19 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#050608;
     font-family:Arial,sans-serif;
+    background:#050608;
 }
 
 button{
+    font-family:Arial,sans-serif;
+    cursor:pointer;
     touch-action:manipulation;
 }
 
-/* ================= LOADING ================= */
+/* =========================
+   CARREGAMENTO
+========================= */
 
 #loading{
     position:fixed;
@@ -36,15 +40,17 @@ button{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:radial-gradient(circle,#3d454d,#050608 75%);
     color:white;
+    background:
+        radial-gradient(circle,#343b43,#090b0f 65%,#020304);
 }
 
 .loadingTitle{
-    font-size:38px;
+    font-size:40px;
     font-weight:900;
     text-align:center;
-    text-shadow:0 0 15px red,0 0 30px #700;
+    letter-spacing:3px;
+    text-shadow:0 0 12px red,0 0 30px #700;
 }
 
 .loadingWolf{
@@ -65,10 +71,10 @@ button{
 
 .loadingBar{
     width:280px;
-    height:12px;
+    height:13px;
+    background:#222;
     border-radius:20px;
     overflow:hidden;
-    background:#222;
 }
 
 #barFill{
@@ -78,64 +84,85 @@ button{
     box-shadow:0 0 15px red;
 }
 
-/* ================= MENU ================= */
+/* =========================
+   MENU
+========================= */
 
 #menu{
     display:none;
     position:fixed;
     inset:0;
     z-index:100;
-    overflow:auto;
-    flex-direction:column;
-    align-items:center;
+    overflow-y:auto;
     color:white;
-    padding:18px;
+    text-align:center;
+    padding:18px 12px 35px;
+
     background:
-    radial-gradient(circle at center,#353c44,#080a0e 70%);
+        radial-gradient(circle at 50% 20%,#394149,#080a0e 70%);
 }
 
 .menuTitle{
-    font-size:38px;
+    font-size:42px;
     font-weight:900;
-    text-shadow:0 0 15px red;
+    letter-spacing:4px;
+    text-shadow:0 0 15px red,0 0 30px #700;
 }
 
 .subtitle{
+    margin-top:5px;
     color:#aaa;
-    text-align:center;
-    margin-top:4px;
+    font-size:14px;
 }
 
 .creator{
-    color:#ff3333;
+    margin:9px 0 15px;
+    color:#ff3434;
     font-weight:bold;
-    margin:8px;
 }
 
-.section{
-    width:100%;
-    max-width:600px;
+.sectionTitle{
+    font-size:20px;
     font-weight:bold;
-    margin-top:10px;
+    margin:10px 0;
 }
 
-.maps{
+/* =========================
+   30 MAPAS
+========================= */
+
+#maps{
     width:100%;
-    max-width:600px;
+    max-width:650px;
+    margin:auto;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    padding:10px 0 20px;
+    gap:9px;
+
+    padding-bottom:18px;
 }
 
 .map{
-    min-height:78px;
-    border:2px solid #3e4348;
-    border-radius:12px;
-    background:linear-gradient(145deg,#272c31,#0e1013);
+    min-height:82px;
+    border-radius:13px;
+    border:2px solid #444b52;
+
     color:white;
+
+    background:
+        linear-gradient(145deg,#292e33,#0e1013);
+
     position:relative;
+
     font-weight:bold;
+    font-size:12px;
+
+    transition:.15s;
+}
+
+.map:active{
+    transform:scale(.95);
 }
 
 .map.unlocked{
@@ -144,37 +171,52 @@ button{
 
 .map.selected{
     border-color:#ff2020;
-    box-shadow:0 0 12px rgba(255,0,0,.45);
+    box-shadow:
+        0 0 12px rgba(255,0,0,.65),
+        inset 0 0 10px rgba(255,0,0,.15);
 }
 
 .map.locked{
     opacity:.35;
 }
 
-.mapEmoji{
+.mapNumber{
+    font-size:16px;
     display:block;
-    font-size:27px;
 }
 
-.mapLock{
+.mapIcon{
+    font-size:26px;
+    display:block;
+    margin:2px;
+}
+
+.lock{
     position:absolute;
+    top:5px;
     right:6px;
-    top:4px;
+    font-size:15px;
 }
 
 #play{
     width:280px;
     padding:16px;
-    border:2px solid #ff3030;
+
+    border:2px solid #ff3333;
     border-radius:12px;
-    background:#760000;
+
+    background:#750000;
     color:white;
+
     font-size:18px;
     font-weight:bold;
+
     margin-bottom:20px;
 }
 
-/* ================= GAME ================= */
+/* =========================
+   GAME
+========================= */
 
 #game{
     display:none;
@@ -188,50 +230,84 @@ button{
     inset:0;
     width:100%;
     height:100%;
-    display:block;
 }
 
-/* ================= LOBO ================= */
+/* =========================
+   LOBO
+========================= */
 
 #wolf{
     position:absolute;
-    width:68px;
+
+    width:66px;
     height:78px;
-    z-index:20;
+
+    z-index:30;
+
     pointer-events:none;
+
     transform-origin:center bottom;
 }
 
+/* corpo */
+
 .wBody{
     position:absolute;
-    left:4px;
-    top:31px;
+
+    left:5px;
+    top:34px;
+
     width:48px;
-    height:29px;
-    border-radius:50%;
-    background:linear-gradient(145deg,#858b8f,#33383d);
+    height:27px;
+
+    border-radius:55%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8b9297,
+            #3b4146 65%,
+            #171a1d
+        );
 }
+
+/* cabeça */
 
 .wHead{
     position:absolute;
-    left:33px;
+
+    left:32px;
     top:8px;
-    width:35px;
+
+    width:36px;
     height:39px;
+
     border-radius:50%;
-    background:linear-gradient(145deg,#91979a,#41474c);
+
+    background:
+        linear-gradient(
+            145deg,
+            #91979a,
+            #454b50
+        );
 }
+
+/* orelhas */
 
 .wEar{
     position:absolute;
-    width:17px;
-    height:27px;
-    background:#292e32;
-    clip-path:polygon(50% 0,100% 100%,0 100%);
+
+    width:18px;
+    height:28px;
+
+    background:#282d31;
+
+    clip-path:
+        polygon(50% 0,100% 100%,0 100%);
 }
 
 .wEar.a{
-    left:33px;
+    left:32px;
     top:0;
 }
 
@@ -240,173 +316,237 @@ button{
     top:1px;
 }
 
+/* DOIS OLHOS */
+
 .wEye{
     position:absolute;
+
     top:20px;
-    width:5px;
-    height:5px;
+
+    width:6px;
+    height:6px;
+
     border-radius:50%;
-    background:#ff1010;
-    box-shadow:0 0 8px red;
+
+    background:#ff1111;
+
+    box-shadow:
+        0 0 7px red,
+        0 0 13px red;
 }
 
 .wEye.a{
-    left:42px;
+    left:41px;
 }
 
 .wEye.b{
-    left:56px;
+    left:55px;
 }
+
+/* focinho */
 
 .wMuzzle{
     position:absolute;
+
     left:53px;
     top:29px;
+
     width:19px;
     height:12px;
+
     border-radius:50%;
-    background:#555b5f;
+
+    background:#555b60;
 }
 
 .wNose{
     position:absolute;
-    left:67px;
+
+    left:68px;
     top:32px;
+
     width:6px;
     height:5px;
+
     border-radius:50%;
+
     background:#000;
 }
 
+/* cauda */
+
 .wTail{
     position:absolute;
+
     left:0;
-    top:25px;
-    width:25px;
-    height:15px;
-    border-top:7px solid #252a2e;
+    top:27px;
+
+    width:26px;
+    height:18px;
+
+    border-top:7px solid #292e32;
+
     border-radius:50%;
+
     transform:rotate(-30deg);
 }
 
+/* pernas */
+
 .leg{
     position:absolute;
+
     top:53px;
+
     width:7px;
-    height:22px;
+    height:23px;
+
     border-radius:8px;
+
     background:#171a1d;
 }
 
-.l1{left:9px}
-.l2{left:21px}
-.l3{left:37px}
-.l4{left:49px}
+.l1{left:8px}
+.l2{left:20px}
+.l3{left:36px}
+.l4{left:48px}
 
 #wolf.running .l1,
 #wolf.running .l3{
-    animation:leg1 .18s infinite alternate;
+    animation:legA .16s infinite alternate;
 }
 
 #wolf.running .l2,
 #wolf.running .l4{
-    animation:leg2 .18s infinite alternate;
+    animation:legB .16s infinite alternate;
 }
 
-@keyframes leg1{
-    from{transform:rotate(20deg)}
-    to{transform:rotate(-20deg)}
+@keyframes legA{
+    from{transform:rotate(22deg)}
+    to{transform:rotate(-22deg)}
 }
 
-@keyframes leg2{
-    from{transform:rotate(-20deg)}
-    to{transform:rotate(20deg)}
+@keyframes legB{
+    from{transform:rotate(-22deg)}
+    to{transform:rotate(22deg)}
 }
 
-/* ================= HUD ================= */
+/* =========================
+   HUD
+========================= */
 
 #hud{
     position:absolute;
-    z-index:40;
+
+    z-index:50;
+
     top:10px;
     left:10px;
     right:10px;
+
     display:flex;
     justify-content:space-between;
+
     color:white;
+
     font-size:18px;
     font-weight:bold;
-    text-shadow:2px 2px 5px black;
+
+    text-shadow:2px 2px 5px #000;
 }
 
 #poop{
-    color:#d29a65;
+    color:#d59a61;
 }
 
 #home{
     position:absolute;
-    z-index:45;
-    right:10px;
+
+    z-index:60;
+
     top:45px;
-    padding:8px 10px;
+    right:10px;
+
+    padding:8px 11px;
+
     border:1px solid white;
     border-radius:8px;
-    background:rgba(0,0,0,.6);
+
     color:white;
+    background:rgba(0,0,0,.6);
 }
 
 #tapStart{
     position:absolute;
-    z-index:50;
+
+    z-index:55;
+
     left:50%;
     top:50%;
+
     transform:translate(-50%,-50%);
+
     color:white;
+
     font-size:23px;
     font-weight:bold;
+
     text-align:center;
+
     text-shadow:2px 2px 8px black;
+
     pointer-events:none;
 }
 
 #tapStart small{
     display:block;
+    margin-top:9px;
     font-size:14px;
-    margin-top:8px;
 }
 
-/* ================= GAME OVER ================= */
+/* =========================
+   GAME OVER
+========================= */
 
 #gameOver{
     display:none;
+
     position:absolute;
     inset:0;
+
     z-index:100;
+
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,.88);
+
     color:white;
     text-align:center;
+
+    background:rgba(0,0,0,.88);
 }
 
 #gameOver h2{
-    color:red;
+    color:#ff2222;
     font-size:45px;
+    margin-bottom:12px;
 }
 
 .overButton{
     margin-top:15px;
-    padding:14px 25px;
+    padding:14px 28px;
+
     border:0;
     border-radius:10px;
+
     color:white;
+
     font-size:17px;
     font-weight:bold;
 }
 
 .restart{
-    background:#760000;
+    background:#780000;
 }
 
 .menuButton{
@@ -417,7 +557,9 @@ button{
 
 <body>
 
-<!-- ================= LOADING ================= -->
+<!-- =========================
+     LOADING
+========================= -->
 
 <div id="loading">
 
@@ -440,7 +582,9 @@ button{
 </div>
 
 
-<!-- ================= MENU ================= -->
+<!-- =========================
+     MENU
+========================= -->
 
 <div id="menu">
 
@@ -456,25 +600,29 @@ button{
         👑 CRIADOR: LINDAO
     </div>
 
-    <div class="section">
-        🗺️ ESCOLHA O MAPA
+    <div class="sectionTitle">
+        🗺️ SELECIONE O MAPA
     </div>
 
-    <div class="maps" id="maps"></div>
+    <!-- OS 30 MAPAS APARECEM AQUI -->
+    <div id="maps"></div>
 
     <button id="play">
-        ▶ TOCAR PARA JOGAR
+        ▶ JOGAR MAPA SELECIONADO
     </button>
 
 </div>
 
 
-<!-- ================= GAME ================= -->
+<!-- =========================
+     GAME
+========================= -->
 
 <div id="game">
 
     <canvas id="canvas"></canvas>
 
+    <!-- LOBO -->
     <div id="wolf">
 
         <div class="wTail"></div>
@@ -497,6 +645,7 @@ button{
 
     </div>
 
+
     <div id="hud">
 
         <div id="lives">
@@ -513,9 +662,11 @@ button{
 
     </div>
 
+
     <button id="home">
         🏠 INÍCIO
     </button>
+
 
     <div id="tapStart">
 
@@ -533,7 +684,8 @@ button{
         <h2>GAME OVER</h2>
 
         <div>
-            MAPA <span id="finalLevel">1</span>
+            Você chegou ao mapa
+            <span id="finalLevel">1</span>
         </div>
 
         <div style="margin-top:8px">
@@ -556,24 +708,24 @@ button{
 <script>
 
 /* =====================================================
-   LOADING
+   LOADING 0 → 100
 ===================================================== */
 
-let loadingPercent=0;
+let load=0;
 
 function loading(){
 
-    loadingPercent++;
+    load++;
 
     document.getElementById("percent")
-        .textContent=loadingPercent+"%";
+        .textContent=load+"%";
 
     document.getElementById("barFill")
-        .style.width=loadingPercent+"%";
+        .style.width=load+"%";
 
-    if(loadingPercent<100){
+    if(load<100){
 
-        setTimeout(loading,22);
+        setTimeout(loading,20);
 
     }else{
 
@@ -583,11 +735,11 @@ function loading(){
                 .style.display="none";
 
             document.getElementById("menu")
-                .style.display="flex";
+                .style.display="block";
 
             createMaps();
 
-        },300);
+        },350);
 
     }
 }
@@ -599,8 +751,52 @@ loading();
    MAPAS
 ===================================================== */
 
+const mapsData=[
+    ["🏙️","CIDADE"],
+    ["🏜️","DESERTO"],
+    ["🌲","FLORESTA"],
+    ["⛰️","MONTANHA"],
+    ["🏖️","PRAIA"],
+    ["❄️","NEVE"],
+    ["🌋","VULCÃO"],
+    ["🐊","PÂNTANO"],
+    ["🪨","CAVERNA"],
+    ["🌙","NOITE"],
+    ["🌾","FAZENDA"],
+    ["🌉","PONTE"],
+    ["🏚️","RUÍNAS"],
+    ["🌲","FLORESTA ESCURA"],
+    ["🏙️","CIDADE 2"],
+    ["🏜️","DESERTO 2"],
+    ["🧊","GELO"],
+    ["🏝️","ILHA"],
+    ["⛈️","TEMPESTADE"],
+    ["⛰️","MONTANHA 2"],
+    ["🌃","CIDADE NOTURNA"],
+    ["🌋","VULCÃO 2"],
+    ["🕳️","CAVERNA 2"],
+    ["🌲","FLORESTA 2"],
+    ["🏜️","DESERTO 3"],
+    ["🏖️","PRAIA 2"],
+    ["❄️","NEVE 2"],
+    ["🏚️","RUÍNAS 2"],
+    ["🏢","TORRES"],
+    ["👑","MAPA FINAL"]
+];
+
+
+/*
+   Salva quantos mapas já foram
+   desbloqueados.
+*/
+
 let unlockedMap=
-    Number(localStorage.getItem("liloUnlockedMap")||1);
+    parseInt(
+        localStorage.getItem(
+            "LILO_UNLOCKED_MAP"
+        )
+    ) || 1;
+
 
 if(unlockedMap<1)
     unlockedMap=1;
@@ -608,49 +804,8 @@ if(unlockedMap<1)
 if(unlockedMap>30)
     unlockedMap=30;
 
-let selectedMap=unlockedMap>0 ? 1 : 1;
 
-const mapNames=[
-    "CIDADE",
-    "DESERTO",
-    "FLORESTA",
-    "MONTANHA",
-    "PRAIA",
-    "NEVE",
-    "VULCÃO",
-    "PÂNTANO",
-    "CAVERNA",
-    "NOITE",
-    "FAZENDA",
-    "PONTE",
-    "RUÍNAS",
-    "FLORESTA ESCURA",
-    "CIDADE 2",
-    "DESERTO 2",
-    "GELO",
-    "ILHA",
-    "TEMPESTADE",
-    "MONTANHA 2",
-    "CIDADE NOTURNA",
-    "VULCÃO 2",
-    "CAVERNA 2",
-    "FLORESTA 2",
-    "DESERTO 3",
-    "PRAIA 2",
-    "NEVE 2",
-    "RUÍNAS 2",
-    "TORRES",
-    "FINAL"
-];
-
-const mapEmoji=[
-    "🏙️","🏜️","🌲","⛰️","🏖️",
-    "❄️","🌋","🐊","🪨","🌙",
-    "🌾","🌉","🏚️","🌲","🏙️",
-    "🏜️","🧊","🏝️","⛈️","⛰️",
-    "🌃","🌋","🕳️","🌲","🏜️",
-    "🏖️","❄️","🏚️","🏢","👑"
-];
+let selectedMap=1;
 
 
 function createMaps(){
@@ -661,59 +816,117 @@ function createMaps(){
     container.innerHTML="";
 
 
-    for(let i=1;i<=30;i++){
+    /*
+       IMPORTANTE:
+       FORÇA A CRIAÇÃO DOS 30 MAPAS.
+    */
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        const mapNumber=i+1;
 
         const button=
             document.createElement("button");
 
+
         button.className="map";
 
-        if(i<=unlockedMap)
-            button.classList.add("unlocked");
-        else
-            button.classList.add("locked");
 
-        if(i===selectedMap)
-            button.classList.add("selected");
+        if(
+            mapNumber<=unlockedMap
+        ){
+
+            button.classList.add(
+                "unlocked"
+            );
+
+        }else{
+
+            button.classList.add(
+                "locked"
+            );
+
+        }
 
 
-        button.dataset.map=i;
+        if(
+            mapNumber===selectedMap
+        ){
+
+            button.classList.add(
+                "selected"
+            );
+
+        }
 
 
-        let lock=
-            i>unlockedMap
-            ? '<span class="mapLock">🔒</span>'
-            : "";
+        button.innerHTML=`
 
+            ${
+                mapNumber>unlockedMap
+                ? '<span class="lock">🔒</span>'
+                : ''
+            }
 
-        button.innerHTML=
-            lock+
-            `<span class="mapEmoji">${mapEmoji[i-1]}</span>`+
-            `MAPA ${i}<br>${mapNames[i-1]}`;
+            <span class="mapIcon">
+                ${mapsData[i][0]}
+            </span>
+
+            <span class="mapNumber">
+                MAPA ${mapNumber}
+            </span>
+
+            ${mapsData[i][1]}
+
+        `;
 
 
         button.addEventListener(
             "click",
             ()=>{
 
-                if(i>unlockedMap)
+                /*
+                   Mapa bloqueado não seleciona.
+                */
+
+                if(
+                    mapNumber>unlockedMap
+                ){
+
                     return;
 
-                selectedMap=i;
+                }
+
+
+                selectedMap=
+                    mapNumber;
+
 
                 document
                     .querySelectorAll(".map")
-                    .forEach(m=>
-                        m.classList.remove("selected")
+                    .forEach(
+                        m=>
+                            m.classList.remove(
+                                "selected"
+                            )
                     );
 
-                button.classList.add("selected");
+
+                button.classList.add(
+                    "selected"
+                );
 
             }
         );
 
 
-        container.appendChild(button);
+        container.appendChild(
+            button
+        );
 
     }
 
@@ -730,8 +943,7 @@ const canvas=
 const ctx=
     canvas.getContext("2d");
 
-let W=0;
-let H=0;
+let W,H;
 
 function resize(){
 
@@ -767,18 +979,19 @@ let running=false;
 
 let lives=3;
 let poopCount=0;
+
 let level=1;
 
 
 /*
-   VELOCIDADE FIXA POR MAPA.
-   PERDER VIDA NÃO ALTERA.
+   VELOCIDADE NÃO MUDA
+   QUANDO PERDE VIDA.
 */
 
-let speed=4.3;
+let speed=4.2;
 
-let obstacleTimer=0;
-let poopTimer=0;
+let obstacleTimer=80;
+let poopTimer=70;
 
 let hitCooldown=false;
 
@@ -795,27 +1008,21 @@ function resetGame(){
     poopCount=0;
 
     /*
-       Velocidade moderada.
-       Nunca é multiplicada ao perder vida.
+       Velocidade fixa.
     */
 
-    if(level<=10)
-        speed=4.3;
-    else if(level<=20)
-        speed=4.7;
-    else
-        speed=5;
+    speed=4.2;
 
 
     player={
 
-        x:45,
+        x:42,
 
-        y:H-125,
+        y:H-130,
 
         width:58,
 
-        height:60,
+        height:62,
 
         velocityY:0,
 
@@ -827,8 +1034,8 @@ function resetGame(){
     obstacles=[];
     poops=[];
 
-    obstacleTimer=75;
-    poopTimer=70;
+    obstacleTimer=70;
+    poopTimer=65;
 
     hitCooldown=false;
 
@@ -841,28 +1048,21 @@ function resetGame(){
     document.getElementById("level")
         .textContent=level;
 
-    updateWolfPosition();
+
+    updateWolf();
 
 }
 
 
 /* =====================================================
-   LOBO ACOMPANHA O PLAYER
+   POSIÇÃO DO LOBO
 ===================================================== */
 
-function updateWolfPosition(){
+function updateWolf(){
 
     const wolf=
         document.getElementById("wolf");
 
-
-    /*
-       ESSA ERA A PARTE QUE ESTAVA
-       CAUSANDO O BUG DO LOBO NÃO PULAR.
-
-       Agora o CSS usa exatamente
-       player.x e player.y.
-    */
 
     wolf.style.left=
         player.x+"px";
@@ -871,10 +1071,22 @@ function updateWolfPosition(){
         player.y+"px";
 
 
-    if(started && running)
-        wolf.classList.add("running");
-    else
-        wolf.classList.remove("running");
+    if(
+        started &&
+        running
+    ){
+
+        wolf.classList.add(
+            "running"
+        );
+
+    }else{
+
+        wolf.classList.remove(
+            "running"
+        );
+
+    }
 
 }
 
@@ -885,11 +1097,15 @@ function updateWolfPosition(){
 
 function updateLives(){
 
-    let text="";
+    let result="";
 
-    for(let i=0;i<3;i++){
+    for(
+        let i=0;
+        i<3;
+        i++
+    ){
 
-        text+=
+        result+=
             i<lives
             ? "❤️"
             : "🖤";
@@ -897,7 +1113,7 @@ function updateLives(){
     }
 
     document.getElementById("lives")
-        .textContent=text;
+        .textContent=result;
 
 }
 
@@ -911,21 +1127,25 @@ function jump(){
     if(!running)
         return;
 
-    if(!player.grounded)
+
+    if(
+        !player.grounded
+    )
         return;
 
 
     /*
        PULO ALTO.
 
-       -17 deixa o lobo subir
-       bastante para alcançar
-       as bostinhas.
+       O lobo sobe porque
+       player.y também sobe.
     */
 
     player.velocityY=-17;
 
+
     player.grounded=false;
+
 
     bark();
 
@@ -936,80 +1156,85 @@ function jump(){
    LATIDO
 ===================================================== */
 
-let audioContext=null;
+let audio=null;
 
 function bark(){
 
     try{
 
-        if(!audioContext){
+        if(!audio){
 
-            audioContext=
+            audio=
                 new(
-                    window.AudioContext||
+                    window.AudioContext ||
                     window.webkitAudioContext
                 )();
 
         }
 
+
         if(
-            audioContext.state==="suspended"
+            audio.state==="suspended"
         ){
 
-            audioContext.resume();
+            audio.resume();
 
         }
 
 
         const now=
-            audioContext.currentTime;
+            audio.currentTime;
+
 
         const osc=
-            audioContext.createOscillator();
+            audio.createOscillator();
 
         const gain=
-            audioContext.createGain();
+            audio.createGain();
 
 
         osc.type="square";
 
+
         osc.frequency.setValueAtTime(
-            350,
+            420,
             now
         );
 
         osc.frequency.exponentialRampToValueAtTime(
-            120,
-            now+.14
+            130,
+            now+.16
         );
 
 
         gain.gain.setValueAtTime(
-            .0001,
+            .001,
             now
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            .2,
+            .18,
             now+.01
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            .0001,
-            now+.17
+            .001,
+            now+.18
         );
 
 
         osc.connect(gain);
 
         gain.connect(
-            audioContext.destination
+            audio.destination
         );
 
 
         osc.start(now);
 
-        osc.stop(now+.18);
+        osc.stop(
+            now+.19
+        );
 
     }catch(e){}
 
@@ -1017,58 +1242,17 @@ function bark(){
 
 
 /* =====================================================
-   TOQUE
+   OBSTÁCULOS
 ===================================================== */
 
-function gameTouch(e){
-
-    if(
-        e.target.closest &&
-        e.target.closest("button")
-    )
-        return;
-
-
-    if(!started){
-
-        started=true;
-        running=true;
-
-        document.getElementById("tapStart")
-            .style.display="none";
-
-        updateWolfPosition();
-
-        return;
-
-    }
-
-
-    jump();
-
-}
-
-
-/* =====================================================
-   TIPOS DE OBSTÁCULO
-===================================================== */
-
-function getObstacleTypes(){
+function obstacleTypes(){
 
     if(level===1){
 
-        /*
-           MAPA 1:
-           CIDADE.
-           Obstáculos entre prédios.
-        */
-
         return[
-            "buildingGap",
-            "airConditioner",
-            "barrier",
-            "buildingGap",
-            "spike"
+            "building",
+            "spike",
+            "barrier"
         ];
 
     }
@@ -1078,8 +1262,8 @@ function getObstacleTypes(){
 
         return[
             "cactus",
-            "rock",
             "cactus",
+            "rock",
             "spike"
         ];
 
@@ -1089,8 +1273,8 @@ function getObstacleTypes(){
     if(level===3){
 
         return[
-            "spike",
             "rock",
+            "spike",
             "doubleSpike"
         ];
 
@@ -1108,39 +1292,6 @@ function getObstacleTypes(){
     }
 
 
-    if(level===5){
-
-        return[
-            "barrier",
-            "rock",
-            "spike"
-        ];
-
-    }
-
-
-    if(level===6){
-
-        return[
-            "ice",
-            "spike",
-            "rock"
-        ];
-
-    }
-
-
-    if(level===7){
-
-        return[
-            "lava",
-            "spike",
-            "rock"
-        ];
-
-    }
-
-
     return[
         "spike",
         "rock",
@@ -1151,19 +1302,16 @@ function getObstacleTypes(){
 }
 
 
-/* =====================================================
-   CRIAR OBSTÁCULO
-===================================================== */
-
 function spawnObstacle(){
 
-    const types=
-        getObstacleTypes();
+    const list=
+        obstacleTypes();
+
 
     const type=
-        types[
+        list[
             Math.floor(
-                Math.random()*types.length
+                Math.random()*list.length
             )
         ];
 
@@ -1179,38 +1327,30 @@ function spawnObstacle(){
     if(type==="cactus"){
 
         width=42;
-        height=62;
+        height=60;
 
     }
 
 
-    if(type==="buildingGap"){
+    if(type==="building"){
 
-        width=65;
-        height=50;
-
-    }
-
-
-    if(type==="airConditioner"){
-
-        width=45;
-        height=35;
+        width=55;
+        height=60;
 
     }
 
 
     obstacles.push({
 
-        x:W+60,
+        x:W+50,
 
         y:H-65-height,
 
-        width,
+        width:width,
 
-        height,
+        height:height,
 
-        type
+        type:type
 
     });
 
@@ -1218,89 +1358,58 @@ function spawnObstacle(){
 
 
 /* =====================================================
-   CRIAR BOSTINHA
+   BOSTINHAS
 ===================================================== */
 
 function spawnPoop(){
 
     /*
-       Primeiro escolhemos a altura.
-
-       Depois verificamos se existe
-       obstáculo naquela região.
-
-       Assim a bostinha NÃO nasce
-       dentro do obstáculo.
+       Nunca coloca uma bostinha
+       exatamente em cima de um obstáculo.
     */
+
+    let y;
 
     let attempts=0;
 
-    let poopY=0;
 
+    do{
 
-    while(attempts<20){
+        y=
+            H-
+            (
+                105+
+                Math.random()*185
+            );
 
         attempts++;
 
 
-        poopY=
-            H-
-            (
-                100+
-                Math.random()*190
-            );
+    }while(
 
-
-        let poopX=
-            W+80;
-
-
-        let bad=false;
-
-
-        for(const o of obstacles){
-
-            if(
+        attempts<20 &&
+        obstacles.some(
+            o=>
                 Math.abs(
-                    o.x-poopX
-                )<100
-            ){
+                    o.x-(W+80)
+                )<90 &&
+                Math.abs(
+                    o.y-y
+                )<75
+        )
 
-                /*
-                   Se a altura da bostinha
-                   ficar próxima do obstáculo,
-                   tentamos outra posição.
-                */
-
-                if(
-                    Math.abs(
-                        poopY-o.y
-                    )<80
-                ){
-
-                    bad=true;
-                    break;
-
-                }
-
-            }
-
-        }
-
-
-        if(!bad)
-            break;
-
-    }
+    );
 
 
     poops.push({
 
         x:W+80,
 
-        y:poopY,
+        y:y,
 
-        size:15
+        width:30,
+
+        height:30
 
     });
 
@@ -1315,17 +1424,17 @@ function collision(a,b){
 
     return(
 
-        a.x+8 <
-        b.x+b.width &&
+        a.x+8<
+            b.x+b.width &&
 
-        a.x+a.width-8 >
-        b.x &&
+        a.x+a.width-8>
+            b.x &&
 
-        a.y+8 <
-        b.y+b.height &&
+        a.y+8<
+            b.y+b.height &&
 
-        a.y+a.height-5 >
-        b.y
+        a.y+a.height-5>
+            b.y
 
     );
 
@@ -1333,7 +1442,7 @@ function collision(a,b){
 
 
 /* =====================================================
-   BATEU
+   ACERTOU OBSTÁCULO
 ===================================================== */
 
 function hitObstacle(){
@@ -1344,16 +1453,24 @@ function hitObstacle(){
 
     hitCooldown=true;
 
+
     lives--;
+
 
     updateLives();
 
 
     /*
-       NÃO altera speed.
+       MUITO IMPORTANTE:
+       speed NÃO é alterada.
     */
 
     player.velocityY=-6;
+
+
+    /*
+       O obstáculo continua na tela.
+    */
 
 
     if(lives<=0){
@@ -1365,16 +1482,12 @@ function hitObstacle(){
     }
 
 
-    /*
-       O obstáculo NÃO é removido.
-       Só existe proteção temporária.
-    */
-
-    setTimeout(()=>{
-
-        hitCooldown=false;
-
-    },850);
+    setTimeout(
+        ()=>{
+            hitCooldown=false;
+        },
+        850
+    );
 
 }
 
@@ -1385,101 +1498,102 @@ function hitObstacle(){
 
 function drawBackground(){
 
-    let g=
+    let gradient=
         ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            H
+            0,0,0,H
         );
 
 
-    /* ================= CIDADE ================= */
+    /* =================
+       MAPA 1 - CIDADE
+    ================= */
 
     if(level===1){
 
-        g.addColorStop(
+        gradient.addColorStop(
             0,
-            "#4e8fc5"
+            "#4d91c7"
         );
 
-        g.addColorStop(
+        gradient.addColorStop(
             1,
-            "#d7ecf7"
+            "#d9edf7"
         );
 
-
-        ctx.fillStyle=g;
+        ctx.fillStyle=gradient;
 
         ctx.fillRect(
-            0,
-            0,
-            W,
-            H
+            0,0,W,H
         );
 
 
-        /* prédios */
+        /*
+           prédios passando
+        */
 
-        for(let i=0;i<12;i++){
+        for(
+            let i=0;
+            i<12;
+            i++
+        ){
 
             let x=
-                i*95-
+                i*90-
                 (
                     performance.now()
-                    *speed/70
-                )%95;
+                    *speed/55
+                )%90;
 
 
-            let height=
-                100+
+            let bh=
+                120+
                 (i%4)*45;
 
 
             ctx.fillStyle=
                 i%2
-                ? "#4c5964"
-                : "#343e47";
+                ? "#4d5963"
+                : "#303a43";
 
 
             ctx.fillRect(
                 x,
-                H-65-height,
-                75,
-                height
+                H-65-bh,
+                72,
+                bh
             );
 
 
-            /* janelas */
-
-            ctx.fillStyle="#f6d879";
+            ctx.fillStyle="#ffd86b";
 
 
             for(
-                let yy=H-50-height;
-                yy<H-80;
-                yy+=25
+                let yy=
+                    H-45-bh;
+                yy<
+                    H-85;
+                yy+=27
             ){
 
                 ctx.fillRect(
                     x+12,
                     yy,
                     8,
-                    10
+                    11
                 );
 
                 ctx.fillRect(
-                    x+32,
+                    x+31,
                     yy,
                     8,
-                    10
+                    11
                 );
 
                 ctx.fillRect(
-                    x+52,
+                    x+50,
                     yy,
                     8,
-                    10
+                    11
                 );
 
             }
@@ -1489,37 +1603,47 @@ function drawBackground(){
     }
 
 
-    /* ================= DESERTO ================= */
+    /* =================
+       MAPA 2 - DESERTO
+    ================= */
 
     else if(level===2){
 
-        g.addColorStop(
+        gradient.addColorStop(
             0,
-            "#e79a4e"
+            "#e78c45"
         );
 
-        g.addColorStop(
+        gradient.addColorStop(
             1,
-            "#ffe3a6"
+            "#ffe0a1"
         );
 
-
-        ctx.fillStyle=g;
+        ctx.fillStyle=gradient;
 
         ctx.fillRect(
             0,0,W,H
         );
 
 
-        ctx.fillStyle="#e8b76b";
+        /*
+           dunas
+        */
 
-        for(let i=0;i<7;i++){
+        ctx.fillStyle="#d9a15d";
+
+
+        for(
+            let i=0;
+            i<7;
+            i++
+        ){
 
             let x=
                 i*180-
                 (
                     performance.now()
-                    *speed/60
+                    *speed/55
                 )%180;
 
 
@@ -1527,8 +1651,8 @@ function drawBackground(){
 
             ctx.arc(
                 x,
-                H-90,
-                70,
+                H-70,
+                80,
                 Math.PI,
                 0
             );
@@ -1540,44 +1664,49 @@ function drawBackground(){
     }
 
 
-    /* ================= FLORESTA ================= */
+    /* =================
+       MAPA 3 - FLORESTA
+    ================= */
 
     else if(level===3){
 
-        g.addColorStop(
+        gradient.addColorStop(
             0,
-            "#4b9ed0"
+            "#65acd1"
         );
 
-        g.addColorStop(
+        gradient.addColorStop(
             1,
-            "#d6f0d0"
+            "#bce1b6"
         );
 
-
-        ctx.fillStyle=g;
+        ctx.fillStyle=gradient;
 
         ctx.fillRect(
             0,0,W,H
         );
 
 
-        for(let i=0;i<9;i++){
+        for(
+            let i=0;
+            i<9;
+            i++
+        ){
 
             let x=
                 i*150-
                 (
                     performance.now()
-                    *speed/55
+                    *speed/50
                 )%150;
 
 
-            ctx.fillStyle="#315a31";
+            ctx.fillStyle="#345c34";
 
             ctx.fillRect(
                 x,
-                H-150,
-                12,
+                H-155,
+                13,
                 90
             );
 
@@ -1586,8 +1715,8 @@ function drawBackground(){
 
             ctx.arc(
                 x+6,
-                H-160,
-                45,
+                H-165,
+                48,
                 0,
                 Math.PI*2
             );
@@ -1599,30 +1728,66 @@ function drawBackground(){
     }
 
 
-    /* ================= OUTROS MAPAS ================= */
+    /* =================
+       MAPAS 4+
+    ================= */
 
     else{
 
-        g.addColorStop(
+        gradient.addColorStop(
             0,
             level%2
-            ? "#536b88"
-            : "#263847"
+            ? "#536f8a"
+            : "#273743"
         );
 
-        g.addColorStop(
+        gradient.addColorStop(
             1,
             level%2
-            ? "#b9d0db"
+            ? "#b8d0d9"
             : "#111820"
         );
 
-
-        ctx.fillStyle=g;
+        ctx.fillStyle=gradient;
 
         ctx.fillRect(
             0,0,W,H
         );
+
+
+        /*
+           elementos diferentes
+           conforme o mapa
+        */
+
+        for(
+            let i=0;
+            i<8;
+            i++
+        ){
+
+            let x=
+                i*170-
+                (
+                    performance.now()
+                    *speed/45
+                )%170;
+
+
+            ctx.fillStyle=
+                level%3===0
+                ? "#293e2b"
+                : "#3d4c57";
+
+
+            ctx.fillRect(
+                x,
+                H-140,
+                80,
+                75
+            );
+
+        }
 
     }
 
@@ -1631,10 +1796,8 @@ function drawBackground(){
 
     ctx.fillStyle=
         level===2
-        ? "#c3954e"
-        : level===7
-        ? "#32201e"
-        : "#3e4937";
+        ? "#bd914f"
+        : "#3e4938";
 
 
     ctx.fillRect(
@@ -1646,11 +1809,9 @@ function drawBackground(){
 
 
     ctx.fillStyle=
-        level===7
-        ? "#ff4c28"
-        : level===2
-        ? "#e0ad61"
-        : "#293729";
+        level===2
+        ? "#d9aa61"
+        : "#283528";
 
 
     ctx.fillRect(
@@ -1674,19 +1835,23 @@ function drawObstacle(o){
         o.type==="doubleSpike"
     ){
 
-        let amount=
+        const count=
             o.type==="doubleSpike"
             ? 2
             : 1;
 
 
-        for(let i=0;i<amount;i++){
+        for(
+            let i=0;
+            i<count;
+            i++
+        ){
 
-            let x=
+            const x=
                 o.x+i*45;
 
 
-            ctx.fillStyle="#15171a";
+            ctx.fillStyle="#17191c";
 
             ctx.beginPath();
 
@@ -1716,7 +1881,7 @@ function drawObstacle(o){
 
     else if(o.type==="cactus"){
 
-        ctx.fillStyle="#347c3b";
+        ctx.fillStyle="#347e3b";
 
         ctx.fillRect(
             o.x+12,
@@ -1727,30 +1892,30 @@ function drawObstacle(o){
 
         ctx.fillRect(
             o.x,
-            o.y+22,
-            15,
-            8
+            o.y+25,
+            14,
+            9
         );
 
         ctx.fillRect(
             o.x,
-            o.y+10,
+            o.y+12,
             8,
-            20
+            25
         );
 
         ctx.fillRect(
             o.x+28,
             o.y+35,
             14,
-            8
+            9
         );
 
         ctx.fillRect(
             o.x+34,
             o.y+23,
             8,
-            20
+            22
         );
 
     }
@@ -1758,7 +1923,7 @@ function drawObstacle(o){
 
     else if(o.type==="rock"){
 
-        ctx.fillStyle="#62686c";
+        ctx.fillStyle="#656b70";
 
         ctx.beginPath();
 
@@ -1775,9 +1940,53 @@ function drawObstacle(o){
     }
 
 
+    else if(o.type==="building"){
+
+        ctx.fillStyle="#252d34";
+
+        ctx.fillRect(
+            o.x,
+            o.y,
+            o.width,
+            o.height
+        );
+
+        ctx.fillStyle="#ffd34f";
+
+        ctx.fillRect(
+            o.x+9,
+            o.y+12,
+            10,
+            12
+        );
+
+        ctx.fillRect(
+            o.x+34,
+            o.y+12,
+            10,
+            12
+        );
+
+        ctx.fillRect(
+            o.x+9,
+            o.y+35,
+            10,
+            12
+        );
+
+        ctx.fillRect(
+            o.x+34,
+            o.y+35,
+            10,
+            12
+        );
+
+    }
+
+
     else if(o.type==="barrier"){
 
-        ctx.fillStyle="#d65a28";
+        ctx.fillStyle="#d65b2d";
 
         ctx.fillRect(
             o.x,
@@ -1789,118 +1998,11 @@ function drawObstacle(o){
         ctx.fillStyle="#fff";
 
         ctx.fillRect(
-            o.x+5,
+            o.x+4,
             o.y+12,
-            o.width-10,
+            o.width-8,
             8
         );
-
-    }
-
-
-    else if(o.type==="airConditioner"){
-
-        ctx.fillStyle="#d8dde0";
-
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.width,
-            o.height
-        );
-
-        ctx.fillStyle="#555";
-
-        for(let i=0;i<4;i++){
-
-            ctx.fillRect(
-                o.x+8+i*8,
-                o.y+8,
-                4,
-                20
-            );
-
-        }
-
-    }
-
-
-    else if(o.type==="buildingGap"){
-
-        ctx.fillStyle="#252b31";
-
-        ctx.fillRect(
-            o.x,
-            o.y,
-            o.width,
-            o.height
-        );
-
-
-        ctx.fillStyle="#ffcf48";
-
-        ctx.fillRect(
-            o.x+10,
-            o.y+12,
-            10,
-            12
-        );
-
-        ctx.fillRect(
-            o.x+35,
-            o.y+12,
-            10,
-            12
-        );
-
-    }
-
-
-    else if(o.type==="lava"){
-
-        ctx.fillStyle="#ff3c20";
-
-        ctx.beginPath();
-
-        ctx.ellipse(
-            o.x+29,
-            o.y+25,
-            29,
-            23,
-            0,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
-
-
-    else if(o.type==="ice"){
-
-        ctx.fillStyle="#bceeff";
-
-        ctx.beginPath();
-
-        ctx.moveTo(
-            o.x,
-            o.y+o.height
-        );
-
-        ctx.lineTo(
-            o.x+25,
-            o.y
-        );
-
-        ctx.lineTo(
-            o.x+50,
-            o.y+o.height
-        );
-
-        ctx.closePath();
-
-        ctx.fill();
 
     }
 
@@ -1913,7 +2015,8 @@ function drawObstacle(o){
 
 function drawPoop(p){
 
-    ctx.fillStyle="#74401e";
+    ctx.fillStyle="#70401f";
+
 
     ctx.beginPath();
 
@@ -1953,70 +2056,82 @@ function drawPoop(p){
 
     ctx.fill();
 
+
+    ctx.fillStyle="#3e2413";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        p.x-4,
+        p.y-3,
+        2,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
 }
 
 
 /* =====================================================
-   PASSAR MAPA
+   PRÓXIMO MAPA
 ===================================================== */
 
-function checkLevel(){
+function nextMap(){
 
-    if(poopCount<10)
+    if(
+        level>=30
+    ){
+
+        alert(
+            "🏆 PARABÉNS! VOCÊ COMPLETOU OS 30 MAPAS!"
+        );
+
         return;
 
-
-    if(level<30){
-
-        level++;
-
-        poopCount=0;
-
-        obstacles=[];
-        poops=[];
+    }
 
 
-        /*
-           Desbloqueia somente o
-           próximo mapa.
-        */
+    level++;
 
-        if(level>unlockedMap){
-
-            unlockedMap=level;
-
-            localStorage.setItem(
-                "liloUnlockedMap",
-                unlockedMap
-            );
-
-        }
+    poopCount=0;
 
 
-        /*
-           A velocidade só muda
-           porque entrou em um novo mapa.
-           Perder vida nunca altera.
-        */
+    /*
+       DESBLOQUEIA O PRÓXIMO.
+    */
 
-        if(level<=10)
-            speed=4.3;
-        else if(level<=20)
-            speed=4.7;
-        else
-            speed=5;
+    if(
+        level>unlockedMap
+    ){
+
+        unlockedMap=level;
 
 
-        document.getElementById("level")
-            .textContent=level;
-
-        document.getElementById("poop")
-            .textContent="0";
-
-
-        createMaps();
+        localStorage.setItem(
+            "LILO_UNLOCKED_MAP",
+            unlockedMap
+        );
 
     }
+
+
+    selectedMap=level;
+
+
+    obstacles=[];
+    poops=[];
+
+
+    document.getElementById("level")
+        .textContent=level;
+
+    document.getElementById("poop")
+        .textContent="0";
+
+
+    createMaps();
 
 }
 
@@ -2030,14 +2145,18 @@ function gameOver(){
     running=false;
     started=false;
 
+
     document.getElementById("wolf")
         .classList.remove("running");
+
 
     document.getElementById("finalLevel")
         .textContent=level;
 
+
     document.getElementById("finalPoop")
         .textContent=poopCount;
+
 
     document.getElementById("gameOver")
         .style.display="flex";
@@ -2057,7 +2176,7 @@ function loop(time){
         lastTime=time;
 
 
-    let delta=
+    const delta=
         Math.min(
             time-lastTime,
             32
@@ -2067,7 +2186,7 @@ function loop(time){
     lastTime=time;
 
 
-    let dt=
+    const dt=
         delta/16.6667;
 
 
@@ -2079,30 +2198,28 @@ function loop(time){
         drawBackground();
 
 
-        if(started && running){
+        if(
+            started &&
+            running
+        ){
 
             /* =================
-               FÍSICA DO PULO
+               FÍSICA
             ================= */
 
-            /*
-               Pulo forte e suave.
-               Agora o lobo acompanha
-               player.y diretamente.
-            */
+            player.velocityY+=
+                .58*dt;
 
-            player.velocityY +=
-                .55*dt;
 
-            player.y +=
+            player.y+=
                 player.velocityY*dt;
 
 
             if(
-                player.y>=H-125
+                player.y>=H-130
             ){
 
-                player.y=H-125;
+                player.y=H-130;
 
                 player.velocityY=0;
 
@@ -2111,7 +2228,7 @@ function loop(time){
             }
 
 
-            updateWolfPosition();
+            updateWolf();
 
 
             /* =================
@@ -2127,8 +2244,9 @@ function loop(time){
 
                 spawnObstacle();
 
+
                 obstacleTimer=
-                    90+
+                    85+
                     Math.random()*45;
 
             }
@@ -2140,12 +2258,12 @@ function loop(time){
                 i--
             ){
 
-                let o=
+                const o=
                     obstacles[i];
 
 
                 /*
-                   VELOCIDADE CONSTANTE.
+                   VELOCIDADE FIXA.
                 */
 
                 o.x-=
@@ -2188,8 +2306,9 @@ function loop(time){
 
                 spawnPoop();
 
+
                 poopTimer=
-                    80+
+                    75+
                     Math.random()*55;
 
             }
@@ -2201,7 +2320,7 @@ function loop(time){
                 i--
             ){
 
-                let p=
+                const p=
                     poops[i];
 
 
@@ -2212,7 +2331,7 @@ function loop(time){
                 drawPoop(p);
 
 
-                let box={
+                const box={
 
                     x:p.x-15,
 
@@ -2241,11 +2360,19 @@ function loop(time){
                     poopCount++;
 
 
-                    document.getElementById("poop")
-                        .textContent=poopCount;
+                    document.getElementById(
+                        "poop"
+                    ).textContent=
+                        poopCount;
 
 
-                    checkLevel();
+                    if(
+                        poopCount>=10
+                    ){
+
+                        nextMap();
+
+                    }
 
                 }
 
@@ -2268,7 +2395,7 @@ function loop(time){
 
 
 /* =====================================================
-   JOGAR
+   COMEÇAR JOGO
 ===================================================== */
 
 document.getElementById("play")
@@ -2285,28 +2412,62 @@ document.getElementById("play")
         document.getElementById("gameOver")
             .style.display="none";
 
+
         resetGame();
+
 
         started=false;
         running=false;
 
+
         document.getElementById("tapStart")
             .style.display="block";
 
-        updateWolfPosition();
+
+        updateWolf();
 
     }
 );
 
 
 /* =====================================================
-   TOQUE
+   TOQUE NA TELA
 ===================================================== */
 
 document.getElementById("game")
 .addEventListener(
     "pointerdown",
-    gameTouch
+    e=>{
+
+        /*
+           Botões não fazem o lobo pular.
+        */
+
+        if(
+            e.target.closest &&
+            e.target.closest("button")
+        )
+            return;
+
+
+        if(!started){
+
+            started=true;
+            running=true;
+
+            document.getElementById("tapStart")
+                .style.display="none";
+
+            updateWolf();
+
+            return;
+
+        }
+
+
+        jump();
+
+    }
 );
 
 
@@ -2322,15 +2483,19 @@ document.getElementById("restart")
         document.getElementById("gameOver")
             .style.display="none";
 
+
         resetGame();
+
 
         started=false;
         running=false;
 
+
         document.getElementById("tapStart")
             .style.display="block";
 
-        updateWolfPosition();
+
+        updateWolf();
 
     }
 );
@@ -2340,19 +2505,23 @@ document.getElementById("restart")
    VOLTAR AO MENU
 ===================================================== */
 
-function goMenu(){
+function backToMenu(){
 
     running=false;
     started=false;
 
+
     document.getElementById("game")
         .style.display="none";
+
 
     document.getElementById("gameOver")
         .style.display="none";
 
+
     document.getElementById("menu")
-        .style.display="flex";
+        .style.display="block";
+
 
     createMaps();
 
@@ -2362,13 +2531,14 @@ function goMenu(){
 document.getElementById("home")
 .addEventListener(
     "click",
-    goMenu
+    backToMenu
 );
+
 
 document.getElementById("backMenu")
 .addEventListener(
     "click",
-    goMenu
+    backToMenu
 );
 
 
@@ -2387,6 +2557,7 @@ document.addEventListener(
 
             e.preventDefault();
 
+
             if(
                 document.getElementById("game")
                 .style.display==="block"
@@ -2397,10 +2568,9 @@ document.addEventListener(
                     started=true;
                     running=true;
 
-                    document.getElementById("tapStart")
-                        .style.display="none";
-
-                    updateWolfPosition();
+                    document.getElementById(
+                        "tapStart"
+                    ).style.display="none";
 
                 }else{
 
@@ -2417,7 +2587,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   LOOP INICIAL
+   INICIA LOOP
 ===================================================== */
 
 requestAnimationFrame(loop);
