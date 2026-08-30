@@ -41,7 +41,7 @@ button{
 }
 
 .loadingTitle{
-    font-size:42px;
+    font-size:40px;
     font-weight:900;
     text-align:center;
     text-shadow:0 0 15px red;
@@ -167,7 +167,7 @@ button{
     font-weight:bold;
 }
 
-/* ================= JOGO ================= */
+/* ================= GAME ================= */
 
 #game{
     display:none;
@@ -190,53 +190,53 @@ button{
     position:absolute;
     left:45px;
     bottom:65px;
-    width:62px;
-    height:70px;
+    width:70px;
+    height:75px;
     z-index:15;
     pointer-events:none;
 }
 
 .wBody{
     position:absolute;
-    left:8px;
-    top:29px;
-    width:43px;
-    height:28px;
+    left:5px;
+    top:30px;
+    width:48px;
+    height:29px;
     border-radius:50%;
     background:linear-gradient(145deg,#858b8f,#363c41);
 }
 
 .wHead{
     position:absolute;
-    left:32px;
-    top:10px;
-    width:32px;
-    height:36px;
+    left:34px;
+    top:8px;
+    width:34px;
+    height:38px;
     border-radius:50%;
     background:linear-gradient(145deg,#92989c,#41474c);
 }
 
 .wEar{
     position:absolute;
-    width:15px;
-    height:25px;
+    width:16px;
+    height:26px;
     background:#292e32;
     clip-path:polygon(50% 0,100% 100%,0 100%);
 }
 
 .wEar.a{
-    left:32px;
+    left:34px;
     top:0;
 }
 
 .wEar.b{
-    left:49px;
+    left:51px;
     top:1px;
 }
 
 .wEye{
     position:absolute;
-    top:21px;
+    top:20px;
     width:5px;
     height:5px;
     border-radius:50%;
@@ -245,27 +245,27 @@ button{
 }
 
 .wEye.a{
-    left:40px;
+    left:42px;
 }
 
 .wEye.b{
-    left:53px;
+    left:56px;
 }
 
 .wMuzzle{
     position:absolute;
-    left:52px;
+    left:53px;
     top:29px;
-    width:18px;
-    height:11px;
+    width:19px;
+    height:12px;
     border-radius:50%;
     background:#555b5f;
 }
 
 .wNose{
     position:absolute;
-    left:65px;
-    top:31px;
+    left:67px;
+    top:32px;
     width:6px;
     height:5px;
     border-radius:50%;
@@ -274,10 +274,10 @@ button{
 
 .wTail{
     position:absolute;
-    left:3px;
+    left:0;
     top:25px;
-    width:22px;
-    height:13px;
+    width:25px;
+    height:15px;
     border-top:7px solid #252a2e;
     border-radius:50%;
     transform:rotate(-30deg);
@@ -285,17 +285,17 @@ button{
 
 .leg{
     position:absolute;
-    top:50px;
+    top:53px;
     width:7px;
-    height:20px;
+    height:21px;
     border-radius:8px;
     background:#171a1d;
 }
 
-.l1{left:12px}
-.l2{left:23px}
+.l1{left:9px}
+.l2{left:21px}
 .l3{left:37px}
-.l4{left:48px}
+.l4{left:49px}
 
 #wolf.running .l1,
 #wolf.running .l3{
@@ -415,14 +415,23 @@ button{
 <!-- ================= LOADING ================= -->
 
 <div id="loading">
-    <div class="loadingTitle">LILO O CAGÃO</div>
+
+    <div class="loadingTitle">
+        LILO O CAGÃO
+    </div>
+
     <div class="loadingWolf">🐺</div>
-    <div class="loadingText">CARREGANDO</div>
+
+    <div class="loadingText">
+        CARREGANDO
+    </div>
+
     <div id="percent">0%</div>
 
     <div class="loadingBar">
         <div id="barFill"></div>
     </div>
+
 </div>
 
 
@@ -430,7 +439,9 @@ button{
 
 <div id="menu">
 
-    <div class="menuTitle">LILO O CAGÃO</div>
+    <div class="menuTitle">
+        LILO O CAGÃO
+    </div>
 
     <div class="subtitle">
         CORRA • PULE • PEGUE AS BOSTINHAS 💩
@@ -440,7 +451,9 @@ button{
         👑 CRIADOR: LINDAO
     </div>
 
-    <div class="section">🐺 PERSONAGENS</div>
+    <div class="section">
+        🐺 PERSONAGENS
+    </div>
 
     <div class="cards">
 
@@ -464,7 +477,9 @@ button{
     </div>
 
 
-    <div class="section">🗺️ MAPAS</div>
+    <div class="section">
+        🗺️ MAPAS
+    </div>
 
     <div class="cards">
 
@@ -528,7 +543,9 @@ button{
 
     <div id="hud">
 
-        <div id="lives">❤️❤️❤️</div>
+        <div id="lives">
+            ❤️❤️❤️
+        </div>
 
         <div>
             💩 <span id="poop">0</span>/10
@@ -541,12 +558,19 @@ button{
     </div>
 
 
-    <button id="home">🏠 INÍCIO</button>
+    <button id="home">
+        🏠 INÍCIO
+    </button>
 
 
     <div id="tapStart">
+
         TOQUE PARA COMEÇAR
-        <small>Toque novamente para pular</small>
+
+        <small>
+            Depois toque para pular
+        </small>
+
     </div>
 
 
@@ -579,7 +603,7 @@ button{
 <script>
 
 /* =====================================================
-   LOADING
+   CARREGAMENTO 0 → 100
 ===================================================== */
 
 let load=0;
@@ -619,7 +643,7 @@ loading();
 
 
 /* =====================================================
-   MAPAS DESBLOQUEADOS
+   MAPAS
 ===================================================== */
 
 let unlockedMap=
@@ -710,7 +734,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   GAME VARIABLES
+   VARIÁVEIS DO JOGO
 ===================================================== */
 
 let player;
@@ -724,6 +748,14 @@ let running=false;
 let lives=3;
 let poopCount=0;
 let level=1;
+
+
+/*
+   IMPORTANTE:
+
+   ESSA VELOCIDADE NÃO MUDA
+   QUANDO O LOBO PERDE VIDA.
+*/
 
 let speed=4.5;
 
@@ -745,9 +777,10 @@ function resetGame(){
 
     poopCount=0;
 
+
     /*
-       VELOCIDADE FIXA POR MAPA.
-       PERDER VIDA NÃO ALTERA.
+       Velocidade definida apenas
+       pelo mapa.
     */
 
     if(level===1)
@@ -780,10 +813,11 @@ function resetGame(){
     obstacles=[];
     poops=[];
 
-    obstacleTimer=80;
-    poopTimer=55;
+    obstacleTimer=75;
+    poopTimer=45;
 
     hitCooldown=false;
+
 
     document.getElementById("poop")
         .textContent="0";
@@ -808,6 +842,12 @@ function positionWolf(){
         document.getElementById("wolf");
 
     wolf.style.left="45px";
+
+    /*
+       O lobo acompanha exatamente
+       a altura do chão do canvas.
+    */
+
     wolf.style.bottom="65px";
 
     if(started && running)
@@ -842,7 +882,7 @@ function updateLives(){
 
 
 /* =====================================================
-   PULO
+   PULO MAIS ALTO
 ===================================================== */
 
 function jump(){
@@ -853,7 +893,18 @@ function jump(){
     if(!player.grounded)
         return;
 
-    player.velocityY=-13;
+
+    /*
+       PULO ALTO
+
+       Antes: -13
+
+       Agora: -16
+       + gravidade mais baixa
+       para ficar mais tempo no ar.
+    */
+
+    player.velocityY=-16;
 
     player.grounded=false;
 
@@ -863,7 +914,7 @@ function jump(){
 
 
 /* =====================================================
-   LATIDO
+   LATIDO A CADA PULO
 ===================================================== */
 
 let audioContext=null;
@@ -885,8 +936,10 @@ function bark(){
         if(audioContext.state==="suspended")
             audioContext.resume();
 
+
         let now=
             audioContext.currentTime;
+
 
         let osc=
             audioContext.createOscillator();
@@ -894,17 +947,20 @@ function bark(){
         let gain=
             audioContext.createGain();
 
+
         osc.type="square";
 
+
         osc.frequency.setValueAtTime(
-            300,
+            330,
             now
         );
 
         osc.frequency.exponentialRampToValueAtTime(
             120,
-            now+.13
+            now+.14
         );
+
 
         gain.gain.setValueAtTime(
             .0001,
@@ -912,20 +968,28 @@ function bark(){
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            .18,
+            .20,
             now+.01
         );
 
         gain.gain.exponentialRampToValueAtTime(
             .0001,
-            now+.14
+            now+.16
         );
 
+
         osc.connect(gain);
-        gain.connect(audioContext.destination);
+
+        gain.connect(
+            audioContext.destination
+        );
+
 
         osc.start(now);
-        osc.stop(now+.15);
+
+        osc.stop(
+            now+.17
+        );
 
     }catch(e){}
 
@@ -933,7 +997,7 @@ function bark(){
 
 
 /* =====================================================
-   TOQUE NO JOGO
+   TOQUE
 ===================================================== */
 
 function gameTouch(event){
@@ -946,20 +1010,24 @@ function gameTouch(event){
     }
 
 
+    /*
+       PRIMEIRO TOQUE:
+       começa.
+
+       TOQUES SEGUINTES:
+       pulam.
+    */
+
     if(!started){
 
         started=true;
+
         running=true;
 
         document.getElementById("tapStart")
             .style.display="none";
 
         positionWolf();
-
-        /*
-           Primeiro toque começa.
-           O segundo toque pula.
-        */
 
         return;
 
@@ -972,12 +1040,13 @@ function gameTouch(event){
 
 
 /* =====================================================
-   CRIAR OBSTÁCULO
+   OBSTÁCULOS
 ===================================================== */
 
 function spawnObstacle(){
 
     let types;
+
 
     if(level===1){
 
@@ -985,7 +1054,8 @@ function spawnObstacle(){
             "spike",
             "rock",
             "box",
-            "doubleSpike"
+            "doubleSpike",
+            "spike"
         ];
 
     }else if(level===2){
@@ -993,6 +1063,7 @@ function spawnObstacle(){
         types=[
             "cactus",
             "rock",
+            "cactus",
             "cactus"
         ];
 
@@ -1001,7 +1072,8 @@ function spawnObstacle(){
         types=[
             "lava",
             "spike",
-            "rock"
+            "rock",
+            "doubleSpike"
         ];
 
     }
@@ -1019,24 +1091,29 @@ function spawnObstacle(){
     let height=48;
 
 
-    if(type==="doubleSpike"){
+    if(type==="doubleSpike")
         width=90;
-    }
+
 
     if(type==="cactus"){
+
         width=40;
         height=62;
+
     }
 
+
     if(type==="lava"){
+
         width=58;
         height=48;
+
     }
 
 
     obstacles.push({
 
-        x:W+30,
+        x:W+40,
 
         y:H-65-height,
 
@@ -1052,17 +1129,27 @@ function spawnObstacle(){
 
 
 /* =====================================================
-   CRIAR BOSTINHA
+   BOSTINHAS
 ===================================================== */
 
 function spawnPoop(){
 
+    /*
+       Agora as bostinhas aparecem
+       em alturas variadas, mas nunca
+       impossíveis de alcançar.
+    */
+
+    let height=
+        80+
+        Math.random()*180;
+
+
     poops.push({
 
-        x:W+30,
+        x:W+40,
 
-        y:H-150-
-            Math.random()*120,
+        y:H-height,
 
         size:15
 
@@ -1079,9 +1166,12 @@ function collision(a,b){
 
     return(
 
-        a.x+10 < b.x+b.width &&
-        a.x+a.width-10 > b.x &&
+        a.x+8 < b.x+b.width &&
+
+        a.x+a.width-8 > b.x &&
+
         a.y+8 < b.y+b.height &&
+
         a.y+a.height-5 > b.y
 
     );
@@ -1098,7 +1188,9 @@ function hitObstacle(){
     if(hitCooldown)
         return;
 
+
     hitCooldown=true;
+
 
     lives--;
 
@@ -1106,8 +1198,7 @@ function hitObstacle(){
 
 
     /*
-       NÃO aumenta speed.
-       NÃO remove o obstáculo.
+       A VELOCIDADE NÃO MUDA.
     */
 
     player.velocityY=-6;
@@ -1123,7 +1214,8 @@ function hitObstacle(){
 
 
     /*
-       Pequeno tempo de proteção.
+       Pequeno período de proteção.
+       O obstáculo NÃO desaparece.
     */
 
     setTimeout(()=>{
@@ -1143,28 +1235,54 @@ function drawBackground(){
 
     let g=
         ctx.createLinearGradient(
-            0,0,0,H
+            0,
+            0,
+            0,
+            H
         );
 
 
     if(level===1){
 
-        g.addColorStop(0,"#4db7e8");
-        g.addColorStop(1,"#d9f5ff");
+        g.addColorStop(
+            0,
+            "#4db7e8"
+        );
+
+        g.addColorStop(
+            1,
+            "#d9f5ff"
+        );
 
     }
+
 
     if(level===2){
 
-        g.addColorStop(0,"#e08c45");
-        g.addColorStop(1,"#ffe0a0");
+        g.addColorStop(
+            0,
+            "#e08c45"
+        );
+
+        g.addColorStop(
+            1,
+            "#ffe0a0"
+        );
 
     }
 
+
     if(level===3){
 
-        g.addColorStop(0,"#35151a");
-        g.addColorStop(1,"#d85b3c");
+        g.addColorStop(
+            0,
+            "#35151a"
+        );
+
+        g.addColorStop(
+            1,
+            "#d85b3c"
+        );
 
     }
 
@@ -1186,6 +1304,7 @@ function drawBackground(){
         ? "#ff4c30"
         : "#ffe98a";
 
+
     ctx.beginPath();
 
     ctx.arc(
@@ -1199,7 +1318,7 @@ function drawBackground(){
     ctx.fill();
 
 
-    /* ÁRVORES */
+    /* FLORESTA */
 
     if(level===1){
 
@@ -1212,6 +1331,7 @@ function drawBackground(){
                     *speed/60
                 )%180;
 
+
             ctx.fillStyle="#31552f";
 
             ctx.fillRect(
@@ -1220,6 +1340,7 @@ function drawBackground(){
                 10,
                 65
             );
+
 
             ctx.beginPath();
 
@@ -1251,6 +1372,7 @@ function drawBackground(){
                     *speed/60
                 )%180;
 
+
             ctx.fillStyle="#36733a";
 
             ctx.fillRect(
@@ -1259,6 +1381,7 @@ function drawBackground(){
                 9,
                 55
             );
+
 
             ctx.fillRect(
                 x-12,
@@ -1273,6 +1396,7 @@ function drawBackground(){
                 8,
                 25
             );
+
 
             ctx.fillRect(
                 x+9,
@@ -1331,6 +1455,7 @@ function drawBackground(){
         ? "#c49750"
         : "#302225";
 
+
     ctx.fillRect(
         0,
         H-65,
@@ -1338,12 +1463,14 @@ function drawBackground(){
         65
     );
 
+
     ctx.fillStyle=
         level===3
         ? "#ff4c32"
         : level===2
         ? "#e4b86b"
         : "#304a2a";
+
 
     ctx.fillRect(
         0,
@@ -1356,7 +1483,7 @@ function drawBackground(){
 
 
 /* =====================================================
-   DESENHAR OBSTÁCULO
+   DESENHAR OBSTÁCULOS
 ===================================================== */
 
 function drawObstacle(o){
@@ -1371,9 +1498,13 @@ function drawObstacle(o){
             ? 2
             : 1;
 
+
         for(let i=0;i<amount;i++){
 
-            let x=o.x+i*45;
+            let x=
+                o.x+
+                i*45;
+
 
             ctx.fillStyle="#17191c";
 
@@ -1407,12 +1538,14 @@ function drawObstacle(o){
 
         ctx.fillStyle="#34763a";
 
+
         ctx.fillRect(
             o.x+13,
             o.y,
             16,
             o.height
         );
+
 
         ctx.fillRect(
             o.x,
@@ -1421,6 +1554,7 @@ function drawObstacle(o){
             8
         );
 
+
         ctx.fillRect(
             o.x,
             o.y+10,
@@ -1428,12 +1562,14 @@ function drawObstacle(o){
             20
         );
 
+
         ctx.fillRect(
             o.x+26,
             o.y+34,
             15,
             8
         );
+
 
         ctx.fillRect(
             o.x+33,
@@ -1474,6 +1610,7 @@ function drawObstacle(o){
             o.width,
             o.height
         );
+
 
         ctx.strokeStyle="#28150c";
 
@@ -1520,6 +1657,7 @@ function drawPoop(p){
 
     ctx.fillStyle="#75421f";
 
+
     ctx.beginPath();
 
     ctx.arc(
@@ -1532,6 +1670,7 @@ function drawPoop(p){
 
     ctx.fill();
 
+
     ctx.beginPath();
 
     ctx.arc(
@@ -1543,6 +1682,7 @@ function drawPoop(p){
     );
 
     ctx.fill();
+
 
     ctx.beginPath();
 
@@ -1560,7 +1700,7 @@ function drawPoop(p){
 
 
 /* =====================================================
-   PASSAR DE MAPA
+   PASSAR MAPA
 ===================================================== */
 
 function checkLevel(){
@@ -1575,13 +1715,14 @@ function checkLevel(){
 
         poopCount=0;
 
+
         obstacles=[];
         poops=[];
 
 
         /*
-           Velocidade só aumenta quando
-           muda de mapa.
+           Só muda a velocidade
+           quando muda de mapa.
         */
 
         if(level===2)
@@ -1621,16 +1762,21 @@ function checkLevel(){
 function gameOver(){
 
     running=false;
+
     started=false;
+
 
     document.getElementById("wolf")
         .classList.remove("running");
 
+
     document.getElementById("finalLevel")
         .textContent=level;
 
+
     document.getElementById("finalPoop")
         .textContent=poopCount;
+
 
     document.getElementById("gameOver")
         .style.display="flex";
@@ -1639,7 +1785,7 @@ function gameOver(){
 
 
 /* =====================================================
-   LOOP
+   LOOP PRINCIPAL
 ===================================================== */
 
 let lastTime=0;
@@ -1649,13 +1795,16 @@ function loop(time){
     if(!lastTime)
         lastTime=time;
 
+
     let delta=
         Math.min(
             time-lastTime,
             32
         );
 
+
     lastTime=time;
+
 
     let dt=
         delta/16.6667;
@@ -1671,10 +1820,21 @@ function loop(time){
 
         if(started && running){
 
-            /* FÍSICA DO LOBO */
+
+            /* =================
+               FÍSICA
+            ================= */
+
+            /*
+               Gravidade menor.
+
+               Isso deixa o pulo
+               mais alto e mais longo.
+            */
 
             player.velocityY +=
-                .65*dt;
+                .55*dt;
+
 
             player.y +=
                 player.velocityY*dt;
@@ -1693,18 +1853,19 @@ function loop(time){
             }
 
 
-            /* OBSTÁCULOS */
+            /* =================
+               OBSTÁCULOS
+            ================= */
 
             obstacleTimer-=dt;
 
 
-            if(obstacleTimer<=0){
+            if(
+                obstacleTimer<=0
+            ){
 
                 spawnObstacle();
 
-                /*
-                   Espaçamento confortável.
-                */
 
                 obstacleTimer=
                     95+
@@ -1719,11 +1880,12 @@ function loop(time){
                 i--
             ){
 
-                let o=obstacles[i];
+                let o=
+                    obstacles[i];
 
 
                 /*
-                   A VELOCIDADE É SEMPRE A MESMA.
+                   VELOCIDADE FIXA.
                 */
 
                 o.x -=
@@ -1742,10 +1904,6 @@ function loop(time){
 
                     hitObstacle();
 
-                    /*
-                       NÃO remove o obstáculo.
-                    */
-
                 }
 
             }
@@ -1757,18 +1915,23 @@ function loop(time){
                 );
 
 
-            /* BOSTINHAS */
+            /* =================
+               BOSTINHAS
+            ================= */
 
             poopTimer-=dt;
 
 
-            if(poopTimer<=0){
+            if(
+                poopTimer<=0
+            ){
 
                 spawnPoop();
 
+
                 poopTimer=
                     75+
-                    Math.random()*60;
+                    Math.random()*55;
 
             }
 
@@ -1779,7 +1942,9 @@ function loop(time){
                 i--
             ){
 
-                let p=poops[i];
+                let p=
+                    poops[i];
+
 
                 p.x -=
                     speed*dt;
@@ -1812,6 +1977,7 @@ function loop(time){
                         i,
                         1
                     );
+
 
                     poopCount++;
 
@@ -1846,7 +2012,7 @@ function loop(time){
 
 
 /* =====================================================
-   INICIAR
+   BOTÃO JOGAR
 ===================================================== */
 
 document.getElementById("play")
@@ -1861,19 +2027,26 @@ function startGame(){
     document.getElementById("menu")
         .style.display="none";
 
+
     document.getElementById("game")
         .style.display="block";
+
 
     document.getElementById("gameOver")
         .style.display="none";
 
+
     resetGame();
 
+
     started=false;
+
     running=false;
+
 
     document.getElementById("tapStart")
         .style.display="block";
+
 
     positionWolf();
 
@@ -1881,7 +2054,7 @@ function startGame(){
 
 
 /* =====================================================
-   TOQUE
+   TOQUE NO JOGO
 ===================================================== */
 
 document.getElementById("game")
@@ -1903,13 +2076,18 @@ document.getElementById("restart")
         document.getElementById("gameOver")
             .style.display="none";
 
+
         resetGame();
 
+
         started=false;
+
         running=false;
+
 
         document.getElementById("tapStart")
             .style.display="block";
+
 
         positionWolf();
 
@@ -1918,32 +2096,39 @@ document.getElementById("restart")
 
 
 /* =====================================================
-   MENU
+   VOLTAR AO MENU
 ===================================================== */
 
 function goMenu(){
 
     running=false;
+
     started=false;
+
 
     document.getElementById("game")
         .style.display="none";
 
+
     document.getElementById("gameOver")
         .style.display="none";
+
 
     document.getElementById("menu")
         .style.display="flex";
 
+
     updateMaps();
 
 }
+
 
 document.getElementById("home")
 .addEventListener(
     "click",
     goMenu
 );
+
 
 document.getElementById("backMenu")
 .addEventListener(
@@ -1967,6 +2152,7 @@ document.addEventListener(
 
             e.preventDefault();
 
+
             if(
                 document.getElementById("game")
                 .style.display==="block"
@@ -1975,6 +2161,7 @@ document.addEventListener(
                 if(!started){
 
                     started=true;
+
                     running=true;
 
                     document.getElementById("tapStart")
@@ -1995,7 +2182,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   LOOP
+   INICIA O LOOP
 ===================================================== */
 
 requestAnimationFrame(loop);
