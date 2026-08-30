@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 
-<title>LILI CAGAO</title>
+<title>LILO O CAGÃO</title>
 
 <style>
 *{
@@ -24,8 +24,8 @@ html,body{
 }
 
 button{
-    cursor:pointer;
     -webkit-tap-highlight-color:transparent;
+    cursor:pointer;
 }
 
 /* ================= LOADING ================= */
@@ -39,19 +39,22 @@ button{
     justify-content:center;
     align-items:center;
     background:
-        radial-gradient(circle at center,#343a42 0%,#101319 45%,#020304 100%);
+        radial-gradient(circle at center,#343a42 0%,#101319 48%,#020304 100%);
     color:white;
 }
 
 .logo{
-    font-size:48px;
+    font-size:43px;
     font-weight:1000;
-    letter-spacing:6px;
-    text-shadow:0 0 12px #ff1616,0 0 35px #a00000;
+    letter-spacing:3px;
+    text-align:center;
+    text-shadow:
+        0 0 12px red,
+        0 0 35px #900;
 }
 
 .loadingWolf{
-    font-size:100px;
+    font-size:90px;
     margin:15px 0;
 }
 
@@ -88,35 +91,44 @@ button{
     position:fixed;
     inset:0;
     z-index:50;
-    overflow:auto;
+    overflow-y:auto;
     flex-direction:column;
     align-items:center;
-    padding:22px 15px 35px;
+    padding:20px 15px 30px;
     background:
-        radial-gradient(circle at 50% 20%,#343b43,#0c0f14 60%,#020304);
+        radial-gradient(circle at 50% 15%,#343b43,#0b0e13 60%,#020304);
     color:white;
 }
 
 .menuTitle{
-    font-size:46px;
+    font-size:43px;
     font-weight:1000;
-    letter-spacing:5px;
-    text-shadow:0 0 15px red,0 0 35px #700000;
+    letter-spacing:3px;
+    text-shadow:0 0 15px red,0 0 35px #700;
+    text-align:center;
 }
 
 .subtitle{
     color:#aaa;
-    margin:4px 0 18px;
-    letter-spacing:2px;
+    margin:4px 0 15px;
+    letter-spacing:1px;
     text-align:center;
+    font-size:13px;
+}
+
+.creator{
+    color:#ff5252;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:16px;
+    text-shadow:0 0 8px #700;
 }
 
 .sectionTitle{
     width:100%;
     max-width:520px;
     font-weight:bold;
-    margin:8px 0;
-    font-size:17px;
+    margin:7px 0;
 }
 
 .characterList,
@@ -126,12 +138,12 @@ button{
     display:flex;
     gap:10px;
     overflow-x:auto;
-    padding:5px 2px 12px;
+    padding:4px 2px 10px;
 }
 
 .card{
-    min-width:135px;
-    height:125px;
+    min-width:130px;
+    height:115px;
     border:2px solid #454b52;
     border-radius:16px;
     background:linear-gradient(145deg,#252a30,#0e1115);
@@ -149,39 +161,40 @@ button{
 }
 
 .card.locked{
-    opacity:.42;
+    opacity:.4;
     filter:grayscale(1);
 }
 
 .cardEmoji{
-    font-size:48px;
+    font-size:43px;
 }
 
 .cardName{
-    font-size:13px;
+    font-size:12px;
     font-weight:bold;
     margin-top:5px;
+    text-align:center;
 }
 
 .lock{
     position:absolute;
-    top:7px;
-    right:8px;
+    top:6px;
+    right:7px;
 }
 
 .mapCard{
-    min-width:150px;
-    height:95px;
+    min-width:145px;
+    height:90px;
 }
 
 .mapIcon{
-    font-size:32px;
+    font-size:29px;
 }
 
 .playButton{
     width:270px;
     padding:16px;
-    margin-top:10px;
+    margin-top:8px;
     border:2px solid #ff3636;
     border-radius:13px;
     background:linear-gradient(180deg,#a60000,#420000);
@@ -189,7 +202,6 @@ button{
     font-size:18px;
     font-weight:bold;
     letter-spacing:2px;
-    box-shadow:0 8px 25px rgba(0,0,0,.6);
 }
 
 /* ================= GAME ================= */
@@ -198,7 +210,6 @@ button{
     display:none;
     position:fixed;
     inset:0;
-    background:#76c9ec;
 }
 
 canvas{
@@ -229,7 +240,7 @@ canvas{
 
 #homeButton{
     position:absolute;
-    top:55px;
+    top:52px;
     right:12px;
     z-index:15;
     border:1px solid #aaa;
@@ -246,7 +257,7 @@ canvas{
     top:50%;
     transform:translate(-50%,-50%);
     color:white;
-    font-size:23px;
+    font-size:22px;
     font-weight:bold;
     text-align:center;
     text-shadow:0 0 10px #000,2px 2px 5px #000;
@@ -269,7 +280,7 @@ canvas{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,.82);
+    background:rgba(0,0,0,.84);
     color:white;
     text-align:center;
 }
@@ -286,10 +297,13 @@ canvas{
     padding:13px 30px;
     border:0;
     border-radius:10px;
-    background:#780000;
     color:white;
     font-size:17px;
     font-weight:bold;
+}
+
+.restart{
+    background:#780000;
 }
 
 .menuButton{
@@ -303,26 +317,42 @@ canvas{
 <!-- ================= LOADING ================= -->
 
 <div id="loading">
-    <div class="logo">LILI CAGAO</div>
+
+    <div class="logo">LILO O CAGÃO</div>
+
     <div class="loadingWolf">🐺</div>
+
     <div class="loadingText">CARREGANDO</div>
+
     <div id="percent">0%</div>
+
     <div class="bar">
         <div id="barFill"></div>
     </div>
+
 </div>
+
 
 <!-- ================= MENU ================= -->
 
 <div id="menu">
 
-    <div class="menuTitle">LILI CAGAO</div>
+    <div class="menuTitle">
+        LILO O CAGÃO
+    </div>
 
     <div class="subtitle">
         CORRA • PULE • PEGUE AS BOSTINHAS 💩
     </div>
 
-    <div class="sectionTitle">🐺 ESCOLHA SEU PERSONAGEM</div>
+    <div class="creator">
+        👑 CRIADOR: LINDAO
+    </div>
+
+
+    <div class="sectionTitle">
+        🐺 PERSONAGEM
+    </div>
 
     <div class="characterList">
 
@@ -345,34 +375,39 @@ canvas{
 
     </div>
 
-    <div class="sectionTitle">🗺️ ESCOLHA O MAPA</div>
+
+    <div class="sectionTitle">
+        🗺️ MAPAS
+    </div>
 
     <div class="mapList">
 
         <button class="card mapCard selected" data-map="1">
             <div class="mapIcon">🌲</div>
-            <div class="cardName">MAPA 1 • FLORESTA</div>
+            <div class="cardName">MAPA 1<br>FLORESTA</div>
         </button>
 
         <button class="card mapCard locked" data-map="2">
             <span class="lock">🔒</span>
             <div class="mapIcon">🏜️</div>
-            <div class="cardName">MAPA 2 • DESERTO</div>
+            <div class="cardName">MAPA 2<br>DESERTO</div>
         </button>
 
         <button class="card mapCard locked" data-map="3">
             <span class="lock">🔒</span>
             <div class="mapIcon">🌋</div>
-            <div class="cardName">MAPA 3 • VULCÃO</div>
+            <div class="cardName">MAPA 3<br>VULCÃO</div>
         </button>
 
     </div>
+
 
     <button class="playButton" id="startButton">
         ▶ TOCAR PARA JOGAR
     </button>
 
 </div>
+
 
 <!-- ================= GAME ================= -->
 
@@ -381,7 +416,10 @@ canvas{
     <canvas id="canvas"></canvas>
 
     <div id="hud">
-        <div id="lives">❤️❤️❤️</div>
+
+        <div id="lives">
+            ❤️❤️❤️
+        </div>
 
         <div>
             💩 <span id="poop">0</span>/10
@@ -390,14 +428,25 @@ canvas{
         <div>
             MAPA <span id="level">1</span>
         </div>
+
     </div>
 
-    <button id="homeButton">🏠 INÍCIO</button>
+
+    <button id="homeButton">
+        🏠 INÍCIO
+    </button>
+
 
     <div id="tapStart">
+
         TOQUE NA TELA PARA COMEÇAR
-        <small>Toque para pular</small>
+
+        <small>
+            Toque para pular
+        </small>
+
     </div>
+
 
     <div id="gameOver">
 
@@ -409,7 +458,8 @@ canvas{
         </div>
 
         <div style="margin-top:8px">
-            Bostinhas: <span id="finalPoop">0</span>/10
+            Bostinhas:
+            <span id="finalPoop">0</span>/10
         </div>
 
         <button class="restart" id="restart">
@@ -423,6 +473,7 @@ canvas{
     </div>
 
 </div>
+
 
 <script>
 
@@ -441,7 +492,7 @@ let selectedCharacter="wolf";
 
 
 /* =========================================================
-   CARREGAMENTO 0 → 100
+   LOADING
 ========================================================= */
 
 let load=0;
@@ -450,12 +501,15 @@ function loading(){
 
     load++;
 
-    document.getElementById("percent").textContent=load+"%";
-    document.getElementById("barFill").style.width=load+"%";
+    document.getElementById("percent").textContent=
+        load+"%";
+
+    document.getElementById("barFill").style.width=
+        load+"%";
 
     if(load<100){
 
-        setTimeout(loading,28);
+        setTimeout(loading,25);
 
     }else{
 
@@ -466,9 +520,10 @@ function loading(){
 
             updateMenu();
 
-        },450);
+        },400);
 
     }
+
 }
 
 loading();
@@ -480,7 +535,8 @@ loading();
 
 function updateMenu(){
 
-    document.querySelectorAll("[data-map]").forEach(card=>{
+    document.querySelectorAll("[data-map]")
+    .forEach(card=>{
 
         const map=Number(card.dataset.map);
 
@@ -492,33 +548,20 @@ function updateMenu(){
 
             if(lock) lock.remove();
 
-        }else{
-
-            card.classList.add("locked");
-
-            if(!card.querySelector(".lock")){
-
-                const l=document.createElement("span");
-
-                l.className="lock";
-                l.textContent="🔒";
-
-                card.prepend(l);
-
-            }
-
         }
 
     });
 
-    document.querySelectorAll("[data-character]").forEach(card=>{
 
-        const character=card.dataset.character;
+    document.querySelectorAll("[data-character]")
+    .forEach(card=>{
 
-        let available =
-            character==="wolf" ||
-            (character==="dog" && unlockedCharacters>=2) ||
-            (character==="fox" && unlockedCharacters>=3);
+        const c=card.dataset.character;
+
+        const available=
+            c==="wolf" ||
+            (c==="dog" && unlockedCharacters>=2) ||
+            (c==="fox" && unlockedCharacters>=3);
 
         if(available){
 
@@ -535,7 +578,8 @@ function updateMenu(){
 }
 
 
-document.querySelectorAll("[data-map]").forEach(card=>{
+document.querySelectorAll("[data-map]")
+.forEach(card=>{
 
     card.addEventListener("click",()=>{
 
@@ -555,11 +599,13 @@ document.querySelectorAll("[data-map]").forEach(card=>{
 });
 
 
-document.querySelectorAll("[data-character]").forEach(card=>{
+document.querySelectorAll("[data-character]")
+.forEach(card=>{
 
     card.addEventListener("click",()=>{
 
-        if(card.classList.contains("locked")) return;
+        if(card.classList.contains("locked"))
+            return;
 
         selectedCharacter=card.dataset.character;
 
@@ -577,8 +623,11 @@ document.querySelectorAll("[data-character]").forEach(card=>{
    CANVAS
 ========================================================= */
 
-const canvas=document.getElementById("canvas");
-const ctx=canvas.getContext("2d");
+const canvas=
+    document.getElementById("canvas");
+
+const ctx=
+    canvas.getContext("2d");
 
 let W,H;
 
@@ -590,6 +639,7 @@ function resize(){
 }
 
 resize();
+
 window.addEventListener("resize",resize);
 
 
@@ -609,13 +659,6 @@ let poopCount=0;
 let level=1;
 let lives=3;
 
-/*
-   VELOCIDADE FIXA POR MAPA.
-
-   IMPORTANTE:
-   perder vida NÃO muda speed.
-*/
-
 let speed=5;
 
 let obstacleTimer=0;
@@ -623,22 +666,27 @@ let poopTimer=0;
 
 let legAnimation=0;
 
+let hitCooldown=false;
+
 
 /* =========================================================
-   RESET
+   RESET COMPLETO
 ========================================================= */
 
 function reset(){
 
     player={
 
-        x:75,
-        y:H-135,
+        x:65,
 
-        w:72,
-        h:72,
+        y:H-130,
+
+        w:58,
+
+        h:58,
 
         vy:0,
+
         grounded:true
 
     };
@@ -647,27 +695,75 @@ function reset(){
     poops=[];
 
     poopCount=0;
+
     lives=3;
 
     level=selectedMap;
 
     /*
-       Cada mapa pode ser um pouco mais difícil,
-       mas perder coração nunca altera isso.
+       VELOCIDADE DEPENDE SOMENTE DO MAPA.
     */
 
     speed=
         level===1 ? 5 :
-        level===2 ? 5.6 :
-        6.2;
+        level===2 ? 5.5 :
+        6;
 
-    obstacleTimer=95;
-    poopTimer=45;
+    obstacleTimer=90;
+    poopTimer=40;
+
+    hitCooldown=false;
 
     document.getElementById("poop").textContent=0;
     document.getElementById("level").textContent=level;
 
     updateLives();
+
+}
+
+
+/* =========================================================
+   REINICIAR APÓS COLISÃO
+========================================================= */
+
+function restartAfterHit(){
+
+    /*
+       NÃO muda a velocidade.
+       NÃO perde mais vidas.
+       NÃO remove o obstáculo que bateu.
+    */
+
+    player.x=65;
+    player.y=H-130;
+    player.vy=0;
+    player.grounded=true;
+
+    /*
+       Limpa apenas os objetos que estavam
+       muito perto do personagem para evitar
+       uma segunda colisão instantânea.
+    */
+
+    obstacles=
+        obstacles.filter(o=>o.x>player.x+player.w+45);
+
+    poops=
+        poops.filter(p=>p.x>player.x+100);
+
+    obstacleTimer=70;
+
+    running=false;
+
+    setTimeout(()=>{
+
+        if(lives>0){
+
+            running=true;
+
+        }
+
+    },350);
 
 }
 
@@ -679,6 +775,7 @@ function reset(){
 function startGame(){
 
     document.getElementById("menu").style.display="none";
+
     document.getElementById("game").style.display="block";
 
     document.getElementById("gameOver").style.display="none";
@@ -696,7 +793,7 @@ function startGame(){
 
 
 /* =========================================================
-   VOLTAR AO MENU
+   VOLTAR AO INÍCIO
 ========================================================= */
 
 function backToMenu(){
@@ -705,6 +802,7 @@ function backToMenu(){
     started=false;
 
     document.getElementById("game").style.display="none";
+
     document.getElementById("gameOver").style.display="none";
 
     updateMenu();
@@ -715,17 +813,13 @@ function backToMenu(){
 
 
 /* =========================================================
-   TOQUE / PULO
+   TOQUE
 ========================================================= */
 
 function touchGame(e){
 
-    /*
-       Não deixa botão de menu/restart
-       interferir no pulo.
-    */
-
-    if(e.target.closest("button")) return;
+    if(e.target.closest("button"))
+        return;
 
     if(!started){
 
@@ -745,9 +839,14 @@ function touchGame(e){
 }
 
 
+/* =========================================================
+   PULO
+========================================================= */
+
 function jump(){
 
-    if(!running) return;
+    if(!running)
+        return;
 
     if(player.grounded){
 
@@ -770,29 +869,42 @@ function updateLives(){
 
     for(let i=0;i<3;i++){
 
-        hearts += i<lives ? "❤️" : "🖤";
+        hearts+=
+            i<lives ? "❤️" : "🖤";
 
     }
 
-    document.getElementById("lives").textContent=hearts;
+    document.getElementById("lives").textContent=
+        hearts;
 
 }
 
 
 /* =========================================================
-   PERDE VIDA
+   COLISÃO
 ========================================================= */
 
 function hitObstacle(index){
 
-    obstacles.splice(index,1);
+    /*
+       Evita várias colisões no mesmo instante.
+    */
+
+    if(hitCooldown)
+        return;
+
+    hitCooldown=true;
+
+    /*
+       O obstáculo NÃO é removido.
+    */
 
     lives--;
 
     updateLives();
 
     /*
-       RECUO SEM ALTERAR SPEED.
+       Pequeno impacto.
     */
 
     player.vy=-7;
@@ -801,7 +913,22 @@ function hitObstacle(index){
 
         gameOver();
 
+        return;
+
     }
+
+    /*
+       3 vidas -> 2 -> 1.
+       A velocidade permanece exatamente igual.
+    */
+
+    restartAfterHit();
+
+    setTimeout(()=>{
+
+        hitCooldown=false;
+
+    },500);
 
 }
 
@@ -812,13 +939,49 @@ function hitObstacle(index){
 
 function spawnObstacle(){
 
-    const types=[
-        "spike",
-        "rock",
-        "box",
-        "doubleSpike",
-        "log"
-    ];
+    let types;
+
+    if(level===1){
+
+        /*
+           MAPA 1:
+           ESPINHOS + pedras + caixas
+        */
+
+        types=[
+            "spike",
+            "spike",
+            "rock",
+            "box",
+            "doubleSpike"
+        ];
+
+    }else if(level===2){
+
+        /*
+           MAPA 2:
+           CACTOS + pedras
+        */
+
+        types=[
+            "cactus",
+            "cactus",
+            "rock",
+            "doubleCactus",
+            "box"
+        ];
+
+    }else{
+
+        types=[
+            "lavaRock",
+            "spike",
+            "rock",
+            "doubleSpike"
+        ];
+
+    }
+
 
     const type=
         types[Math.floor(Math.random()*types.length)];
@@ -827,25 +990,34 @@ function spawnObstacle(){
     let h=50;
 
     if(type==="doubleSpike"){
-
         w=90;
-        h=50;
-
     }
 
-    if(type==="log"){
-
-        w=90;
-        h=38;
-
+    if(type==="cactus"){
+        w=42;
+        h=65;
     }
+
+    if(type==="doubleCactus"){
+        w=85;
+        h=65;
+    }
+
+    if(type==="lavaRock"){
+        w=60;
+        h=55;
+    }
+
 
     obstacles.push({
 
-        x:W+60,
-        y:H-103,
+        x:W+70,
+
+        y:H-65-h,
+
         w:w,
         h:h,
+
         type:type
 
     });
@@ -863,9 +1035,9 @@ function spawnPoop(){
 
         x:W+50,
 
-        y:H-165-Math.random()*125,
+        y:H-155-Math.random()*120,
 
-        r:17
+        r:16
 
     });
 
@@ -878,33 +1050,50 @@ function spawnPoop(){
 
 function background(){
 
-    let sky=ctx.createLinearGradient(0,0,0,H);
+    let sky=ctx.createLinearGradient(
+        0,0,0,H
+    );
+
+
+    /* FLORESTA */
 
     if(level===1){
 
-        sky.addColorStop(0,"#64b9df");
-        sky.addColorStop(1,"#d7f1ff");
-
-    }else if(level===2){
-
-        sky.addColorStop(0,"#e99652");
-        sky.addColorStop(1,"#ffe0a0");
-
-    }else{
-
-        sky.addColorStop(0,"#31151a");
-        sky.addColorStop(1,"#d84b35");
+        sky.addColorStop(0,"#4eacd4");
+        sky.addColorStop(1,"#d7f2ff");
 
     }
 
+
+    /* DESERTO */
+
+    if(level===2){
+
+        sky.addColorStop(0,"#e8914e");
+        sky.addColorStop(1,"#ffe0a1");
+
+    }
+
+
+    /* VULCÃO */
+
+    if(level===3){
+
+        sky.addColorStop(0,"#251015");
+        sky.addColorStop(1,"#d34b32");
+
+    }
+
+
     ctx.fillStyle=sky;
+
     ctx.fillRect(0,0,W,H);
 
 
-    /* SOL / LUA */
+    /* SOL */
 
     ctx.fillStyle=
-        level===3 ? "#ff6347" :
+        level===3 ? "#ff5938" :
         level===2 ? "#ffd36b" :
         "#fff0a0";
 
@@ -912,8 +1101,8 @@ function background(){
 
     ctx.arc(
         W-85,
-        85,
-        42,
+        82,
+        43,
         0,
         Math.PI*2
     );
@@ -921,22 +1110,22 @@ function background(){
     ctx.fill();
 
 
-    /* MAPA 1 - FLORESTA */
+    /* FLORESTA */
 
     if(level===1){
 
-        for(let i=0;i<8;i++){
+        for(let i=0;i<9;i++){
 
-            let x=
-                (i*170-
-                ((performance.now()/35*speed)%170));
+            const x=
+                i*160-
+                ((performance.now()/35*speed)%160);
 
-            ctx.fillStyle="#3c5f38";
+            ctx.fillStyle="#345531";
 
             ctx.fillRect(
-                x-7,
+                x-6,
                 H-135,
-                14,
+                12,
                 70
             );
 
@@ -945,7 +1134,7 @@ function background(){
             ctx.arc(
                 x,
                 H-145,
-                42,
+                40,
                 0,
                 Math.PI*2
             );
@@ -957,30 +1146,36 @@ function background(){
     }
 
 
-    /* MAPA 2 - DESERTO */
+    /* DESERTO */
 
     if(level===2){
 
         for(let i=0;i<7;i++){
 
-            let x=
-                (i*210-
-                ((performance.now()/45*speed)%210));
+            const x=
+                i*210-
+                ((performance.now()/45*speed)%210);
 
-            ctx.fillStyle="#8b5a32";
+            ctx.fillStyle="#a66a38";
 
             ctx.fillRect(
                 x-5,
-                H-140,
+                H-135,
                 10,
-                75
+                70
             );
 
-            ctx.fillStyle="#47723e";
+            ctx.fillStyle="#50743b";
 
             ctx.beginPath();
 
-            ctx.arc(x,H-145,25,0,Math.PI*2);
+            ctx.arc(
+                x,
+                H-140,
+                25,
+                0,
+                Math.PI*2
+            );
 
             ctx.fill();
 
@@ -989,21 +1184,22 @@ function background(){
     }
 
 
-    /* MAPA 3 - VULCÃO */
+    /* VULCÃO */
 
     if(level===3){
 
         for(let i=0;i<5;i++){
 
-            let x=i*260;
+            let x=i*270;
 
-            ctx.fillStyle="#431d20";
+            ctx.fillStyle="#431c20";
 
             ctx.beginPath();
 
             ctx.moveTo(x,H-65);
-            ctx.lineTo(x+90,H-230);
-            ctx.lineTo(x+180,H-65);
+            ctx.lineTo(x+100,H-220);
+            ctx.lineTo(x+200,H-65);
+
             ctx.closePath();
 
             ctx.fill();
@@ -1016,24 +1212,36 @@ function background(){
     /* CHÃO */
 
     ctx.fillStyle=
-        level===1 ? "#496c39" :
+        level===1 ? "#456d37" :
         level===2 ? "#c99751" :
-        "#352527";
+        "#352426";
 
-    ctx.fillRect(0,H-65,W,65);
+    ctx.fillRect(
+        0,
+        H-65,
+        W,
+        65
+    );
+
 
     ctx.fillStyle=
         level===3 ? "#ff5b32" :
-        level===2 ? "#e1ad62" :
-        "#304b29";
+        level===2 ? "#e0ac62" :
+        "#2e4b28";
 
-    ctx.fillRect(0,H-65,W,7);
+    ctx.fillRect(
+        0,
+        H-65,
+        W,
+        7
+    );
 
 }
 
 
 /* =========================================================
-   LOBO MAIS DETALHADO
+   LOBO MENOR
+   SEM PARTE BRANCA NO PESCOÇO
    SEM SOMBRA
 ========================================================= */
 
@@ -1042,25 +1250,33 @@ function drawPlayer(){
     const x=player.x;
     const y=player.y;
 
-    legAnimation+=0.22;
+    legAnimation+=0.23;
 
-    const leg1=Math.sin(legAnimation)*8;
-    const leg2=Math.sin(legAnimation+Math.PI)*8;
+    const leg1=
+        Math.sin(legAnimation)*6;
+
+    const leg2=
+        Math.sin(legAnimation+Math.PI)*6;
 
 
     /* CAUDA */
 
     ctx.strokeStyle="#20252a";
-    ctx.lineWidth=13;
+    ctx.lineWidth=10;
     ctx.lineCap="round";
 
     ctx.beginPath();
 
-    ctx.moveTo(x+12,y+38);
+    ctx.moveTo(
+        x+9,
+        y+36
+    );
 
     ctx.quadraticCurveTo(
-        x-18,y+18,
-        x-7,y-3
+        x-13,
+        y+20,
+        x-5,
+        y+2
     );
 
     ctx.stroke();
@@ -1069,19 +1285,34 @@ function drawPlayer(){
     /* PERNAS */
 
     ctx.strokeStyle="#15191d";
-    ctx.lineWidth=11;
+    ctx.lineWidth=9;
 
     ctx.beginPath();
 
-    ctx.moveTo(x+18,y+52);
-    ctx.lineTo(x+14+leg1,y+76);
+    ctx.moveTo(
+        x+17,
+        y+48
+    );
+
+    ctx.lineTo(
+        x+14+leg1,
+        y+65
+    );
 
     ctx.stroke();
 
+
     ctx.beginPath();
 
-    ctx.moveTo(x+48,y+52);
-    ctx.lineTo(x+48+leg2,y+76);
+    ctx.moveTo(
+        x+43,
+        y+48
+    );
+
+    ctx.lineTo(
+        x+43+leg2,
+        y+65
+    );
 
     ctx.stroke();
 
@@ -1089,22 +1320,22 @@ function drawPlayer(){
     /* CORPO */
 
     let body=ctx.createLinearGradient(
-        x,y,x+70,y+65
+        x,y,x+60,y+55
     );
 
-    body.addColorStop(0,"#777f85");
-    body.addColorStop(.45,"#42494f");
-    body.addColorStop(1,"#171b1f");
+    body.addColorStop(0,"#737b81");
+    body.addColorStop(.5,"#3d444a");
+    body.addColorStop(1,"#15191d");
 
     ctx.fillStyle=body;
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+35,
-        y+42,
-        38,
-        25,
+        x+31,
+        y+37,
+        32,
+        21,
         0,
         0,
         Math.PI*2
@@ -1113,36 +1344,20 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* PEITO */
+    /*
+       CABEÇA DIRETO NO CORPO.
+       NÃO TEM A PARTE BRANCA.
+    */
 
-    ctx.fillStyle="#858b8f";
+    ctx.fillStyle="#555d63";
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+52,
-        y+45,
-        18,
+        x+46,
+        y+18,
         25,
-        0,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-
-    /* CABEÇA */
-
-    ctx.fillStyle="#596168";
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-        x+52,
-        y+20,
-        29,
-        30,
+        26,
         0,
         0,
         Math.PI*2
@@ -1153,13 +1368,13 @@ function drawPlayer(){
 
     /* ORELHA ESQUERDA */
 
-    ctx.fillStyle="#262c31";
+    ctx.fillStyle="#252b30";
 
     ctx.beginPath();
 
-    ctx.moveTo(x+30,y+7);
-    ctx.lineTo(x+32,y-22);
-    ctx.lineTo(x+46,y+5);
+    ctx.moveTo(x+27,y+5);
+    ctx.lineTo(x+29,y-18);
+    ctx.lineTo(x+42,y+5);
 
     ctx.closePath();
 
@@ -1170,9 +1385,9 @@ function drawPlayer(){
 
     ctx.beginPath();
 
-    ctx.moveTo(x+55,y+4);
-    ctx.lineTo(x+72,y-21);
-    ctx.lineTo(x+72,y+12);
+    ctx.moveTo(x+49,y+4);
+    ctx.lineTo(x+64,y-18);
+    ctx.lineTo(x+67,y+11);
 
     ctx.closePath();
 
@@ -1181,15 +1396,15 @@ function drawPlayer(){
 
     /* FOCINHO */
 
-    ctx.fillStyle="#b8bbbc";
+    ctx.fillStyle="#777d81";
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+57,
-        y+31,
-        20,
-        14,
+        x+53,
+        y+29,
+        17,
+        11,
         0,
         0,
         Math.PI*2
@@ -1205,10 +1420,10 @@ function drawPlayer(){
     ctx.beginPath();
 
     ctx.ellipse(
-        x+65,
-        y+28,
-        9,
-        6,
+        x+61,
+        y+27,
+        7,
+        5,
         0,
         0,
         Math.PI*2
@@ -1217,38 +1432,39 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /*
-       DOIS OLHOS VERMELHOS
-    */
+    /* DOIS OLHOS */
 
-    ctx.fillStyle="#ff1515";
+    ctx.fillStyle="#ff1111";
 
     ctx.shadowColor="red";
-    ctx.shadowBlur=9;
+    ctx.shadowBlur=8;
+
 
     ctx.beginPath();
 
     ctx.arc(
-        x+43,
-        y+17,
-        4.5,
+        x+38,
+        y+16,
+        3.8,
         0,
         Math.PI*2
     );
 
     ctx.fill();
 
+
     ctx.beginPath();
 
     ctx.arc(
-        x+61,
-        y+17,
-        4.5,
+        x+54,
+        y+16,
+        3.8,
         0,
         Math.PI*2
     );
 
     ctx.fill();
+
 
     ctx.shadowBlur=0;
 
@@ -1256,60 +1472,127 @@ function drawPlayer(){
 
 
 /* =========================================================
-   OBSTÁCULOS
+   DESENHAR OBSTÁCULOS
 ========================================================= */
 
 function drawObstacle(o){
 
-    if(o.type==="spike"){
+    /* ESPINHO */
 
-        let grad=ctx.createLinearGradient(
-            o.x,o.y,o.x+o.w,o.y+o.h
-        );
+    if(o.type==="spike" || o.type==="doubleSpike"){
 
-        grad.addColorStop(0,"#555b60");
-        grad.addColorStop(1,"#101214");
+        const count=
+            o.type==="doubleSpike" ? 2 : 1;
 
-        ctx.fillStyle=grad;
+        for(let i=0;i<count;i++){
 
-        ctx.beginPath();
+            const sx=
+                o.x+i*44;
 
-        ctx.moveTo(o.x,o.y+o.h);
-        ctx.lineTo(o.x+o.w/2,o.y);
-        ctx.lineTo(o.x+o.w,o.y+o.h);
-
-        ctx.closePath();
-        ctx.fill();
-
-    }
-
-    else if(o.type==="doubleSpike"){
-
-        for(let i=0;i<2;i++){
-
-            let sx=o.x+i*44;
-
-            ctx.fillStyle="#202428";
+            ctx.fillStyle="#191d20";
 
             ctx.beginPath();
 
-            ctx.moveTo(sx,o.y+o.h);
-            ctx.lineTo(sx+22,o.y);
-            ctx.lineTo(sx+44,o.y+o.h);
+            ctx.moveTo(
+                sx,
+                o.y+o.h
+            );
+
+            ctx.lineTo(
+                sx+22,
+                o.y
+            );
+
+            ctx.lineTo(
+                sx+44,
+                o.y+o.h
+            );
 
             ctx.closePath();
+
             ctx.fill();
 
         }
 
     }
 
+
+    /* CACTO */
+
+    else if(
+        o.type==="cactus" ||
+        o.type==="doubleCactus"
+    ){
+
+        const count=
+            o.type==="doubleCactus" ? 2 : 1;
+
+        for(let i=0;i<count;i++){
+
+            const cx=o.x+i*43;
+
+            ctx.fillStyle="#3f783c";
+
+            ctx.beginPath();
+
+            ctx.roundRect(
+                cx+13,
+                o.y,
+                16,
+                o.h,
+                8
+            );
+
+            ctx.fill();
+
+
+            /* braço esquerdo */
+
+            ctx.fillRect(
+                cx+3,
+                o.y+22,
+                13,
+                9
+            );
+
+            ctx.fillRect(
+                cx+3,
+                o.y+13,
+                8,
+                18
+            );
+
+
+            /* braço direito */
+
+            ctx.fillRect(
+                cx+26,
+                o.y+32,
+                13,
+                9
+            );
+
+            ctx.fillRect(
+                cx+31,
+                o.y+20,
+                8,
+                20
+            );
+
+        }
+
+    }
+
+
+    /* PEDRA */
+
     else if(o.type==="rock"){
 
-        let grad=ctx.createRadialGradient(
-            o.x+18,o.y+15,2,
-            o.x+25,o.y+28,30
-        );
+        const grad=
+            ctx.createRadialGradient(
+                o.x+17,o.y+13,2,
+                o.x+25,o.y+28,30
+            );
 
         grad.addColorStop(0,"#858b8e");
         grad.addColorStop(1,"#30353a");
@@ -1330,32 +1613,38 @@ function drawObstacle(o){
 
     }
 
-    else if(o.type==="log"){
 
-        ctx.fillStyle="#633c24";
+    /* PEDRA DE LAVA */
+
+    else if(o.type==="lavaRock"){
+
+        ctx.fillStyle="#461d1d";
 
         ctx.beginPath();
 
-        ctx.roundRect(
-            o.x,
-            o.y,
-            o.w,
-            o.h,
-            18
+        ctx.arc(
+            o.x+30,
+            o.y+28,
+            29,
+            0,
+            Math.PI*2
         );
 
         ctx.fill();
 
-        ctx.strokeStyle="#301b10";
+        ctx.strokeStyle="#ff552f";
         ctx.lineWidth=4;
 
         ctx.stroke();
 
     }
 
+
+    /* CAIXA */
+
     else{
 
-        ctx.fillStyle="#68432c";
+        ctx.fillStyle="#67422c";
 
         ctx.fillRect(
             o.x,
@@ -1380,7 +1669,7 @@ function drawObstacle(o){
 
 
 /* =========================================================
-   DESENHAR BOSTINHA 💩
+   BOSTINHA
 ========================================================= */
 
 function drawPoop(p){
@@ -1389,9 +1678,8 @@ function drawPoop(p){
 
     ctx.translate(p.x,p.y);
 
-    ctx.fillStyle="#7b4725";
+    ctx.fillStyle="#75431f";
 
-    /* base */
 
     ctx.beginPath();
 
@@ -1408,34 +1696,56 @@ function drawPoop(p){
     ctx.fill();
 
 
-    /* corpo */
-
     ctx.beginPath();
 
-    ctx.arc(0,0,13,Math.PI,0);
-
-    ctx.fill();
-
-    ctx.beginPath();
-
-    ctx.arc(-5,-7,9,Math.PI,0);
-
-    ctx.fill();
-
-    ctx.beginPath();
-
-    ctx.arc(5,-14,7,Math.PI,0);
+    ctx.arc(
+        0,
+        0,
+        13,
+        Math.PI,
+        0
+    );
 
     ctx.fill();
 
 
-    /* brilho */
+    ctx.beginPath();
 
-    ctx.fillStyle="#b87945";
+    ctx.arc(
+        -5,
+        -7,
+        9,
+        Math.PI,
+        0
+    );
+
+    ctx.fill();
+
 
     ctx.beginPath();
 
-    ctx.arc(-5,-7,3,0,Math.PI*2);
+    ctx.arc(
+        5,
+        -14,
+        7,
+        Math.PI,
+        0
+    );
+
+    ctx.fill();
+
+
+    ctx.fillStyle="#b97943";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        -5,
+        -7,
+        3,
+        0,
+        Math.PI*2
+    );
 
     ctx.fill();
 
@@ -1450,32 +1760,38 @@ function drawPoop(p){
 
 function collision(a,b){
 
+    /*
+       Pequena margem para deixar a colisão
+       mais justa e não pegar no ar.
+    */
+
+    const marginX=8;
+    const marginY=6;
+
     return(
-        a.x < b.x+b.w &&
-        a.x+a.w > b.x &&
-        a.y < b.y+b.h &&
-        a.y+a.h > b.y
+        a.x+marginX < b.x+b.w &&
+        a.x+a.w-marginX > b.x &&
+        a.y+marginY < b.y+b.h &&
+        a.y+a.h-marginY > b.y
     );
 
 }
 
 
 /* =========================================================
-   PASSAR MAPA
+   PASSAR DE MAPA
 ========================================================= */
 
 function checkLevel(){
 
-    if(poopCount<10) return;
+    if(poopCount<10)
+        return;
 
-    /*
-       Se completar o mapa:
-       libera o próximo.
-    */
 
     if(level<3){
 
         const next=level+1;
+
 
         if(next>unlockedMap){
 
@@ -1488,10 +1804,6 @@ function checkLevel(){
 
         }
 
-        /*
-           Desbloqueia personagens
-           conforme progresso.
-        */
 
         if(level===1 && unlockedCharacters<2){
 
@@ -1504,6 +1816,7 @@ function checkLevel(){
 
         }
 
+
         if(level===2 && unlockedCharacters<3){
 
             unlockedCharacters=3;
@@ -1515,40 +1828,33 @@ function checkLevel(){
 
         }
 
+
         poopCount=0;
+
         level++;
 
-        /*
-           VELOCIDADE SÓ MUDA AQUI,
-           AO PASSAR DE MAPA.
-        */
 
         speed=
-            level===2 ? 5.6 :
-            6.2;
+            level===2 ? 5.5 :
+            6;
+
 
         document.getElementById("poop").textContent=0;
         document.getElementById("level").textContent=level;
 
+
         obstacles=[];
         poops=[];
+
 
         obstacleTimer=100;
         poopTimer=50;
 
-    }
+    }else{
 
-    else{
-
-        /*
-           Zerou os 3 mapas.
-        */
-
-        poopCount=0;
-
-        document.getElementById("poop").textContent=0;
-
-        alert("🏆 PARABÉNS! VOCÊ ZEROU O LILI CAGAO!");
+        alert(
+            "🏆 PARABÉNS!\n\nVOCÊ ZEROU O LILO O CAGÃO!"
+        );
 
         backToMenu();
 
@@ -1565,10 +1871,14 @@ function gameOver(){
 
     running=false;
 
-    document.getElementById("finalLevel").textContent=level;
-    document.getElementById("finalPoop").textContent=poopCount;
+    document.getElementById("finalLevel").textContent=
+        level;
 
-    document.getElementById("gameOver").style.display="flex";
+    document.getElementById("finalPoop").textContent=
+        poopCount;
+
+    document.getElementById("gameOver").style.display=
+        "flex";
 
 }
 
@@ -1580,14 +1890,22 @@ function gameOver(){
 function loop(){
 
     if(
-        document.getElementById("game").style.display==="none"
+        document.getElementById("game").style.display===
+        "none"
     ){
 
         return;
 
     }
 
-    ctx.clearRect(0,0,W,H);
+
+    ctx.clearRect(
+        0,
+        0,
+        W,
+        H
+    );
+
 
     background();
 
@@ -1597,12 +1915,16 @@ function loop(){
         /* FÍSICA */
 
         player.vy+=.65;
+
         player.y+=player.vy;
 
-        if(player.y>=H-137){
 
-            player.y=H-137;
+        if(player.y>=H-130){
+
+            player.y=H-130;
+
             player.vy=0;
+
             player.grounded=true;
 
         }
@@ -1618,8 +1940,8 @@ function loop(){
 
             obstacleTimer=
                 Math.max(
-                    55,
-                    108-level*5
+                    58,
+                    110-level*4
                 );
 
         }
@@ -1631,15 +1953,20 @@ function loop(){
             i--
         ){
 
-            let o=obstacles[i];
+            const o=obstacles[i];
 
             o.x-=speed;
 
             drawObstacle(o);
 
+
             if(collision(player,o)){
 
                 hitObstacle(i);
+
+                /*
+                   NÃO remove o obstáculo.
+                */
 
                 break;
 
@@ -1648,9 +1975,14 @@ function loop(){
         }
 
 
+        /*
+           Só tira obstáculos que já saíram
+           completamente da tela.
+        */
+
         obstacles=
             obstacles.filter(
-                o=>o.x>-130
+                o=>o.x>-150
             );
 
 
@@ -1663,7 +1995,7 @@ function loop(){
             spawnPoop();
 
             poopTimer=
-                65+Math.random()*65;
+                70+Math.random()*60;
 
         }
 
@@ -1674,13 +2006,14 @@ function loop(){
             i--
         ){
 
-            let p=poops[i];
+            const p=poops[i];
 
             p.x-=speed;
 
             drawPoop(p);
 
-            let box={
+
+            const box={
 
                 x:p.x-p.r,
                 y:p.y-p.r,
@@ -1696,9 +2029,8 @@ function loop(){
 
                 poopCount++;
 
-                document.getElementById(
-                    "poop"
-                ).textContent=poopCount;
+                document.getElementById("poop")
+                .textContent=poopCount;
 
                 checkLevel();
 
@@ -1723,66 +2055,87 @@ function loop(){
 
 
 /* =========================================================
-   CONTROLES
+   BOTÕES
 ========================================================= */
 
 document.getElementById("startButton")
-.addEventListener("click",startGame);
+.addEventListener(
+    "click",
+    startGame
+);
 
 
 document.getElementById("game")
-.addEventListener("pointerdown",touchGame);
+.addEventListener(
+    "pointerdown",
+    touchGame
+);
 
 
 document.getElementById("homeButton")
-.addEventListener("click",backToMenu);
+.addEventListener(
+    "click",
+    backToMenu
+);
 
 
 document.getElementById("restart")
-.addEventListener("click",()=>{
+.addEventListener(
+    "click",
+    ()=>{
 
-    document.getElementById("gameOver").style.display="none";
+        document.getElementById("gameOver")
+        .style.display="none";
 
-    reset();
+        reset();
 
-    started=false;
-    running=false;
+        started=false;
+        running=false;
 
-    document.getElementById("tapStart").style.display="block";
+        document.getElementById("tapStart")
+        .style.display="block";
 
-    requestAnimationFrame(loop);
+        requestAnimationFrame(loop);
 
-});
+    }
+);
 
 
 document.getElementById("overMenu")
-.addEventListener("click",backToMenu);
+.addEventListener(
+    "click",
+    backToMenu
+);
 
 
 /* =========================================================
-   TECLADO — PC
+   TECLADO
 ========================================================= */
 
-document.addEventListener("keydown",e=>{
-
-    if(
-        e.code==="Space" ||
-        e.code==="ArrowUp"
-    ){
-
-        e.preventDefault();
+document.addEventListener(
+    "keydown",
+    e=>{
 
         if(
-            document.getElementById("game").style.display!=="none"
+            e.code==="Space" ||
+            e.code==="ArrowUp"
         ){
 
-            touchGame(e);
+            e.preventDefault();
+
+            if(
+                document.getElementById("game")
+                .style.display!=="none"
+            ){
+
+                touchGame(e);
+
+            }
 
         }
 
     }
-
-});
+);
 
 </script>
 
