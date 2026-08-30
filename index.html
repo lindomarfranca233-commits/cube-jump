@@ -2,13 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 
-<title>LILO</title>
+<title>LILI CAGAO</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -21,13 +19,16 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#05070a;
+    background:#050608;
     font-family:Arial,sans-serif;
 }
 
-/* =========================
-   CARREGAMENTO
-========================= */
+button{
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* ================= LOADING ================= */
 
 #loading{
     position:fixed;
@@ -37,43 +38,32 @@ html,body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     background:
-    radial-gradient(circle at center,
-    #252b34 0%,
-    #090c11 55%,
-    #020304 100%);
-
+        radial-gradient(circle at center,#343a42 0%,#101319 45%,#020304 100%);
     color:white;
 }
 
 .logo{
-    font-size:65px;
-    font-weight:900;
-    letter-spacing:10px;
-    color:white;
-    text-shadow:
-    0 0 10px #ff0000,
-    0 0 30px #b00000;
-
-    margin-bottom:15px;
+    font-size:48px;
+    font-weight:1000;
+    letter-spacing:6px;
+    text-shadow:0 0 12px #ff1616,0 0 35px #a00000;
 }
 
 .loadingWolf{
-    font-size:110px;
-    margin-bottom:20px;
+    font-size:100px;
+    margin:15px 0;
 }
 
 .loadingText{
     color:#aaa;
     letter-spacing:4px;
-    margin-bottom:12px;
 }
 
 #percent{
     font-size:28px;
     font-weight:bold;
-    margin-bottom:14px;
+    margin:12px;
 }
 
 .bar{
@@ -87,508 +77,326 @@ html,body{
 #barFill{
     width:0%;
     height:100%;
-    background:linear-gradient(
-        90deg,
-        #870000,
-        #ff2020
-    );
-
+    background:linear-gradient(90deg,#720000,#ff2929);
     box-shadow:0 0 15px red;
 }
 
-/* =========================
-   MENU
-========================= */
+/* ================= MENU ================= */
 
 #menu{
     display:none;
-
     position:fixed;
     inset:0;
     z-index:50;
-
+    overflow:auto;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
-
+    padding:22px 15px 35px;
     background:
-    radial-gradient(circle at center,
-    #252b33,
-    #080a0e 65%,
-    #020304);
-
+        radial-gradient(circle at 50% 20%,#343b43,#0c0f14 60%,#020304);
     color:white;
 }
 
 .menuTitle{
-    font-size:65px;
-    font-weight:900;
-    letter-spacing:10px;
-
-    text-shadow:
-    0 0 15px red,
-    0 0 35px #700000;
-
-    margin-bottom:5px;
+    font-size:46px;
+    font-weight:1000;
+    letter-spacing:5px;
+    text-shadow:0 0 15px red,0 0 35px #700000;
 }
 
 .subtitle{
     color:#aaa;
-    letter-spacing:3px;
-    margin-bottom:25px;
+    margin:4px 0 18px;
+    letter-spacing:2px;
+    text-align:center;
 }
 
-/* =========================
-   LOBO DA CAPA
-   PARADO COMO FOTO
-========================= */
+.sectionTitle{
+    width:100%;
+    max-width:520px;
+    font-weight:bold;
+    margin:8px 0;
+    font-size:17px;
+}
 
-.wolfPhoto{
-    width:270px;
-    height:300px;
-
-    position:relative;
-
+.characterList,
+.mapList{
+    width:100%;
+    max-width:520px;
     display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:5px 2px 12px;
+}
+
+.card{
+    min-width:135px;
+    height:125px;
+    border:2px solid #454b52;
+    border-radius:16px;
+    background:linear-gradient(145deg,#252a30,#0e1115);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     justify-content:center;
-    align-items:flex-end;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    background:
-    radial-gradient(
-        circle at 50% 35%,
-        #687078,
-        #30363d 35%,
-        #11151a 75%,
-        #050608
-    );
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.8),
-    0 0 35px rgba(255,0,0,.18);
-
-    margin-bottom:25px;
-}
-
-/* lobo */
-
-.coverWolf{
-    position:relative;
-    width:190px;
-    height:260px;
-}
-
-/* corpo */
-
-.coverBody{
-    position:absolute;
-
-    width:145px;
-    height:130px;
-
-    left:22px;
-    bottom:0;
-
-    border-radius:
-    55% 55% 25% 25%;
-
-    background:
-    linear-gradient(
-        150deg,
-        #646c73,
-        #30353a 55%,
-        #101317
-    );
-
-    box-shadow:
-    inset -20px -15px 25px #07090b;
-}
-
-/* cabeça */
-
-.coverHead{
-    position:absolute;
-
-    width:130px;
-    height:140px;
-
-    left:30px;
-    top:30px;
-
-    border-radius:
-    48% 48% 45% 45%;
-
-    background:
-    linear-gradient(
-        145deg,
-        #737a80,
-        #383e44 50%,
-        #121519
-    );
-
-    box-shadow:
-    inset -18px -15px 25px #080a0d;
-}
-
-/* orelhas */
-
-.coverEar{
-    position:absolute;
-
-    width:55px;
-    height:85px;
-
-    top:0;
-
-    background:
-    linear-gradient(
-        145deg,
-        #50575e,
-        #171b20
-    );
-
-    clip-path:
-    polygon(50% 0,100% 100%,0 100%);
-}
-
-.coverEar.left{
-    left:20px;
-    transform:rotate(-13deg);
-}
-
-.coverEar.right{
-    right:10px;
-    transform:rotate(13deg);
-}
-
-/* olhos */
-
-.coverEye{
-    position:absolute;
-
-    width:18px;
-    height:11px;
-
-    top:75px;
-
-    border-radius:50%;
-
-    background:#ff1515;
-
-    box-shadow:
-    0 0 8px red,
-    0 0 18px red;
-}
-
-.coverEye.left{
-    left:32px;
-}
-
-.coverEye.right{
-    right:32px;
-}
-
-/* focinho */
-
-.coverMuzzle{
-    position:absolute;
-
-    width:60px;
-    height:65px;
-
-    left:35px;
-    bottom:15px;
-
-    border-radius:50%;
-
-    background:
-    linear-gradient(
-        150deg,
-        #c2c4c5,
-        #73777a
-    );
-}
-
-.coverNose{
-    position:absolute;
-
-    width:27px;
-    height:19px;
-
-    left:51px;
-    bottom:42px;
-
-    border-radius:50%;
-
-    background:#050505;
-}
-
-/* =========================
-   BOTÃO
-========================= */
-
-.startButton{
-    width:245px;
-    padding:17px;
-
-    border:2px solid #777;
-    border-radius:12px;
-
-    background:
-    linear-gradient(
-        180deg,
-        #292d32,
-        #101216
-    );
-
     color:white;
+    position:relative;
+}
 
+.card.selected{
+    border-color:#ff3030;
+    box-shadow:0 0 18px #8d0000;
+}
+
+.card.locked{
+    opacity:.42;
+    filter:grayscale(1);
+}
+
+.cardEmoji{
+    font-size:48px;
+}
+
+.cardName{
+    font-size:13px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.lock{
+    position:absolute;
+    top:7px;
+    right:8px;
+}
+
+.mapCard{
+    min-width:150px;
+    height:95px;
+}
+
+.mapIcon{
+    font-size:32px;
+}
+
+.playButton{
+    width:270px;
+    padding:16px;
+    margin-top:10px;
+    border:2px solid #ff3636;
+    border-radius:13px;
+    background:linear-gradient(180deg,#a60000,#420000);
+    color:white;
     font-size:18px;
     font-weight:bold;
     letter-spacing:2px;
-
-    box-shadow:
-    0 8px 25px rgba(0,0,0,.6);
+    box-shadow:0 8px 25px rgba(0,0,0,.6);
 }
 
-/* =========================
-   JOGO
-========================= */
+/* ================= GAME ================= */
 
 #game{
     display:none;
-
     position:fixed;
     inset:0;
-
     background:#76c9ec;
 }
 
 canvas{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
 }
 
-/* HUD */
-
 #hud{
     position:absolute;
-
-    top:15px;
-    left:15px;
-    right:15px;
-
+    top:12px;
+    left:12px;
+    right:12px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     color:white;
-
-    font-size:20px;
+    font-size:18px;
     font-weight:bold;
-
-    text-shadow:
-    2px 2px 5px #000;
-
+    text-shadow:2px 2px 5px #000;
     z-index:10;
 }
 
-#lives{
-    letter-spacing:4px;
+#poop{
+    color:#dca56d;
 }
 
-#coins{
-    color:#ffe22b;
+#homeButton{
+    position:absolute;
+    top:55px;
+    right:12px;
+    z-index:15;
+    border:1px solid #aaa;
+    border-radius:9px;
+    background:rgba(0,0,0,.55);
+    color:white;
+    padding:9px 12px;
+    font-weight:bold;
 }
-
-/* aviso */
 
 #tapStart{
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     color:white;
-
-    font-size:25px;
+    font-size:23px;
     font-weight:bold;
-
     text-align:center;
-
-    text-shadow:
-    0 0 10px #000,
-    2px 2px 5px #000;
-
+    text-shadow:0 0 10px #000,2px 2px 5px #000;
     z-index:20;
-
     pointer-events:none;
 }
 
 #tapStart small{
     display:block;
-    margin-top:10px;
-    font-size:15px;
+    margin-top:9px;
+    font-size:14px;
     color:#ddd;
 }
 
-/* =========================
-   GAME OVER
-========================= */
-
 #gameOver{
     display:none;
-
     position:absolute;
     inset:0;
-
     z-index:40;
-
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    background:rgba(0,0,0,.8);
-
+    background:rgba(0,0,0,.82);
     color:white;
+    text-align:center;
 }
 
 #gameOver h2{
-    color:#ff2222;
-    font-size:45px;
+    color:#ff2525;
+    font-size:43px;
     margin-bottom:15px;
 }
 
-.restart{
-    margin-top:20px;
-
-    padding:15px 40px;
-
+.restart,
+.menuButton{
+    margin-top:15px;
+    padding:13px 30px;
     border:0;
     border-radius:10px;
-
-    background:#870000;
-
+    background:#780000;
     color:white;
-
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
 }
 
+.menuButton{
+    background:#30363c;
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOADING
-========================= -->
+<!-- ================= LOADING ================= -->
 
 <div id="loading">
-
-    <div class="logo">LILO</div>
-
+    <div class="logo">LILI CAGAO</div>
     <div class="loadingWolf">🐺</div>
-
-    <div class="loadingText">
-        CARREGANDO
-    </div>
-
-    <div id="percent">
-        0%
-    </div>
-
+    <div class="loadingText">CARREGANDO</div>
+    <div id="percent">0%</div>
     <div class="bar">
         <div id="barFill"></div>
     </div>
-
 </div>
 
-
-<!-- =========================
-     MENU
-========================= -->
+<!-- ================= MENU ================= -->
 
 <div id="menu">
 
-    <div class="menuTitle">
-        LILO
-    </div>
+    <div class="menuTitle">LILI CAGAO</div>
 
     <div class="subtitle">
-        CORRA • PULE • SOBREVIVA
+        CORRA • PULE • PEGUE AS BOSTINHAS 💩
     </div>
 
-    <div class="wolfPhoto">
+    <div class="sectionTitle">🐺 ESCOLHA SEU PERSONAGEM</div>
 
-        <div class="coverWolf">
+    <div class="characterList">
 
-            <div class="coverEar left"></div>
-            <div class="coverEar right"></div>
+        <button class="card selected" data-character="wolf">
+            <div class="cardEmoji">🐺</div>
+            <div class="cardName">LOBO</div>
+        </button>
 
-            <div class="coverHead">
+        <button class="card locked" data-character="dog">
+            <span class="lock">🔒</span>
+            <div class="cardEmoji">🐕</div>
+            <div class="cardName">CACHORRO</div>
+        </button>
 
-                <div class="coverEye left"></div>
-                <div class="coverEye right"></div>
-
-                <div class="coverMuzzle"></div>
-                <div class="coverNose"></div>
-
-            </div>
-
-            <div class="coverBody"></div>
-
-        </div>
+        <button class="card locked" data-character="fox">
+            <span class="lock">🔒</span>
+            <div class="cardEmoji">🦊</div>
+            <div class="cardName">RAPOSA</div>
+        </button>
 
     </div>
 
-    <button class="startButton" id="startButton">
-        TOQUE PARA JOGAR
+    <div class="sectionTitle">🗺️ ESCOLHA O MAPA</div>
+
+    <div class="mapList">
+
+        <button class="card mapCard selected" data-map="1">
+            <div class="mapIcon">🌲</div>
+            <div class="cardName">MAPA 1 • FLORESTA</div>
+        </button>
+
+        <button class="card mapCard locked" data-map="2">
+            <span class="lock">🔒</span>
+            <div class="mapIcon">🏜️</div>
+            <div class="cardName">MAPA 2 • DESERTO</div>
+        </button>
+
+        <button class="card mapCard locked" data-map="3">
+            <span class="lock">🔒</span>
+            <div class="mapIcon">🌋</div>
+            <div class="cardName">MAPA 3 • VULCÃO</div>
+        </button>
+
+    </div>
+
+    <button class="playButton" id="startButton">
+        ▶ TOCAR PARA JOGAR
     </button>
 
 </div>
 
-
-<!-- =========================
-     GAME
-========================= -->
+<!-- ================= GAME ================= -->
 
 <div id="game">
 
     <canvas id="canvas"></canvas>
 
     <div id="hud">
+        <div id="lives">❤️❤️❤️</div>
 
-        <div id="lives">
-            ❤️❤️❤️
+        <div>
+            💩 <span id="poop">0</span>/10
         </div>
 
         <div>
-            🪙 <span id="coins">0</span>
+            MAPA <span id="level">1</span>
         </div>
-
-        <div>
-            FASE <span id="level">1</span>
-        </div>
-
     </div>
 
+    <button id="homeButton">🏠 INÍCIO</button>
+
     <div id="tapStart">
-
         TOQUE NA TELA PARA COMEÇAR
-
-        <small>
-            Toque para pular
-        </small>
-
+        <small>Toque para pular</small>
     </div>
 
     <div id="gameOver">
@@ -596,29 +404,45 @@ canvas{
         <h2>GAME OVER</h2>
 
         <div>
-            Você chegou à fase
+            Você chegou ao mapa
             <span id="finalLevel">1</span>
         </div>
 
-        <div>
-            Moedas:
-            <span id="finalCoins">0</span>
+        <div style="margin-top:8px">
+            Bostinhas: <span id="finalPoop">0</span>/10
         </div>
 
         <button class="restart" id="restart">
-            JOGAR NOVAMENTE
+            🔄 JOGAR NOVAMENTE
+        </button>
+
+        <button class="menuButton" id="overMenu">
+            🏠 VOLTAR AO INÍCIO
         </button>
 
     </div>
 
 </div>
 
-
 <script>
 
-/* =========================
-   CARREGAMENTO
-========================= */
+/* =========================================================
+   PROGRESSO
+========================================================= */
+
+let unlockedMap =
+    Number(localStorage.getItem("liliUnlockedMap") || 1);
+
+let unlockedCharacters =
+    Number(localStorage.getItem("liliUnlockedCharacters") || 1);
+
+let selectedMap=1;
+let selectedCharacter="wolf";
+
+
+/* =========================================================
+   CARREGAMENTO 0 → 100
+========================================================= */
 
 let load=0;
 
@@ -626,34 +450,23 @@ function loading(){
 
     load++;
 
-    if(load>100)
-        load=100;
-
-    document.getElementById(
-        "percent"
-    ).textContent=load+"%";
-
-    document.getElementById(
-        "barFill"
-    ).style.width=load+"%";
+    document.getElementById("percent").textContent=load+"%";
+    document.getElementById("barFill").style.width=load+"%";
 
     if(load<100){
 
-        setTimeout(loading,35);
+        setTimeout(loading,28);
 
     }else{
 
         setTimeout(()=>{
 
-            document.getElementById(
-                "loading"
-            ).style.display="none";
+            document.getElementById("loading").style.display="none";
+            document.getElementById("menu").style.display="flex";
 
-            document.getElementById(
-                "menu"
-            ).style.display="flex";
+            updateMenu();
 
-        },500);
+        },450);
 
     }
 }
@@ -661,147 +474,265 @@ function loading(){
 loading();
 
 
-/* =========================
+/* =========================================================
+   MENU
+========================================================= */
+
+function updateMenu(){
+
+    document.querySelectorAll("[data-map]").forEach(card=>{
+
+        const map=Number(card.dataset.map);
+
+        if(map<=unlockedMap){
+
+            card.classList.remove("locked");
+
+            const lock=card.querySelector(".lock");
+
+            if(lock) lock.remove();
+
+        }else{
+
+            card.classList.add("locked");
+
+            if(!card.querySelector(".lock")){
+
+                const l=document.createElement("span");
+
+                l.className="lock";
+                l.textContent="🔒";
+
+                card.prepend(l);
+
+            }
+
+        }
+
+    });
+
+    document.querySelectorAll("[data-character]").forEach(card=>{
+
+        const character=card.dataset.character;
+
+        let available =
+            character==="wolf" ||
+            (character==="dog" && unlockedCharacters>=2) ||
+            (character==="fox" && unlockedCharacters>=3);
+
+        if(available){
+
+            card.classList.remove("locked");
+
+            const lock=card.querySelector(".lock");
+
+            if(lock) lock.remove();
+
+        }
+
+    });
+
+}
+
+
+document.querySelectorAll("[data-map]").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        const map=Number(card.dataset.map);
+
+        if(map>unlockedMap) return;
+
+        selectedMap=map;
+
+        document.querySelectorAll("[data-map]")
+        .forEach(c=>c.classList.remove("selected"));
+
+        card.classList.add("selected");
+
+    });
+
+});
+
+
+document.querySelectorAll("[data-character]").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        if(card.classList.contains("locked")) return;
+
+        selectedCharacter=card.dataset.character;
+
+        document.querySelectorAll("[data-character]")
+        .forEach(c=>c.classList.remove("selected"));
+
+        card.classList.add("selected");
+
+    });
+
+});
+
+
+/* =========================================================
    CANVAS
-========================= */
+========================================================= */
 
-const canvas=
-document.getElementById("canvas");
-
-const ctx=
-canvas.getContext("2d");
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
 let W,H;
 
 function resize(){
 
-    W=canvas.width=
-    window.innerWidth;
-
-    H=canvas.height=
-    window.innerHeight;
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
 
 }
 
 resize();
-
-window.addEventListener(
-    "resize",
-    resize
-);
+window.addEventListener("resize",resize);
 
 
-/* =========================
+/* =========================================================
    VARIÁVEIS
-========================= */
+========================================================= */
 
 let player;
 
 let obstacles=[];
-let coins=[];
+let poops=[];
 
 let running=false;
 let started=false;
 
-let coinCount=0;
+let poopCount=0;
 let level=1;
 let lives=3;
+
+/*
+   VELOCIDADE FIXA POR MAPA.
+
+   IMPORTANTE:
+   perder vida NÃO muda speed.
+*/
 
 let speed=5;
 
 let obstacleTimer=0;
-let coinTimer=0;
+let poopTimer=0;
 
 let legAnimation=0;
 
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 function reset(){
 
     player={
 
         x:75,
-        y:H-145,
+        y:H-135,
 
-        w:65,
-        h:65,
+        w:72,
+        h:72,
 
         vy:0,
-
         grounded:true
 
     };
 
     obstacles=[];
-    coins=[];
+    poops=[];
 
-    coinCount=0;
-    level=1;
+    poopCount=0;
     lives=3;
 
-    speed=5;
+    level=selectedMap;
 
-    obstacleTimer=80;
-    coinTimer=40;
+    /*
+       Cada mapa pode ser um pouco mais difícil,
+       mas perder coração nunca altera isso.
+    */
 
-    document.getElementById(
-        "coins"
-    ).textContent=0;
+    speed=
+        level===1 ? 5 :
+        level===2 ? 5.6 :
+        6.2;
 
-    document.getElementById(
-        "level"
-    ).textContent=1;
+    obstacleTimer=95;
+    poopTimer=45;
+
+    document.getElementById("poop").textContent=0;
+    document.getElementById("level").textContent=level;
 
     updateLives();
 
 }
 
 
-/* =========================
+/* =========================================================
    INICIAR
-========================= */
+========================================================= */
 
 function startGame(){
 
-    document.getElementById(
-        "menu"
-    ).style.display="none";
+    document.getElementById("menu").style.display="none";
+    document.getElementById("game").style.display="block";
 
-    document.getElementById(
-        "game"
-    ).style.display="block";
+    document.getElementById("gameOver").style.display="none";
 
     reset();
 
     running=false;
     started=false;
 
-    document.getElementById(
-        "tapStart"
-    ).style.display="block";
+    document.getElementById("tapStart").style.display="block";
 
     requestAnimationFrame(loop);
 
 }
 
 
-/* =========================
-   COMEÇAR AO TOCAR
-========================= */
+/* =========================================================
+   VOLTAR AO MENU
+========================================================= */
 
-function touchGame(){
+function backToMenu(){
+
+    running=false;
+    started=false;
+
+    document.getElementById("game").style.display="none";
+    document.getElementById("gameOver").style.display="none";
+
+    updateMenu();
+
+    document.getElementById("menu").style.display="flex";
+
+}
+
+
+/* =========================================================
+   TOQUE / PULO
+========================================================= */
+
+function touchGame(e){
+
+    /*
+       Não deixa botão de menu/restart
+       interferir no pulo.
+    */
+
+    if(e.target.closest("button")) return;
 
     if(!started){
 
         started=true;
         running=true;
 
-        document.getElementById(
-            "tapStart"
-        ).style.display="none";
+        document.getElementById("tapStart").style.display="none";
 
         jump();
 
@@ -814,14 +745,9 @@ function touchGame(){
 }
 
 
-/* =========================
-   PULO
-========================= */
-
 function jump(){
 
-    if(!running)
-        return;
+    if(!running) return;
 
     if(player.grounded){
 
@@ -834,9 +760,9 @@ function jump(){
 }
 
 
-/* =========================
-   VIDA
-========================= */
+/* =========================================================
+   VIDAS
+========================================================= */
 
 function updateLives(){
 
@@ -844,23 +770,18 @@ function updateLives(){
 
     for(let i=0;i<3;i++){
 
-        if(i<lives)
-            hearts+="❤️";
-        else
-            hearts+="🖤";
+        hearts += i<lives ? "❤️" : "🖤";
 
     }
 
-    document.getElementById(
-        "lives"
-    ).textContent=hearts;
+    document.getElementById("lives").textContent=hearts;
 
 }
 
 
-/* =========================
+/* =========================================================
    PERDE VIDA
-========================= */
+========================================================= */
 
 function hitObstacle(index){
 
@@ -870,7 +791,9 @@ function hitObstacle(index){
 
     updateLives();
 
-    /* pequeno recuo */
+    /*
+       RECUO SEM ALTERAR SPEED.
+    */
 
     player.vy=-7;
 
@@ -883,9 +806,9 @@ function hitObstacle(index){
 }
 
 
-/* =========================
-   CRIAR OBSTÁCULO
-========================= */
+/* =========================================================
+   OBSTÁCULOS
+========================================================= */
 
 function spawnObstacle(){
 
@@ -893,35 +816,36 @@ function spawnObstacle(){
         "spike",
         "rock",
         "box",
-        "doubleSpike"
+        "doubleSpike",
+        "log"
     ];
 
     const type=
-    types[
-        Math.floor(
-            Math.random()*types.length
-        )
-    ];
+        types[Math.floor(Math.random()*types.length)];
 
     let w=50;
     let h=50;
 
     if(type==="doubleSpike"){
 
-        w=85;
+        w=90;
         h=50;
+
+    }
+
+    if(type==="log"){
+
+        w=90;
+        h=38;
 
     }
 
     obstacles.push({
 
         x:W+60,
-
-        y:H-95,
-
+        y:H-103,
         w:w,
         h:h,
-
         type:type
 
     });
@@ -929,71 +853,67 @@ function spawnObstacle(){
 }
 
 
-/* =========================
-   CRIAR MOEDA
-========================= */
+/* =========================================================
+   BOSTINHA
+========================================================= */
 
-function spawnCoin(){
+function spawnPoop(){
 
-    coins.push({
+    poops.push({
 
-        x:W+40,
+        x:W+50,
 
-        y:H-170-
-        Math.random()*130,
+        y:H-165-Math.random()*125,
 
-        r:15
+        r:17
 
     });
 
 }
 
 
-/* =========================
-   DESENHAR FUNDO
-========================= */
+/* =========================================================
+   FUNDO
+========================================================= */
 
 function background(){
 
-    let sky=
-    ctx.createLinearGradient(
-        0,0,0,H
-    );
+    let sky=ctx.createLinearGradient(0,0,0,H);
 
-    sky.addColorStop(
-        0,
-        level%2===0
-        ? "#ffb36b"
-        : "#68bde8"
-    );
+    if(level===1){
 
-    sky.addColorStop(
-        1,
-        level%2===0
-        ? "#ffe1a8"
-        : "#d6f2ff"
-    );
+        sky.addColorStop(0,"#64b9df");
+        sky.addColorStop(1,"#d7f1ff");
+
+    }else if(level===2){
+
+        sky.addColorStop(0,"#e99652");
+        sky.addColorStop(1,"#ffe0a0");
+
+    }else{
+
+        sky.addColorStop(0,"#31151a");
+        sky.addColorStop(1,"#d84b35");
+
+    }
 
     ctx.fillStyle=sky;
-
-    ctx.fillRect(
-        0,0,W,H
-    );
+    ctx.fillRect(0,0,W,H);
 
 
-    /* sol */
+    /* SOL / LUA */
 
     ctx.fillStyle=
-    level%2===0
-    ? "#ffdf7b"
-    : "#fff0a0";
+        level===3 ? "#ff6347" :
+        level===2 ? "#ffd36b" :
+        "#fff0a0";
 
     ctx.beginPath();
 
     ctx.arc(
-        W-90,
+        W-85,
         85,
-        45,
+        42,
         0,
         Math.PI*2
     );
@@ -1001,205 +921,191 @@ function background(){
     ctx.fill();
 
 
-    /* árvores distantes */
+    /* MAPA 1 - FLORESTA */
 
-    for(let i=0;i<7;i++){
+    if(level===1){
 
-        let x=
-        (i*180-
-        ((performance.now()/40*speed)%180));
+        for(let i=0;i<8;i++){
 
-        ctx.fillStyle="#47643e";
+            let x=
+                (i*170-
+                ((performance.now()/35*speed)%170));
 
-        ctx.beginPath();
+            ctx.fillStyle="#3c5f38";
 
-        ctx.arc(
-            x,
-            H-110,
-            55,
-            0,
-            Math.PI*2
-        );
+            ctx.fillRect(
+                x-7,
+                H-135,
+                14,
+                70
+            );
 
-        ctx.fill();
+            ctx.beginPath();
+
+            ctx.arc(
+                x,
+                H-145,
+                42,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
 
     }
 
 
-    /* chão */
+    /* MAPA 2 - DESERTO */
 
-    ctx.fillStyle="#4d673d";
+    if(level===2){
 
-    ctx.fillRect(
-        0,
-        H-65,
-        W,
-        65
-    );
+        for(let i=0;i<7;i++){
 
-    ctx.fillStyle="#30472a";
+            let x=
+                (i*210-
+                ((performance.now()/45*speed)%210));
 
-    ctx.fillRect(
-        0,
-        H-65,
-        W,
-        8
-    );
+            ctx.fillStyle="#8b5a32";
+
+            ctx.fillRect(
+                x-5,
+                H-140,
+                10,
+                75
+            );
+
+            ctx.fillStyle="#47723e";
+
+            ctx.beginPath();
+
+            ctx.arc(x,H-145,25,0,Math.PI*2);
+
+            ctx.fill();
+
+        }
+
+    }
+
+
+    /* MAPA 3 - VULCÃO */
+
+    if(level===3){
+
+        for(let i=0;i<5;i++){
+
+            let x=i*260;
+
+            ctx.fillStyle="#431d20";
+
+            ctx.beginPath();
+
+            ctx.moveTo(x,H-65);
+            ctx.lineTo(x+90,H-230);
+            ctx.lineTo(x+180,H-65);
+            ctx.closePath();
+
+            ctx.fill();
+
+        }
+
+    }
+
+
+    /* CHÃO */
+
+    ctx.fillStyle=
+        level===1 ? "#496c39" :
+        level===2 ? "#c99751" :
+        "#352527";
+
+    ctx.fillRect(0,H-65,W,65);
+
+    ctx.fillStyle=
+        level===3 ? "#ff5b32" :
+        level===2 ? "#e1ad62" :
+        "#304b29";
+
+    ctx.fillRect(0,H-65,W,7);
 
 }
 
 
-/* =========================
-   DESENHAR LOBO
-========================= */
+/* =========================================================
+   LOBO MAIS DETALHADO
+   SEM SOMBRA
+========================================================= */
 
 function drawPlayer(){
 
     const x=player.x;
     const y=player.y;
 
-    legAnimation+=0.25;
+    legAnimation+=0.22;
 
-    /*
-       SOMENTE as pernas se movimentam.
-       O corpo permanece estável.
-    */
-
-    let leg1=
-    Math.sin(legAnimation)*7;
-
-    let leg2=
-    Math.sin(legAnimation+Math.PI)*7;
+    const leg1=Math.sin(legAnimation)*8;
+    const leg2=Math.sin(legAnimation+Math.PI)*8;
 
 
-    /* sombra */
+    /* CAUDA */
 
-    ctx.fillStyle=
-    "rgba(0,0,0,.25)";
-
-    ctx.beginPath();
-
-    ctx.ellipse(
-        x+30,
-        H-67,
-        38,
-        8,
-        0,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
-
-
-    /* pernas traseiras */
-
-    ctx.strokeStyle="#171a1d";
-    ctx.lineWidth=11;
+    ctx.strokeStyle="#20252a";
+    ctx.lineWidth=13;
     ctx.lineCap="round";
 
     ctx.beginPath();
 
-    ctx.moveTo(
-        x+15,
-        y+45
-    );
+    ctx.moveTo(x+12,y+38);
 
-    ctx.lineTo(
-        x+12+leg1,
-        y+68
+    ctx.quadraticCurveTo(
+        x-18,y+18,
+        x-7,y-3
     );
 
     ctx.stroke();
 
+
+    /* PERNAS */
+
+    ctx.strokeStyle="#15191d";
+    ctx.lineWidth=11;
 
     ctx.beginPath();
 
-    ctx.moveTo(
-        x+43,
-        y+45
-    );
+    ctx.moveTo(x+18,y+52);
+    ctx.lineTo(x+14+leg1,y+76);
 
-    ctx.lineTo(
-        x+43+leg2,
-        y+68
-    );
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(x+48,y+52);
+    ctx.lineTo(x+48+leg2,y+76);
 
     ctx.stroke();
 
 
-    /* corpo */
+    /* CORPO */
 
-    let body=
-    ctx.createLinearGradient(
-        x,
-        y,
-        x+60,
-        y+60
+    let body=ctx.createLinearGradient(
+        x,y,x+70,y+65
     );
 
-    body.addColorStop(
-        0,
-        "#666d73"
-    );
-
-    body.addColorStop(
-        .55,
-        "#30353a"
-    );
-
-    body.addColorStop(
-        1,
-        "#111418"
-    );
+    body.addColorStop(0,"#777f85");
+    body.addColorStop(.45,"#42494f");
+    body.addColorStop(1,"#171b1f");
 
     ctx.fillStyle=body;
 
     ctx.beginPath();
 
-    ctx.roundRect(
-        x,
-        y+18,
-        52,
+    ctx.ellipse(
+        x+35,
+        y+42,
         38,
-        16
-    );
-
-    ctx.fill();
-
-
-    /* cauda */
-
-    ctx.strokeStyle="#252a2f";
-    ctx.lineWidth=13;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x+8,
-        y+27
-    );
-
-    ctx.quadraticCurveTo(
-        x-20,
-        y+5,
-        x-13,
-        y-10
-    );
-
-    ctx.stroke();
-
-
-    /* pescoço */
-
-    ctx.fillStyle="#3c4248";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        x+42,
-        y+23,
         25,
+        0,
         0,
         Math.PI*2
     );
@@ -1207,16 +1113,37 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* cabeça */
+    /* PEITO */
+
+    ctx.fillStyle="#858b8f";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        x+52,
+        y+45,
+        18,
+        25,
+        0,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    /* CABEÇA */
 
     ctx.fillStyle="#596168";
 
     ctx.beginPath();
 
-    ctx.arc(
-        x+43,
-        y+18,
-        23,
+    ctx.ellipse(
+        x+52,
+        y+20,
+        29,
+        30,
+        0,
         0,
         Math.PI*2
     );
@@ -1224,61 +1151,45 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* orelhas */
+    /* ORELHA ESQUERDA */
 
-    ctx.fillStyle="#252a2f";
+    ctx.fillStyle="#262c31";
 
     ctx.beginPath();
 
-    ctx.moveTo(
-        x+27,
-        y+4
-    );
+    ctx.moveTo(x+30,y+7);
+    ctx.lineTo(x+32,y-22);
+    ctx.lineTo(x+46,y+5);
 
-    ctx.lineTo(
-        x+32,
-        y-19
-    );
-
-    ctx.lineTo(
-        x+42,
-        y+6
-    );
+    ctx.closePath();
 
     ctx.fill();
 
 
+    /* ORELHA DIREITA */
+
     ctx.beginPath();
 
-    ctx.moveTo(
-        x+45,
-        y+6
-    );
+    ctx.moveTo(x+55,y+4);
+    ctx.lineTo(x+72,y-21);
+    ctx.lineTo(x+72,y+12);
 
-    ctx.lineTo(
-        x+58,
-        y-17
-    );
-
-    ctx.lineTo(
-        x+61,
-        y+12
-    );
+    ctx.closePath();
 
     ctx.fill();
 
 
-    /* focinho */
+    /* FOCINHO */
 
-    ctx.fillStyle="#b1b3b4";
+    ctx.fillStyle="#b8bbbc";
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+46,
-        y+27,
-        17,
-        13,
+        x+57,
+        y+31,
+        20,
+        14,
         0,
         0,
         Math.PI*2
@@ -1287,17 +1198,17 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* nariz */
+    /* NARIZ */
 
     ctx.fillStyle="#050505";
 
     ctx.beginPath();
 
     ctx.ellipse(
-        x+50,
-        y+25,
-        8,
-        5,
+        x+65,
+        y+28,
+        9,
+        6,
         0,
         0,
         Math.PI*2
@@ -1306,19 +1217,33 @@ function drawPlayer(){
     ctx.fill();
 
 
-    /* olho vermelho */
+    /*
+       DOIS OLHOS VERMELHOS
+    */
 
-    ctx.fillStyle="#ff1616";
+    ctx.fillStyle="#ff1515";
 
     ctx.shadowColor="red";
-    ctx.shadowBlur=10;
+    ctx.shadowBlur=9;
 
     ctx.beginPath();
 
     ctx.arc(
-        x+51,
-        y+15,
-        4,
+        x+43,
+        y+17,
+        4.5,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x+61,
+        y+17,
+        4.5,
         0,
         Math.PI*2
     );
@@ -1330,67 +1255,49 @@ function drawPlayer(){
 }
 
 
-/* =========================
+/* =========================================================
    OBSTÁCULOS
-========================= */
+========================================================= */
 
 function drawObstacle(o){
 
     if(o.type==="spike"){
 
-        ctx.fillStyle="#1a1d20";
+        let grad=ctx.createLinearGradient(
+            o.x,o.y,o.x+o.w,o.y+o.h
+        );
+
+        grad.addColorStop(0,"#555b60");
+        grad.addColorStop(1,"#101214");
+
+        ctx.fillStyle=grad;
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            o.x,
-            o.y+o.h
-        );
-
-        ctx.lineTo(
-            o.x+o.w/2,
-            o.y
-        );
-
-        ctx.lineTo(
-            o.x+o.w,
-            o.y+o.h
-        );
+        ctx.moveTo(o.x,o.y+o.h);
+        ctx.lineTo(o.x+o.w/2,o.y);
+        ctx.lineTo(o.x+o.w,o.y+o.h);
 
         ctx.closePath();
-
         ctx.fill();
 
     }
 
     else if(o.type==="doubleSpike"){
 
-        ctx.fillStyle="#17191c";
-
         for(let i=0;i<2;i++){
 
-            let sx=
-            o.x+i*42;
+            let sx=o.x+i*44;
+
+            ctx.fillStyle="#202428";
 
             ctx.beginPath();
 
-            ctx.moveTo(
-                sx,
-                o.y+o.h
-            );
-
-            ctx.lineTo(
-                sx+22,
-                o.y
-            );
-
-            ctx.lineTo(
-                sx+44,
-                o.y+o.h
-            );
+            ctx.moveTo(sx,o.y+o.h);
+            ctx.lineTo(sx+22,o.y);
+            ctx.lineTo(sx+44,o.y+o.h);
 
             ctx.closePath();
-
             ctx.fill();
 
         }
@@ -1399,7 +1306,15 @@ function drawObstacle(o){
 
     else if(o.type==="rock"){
 
-        ctx.fillStyle="#555b60";
+        let grad=ctx.createRadialGradient(
+            o.x+18,o.y+15,2,
+            o.x+25,o.y+28,30
+        );
+
+        grad.addColorStop(0,"#858b8e");
+        grad.addColorStop(1,"#30353a");
+
+        ctx.fillStyle=grad;
 
         ctx.beginPath();
 
@@ -1415,9 +1330,32 @@ function drawObstacle(o){
 
     }
 
+    else if(o.type==="log"){
+
+        ctx.fillStyle="#633c24";
+
+        ctx.beginPath();
+
+        ctx.roundRect(
+            o.x,
+            o.y,
+            o.w,
+            o.h,
+            18
+        );
+
+        ctx.fill();
+
+        ctx.strokeStyle="#301b10";
+        ctx.lineWidth=4;
+
+        ctx.stroke();
+
+    }
+
     else{
 
-        ctx.fillStyle="#593522";
+        ctx.fillStyle="#68432c";
 
         ctx.fillRect(
             o.x,
@@ -1426,8 +1364,7 @@ function drawObstacle(o){
             o.h
         );
 
-        ctx.strokeStyle="#2b160d";
-
+        ctx.strokeStyle="#29170e";
         ctx.lineWidth=3;
 
         ctx.strokeRect(
@@ -1442,197 +1379,248 @@ function drawObstacle(o){
 }
 
 
-/* =========================
-   MOEDA
-========================= */
+/* =========================================================
+   DESENHAR BOSTINHA 💩
+========================================================= */
 
-function drawCoin(c){
+function drawPoop(p){
 
-    ctx.fillStyle="#ffd21c";
+    ctx.save();
 
-    ctx.shadowColor="#ffb000";
-    ctx.shadowBlur=8;
+    ctx.translate(p.x,p.y);
+
+    ctx.fillStyle="#7b4725";
+
+    /* base */
 
     ctx.beginPath();
 
-    ctx.arc(
-        c.x,
-        c.y,
-        c.r,
+    ctx.ellipse(
+        0,
+        8,
+        17,
+        9,
+        0,
         0,
         Math.PI*2
     );
 
     ctx.fill();
 
-    ctx.shadowBlur=0;
 
-    ctx.strokeStyle="#a86d00";
-    ctx.lineWidth=3;
+    /* corpo */
 
-    ctx.stroke();
+    ctx.beginPath();
 
-    ctx.fillStyle="#fff3a0";
+    ctx.arc(0,0,13,Math.PI,0);
 
-    ctx.font=
-    "bold 16px Arial";
+    ctx.fill();
 
-    ctx.textAlign="center";
-    ctx.textBaseline="middle";
+    ctx.beginPath();
 
-    ctx.fillText(
-        "L",
-        c.x,
-        c.y
-    );
+    ctx.arc(-5,-7,9,Math.PI,0);
+
+    ctx.fill();
+
+    ctx.beginPath();
+
+    ctx.arc(5,-14,7,Math.PI,0);
+
+    ctx.fill();
+
+
+    /* brilho */
+
+    ctx.fillStyle="#b87945";
+
+    ctx.beginPath();
+
+    ctx.arc(-5,-7,3,0,Math.PI*2);
+
+    ctx.fill();
+
+    ctx.restore();
 
 }
 
 
-/* =========================
+/* =========================================================
    COLISÃO
-========================= */
+========================================================= */
 
 function collision(a,b){
 
-    return (
-
+    return(
         a.x < b.x+b.w &&
         a.x+a.w > b.x &&
         a.y < b.y+b.h &&
         a.y+a.h > b.y
-
     );
 
 }
 
 
-/* =========================
-   PASSAR DE FASE
-========================= */
+/* =========================================================
+   PASSAR MAPA
+========================================================= */
 
 function checkLevel(){
 
-    if(
-        coinCount>=10
-    ){
+    if(poopCount<10) return;
 
-        coinCount=0;
+    /*
+       Se completar o mapa:
+       libera o próximo.
+    */
 
-        level++;
+    if(level<3){
 
-        speed+=0.8;
+        const next=level+1;
 
-        document.getElementById(
-            "coins"
-        ).textContent=0;
+        if(next>unlockedMap){
 
-        document.getElementById(
-            "level"
-        ).textContent=level;
+            unlockedMap=next;
+
+            localStorage.setItem(
+                "liliUnlockedMap",
+                unlockedMap
+            );
+
+        }
 
         /*
-           Pequena pausa visual
+           Desbloqueia personagens
+           conforme progresso.
         */
 
-        running=false;
+        if(level===1 && unlockedCharacters<2){
 
-        setTimeout(()=>{
+            unlockedCharacters=2;
 
-            running=true;
+            localStorage.setItem(
+                "liliUnlockedCharacters",
+                unlockedCharacters
+            );
 
-        },500);
+        }
+
+        if(level===2 && unlockedCharacters<3){
+
+            unlockedCharacters=3;
+
+            localStorage.setItem(
+                "liliUnlockedCharacters",
+                unlockedCharacters
+            );
+
+        }
+
+        poopCount=0;
+        level++;
+
+        /*
+           VELOCIDADE SÓ MUDA AQUI,
+           AO PASSAR DE MAPA.
+        */
+
+        speed=
+            level===2 ? 5.6 :
+            6.2;
+
+        document.getElementById("poop").textContent=0;
+        document.getElementById("level").textContent=level;
+
+        obstacles=[];
+        poops=[];
+
+        obstacleTimer=100;
+        poopTimer=50;
+
+    }
+
+    else{
+
+        /*
+           Zerou os 3 mapas.
+        */
+
+        poopCount=0;
+
+        document.getElementById("poop").textContent=0;
+
+        alert("🏆 PARABÉNS! VOCÊ ZEROU O LILI CAGAO!");
+
+        backToMenu();
 
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    GAME OVER
-========================= */
+========================================================= */
 
 function gameOver(){
 
     running=false;
 
-    document.getElementById(
-        "finalCoins"
-    ).textContent=coinCount;
+    document.getElementById("finalLevel").textContent=level;
+    document.getElementById("finalPoop").textContent=poopCount;
 
-    document.getElementById(
-        "finalLevel"
-    ).textContent=level;
-
-    document.getElementById(
-        "gameOver"
-    ).style.display="flex";
+    document.getElementById("gameOver").style.display="flex";
 
 }
 
 
-/* =========================
+/* =========================================================
    LOOP
-========================= */
+========================================================= */
 
 function loop(){
 
-    if(!document.getElementById(
-        "game"
-    ).style.display ||
-       document.getElementById(
-        "game"
-    ).style.display==="none"){
+    if(
+        document.getElementById("game").style.display==="none"
+    ){
 
         return;
 
     }
 
-
-    ctx.clearRect(
-        0,0,W,H
-    );
+    ctx.clearRect(0,0,W,H);
 
     background();
 
 
-    if(started){
+    if(started && running){
 
-        /* física */
+        /* FÍSICA */
 
         player.vy+=.65;
-
         player.y+=player.vy;
 
+        if(player.y>=H-137){
 
-        if(
-            player.y>=H-130
-        ){
-
-            player.y=H-130;
-
+            player.y=H-137;
             player.vy=0;
-
             player.grounded=true;
 
         }
 
 
-        /* obstáculos */
+        /* OBSTÁCULOS */
 
         obstacleTimer--;
 
-        if(
-            obstacleTimer<=0
-        ){
+        if(obstacleTimer<=0){
 
             spawnObstacle();
 
             obstacleTimer=
-            Math.max(
-                50,
-                105-level*3
-            );
+                Math.max(
+                    55,
+                    108-level*5
+                );
 
         }
 
@@ -1649,13 +1637,7 @@ function loop(){
 
             drawObstacle(o);
 
-
-            if(
-                collision(
-                    player,
-                    o
-                )
-            ){
+            if(collision(player,o)){
 
                 hitObstacle(i);
 
@@ -1667,66 +1649,56 @@ function loop(){
 
 
         obstacles=
-        obstacles.filter(
-            o=>o.x>-120
-        );
+            obstacles.filter(
+                o=>o.x>-130
+            );
 
 
-        /* moedas */
+        /* BOSTINHAS */
 
-        coinTimer--;
+        poopTimer--;
 
-        if(
-            coinTimer<=0
-        ){
+        if(poopTimer<=0){
 
-            spawnCoin();
+            spawnPoop();
 
-            coinTimer=
-            65+
-            Math.random()*60;
+            poopTimer=
+                65+Math.random()*65;
 
         }
 
 
         for(
-            let i=coins.length-1;
+            let i=poops.length-1;
             i>=0;
             i--
         ){
 
-            let c=coins[i];
+            let p=poops[i];
 
-            c.x-=speed;
+            p.x-=speed;
 
-            drawCoin(c);
-
+            drawPoop(p);
 
             let box={
 
-                x:c.x-c.r,
-                y:c.y-c.r,
-                w:c.r*2,
-                h:c.r*2
+                x:p.x-p.r,
+                y:p.y-p.r,
+                w:p.r*2,
+                h:p.r*2
 
             };
 
 
-            if(
-                collision(
-                    player,
-                    box
-                )
-            ){
+            if(collision(player,box)){
 
-                coins.splice(i,1);
+                poops.splice(i,1);
 
-                coinCount++;
+                poopCount++;
 
                 document.getElementById(
-                    "coins"
-                ).textContent=
-                coinCount;
+                    "poop"
+                ).textContent=poopCount;
 
                 checkLevel();
 
@@ -1735,10 +1707,10 @@ function loop(){
         }
 
 
-        coins=
-        coins.filter(
-            c=>c.x>-50
-        );
+        poops=
+            poops.filter(
+                p=>p.x>-60
+            );
 
     }
 
@@ -1750,54 +1722,67 @@ function loop(){
 }
 
 
-/* =========================
+/* =========================================================
    CONTROLES
-========================= */
+========================================================= */
 
-document.getElementById(
-    "startButton"
-).addEventListener(
-    "click",
-    startGame
-);
+document.getElementById("startButton")
+.addEventListener("click",startGame);
 
 
-/*
-   QUALQUER TOQUE NA ÁREA
-   DO JOGO faz o personagem pular.
-*/
-
-document.getElementById(
-    "game"
-).addEventListener(
-    "pointerdown",
-    touchGame
-);
+document.getElementById("game")
+.addEventListener("pointerdown",touchGame);
 
 
-document.getElementById(
-    "restart"
-).addEventListener(
-    "click",
-    ()=>{
+document.getElementById("homeButton")
+.addEventListener("click",backToMenu);
 
-        document.getElementById(
-            "gameOver"
-        ).style.display="none";
 
-        reset();
+document.getElementById("restart")
+.addEventListener("click",()=>{
 
-        started=false;
-        running=false;
+    document.getElementById("gameOver").style.display="none";
 
-        document.getElementById(
-            "tapStart"
-        ).style.display="block";
+    reset();
 
-        requestAnimationFrame(loop);
+    started=false;
+    running=false;
+
+    document.getElementById("tapStart").style.display="block";
+
+    requestAnimationFrame(loop);
+
+});
+
+
+document.getElementById("overMenu")
+.addEventListener("click",backToMenu);
+
+
+/* =========================================================
+   TECLADO — PC
+========================================================= */
+
+document.addEventListener("keydown",e=>{
+
+    if(
+        e.code==="Space" ||
+        e.code==="ArrowUp"
+    ){
+
+        e.preventDefault();
+
+        if(
+            document.getElementById("game").style.display!=="none"
+        ){
+
+            touchGame(e);
+
+        }
 
     }
-);
+
+});
 
 </script>
 
