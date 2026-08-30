@@ -2,519 +2,1194 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NEW DARK</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-  -webkit-user-select: none;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
-body {
-  background: #050505;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  color: white;
+body{
+  overflow:hidden;
+  background:#000;
+  font-family:Arial,sans-serif;
 }
 
-#game {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+#game{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 50% 30%, #242424 0%, #090909 55%, #000 100%);
+    linear-gradient(#17202b 0%,#34495e 45%,#111 46%,#080808 100%);
 }
 
-#loading {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #020202;
+/* LUA */
+#moon{
+  position:absolute;
+  top:70px;
+  right:50px;
+  width:75px;
+  height:75px;
+  background:#eee;
+  border-radius:50%;
+  box-shadow:0 0 30px #fff;
 }
 
-.logo {
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 8px;
-  text-shadow: 0 0 20px #fff;
-  margin-bottom: 35px;
+/* HUD */
+#hud{
+  position:absolute;
+  top:18px;
+  left:18px;
+  right:18px;
+  z-index:20;
+  display:none;
+  justify-content:space-between;
+  color:white;
+  font-size:19px;
+  font-weight:bold;
+  text-shadow:0 2px 4px #000;
 }
 
-.loadingText {
-  font-size: 20px;
-  margin-bottom: 15px;
+/* CHÃO */
+#ground{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:100px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #252525 0px,
+      #252525 45px,
+      #1b1b1b 45px,
+      #1b1b1b 90px
+    );
+  border-top:4px solid #555;
 }
 
-.bar {
-  width: 75%;
-  max-width: 400px;
-  height: 15px;
-  border: 2px solid white;
-  border-radius: 20px;
-  overflow: hidden;
+/* =========================
+   CACHORRO MENOR
+========================= */
+
+#player{
+  position:absolute;
+  left:55px;
+  bottom:100px;
+  width:75px;
+  height:64px;
+  z-index:10;
+  transform-origin:center bottom;
 }
 
-#barFill {
-  width: 0%;
-  height: 100%;
-  background: white;
-  transition: width .05s linear;
-}
-
-#menu {
-  position: absolute;
-  inset: 0;
-  z-index: 15;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,.35);
-}
-
-#menu h1 {
-  font-size: 55px;
-  letter-spacing: 7px;
-  text-shadow: 0 0 25px #ff4500;
-}
-
-#menu p {
-  margin-top: 15px;
-  font-size: 19px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: .3; }
-}
-
-#hud {
-  position: absolute;
-  top: 18px;
-  left: 20px;
-  right: 20px;
-  z-index: 10;
-  display: none;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#ground {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 90px;
-  background: linear-gradient(#242424,#090909);
-  border-top: 3px solid #555;
-  box-shadow: 0 -5px 25px #111;
-}
-
-#player {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  left: 70px;
-  bottom: 90px;
-  background: linear-gradient(135deg,#fff,#ff6a00,#ff0000);
-  border-radius: 7px;
+/* CORPO */
+.body{
+  position:absolute;
+  left:16px;
+  top:20px;
+  width:45px;
+  height:27px;
+  background:linear-gradient(135deg,#9b6037,#5b321d);
+  border-radius:45% 50% 45% 40%;
   box-shadow:
-    0 0 8px #fff,
-    0 0 20px #ff4500,
-    0 0 40px #ff0000;
-  transform: rotate(0deg);
+    inset -5px -4px 6px rgba(0,0,0,.35),
+    0 3px 6px rgba(0,0,0,.5);
 }
 
-.flame {
-  position: absolute;
-  width: 18px;
-  height: 30px;
-  left: 13px;
-  top: 38px;
-  background: linear-gradient(#fff,#ff9900,#ff0000);
-  clip-path: polygon(50% 100%,0 35%,35% 50%,45% 0,75% 48%,100% 30%);
-  filter: blur(1px);
+/* CABEÇA */
+.head{
+  position:absolute;
+  left:42px;
+  top:7px;
+  width:34px;
+  height:33px;
+  background:linear-gradient(135deg,#b87343,#60351e);
+  border-radius:50%;
+  box-shadow:0 2px 5px #000;
 }
 
-.spike {
-  position: absolute;
-  bottom: 90px;
-  width: 0;
-  height: 0;
-  border-left: 22px solid transparent;
-  border-right: 22px solid transparent;
-  border-bottom: 45px solid #ddd;
-  filter: drop-shadow(0 0 8px #fff);
+/* FOCINHO */
+.snout{
+  position:absolute;
+  left:63px;
+  top:22px;
+  width:21px;
+  height:15px;
+  background:#754326;
+  border-radius:50%;
 }
 
-.block {
-  position: absolute;
-  bottom: 90px;
-  width: 45px;
-  height: 55px;
-  background: linear-gradient(135deg,#444,#111);
-  border: 2px solid #aaa;
-  box-shadow: 0 0 12px #555;
+/* NARIZ */
+.nose{
+  position:absolute;
+  left:77px;
+  top:23px;
+  width:8px;
+  height:7px;
+  background:#111;
+  border-radius:50%;
 }
 
-#message {
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: rgba(0,0,0,.8);
+/* OLHO */
+.eye{
+  position:absolute;
+  left:62px;
+  top:16px;
+  width:6px;
+  height:6px;
+  background:#050505;
+  border-radius:50%;
 }
 
-#message h2 {
-  font-size: 42px;
-  margin-bottom: 15px;
+/* ORELHA */
+.ear{
+  position:absolute;
+  left:47px;
+  top:2px;
+  width:15px;
+  height:23px;
+  background:#512b19;
+  border-radius:50% 20% 50% 50%;
+  transform:rotate(-20deg);
 }
 
-#message p {
-  font-size: 18px;
+/* PATAS */
+.leg{
+  position:absolute;
+  top:42px;
+  width:9px;
+  height:22px;
+  background:#66391f;
+  border-radius:8px;
+  transform-origin:top center;
 }
+
+.leg1{
+  left:21px;
+}
+
+.leg2{
+  left:45px;
+}
+
+/* CAUDA */
+.tail{
+  position:absolute;
+  left:7px;
+  top:17px;
+  width:23px;
+  height:9px;
+  background:#754326;
+  border-radius:50%;
+  transform:rotate(-35deg);
+}
+
+/* ANIMAÇÃO DAS PATAS */
+@keyframes correr1{
+  0%,100%{
+    transform:rotate(25deg);
+  }
+
+  50%{
+    transform:rotate(-25deg);
+  }
+}
+
+@keyframes correr2{
+  0%,100%{
+    transform:rotate(-25deg);
+  }
+
+  50%{
+    transform:rotate(25deg);
+  }
+}
+
+/* MOVIMENTO DO CORPO */
+@keyframes correrCorpo{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+
+  50%{
+    transform:translateY(-2px) rotate(1deg);
+  }
+}
+
+/* CACHORRO CORRENDO */
+#player.running{
+  animation:correrCorpo .22s infinite;
+}
+
+#player.running .leg1{
+  animation:correr1 .22s infinite;
+}
+
+#player.running .leg2{
+  animation:correr2 .22s infinite;
+}
+
+
+/* =========================
+   ESPINHOS
+========================= */
+
+.spike{
+  position:absolute;
+  bottom:100px;
+  width:45px;
+  height:43px;
+  z-index:5;
+}
+
+.spike::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0;
+  height:0;
+
+  border-left:22px solid transparent;
+  border-right:22px solid transparent;
+  border-bottom:43px solid #ddd;
+
+  filter:drop-shadow(0 0 6px #aaa);
+}
+
+
+/* =========================
+   ESTRELAS
+========================= */
+
+.star{
+  position:absolute;
+  bottom:145px;
+  font-size:30px;
+  filter:drop-shadow(0 0 7px gold);
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loading{
+  position:absolute;
+  inset:0;
+  z-index:100;
+
+  background:#030303;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  color:white;
+}
+
+.logo{
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:7px;
+  margin-bottom:30px;
+}
+
+.bar{
+  width:75%;
+  max-width:400px;
+  height:15px;
+
+  border:2px solid white;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+#fill{
+  width:0%;
+  height:100%;
+  background:white;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+#menu{
+  position:absolute;
+  inset:0;
+
+  z-index:80;
+
+  display:none;
+
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(0,0,0,.4);
+
+  color:white;
+}
+
+#menu h1{
+  font-size:55px;
+  letter-spacing:8px;
+  text-shadow:0 0 25px #fff;
+}
+
+#menu p{
+  margin-top:20px;
+  font-size:20px;
+
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.3;
+  }
+}
+
+
+/* =========================
+   FASE COMPLETA
+========================= */
+
+#complete{
+  position:absolute;
+  inset:0;
+
+  z-index:90;
+
+  display:none;
+
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(0,0,0,.8);
+
+  color:white;
+
+  text-align:center;
+}
+
+#complete h2{
+  font-size:40px;
+}
+
+#complete p{
+  margin-top:15px;
+  font-size:20px;
+}
+
+
+/* =========================
+   GAME OVER
+========================= */
+
+#gameover{
+  position:absolute;
+  inset:0;
+
+  z-index:90;
+
+  display:none;
+
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(0,0,0,.8);
+
+  color:white;
+}
+
+#gameover h2{
+  font-size:45px;
+}
+
+#gameover p{
+  margin-top:15px;
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div id="game">
 
+  <!-- LOADING -->
+
   <div id="loading">
-    <div class="logo">NEW DARK</div>
-    <div class="loadingText">CARREGANDO <span id="percent">0</span>%</div>
-    <div class="bar">
-      <div id="barFill"></div>
+
+    <div class="logo">
+      NEW DARK
     </div>
+
+    <div style="margin-bottom:12px">
+      CARREGANDO
+      <span id="percent">0</span>%
+    </div>
+
+    <div class="bar">
+      <div id="fill"></div>
+    </div>
+
   </div>
+
+
+  <!-- MENU -->
 
   <div id="menu">
-    <h1>NEW DARK</h1>
-    <p>👆 CLIQUE PARA COMEÇAR</p>
+
+    <h1>
+      NEW DARK
+    </h1>
+
+    <p>
+      👆 CLIQUE PARA COMEÇAR
+    </p>
+
   </div>
+
+
+  <!-- LUA -->
+
+  <div id="moon"></div>
+
+
+  <!-- HUD -->
 
   <div id="hud">
-    <div>FASE <span id="level">1</span>/40</div>
-    <div>⭐ <span id="score">0</span></div>
+
+    <div>
+      FASE
+      <span id="level">1</span>
+    </div>
+
+    <div>
+      ⭐
+      <span id="stars">0</span>/10
+    </div>
+
   </div>
 
+
+  <!-- CACHORRO -->
+
   <div id="player">
-    <div class="flame"></div>
+
+    <div class="tail"></div>
+
+    <div class="body"></div>
+
+    <div class="leg leg1"></div>
+
+    <div class="leg leg2"></div>
+
+    <div class="ear"></div>
+
+    <div class="head"></div>
+
+    <div class="eye"></div>
+
+    <div class="snout"></div>
+
+    <div class="nose"></div>
+
   </div>
+
+
+  <!-- CHÃO -->
 
   <div id="ground"></div>
 
-  <div id="message">
-    <h2 id="messageTitle">GAME OVER</h2>
-    <p id="messageText">Toque para tentar novamente</p>
+
+  <!-- FASE COMPLETA -->
+
+  <div id="complete">
+
+    <h2>
+      ⭐ FASE CONCLUÍDA!
+    </h2>
+
+    <p>
+      Você conseguiu 10 estrelas!
+    </p>
+
+    <p style="margin-top:25px">
+      Toque para ir para a próxima fase
+    </p>
+
+  </div>
+
+
+  <!-- GAME OVER -->
+
+  <div id="gameover">
+
+    <h2>
+      GAME OVER
+    </h2>
+
+    <p>
+      Toque para tentar novamente
+    </p>
+
   </div>
 
 </div>
 
+
 <script>
-const game = document.getElementById("game");
-const player = document.getElementById("player");
-const loading = document.getElementById("loading");
-const menu = document.getElementById("menu");
-const hud = document.getElementById("hud");
-const message = document.getElementById("message");
 
-const percent = document.getElementById("percent");
-const barFill = document.getElementById("barFill");
-const levelText = document.getElementById("level");
-const scoreText = document.getElementById("score");
+/* ================================
+   CONFIGURAÇÕES
+================================ */
 
-let loadingPercent = 0;
+const game =
+  document.getElementById("game");
 
-const loadingTimer = setInterval(() => {
-  loadingPercent++;
+const player =
+  document.getElementById("player");
 
-  percent.textContent = loadingPercent;
-  barFill.style.width = loadingPercent + "%";
+const menu =
+  document.getElementById("menu");
 
-  if (loadingPercent >= 100) {
-    clearInterval(loadingTimer);
+const hud =
+  document.getElementById("hud");
 
-    setTimeout(() => {
-      loading.style.display = "none";
-      menu.style.display = "flex";
-    }, 500);
-  }
-}, 25);
+const complete =
+  document.getElementById("complete");
 
+const gameover =
+  document.getElementById("gameover");
 
-// ===============================
-// CONFIGURAÇÃO
-// ===============================
 
 let playing = false;
-let gameOver = false;
 
 let level = 1;
-let score = 0;
+
+let stars = 0;
 
 let playerY = 0;
+
 let velocity = 0;
 
-const gravity = 0.75;
-const jumpPower = 13;
-
 let obstacles = [];
-let spawnTimer = 0;
-let speed = 5;
+
+let starsObjects = [];
+
+let obstacleTimer = 0;
+
+let starTimer = 70;
+
+let speed = 4.2;
 
 
-// ===============================
-// COMEÇAR
-// ===============================
+/* ================================
+   LOADING
+================================ */
 
-function startGame() {
+let load = 0;
+
+const loadingTimer =
+  setInterval(() => {
+
+    load++;
+
+    document.getElementById("percent")
+      .textContent = load;
+
+    document.getElementById("fill")
+      .style.width = load + "%";
+
+
+    if(load >= 100){
+
+      clearInterval(loadingTimer);
+
+
+      setTimeout(() => {
+
+        document.getElementById("loading")
+          .style.display = "none";
+
+        menu.style.display = "flex";
+
+      },500);
+
+    }
+
+  },25);
+
+
+/* ================================
+   COMEÇAR
+================================ */
+
+menu.addEventListener(
+  "click",
+  startGame
+);
+
+
+function startGame(){
+
   menu.style.display = "none";
-  message.style.display = "none";
+
+  gameover.style.display = "none";
+
+  complete.style.display = "none";
+
   hud.style.display = "flex";
 
+
   playing = true;
-  gameOver = false;
+
 
   level = 1;
-  score = 0;
 
-  levelText.textContent = level;
-  scoreText.textContent = score;
+  stars = 0;
+
+  speed = 4.2;
+
 
   playerY = 0;
+
   velocity = 0;
 
-  obstacles.forEach(o => o.remove());
-  obstacles = [];
 
-  speed = 5;
-  spawnTimer = 0;
+  /* ATIVA CORRIDA */
+
+  player.classList.add("running");
+
+
+  clearObjects();
+
+  updateHUD();
+
+
+  obstacleTimer = 120;
+
+  starTimer = 70;
+
 
   requestAnimationFrame(loop);
+
 }
 
-menu.addEventListener("click", startGame);
-menu.addEventListener("touchstart", startGame);
+
+/* ================================
+   PULO
+================================ */
+
+function jump(){
+
+  if(!playing)return;
 
 
-// ===============================
-// PULO
-// ===============================
+  if(playerY <= 1){
 
-function jump() {
+    velocity = 13;
 
-  if (!playing || gameOver) return;
-
-  // só pula quando está no chão
-  if (playerY <= 0) {
-    velocity = jumpPower;
   }
+
 }
 
-document.addEventListener("click", e => {
-  if (e.target.closest("#menu")) return;
-  jump();
-});
 
-document.addEventListener("touchstart", e => {
-  if (e.target.closest("#menu")) return;
-  jump();
-});
+/* CLIQUE */
 
-document.addEventListener("keydown", e => {
-  if (e.code === "Space" || e.code === "ArrowUp") {
+document.addEventListener(
+  "click",
+  (e) => {
+
+    if(
+      e.target.closest("#menu") ||
+      e.target.closest("#complete") ||
+      e.target.closest("#gameover")
+    ){
+      return;
+    }
+
     jump();
+
   }
-});
+);
 
 
-// ===============================
-// CRIAR OBSTÁCULOS
-// ===============================
+/* TOQUE NO CELULAR */
 
-function createObstacle() {
+document.addEventListener(
+  "touchstart",
+  (e) => {
 
-  const obstacle = document.createElement("div");
+    if(
+      e.target.closest("#menu") ||
+      e.target.closest("#complete") ||
+      e.target.closest("#gameover")
+    ){
+      return;
+    }
 
-  // Depois de certas fases aparecem blocos também
-  if (Math.random() < 0.25 && level >= 10) {
+    jump();
 
-    obstacle.className = "block";
-
-  } else {
-
-    obstacle.className = "spike";
   }
+);
 
-  obstacle.style.left = window.innerWidth + "px";
 
-  game.appendChild(obstacle);
+/* ================================
+   CRIAR OBSTÁCULO
+================================ */
 
-  obstacles.push(obstacle);
+function createObstacle(){
+
+  const o =
+    document.createElement("div");
+
+  o.className = "spike";
+
+  o.style.left =
+    window.innerWidth + "px";
+
+
+  game.appendChild(o);
+
+  obstacles.push(o);
+
 }
 
 
-// ===============================
-// COLISÃO
-// ===============================
+/* ================================
+   CRIAR ESTRELA
+================================ */
 
-function collision(a,b) {
+function createStar(){
 
-  const r1 = a.getBoundingClientRect();
-  const r2 = b.getBoundingClientRect();
+  const s =
+    document.createElement("div");
 
-  return !(
-    r1.right < r2.left ||
-    r1.left > r2.right ||
-    r1.bottom < r2.top ||
-    r1.top > r2.bottom
+  s.className = "star";
+
+  s.textContent = "⭐";
+
+
+  s.style.left =
+    window.innerWidth + "px";
+
+
+  const height =
+    140 + Math.random() * 100;
+
+
+  s.style.bottom =
+    height + "px";
+
+
+  game.appendChild(s);
+
+  starsObjects.push(s);
+
+}
+
+
+/* ================================
+   COLISÃO
+================================ */
+
+function hit(a,b){
+
+  const A =
+    a.getBoundingClientRect();
+
+  const B =
+    b.getBoundingClientRect();
+
+
+  /*
+     Área menor para deixar
+     a colisão mais justa.
+  */
+
+  const leftA =
+    A.left + 15;
+
+  const rightA =
+    A.right - 10;
+
+  const topA =
+    A.top + 12;
+
+  const bottomA =
+    A.bottom - 4;
+
+
+  const leftB =
+    B.left + 7;
+
+  const rightB =
+    B.right - 7;
+
+  const topB =
+    B.top + 7;
+
+  const bottomB =
+    B.bottom;
+
+
+  return(
+    leftA < rightB &&
+    rightA > leftB &&
+    topA < bottomB &&
+    bottomA > topB
   );
+
 }
 
 
-// ===============================
-// GAME OVER
-// ===============================
+/* ================================
+   LIMPAR
+================================ */
 
-function loseGame() {
+function clearObjects(){
+
+  obstacles.forEach(
+    o => o.remove()
+  );
+
+  starsObjects.forEach(
+    s => s.remove()
+  );
+
+
+  obstacles = [];
+
+  starsObjects = [];
+
+}
+
+
+/* ================================
+   HUD
+================================ */
+
+function updateHUD(){
+
+  document.getElementById("level")
+    .textContent = level;
+
+  document.getElementById("stars")
+    .textContent = stars;
+
+}
+
+
+/* ================================
+   GAME OVER
+================================ */
+
+function lose(){
 
   playing = false;
-  gameOver = true;
 
-  message.style.display = "flex";
+  player.classList.remove("running");
 
-  document.getElementById("messageTitle").textContent = "GAME OVER";
-  document.getElementById("messageText").textContent =
-    "Toque na tela para tentar novamente";
-}
-
-message.addEventListener("click", () => {
-
-  if (gameOver) {
-    startGame();
-  }
-
-});
-
-message.addEventListener("touchstart", () => {
-
-  if (gameOver) {
-    startGame();
-  }
-
-});
-
-
-// ===============================
-// PRÓXIMA FASE
-// ===============================
-
-function checkLevel() {
-
-  const newLevel = Math.min(40, Math.floor(score / 10) + 1);
-
-  if (newLevel !== level) {
-
-    level = newLevel;
-
-    levelText.textContent = level;
-
-    // fica mais rápido
-    speed = 5 + (level * 0.25);
-  }
+  gameover.style.display = "flex";
 
 }
 
 
-// ===============================
-// LOOP
-// ===============================
+/* ================================
+   NOVA FASE
+================================ */
 
-function loop() {
+function finishLevel(){
 
-  if (!playing) return;
+  playing = false;
 
-  // gravidade
-  velocity -= gravity;
+  player.classList.remove("running");
+
+  complete.style.display = "flex";
+
+}
+
+
+/* ================================
+   CONTINUAR
+================================ */
+
+complete.addEventListener(
+  "click",
+  () => {
+
+    level++;
+
+    stars = 0;
+
+
+    speed =
+      4.2 + (level - 1) * 0.22;
+
+
+    playerY = 0;
+
+    velocity = 0;
+
+
+    clearObjects();
+
+    updateHUD();
+
+
+    complete.style.display = "none";
+
+
+    playing = true;
+
+    player.classList.add("running");
+
+
+    obstacleTimer = 100;
+
+    starTimer = 80;
+
+
+    requestAnimationFrame(loop);
+
+  }
+);
+
+
+/* ================================
+   REINICIAR
+================================ */
+
+gameover.addEventListener(
+  "click",
+  () => {
+
+    startGame();
+
+  }
+);
+
+
+/* ================================
+   LOOP DO JOGO
+================================ */
+
+function loop(){
+
+  if(!playing)return;
+
+
+  /* GRAVIDADE */
+
+  velocity -= 0.7;
+
   playerY += velocity;
 
-  // chão
-  if (playerY < 0) {
+
+  if(playerY < 0){
+
     playerY = 0;
+
     velocity = 0;
+
   }
 
-  player.style.bottom = (90 + playerY) + "px";
 
-  // rotação
-  player.style.transform =
-    "rotate(" + (-playerY * 1.2) + "deg)";
+  player.style.bottom =
+    (100 + playerY) + "px";
 
 
-  // obstáculos
-  spawnTimer--;
+  /* INCLINAÇÃO DURANTE O PULO */
 
-  const spawnDistance =
-    Math.max(45, 100 - level * 1.5);
+  if(playerY > 3){
 
-  if (spawnTimer <= 0) {
+    player.style.transform =
+      "rotate(-8deg)";
+
+  }
+
+
+  /* ================================
+     OBSTÁCULOS
+  ================================ */
+
+  obstacleTimer--;
+
+
+  if(obstacleTimer <= 0){
 
     createObstacle();
 
-    spawnTimer =
-      spawnDistance +
-      Math.random() * 60;
+
+    /*
+       Aumenta dificuldade
+       conforme a fase.
+    */
+
+    const min =
+      Math.max(
+        65,
+        105 - level * 1.5
+      );
+
+
+    const max =
+      Math.max(
+        90,
+        180 - level * 2
+      );
+
+
+    obstacleTimer =
+      min + Math.random() * (max-min);
+
   }
 
 
-  // mover obstáculos
-  obstacles.forEach((obstacle, index) => {
+  /* ================================
+     ESTRELAS
+  ================================ */
 
-    let left =
-      parseFloat(obstacle.style.left);
-
-    left -= speed;
-
-    obstacle.style.left = left + "px";
+  starTimer--;
 
 
-    // colisão
-    if (collision(player, obstacle)) {
-      loseGame();
+  if(starTimer <= 0){
+
+    createStar();
+
+
+    starTimer =
+      70 + Math.random() * 60;
+
+  }
+
+
+  /* ================================
+     MOVER ESPINHOS
+  ================================ */
+
+  for(
+    let i = obstacles.length - 1;
+    i >= 0;
+    i--
+  ){
+
+    const o =
+      obstacles[i];
+
+
+    let x =
+      parseFloat(o.style.left);
+
+
+    x -= speed;
+
+
+    o.style.left =
+      x + "px";
+
+
+    if(hit(player,o)){
+
+      lose();
+
+      return;
+
     }
 
 
-    // saiu da tela
-    if (left < -100) {
+    if(x < -100){
 
-      obstacle.remove();
-      obstacles.splice(index,1);
+      o.remove();
 
-      score++;
+      obstacles.splice(i,1);
 
-      scoreText.textContent = score;
-
-      checkLevel();
     }
 
-  });
+  }
+
+
+  /* ================================
+     MOVER ESTRELAS
+  ================================ */
+
+  for(
+    let i = starsObjects.length - 1;
+    i >= 0;
+    i--
+  ){
+
+    const s =
+      starsObjects[i];
+
+
+    let x =
+      parseFloat(s.style.left);
+
+
+    x -= speed;
+
+
+    s.style.left =
+      x + "px";
+
+
+    if(hit(player,s)){
+
+      s.remove();
+
+      starsObjects.splice(i,1);
+
+
+      stars++;
+
+
+      updateHUD();
+
+
+      /* 10 ESTRELAS = FASE COMPLETA */
+
+      if(stars >= 10){
+
+        finishLevel();
+
+        return;
+
+      }
+
+    }
+
+
+    if(x < -100){
+
+      s.remove();
+
+      starsObjects.splice(i,1);
+
+    }
+
+  }
 
 
   requestAnimationFrame(loop);
+
 }
+
 </script>
 
 </body>
