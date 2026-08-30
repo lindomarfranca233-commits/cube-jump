@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Cube Jump</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial;background:#08152d;color:white}
+body{touch-action:none}canvas{display:block;width:100%;height:100%}
+#ui{position:fixed;inset:0;pointer-events:none}
+.top{display:flex;justify-content:space-between;padding:18px;font-weight:bold;font-size:20px;text-shadow:0 2px 3px #000}
+#start,#gameover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#10163dcc;pointer-events:auto}
+#gameover{display:none}
+h1{font-size:54px;margin:0 0 8px;color:#ffd21a;text-shadow:0 5px #b66b00}
+p{margin:6px 0 20px;font-size:18px;text-align:center}
+button{border:0;border-radius:16px;background:#57d51b;color:white;font-size:24px;font-weight:bold;padding:16px 55px;box-shadow:0 5px #2d8b0b}
+.small{font-size:15px;opacity:.9;margin-top:20px}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="ui">
+<div class="top">
+<div>🪙 <span id="coins">0</span></div>
+<div>🏆 <span id="score">0</span></div>
+</div>
+
+<div id="start">
+<h1>CUBE JUMP</h1>
+<p>Salte pelas plataformas e pegue as moedas!</p>
+<button id="play">JOGAR</button>
+<div class="small">Toque na tela para pular</div>
+</div>
+
+<div id="gameover">
+<h1>FIM!</h1>
+<p>Pontuação: <b id="finalScore">0</b><br>Recorde: <b id="best">0</b></p>
+<button id="again">JOGAR NOVAMENTE</button>
+</div>
+</div>
+
+<script>
+const c=document.getElementById("game"),ctx=c.getContext("2d");
+let W,H,dpr,playing=false,score=0,coins=0,best=+localStorage.getItem("cubeBest")||0;
+let player,plats,coinList,cam=0,last=0;
+const gravity=1450,jump=-610;
+
+function resize(){
+dpr=Math.min(devicePixelRatio||1,2);
+W=innerWidth;H=innerHeight;
+c.width=W*dpr;c.height=H*dpr;
+c.style.width=W+"px";c.style.height=H+"px";
+ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+addEventListener("resize",resize);
+resize();
+
+function reset(){
+score=0;coins=0;cam=0;
+player={x:80,y:H-180,w:38,h:38,vy:0,on:false};
+plats=[
+{x:-50,y:H-100,w:240,h:24},
+{x:250,y:H-170,w:150,h:24},
+{x:470,y:H-250,w:150,h:24}
+];
+coinList=[];
+while(plats[plats.length-1].x+plats[plats.length-1].w<W+700)addPlatform();
+updateUI();
+}
+
+function addPlatform(){
+let p=plats[plats.length-1];
+let gap=90+Math.random()*100;
+let y=Math.max(130,Math.min(H-90,p.y+(Math.random()*150-75)));
+let w=120+Math.random()*90;
+let x=p.x+p.w+gap;
+plats.push({x:x,y:y,w:w,h:24});
+if(Math.random()<.8)coinList.push({x:x+w/2,y:y-48,r:10,taken:false});
+}
+
+function updateUI(){
+document.getElementById("score").textContent=Math.floor(score);
+document.getElementById("coins").textContent=coins;
+}
+
+function start(){
+document.getElementById("start").style.display="none";
+document.getElementById("gameover").style.display="none";
+reset();playing=true;last=performance.now();
+requestAnimationFrame(loop);
+}
+
+function jumpPlayer(){
+if(playing&&player.on){
+player.vy=jump;
+player.on=false;
+}
+}
+
+addEventListener("pointerdown",e=>{
+if(e.target.tagName!=="BUTTON")jumpPlayer();
+});
+
+document.getElementById("play").onclick=start;
+document.getElementById("again").onclick=start;
+
+function loop(t){
+if(!playing)return;
+let dt=Math.min((t-last)/1000,.032);
+last=t;
+update(dt);
+draw();
+requestAnimationFrame(loop);
+}
+
+function update(dt){
+player.vy+=gravity*dt;
+let oldY=player.y;
+player.y+=player.vy*dt;
+player.on=false;
+
+if(player.x-cam>W*.42)cam=player.x-W*.42;
+
+for(const p of plats){
+if(player.x+player.w>p.x&&player.x<p.x+p.w&&
+oldY+player.h<=p.y&&player.y+player.h>=p.y&&player.vy>=0){
+player.y=p.y-player.h;
+player.vy=0;
+player.on=true;
+}
+}
+
+for(const q of coinList){
+if(!q.taken&&player.x+player.w>q.x-q.r&&
+player.x<q.x+q.r&&player.y+player.h>q.y-q.r&&
+player.y<q.y+q.r){
+q.taken=true;
+coins++;
+score+=25;
+}
+}
+
+score+=dt*10;
+
+while(plats[plats.length-1].x+plats[plats.length-1].w<cam+W+500)
+addPlatform();
+
+plats=plats.filter(p=>p.x+p.w>cam-300);
+coinList=coinList.filter(q=>q.x>cam-300);
+
+if(player.y>H+180){
+endGame();
+return;
+}
+
+updateUI();
+}
+
+function endGame(){
+playing=false;
+best=Math.max(best,Math.floor(score));
+localStorage.setItem("cubeBest",best);
+document.getElementById("finalScore").textContent=Math.floor(score);
+document.getElementById("best").textContent=best;
+document.getElementById("gameover").style.display="flex";
+}
+
+function draw(){
+ctx.clearRect(0,0,W,H);
+
+let g=ctx.createLinearGradient(0,0,0,H);
+g.addColorStop(0,"#168de0");
+g.addColorStop(1,"#8ce7ff");
+ctx.fillStyle=g;
+ctx.fillRect(0,0,W,H);
+
+ctx.fillStyle="#ffffff55";
+for(let i=0;i<6;i++){
+let x=i*190-(cam*.18%190);
+ctx.beginPath();
+ctx.arc(x,110+(i%2)*45,35,0,Math.PI*2);
+ctx.fill();
+}
+
+ctx.fillStyle="#35b86b";
+for(let i=0;i<8;i++){
+let x=i*180-(cam*.12%180);
+ctx.beginPath();
+ctx.arc(x,H-40,100,Math.PI,0);
+ctx.fill();
+}
+
+ctx.fillStyle="#22bddd";
+ctx.fillRect(0,H-15,W,15);
+
+for(const p of plats){
+let x=p.x-cam;
+if(x>W||x+p.w<0)continue;
+ctx.fillStyle="#2f8d35";
+ctx.fillRect(x,p.y,p.w,p.h);
+ctx.fillStyle="#72d52c";
+ctx.fillRect(x,p.y,p.w,7);
+ctx.fillStyle="#8b4f2b";
+ctx.fillRect(x,p.y+7,p.w,p.h-7);
+}
+
+for(const q of coinList){
+if(q.taken)continue;
+let x=q.x-cam;
+if(x>-20&&x<W+20){
+ctx.fillStyle="#ffd21a";
+ctx.beginPath();
+ctx.arc(x,q.y,q.r,0,Math.PI*2);
+ctx.fill();
+ctx.fillStyle="#fff2a1";
+ctx.fillRect(x-2,q.y-7,4,14);
+}
+}
+
+let px=player.x-cam,py=player.y;
+ctx.save();
+ctx.translate(px+19,py+19);
+ctx.rotate(Math.min(.4,Math.max(-.4,player.vy/1800)));
+ctx.fillStyle="#ffd21a";
+ctx.fillRect(-19,-19,38,38);
+ctx.fillStyle="#222";
+ctx.beginPath();
+ctx.arc(-8,-4,4,0,Math.PI*2);
+ctx.arc(8,-4,4,0,Math.PI*2);
+ctx.fill();
+ctx.restore();
+}
+</script>
+</body>
+</html>
