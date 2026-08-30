@@ -1091,20 +1091,6 @@ let lives=3;
 let poop=0;
 let level=1;
 
-
-/*
-   VELOCIDADE TOTALMENTE FIXA.
-
-   Ela NÃO aumenta:
-   - ao perder vida
-   - ao bater
-   - ao reiniciar
-   - durante o mapa
-
-   O deltaTime serve somente para manter
-   a velocidade igual em diferentes FPS.
-*/
-
 const GAME_SPEED=4.1;
 
 let obstacleTimer=75;
@@ -1346,6 +1332,30 @@ function spawnObstacle(){
     let width=48;
     let height=48;
 
+    /* ALTERAÇÃO SOMENTE DA FASE 1:
+       obstáculos menores */
+
+    if(level===1 && type==="spike"){
+
+        width=38;
+        height=34;
+
+    }
+
+    if(level===1 && type==="barrier"){
+
+        width=42;
+        height=38;
+
+    }
+
+    if(level===1 && type==="building"){
+
+        width=48;
+        height=48;
+
+    }
+
     if(type==="double")
         width=90;
 
@@ -1356,7 +1366,7 @@ function spawnObstacle(){
 
     }
 
-    if(type==="building"){
+    if(type==="building" && level!==1){
 
         width=55;
         height=60;
@@ -1458,15 +1468,75 @@ function spawnPoop(){
 
 function collision(a,b){
 
+    /*
+       Na fase 1 a área de colisão é pequena.
+       O lobo precisa realmente encostar.
+    */
+
+    if(level===1){
+
+        const playerBox={
+
+            x:a.x+20,
+            y:a.y+22,
+
+            width:a.width-34,
+            height:a.height-25
+
+        };
+
+        const obstacleBox={
+
+            x:b.x+8,
+            y:b.y+8,
+
+            width:Math.max(
+                1,
+                b.width-16
+            ),
+
+            height:Math.max(
+                1,
+                b.height-8
+            )
+
+        };
+
+        return(
+
+            playerBox.x <
+            obstacleBox.x+
+            obstacleBox.width &&
+
+            playerBox.x+
+            playerBox.width >
+            obstacleBox.x &&
+
+            playerBox.y <
+            obstacleBox.y+
+            obstacleBox.height &&
+
+            playerBox.y+
+            playerBox.height >
+            obstacleBox.y
+
+        );
+
+    }
+
+    /*
+       Colisão normal das outras fases.
+    */
+
     return(
 
-        a.x+8 <
-        b.x+b.width &&
+        a.x+10 <
+        b.x+b.width-5 &&
 
-        a.x+a.width-8 >
-        b.x &&
+        a.x+a.width-10 >
+        b.x+5 &&
 
-        a.y+8 <
+        a.y+10 <
         b.y+b.height &&
 
         a.y+a.height-5 >
@@ -1511,36 +1581,12 @@ function updateLives(){
 
 function hitObstacle(){
 
-    /*
-       Se estiver protegido, não perde outra vida.
-    */
-
     if(invincible)
         return;
-
-
-    /*
-       PERDE UMA VIDA.
-
-       IMPORTANTE:
-       GAME_SPEED NÃO É ALTERADO AQUI.
-    */
 
     lives--;
 
     updateLives();
-
-
-    /*
-       NÃO existe:
-       speed++;
-       GAME_SPEED++;
-       GAME_SPEED+=...
-       speed*=...
-       
-       Portanto a velocidade continua
-       exatamente 4.1.
-    */
 
     if(lives<=0){
 
@@ -1549,14 +1595,6 @@ function hitObstacle(){
         return;
 
     }
-
-
-    /*
-       Proteção contra perder várias vidas
-       no mesmo obstáculo.
-
-       Isso NÃO muda a velocidade.
-    */
 
     invincible=true;
 
@@ -2273,9 +2311,24 @@ function loop(time){
 
                 spawnObstacle();
 
-                obstacleTimer=
-                    90+
-                    Math.random()*45;
+                /*
+                   FASE 1:
+                   mais tempo entre obstáculos.
+                */
+
+                if(level===1){
+
+                    obstacleTimer=
+                        125+
+                        Math.random()*55;
+
+                }else{
+
+                    obstacleTimer=
+                        90+
+                        Math.random()*45;
+
+                }
 
             }
 
@@ -2287,14 +2340,6 @@ function loop(time){
 
                 const o=
                     obstacles[i];
-
-                /*
-                   VELOCIDADE FIXA.
-
-                   Nunca usamos uma variável
-                   de velocidade que seja alterada
-                   ao perder vida.
-                */
 
                 o.x-=
                     GAME_SPEED*dt;
